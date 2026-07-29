@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 使用揭露 · 學生版 / AI Use Disclosure · Student</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f2f2ef;
+    --surface:#ffffff;
+    --ink:#232a3d;
+    --ink-soft:#5a6072;
+    --ink-faint:#8b90a0;
+    --line:#e3e1db;
+    --line-strong:#cfcdc6;
+    --accent:#2f7d76;        /* trust / verification / primary action */
+    --accent-deep:#245f59;
+    --accent-wash:#e7f0ee;
+    --safe:#3a6b5f;
+    --safe-wash:#eaf2ee;
+    /* neutral tier ramp — deliberately NOT a traffic light */
+    --t1:#b9bcc4; --t2:#9297a6; --t3:#6b7186; --t4:#454c63; --t5:#232a3d;
+    --radius:14px;
+    --radius-sm:9px;
+    --shadow:0 1px 2px rgba(35,42,61,.04),0 8px 28px rgba(35,42,61,.06);
+    --maxw:720px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Noto Sans TC",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+    line-height:1.65;font-size:16px;
+    padding:32px 20px 80px;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto}
+  h1,h2,h3{font-family:"Noto Serif TC",Georgia,serif;line-height:1.35;margin:0}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:500}
+  .muted{color:var(--ink-soft)}
+  .faint{color:var(--ink-faint)}
+  .en{color:var(--ink-faint);font-weight:400}
+
+  /* header */
+  header.top{margin-bottom:22px}
+  header.top h1{font-size:26px;font-weight:700;letter-spacing:-.01em}
+  header.top .sub{margin-top:6px;color:var(--ink-soft);font-size:14.5px}
+
+  /* mode switch */
+  .switch{display:inline-flex;background:#e9e8e3;border-radius:999px;padding:4px;margin:18px 0 10px;gap:2px}
+  .switch button{
+    border:0;background:transparent;font:inherit;font-size:13.5px;font-weight:500;color:var(--ink-soft);
+    padding:8px 16px;border-radius:999px;cursor:pointer;transition:background .15s,color .15s;
+  }
+  .switch button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+  .switch button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  /* cards */
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:24px 24px;margin:16px 0}
+  .card h2{font-size:18px;font-weight:600;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .card h2 .en{font-size:13px}
+  .card > p.hint{margin:6px 0 0;font-size:14px;color:var(--ink-soft)}
+  .step-n{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;
+    border-radius:7px;background:var(--ink);color:#fff;font-size:12.5px;font-weight:600;font-family:"Noto Sans TC",sans-serif;
+    transform:translateY(-1px)}
+
+  label.field{display:block;margin-top:16px}
+  label.field .lab{font-weight:500;font-size:14.5px;display:block;margin-bottom:6px}
+  label.field .lab .en{font-size:12.5px;margin-left:4px}
+  label.field .sublab{font-weight:400;font-size:13px;color:var(--ink-soft);margin-bottom:8px}
+  input[type=text],textarea,select{
+    width:100%;font:inherit;font-size:15px;color:var(--ink);background:#fcfcfb;
+    border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:11px 13px;transition:border-color .15s,box-shadow .15s}
+  textarea{resize:vertical;min-height:64px;line-height:1.6}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-wash)}
+  input::placeholder,textarea::placeholder{color:#a9adba}
+
+  /* tier ladder */
+  .ladder{margin-top:14px;display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden}
+  .tier{display:flex;gap:14px;padding:14px 15px;cursor:pointer;border-top:1px solid var(--line);background:var(--surface);transition:background .12s;align-items:flex-start}
+  .tier:first-child{border-top:0}
+  .tier:hover{background:#fafaf8}
+  .tier input{position:absolute;opacity:0;width:0;height:0}
+  .tier .dot{flex:0 0 auto;width:14px;height:14px;border-radius:50%;margin-top:5px;box-shadow:inset 0 0 0 2px #fff, 0 0 0 1px var(--line-strong)}
+  .tier[data-t="1"] .dot{background:var(--t1)} .tier[data-t="2"] .dot{background:var(--t2)}
+  .tier[data-t="3"] .dot{background:var(--t3)} .tier[data-t="4"] .dot{background:var(--t5)}
+  .explore-note{margin-top:14px;background:#f4f2fb;border:1px dashed #cdc6e6;border-radius:var(--radius-sm);padding:12px 14px;font-size:13px;color:#4a3f6b;line-height:1.55}
+  .explore-note b{color:#3d3357}
+  .howto{margin-top:12px;background:#fbfaf7;border:1px solid var(--line);border-radius:var(--radius-sm);padding:13px 15px;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+  .howto b{color:var(--ink)}
+  .qrholder{margin-top:12px}
+  .qrholder canvas,.qrholder img{border:1px solid var(--line);border-radius:8px;padding:8px;background:#fff}
+  .tier .body{flex:1}
+  .tier .name{font-weight:600;font-size:15px}
+  .tier .name .en{font-size:12.5px;font-weight:400;margin-left:6px}
+  .tier .desc{font-size:13.5px;color:var(--ink-soft);margin-top:2px}
+  .tier .flag{font-size:12px;color:var(--ink-faint);margin-top:5px}
+  .tier.sel{background:var(--accent-wash)}
+  .tier.sel .name{color:var(--accent-deep)}
+  .tier.sel .dot{box-shadow:inset 0 0 0 3px #fff,0 0 0 2px var(--accent)}
+  .tier:focus-within{background:#f4f9f8}
+
+  /* checkbox groups */
+  .checks{display:flex;flex-direction:column;gap:2px;margin-top:8px}
+  .checks.grouped{gap:0}
+  .cgroup{margin-top:12px}
+  .cgroup:first-child{margin-top:4px}
+  .cglabel{font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--ink-soft);padding:6px 4px 3px;border-bottom:1px solid var(--line);margin-bottom:3px}
+  .cglabel .en{font-weight:400;color:var(--ink-faint);font-size:11px;margin-left:5px}
+  .chk{display:flex;gap:11px;padding:9px 11px;border-radius:var(--radius-sm);cursor:pointer;transition:background .12s;align-items:flex-start}
+  .chk:hover{background:#f7f7f5}
+  .chk input{margin-top:3px;accent-color:var(--accent);width:16px;height:16px;flex:0 0 auto}
+  .chk .ct{font-size:14.5px}
+  .chk .ct .en{font-size:12px;display:block;color:var(--ink-faint)}
+  .chk.light{background:#f7f6f2;border:1px dashed var(--line-strong);border-radius:var(--radius-sm);margin-bottom:4px}
+
+  /* buttons */
+  .btn{font:inherit;font-weight:600;font-size:14.5px;border-radius:var(--radius-sm);padding:12px 20px;cursor:pointer;border:1px solid transparent;transition:transform .05s,background .15s,box-shadow .15s}
+  .btn:active{transform:translateY(1px)}
+  .btn.primary{background:var(--accent);color:#fff}
+  .btn.primary:hover{background:var(--accent-deep)}
+  .btn.ghost{background:var(--surface);border-color:var(--line-strong);color:var(--ink)}
+  .btn.ghost:hover{background:#f7f7f5}
+  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+
+  /* policy banner (student) */
+  .policy{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin:16px 0}
+  .policy .head{background:var(--ink);color:#fff;padding:16px 22px}
+  .policy .head .course{font-family:"Noto Serif TC",serif;font-size:19px;font-weight:600}
+  .policy .head .teacher{font-size:13px;color:#c3c6d1;margin-top:2px}
+  .policy .band{padding:16px 22px;border-top:1px solid var(--line)}
+  .policy .lvlrow{display:flex;align-items:center;gap:12px}
+  .policy .lvlrow .dot{width:16px;height:16px;border-radius:50%;flex:0 0 auto}
+  .policy .lvlname{font-weight:600;font-size:15.5px}
+  .policy .lvldesc{font-size:13.5px;color:var(--ink-soft);margin-top:6px}
+  .policy .lvlfocus{font-size:13px;color:var(--accent-deep);background:var(--accent-wash);border-radius:8px;padding:8px 11px;margin-top:9px;line-height:1.5}
+  .promise{background:var(--safe-wash);border-top:1px solid var(--line);padding:15px 22px;display:flex;gap:12px;align-items:flex-start}
+  .promise svg{flex:0 0 auto;margin-top:2px}
+  .promise .pt{font-size:14px;color:#2c4a41}
+  .promise .pt b{color:var(--safe)}
+  .nodisc{padding:14px 22px 16px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-soft)}
+  .nodisc b{color:var(--ink);font-weight:500}
+  .nodisc ul{margin:7px 0 0;padding-left:18px}
+  .nodisc li{margin:2px 0}
+
+  /* verify field emphasis */
+  .verify{border:1px solid var(--accent);background:var(--accent-wash);border-radius:var(--radius-sm);padding:14px 15px;margin-top:18px}
+  .verify .lab{font-weight:600;color:var(--accent-deep);display:flex;align-items:center;gap:7px}
+  .verify .why{font-size:12.5px;color:#3f6f68;margin:4px 0 9px}
+  .verify textarea{background:#fff;border-color:#a9cec9}
+
+  .req{color:var(--accent);font-weight:700}
+  .rec{color:var(--ink-faint);font-weight:500;font-size:12.5px}
+  .aidnote{background:var(--safe-wash);border:1px solid #cfe4db;border-radius:var(--radius-sm);padding:12px 15px;margin:0 0 12px;font-size:14px;color:#2c4a41;line-height:1.55}
+  .aidnote .faint{display:block;margin-top:3px}
+  .agenttoggle{background:#f4f2fb;border:1px dashed #cdc6e6;border-radius:var(--radius-sm)}
+  .agentbox{margin-top:12px;border:1px solid #cdc6e6;background:#faf9fe;border-radius:var(--radius-sm);padding:14px 15px}
+  .agentbox .opthead{color:#4a3f6b}
+
+  /* output */
+  .output{white-space:pre-wrap;font-family:"Noto Sans TC",ui-monospace,monospace;font-size:13.5px;line-height:1.7;
+    background:#fbfbfa;border:1px dashed var(--line-strong);border-radius:var(--radius-sm);padding:18px;color:var(--ink);margin-top:6px}
+  .empty{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:30px 24px;text-align:center;color:var(--ink-soft);background:#fafaf8}
+  .empty h2{font-size:17px;color:var(--ink);margin-bottom:8px}
+  .linkbox{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .linkbox input{flex:1;min-width:220px;font-size:12.5px;font-family:ui-monospace,monospace;color:var(--ink-soft)}
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;
+    padding:11px 20px;border-radius:999px;font-size:13.5px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:50}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .divider{height:1px;background:var(--line);margin:22px 0}
+  .footnote{font-size:12.5px;color:var(--ink-faint);margin-top:26px;text-align:center;line-height:1.7}
+  .hide{display:none!important}
+  .inline-link{color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+  a{color:var(--accent-deep);text-underline-offset:2px}
+  /* sources / about panel */
+  .sources{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin:14px 0 4px;overflow:hidden}
+  .sources summary{cursor:pointer;list-style:none;padding:15px 20px;font-weight:600;font-size:14.5px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .sources summary::-webkit-details-marker{display:none}
+  .sources summary .chev{color:var(--ink-faint);font-size:12px;transition:transform .15s}
+  .sources[open] summary .chev{transform:rotate(90deg)}
+  .sources summary .en{font-weight:400;font-size:12px;color:var(--ink-faint)}
+  .sources .inner{padding:2px 20px 20px;border-top:1px solid var(--line)}
+  .sources .lead{font-size:13px;color:var(--ink-soft);margin:12px 0 4px;line-height:1.6}
+  .src-group{margin-top:15px}
+  .src-group h4{font-family:"Noto Sans TC",sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin:0 0 7px}
+  .src-group ul{list-style:none;margin:0;padding:0}
+  .src-group li{font-size:13.5px;padding:3px 0;line-height:1.5}
+  .src-group li a{font-weight:500}
+  .src-group li .role{color:var(--ink-faint);font-size:12px}
+  .baseul{list-style:none;margin:6px 0 0;padding:0}
+  .baseul li{font-size:13.5px;color:var(--ink-soft);padding:2px 0}
+  .baseul li::before{content:"—";color:var(--ink-faint);margin-right:7px}
+  .citenote{font-size:12.5px;color:var(--ink-soft);background:#fbfaf7;border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 13px;margin-top:16px;line-height:1.6}
+  /* provenance mapping */
+  .mapgrid{margin-top:12px;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden}
+  .maprow{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:10px 14px;border-top:1px solid var(--line);font-size:13px;line-height:1.5}
+  .maprow:first-child{border-top:0}
+  .maprow:nth-child(odd){background:#fbfbfa}
+  .mapwhat{font-weight:500;color:var(--ink)}
+  .mapsrc{color:var(--ink-soft)}
+  @media(max-width:560px){.maprow{grid-template-columns:1fr;gap:3px}.mapwhat{color:var(--ink)}.mapsrc{font-size:12.5px}}
+  /* verification ladder */
+  .vladder{display:flex;flex-direction:column;gap:0;margin-top:10px;border:1px solid #bcdcd7;border-radius:var(--radius-sm);overflow:hidden;background:#fff}
+  .vstep{display:flex;gap:10px;padding:11px 12px;border-top:1px solid #d8ebe8;cursor:pointer;align-items:flex-start;font-size:14px;line-height:1.5}
+  .vstep:first-child{border-top:0}
+  .vstep:hover{background:#f4faf9}
+  .vstep input{margin-top:3px;accent-color:var(--accent);width:16px;height:16px;flex:0 0 auto}
+  .vstep b{color:var(--accent-deep)}
+  .vstep.none{color:var(--ink-soft)}
+  .vstep.none b{color:var(--ink-soft)}
+  .vmore{margin-top:12px;border:1px solid var(--line);border-radius:var(--radius-sm);background:#fff}
+  .vmore summary{cursor:pointer;list-style:none;padding:10px 13px;font-size:13.5px;font-weight:500;color:var(--ink-soft)}
+  .vmore summary::-webkit-details-marker{display:none}
+  .vmore .vinner{padding:2px 8px 8px;border-top:1px solid var(--line)}
+  .mapnote{font-size:12px;color:var(--ink-faint);margin-top:10px;line-height:1.55}
+  .disclaimer{background:#f7f6f2;border:1px solid var(--line);border-radius:var(--radius);padding:16px 20px;margin:22px 0 0;font-size:13px;color:var(--ink-soft);line-height:1.7}
+  .disclaimer b{color:var(--ink)}
+  /* quick path + collapsibles + submit note + guide */
+  .quicknote{background:var(--accent-wash);border:1px solid #bcdcd7;border-radius:var(--radius-sm);padding:12px 15px;margin:0 0 16px;font-size:14px;color:#2c4a41;line-height:1.55}
+  .quicknote .faint{display:block;margin-top:3px}
+  details.advanced{margin:16px 0}
+  details.advanced > summary, details.optional > summary{cursor:pointer;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:15px 20px;font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;display:flex;align-items:center;gap:8px}
+  details.advanced > summary::-webkit-details-marker, details.optional > summary::-webkit-details-marker{display:none}
+  .advsub{font-family:"Noto Sans TC",sans-serif;font-weight:400;font-size:12.5px;color:var(--ink-faint)}
+  .advchev{margin-left:auto;color:var(--ink-faint);font-size:12px;transition:transform .15s}
+  details[open] > summary .advchev{transform:rotate(90deg)}
+  details.advanced[open]{border:0}
+  details.optional{margin:16px 0}
+  .optbody{background:var(--surface);border:1px solid var(--line);border-top:0;border-radius:0 0 var(--radius) var(--radius);box-shadow:var(--shadow);padding:6px 24px 22px;margin-top:-6px}
+  details.optional > summary{border-radius:var(--radius)}
+  details.optional[open] > summary{border-radius:var(--radius) var(--radius) 0 0}
+  .optsec{padding-top:16px;margin-top:14px;border-top:1px solid var(--line)}
+  .optsec:first-child{border-top:0;margin-top:0}
+  .opthead{font-family:"Noto Serif TC",serif;font-size:16px;font-weight:600;margin-bottom:4px}
+  .guide .guidelist{margin:12px 0 0;padding-left:20px}
+  .guide .guidelist li{font-size:13.5px;line-height:1.6;margin:7px 0;color:var(--ink-soft)}
+  .guide .guidelist li b{color:var(--ink)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media(max-width:520px){body{padding:22px 14px 70px}.card{padding:20px 17px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="eyebrow">溝通輔助 · 非強制表單 / A communication aid, not a mandate</div>
+    <h1>AI 使用揭露 <span class="en" style="font-size:17px">AI Use Disclosure</span></h1>
+    <div class="sub">這是一個幫<b>老師與學生溝通</b> AI 使用的工具:老師用它把期待講清楚,學生用它說明自己怎麼與 AI 協作。它不替任何人強制規定——<b>是否需要揭露、要填多少,依課程與師生的約定</b>。<br>
+      <span class="faint">A tool to help teachers and students <b>talk about</b> AI use: instructors make expectations clear; students describe how they worked with AI. It compels no one — whether and how much to disclose follows your course's approach.</span></div>
+    <div class="switch" role="tablist" aria-label="模式">
+      <button id="tabTeacher" role="tab" aria-selected="true">老師設定 · Teacher</button>
+      <button id="tabStudent" role="tab" aria-selected="false">學生揭露 · Student</button>
+    </div>
+  </header>
+
+  <details class="sources">
+    <summary><span>依據與彈性調整 · About &amp; sources <span class="en">why you can trust this, and how to adapt it</span></span><span class="chev">▶</span></summary>
+    <div class="inner">
+      <p class="lead">本工具由政治大學圖書館整理,作為<b>參考</b>(非強制),搭配 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener"><b>政大圖書館 AI 使用倫理指引</b></a> 一併使用。下表只列<b>真正支撐設計、且維持在最新(2025–2026)</b>的關鍵來源;AI 變化快,連結會指向最新的概念與實務。實際規範以校方、院系所與授課教師政策為準。</p>
+      <div class="mapgrid">
+        <div class="maprow"><div class="mapwhat">五層級權限量表(中性、非紅綠燈)</div><div class="mapsrc"><a href="https://arxiv.org/abs/2412.09029" target="_blank" rel="noopener">AI Assessment Scale</a> — Perkins, Roe &amp; Furze</div></div>
+        <div class="maprow"><div class="mapwhat">任務揭露的 43 項細目</div><div class="mapsrc"><a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT 分類法</a>(Suchikova et al.),即 CUNY AI Lab 工具所用</div></div>
+        <div class="maprow"><div class="mapwhat">揭露輸出格式、老師自我揭露、實作範本</div><div class="mapsrc"><a href="https://www.monash.edu/student-academic-success/build-digital-capabilities/create-online/acknowledging-the-use-of-generative-artificial-intelligence" target="_blank" rel="noopener">Monash 揭露範本</a> · <a href="https://tlconestoga.ca/describe-and-document-ai-use/" target="_blank" rel="noopener">Conestoga 記錄 AI 使用</a>(2025)</div></div>
+        <div class="maprow"><div class="mapwhat">三層查證階梯、非懲罰承諾</div><div class="mapsrc"><a href="https://www.sciencedirect.com/science/article/pii/S0749597825000172" target="_blank" rel="noopener">揭露信任悖論</a>(Schilke &amp; Reimann)· <a href="https://www.tandfonline.com/doi/full/10.1080/02602938.2024.2415654" target="_blank" rel="noopener">學生非揭露成因研究</a></div></div>
+        <div class="maprow"><div class="mapwhat">「挑戰/改進 AI」欄位</div><div class="mapsrc"><a href="https://arxiv.org/pdf/2605.05472" target="_blank" rel="noopener">AI 錯誤的教學法</a>(Hosseini)等批判性 AI 素養研究</div></div>
+        <div class="maprow"><div class="mapwhat">AI agent 揭露(動作、把關程度、稽核紀錄、問責)</div><div class="mapsrc"><a href="https://ascode.osu.edu/news/agentic-ai-higher-education" target="_blank" rel="noopener">Agentic AI in Higher Education</a>(2025)· 責任落差與 provenance 研究</div></div>
+        <div class="maprow"><div class="mapwhat">課程/評量由教師與院系設計;偵測不可行、重在確保學習</div><div class="mapsrc"><a href="https://www.teqsa.gov.au/guides-resources/higher-education-good-practice-hub/gen-ai-knowledge-hub/gen-ai-academic-integrity-and-assessment-reform" target="_blank" rel="noopener">TEQSA 評量改革</a>(2025–26)· <a href="https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use" target="_blank" rel="noopener">Princeton 揭露指引</a></div></div>
+        <div class="maprow"><div class="mapwhat">引用格式</div><div class="mapsrc"><a href="https://style.mla.org/citing-generative-ai-updated-revised/" target="_blank" rel="noopener">MLA</a> · <a href="https://apastyle.apa.org/blog/cite-generative-ai-references" target="_blank" rel="noopener">APA</a> · Chicago 18 §14.112</div></div>
+        <div class="maprow"><div class="mapwhat">取向=方法輪廓(非科系)</div><div class="mapsrc">改寫自 Biglan(1973)/ Becher &amp; Trowler 的 hard↔soft 連續體</div></div>
+      </div>
+      <p class="lead" style="margin-top:14px"><b>投稿前參考:</b>各大學術出版社(Nature、Elsevier、IEEE、Science、COPE、ICMJE)一致要求——<b>AI 不能列為作者、AI 使用須揭露、作者須自行查證並為內容負責</b>。</p>
+    </div>
+  </details>
+
+  <!-- ================= STUDENT ================= -->
+  <section id="studentView">
+    <!-- empty state when no policy present -->
+    <div id="noPolicy" class="empty">
+      <h2>還沒有載入課程政策 · No course policy loaded</h2>
+      <p>請用老師在課程大綱裡提供的連結開啟這個工具,它會自動帶入本課的 AI 使用規則。<br>
+      <span class="faint">Open this tool from the link your instructor put in the syllabus — it loads your course's AI rules automatically.</span></p>
+      <p style="margin-top:14px"><span class="inline-link" id="loadDemo">先看一個範例 · Preview with a sample course →</span></p>
+    </div>
+
+    <!-- policy banner + form injected here -->
+    <div id="policyArea" class="hide"></div>
+  </section>
+
+  <!-- ================= TEACHER ================= -->
+  <section id="teacherView" class="hide">
+    <div class="quicknote">⚡ <b>快速設定:</b>填課程名稱、選一個層級,按產生就完成——其餘都有合理預設,想細調再展開「進階設定」。<span class="faint">Quick path: course name + one level → Generate. Everything else has sensible defaults.</span></div>
+    <div class="card">
+      <h2><span class="step-n">1</span> 這門課 <span class="en">Course details</span></h2>
+      <label class="field"><span class="lab">課程名稱 <span class="en">Course name</span></span>
+        <input type="text" id="tCourse" placeholder="例:質性研究方法 / Qualitative Research Methods"></label>
+      <label class="field"><span class="lab">教師姓名(選填) <span class="en">Instructor (optional)</span></span>
+        <input type="text" id="tTeacher" placeholder="例:陳老師"></label>
+    </div>
+
+    <div class="card">
+      <h2><span class="step-n">2</span> 本課允許 AI 到哪一層? <span class="en">Permitted level</span></h2>
+      <p class="hint">每一層評的能力不同,沒有哪一層比較「進步」或「保守」。選一層作為本課預設。層級三、四都要學生揭露,差別在<b>重點</b>:三=協作、四=AI 做大部分(重判斷與查證)。<br>
+        <span class="faint">Each level assesses something different. Levels 3–4 both require disclosure but differ in emphasis: 3 = collaboration, 4 = AI does most (judgement & verification matter).</span></p>
+      <div class="ladder" id="tierLadder" role="radiogroup" aria-label="AI 使用層級"></div>
+      <div class="explore-note">✦ <b>還有一個更進階的方向:AI 探索(Exploration)。</b>當作業本身就是要<b>探索或評估 AI</b>(例如比較不同模型、批判 AI 的侷限、以 AI 為對象的實驗或反思),那是超出上面權限刻度的特殊設計。它不是「用更多 AI」,而是換一種作業。若你想往這裡發展,選層級四、並在給學生的說明裡引導他們在揭露的「挑戰/改進 AI」多著墨。<br><span class="faint">A further direction: <b>AI Exploration</b> — when the assignment itself is to explore or evaluate AI. It's not "more AI use" but a different kind of task, beyond the permission scale above. To develop toward it, pick Level 4 and steer students to say more in the "how you pushed back" part of their disclosure.</span></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="step-n">3</span> 這份作業的取向 <span class="en">Work profile</span></h2>
+      <p class="hint">決定學生看到哪些「任務」選項。請<b>依這份作業的性質、而非科系</b>選擇。<b>可複選</b>。教統計/理工記得改這裡,否則學生會看到人文的清單。<br>
+        <span class="faint">Sets which task options students see. Choose by the assignment's nature, not the department. Multi-select. If you teach stats/STEM, change this.</span></p>
+      <div class="checks" id="tProfiles"></div>
+      <p class="hint faint" style="margin-top:8px">「方法輪廓」而非科系,對應 Biglan/Becher 的 hard↔soft 連續體並容納跨領域。<br>Profiles (not departments) follow Biglan/Becher's hard↔soft continuum.</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="step-n">4</span> 給學生的承諾 <span class="en">Your promise to students</span></h2>
+      <p class="hint">這是整個工具最重要的一欄,也會顯示在學生頁面最上方。研究顯示,學生隱瞞 AI 使用多半是理性的自保——除非誠實是安全的。這句話讓誠實變安全。<br>
+        <span class="faint">The single most important field, shown atop the student page. Students hide AI use rationally, unless honesty is made safe.</span></p>
+      <label class="field"><textarea id="tPromise">誠實揭露 AI 使用不會讓你被扣分。我把它當作理解你學習歷程的方式,而不是抓錯。有疑問時,寧可多寫一句,我們再一起討論。</textarea></label>
+    </div>
+
+    <details class="advanced">
+      <summary>進階設定(選填)· Advanced (optional)<span class="advsub"> — 不用揭露清單、老師自我揭露 / no-disclose list, your own use</span><span class="advchev">▶</span></summary>
+    <div class="card">
+      <h2><span class="step-n">5</span> 哪些「不用揭露」? <span class="en">No disclosure needed</span></h2>
+      <p class="hint">明確畫掉瑣碎的焦慮,學生才有餘裕誠實面對實質的使用。<br>
+        <span class="faint">Naming what needn't be disclosed removes the anxiety that fuels box-ticking.</span></p>
+      <div id="baselineList"></div>
+      <div class="sublab" style="margin-top:15px;font-weight:500">本課還有哪些「任務」也算日常工具、不需揭露?(依上方取向顯示,勾選後學生端會少一個選項)<span class="en" style="display:block;font-weight:400">Which tasks also count as everyday tools here? (ticking removes them from the student form)</span></div>
+      <div class="checks" id="noDiscList"></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="step-n">6</span> 老師自己也揭露(選填) <span class="en">Model it yourself</span></h2>
+      <p class="hint">學生最反感「只准我揭露、老師卻自由使用」。你先示範,信任才立得起來。<br>
+        <span class="faint">Students resent asymmetry. Modelling disclosure builds trust.</span></p>
+      <label class="field"><textarea id="tTeacherUse" placeholder="例:我用 Claude 協助整理本課投影片大綱,所有內容我都已檢查。"></textarea></label>
+    </div>
+    </details>
+
+    <div class="card">
+      <h2>產生給學生的連結與大綱文字 <span class="en">Generate</span></h2>
+      <div class="btn-row">
+        <button class="btn primary" id="genPolicy">產生 · Generate</button>
+        <button class="btn ghost" id="previewAsStudent">預覽學生會看到的頁面 · Preview the student page</button>
+      </div>
+      <div id="teacherOut" class="hide">
+        <div class="divider"></div>
+        <div class="lab" style="font-weight:600;font-size:14.5px;margin-bottom:6px">學生連結 · Student link</div>
+        <div class="linkbox">
+          <input type="text" id="studentLink" readonly>
+          <button class="btn ghost" id="copyLink">複製 · Copy</button>
+        </div>
+        <div id="fileWarn" class="hide" style="margin-top:8px;font-size:12.5px;color:#a1442e;background:#fdf1ee;border:1px solid #f0d3ca;border-radius:8px;padding:9px 11px">⚠ 你現在是用本機檔案(file://)開啟,產生的連結別人無法點開。請先把工具部署到公開網址(如 GitHub Pages),再從那個網址產生連結。<br><span class="faint">You're viewing a local file — this link won't work for others. Deploy the tool to a public URL first, then generate the link there.</span></div>
+        <div class="howto">
+          <b>怎麼把連結交給學生?</b>擇一即可:<br>
+          ① 貼進<b>課程大綱或 LMS(數位學苑/Moodle)</b>的作業說明——連同下方大綱段落一起貼。<br>
+          ② 課堂第一週用 <b>QR 碼</b>投影,讓學生掃(按下面按鈕產生)。<br>
+          ③ 網址太長可用 <b>reurl.cc</b> 或 TinyURL 縮短再分享。<br>
+          <span class="faint">Give students the link by: pasting it into your syllabus/LMS, showing a QR code in class, or shortening it first.</span>
+          <div class="btn-row" style="margin-top:12px">
+            <button class="btn ghost" id="makeQR">產生 QR 碼 · Make QR code</button>
+            <button class="btn ghost hide" id="dlQR">下載 QR · Download</button>
+          </div>
+          <div id="qrHolder" class="qrholder"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="lab" style="font-weight:600;font-size:14.5px;margin-bottom:6px">課程大綱段落 · Syllabus paragraph</div>
+        <div class="output" id="syllabusText"></div>
+        <div class="btn-row">
+          <button class="btn ghost" id="copySyllabus">複製大綱文字 · Copy paragraph</button>
+        </div>
+      </div>
+    </div>
+
+    <details class="sources guide">
+      <summary><span>收到揭露後,怎麼讀? · Reading what students submit <span class="en">for instructors</span></span><span class="chev">▶</span></summary>
+      <div class="inner">
+        <p class="lead">工具幫學生產出揭露,但怎麼讀、怎麼回應同樣重要。研究一致指出:自陳制無法查證、偵測工具不可靠,誠實仰賴的是安全感而非稽查。幾個原則:</p>
+        <ul class="guidelist">
+          <li><b>用理解歷程的眼光,不是抓錯。</b>揭露是了解學生怎麼工作的窗口,不是自白書。<span class="faint">Read it as a window into process, not a confession.</span></li>
+          <li><b>把查證階梯與「挑戰/改進 AI」欄當作正面訊號。</b>勾到第 3 層、或寫得出自己否決了 AI 什麼,是判斷力的證據,值得肯定。<span class="faint">Verification and push-back are positive signals — reward them.</span></li>
+          <li><b>空白不等於作弊。</b>可能是輕度使用或不確定;必要時問一句,而不是預設有問題。<span class="faint">Blank ≠ cheating; ask before assuming.</span></li>
+          <li><b>不要用 AI 偵測器。</b>它不可靠、對非母語者不公,而且研究顯示「被偵測抓到」比主動揭露更傷師生信任。<span class="faint">Avoid detectors: unreliable, unfair to non-native writers, and worse for trust.</span></li>
+          <li><b>懷疑但無法證明時,用對話回應。</b>請學生說明歷程,而非直接指控——這也保護了那些誠實的人。<span class="faint">When unsure, respond by conversation, not accusation.</span></li>
+          <li><b>揭露不必然影響成績。</b>除非你的層級明訂;把揭露與評分脫鉤,最能鼓勵誠實。<span class="faint">Decouple disclosure from grades where you can.</span></li>
+        </ul>
+        <p class="lead faint">Disclosure is a window into process, not a confession. Treat verification and push-back as positive signals; blank ≠ cheating; avoid detectors; respond by conversation, not accusation; decouple disclosure from grades where you can.</p>
+      </div>
+    </details>
+  </section>
+
+  <div class="disclaimer">
+    <b>關於這個工具 / About.</b> 本工具由政治大學圖書館整理,作為校內師生溝通與揭露 AI 使用的<b>參考</b>,並非強制規範。層級架構改編自 AI Assessment Scale(Perkins, Roe &amp; Furze),設計取向參酌 Russell Group 五項原則、Monash、Stanford、Oxford、HKU 等校公開政策、MLA/APA 引用規範,以及多項同儕審查實證研究(見上方「依據與彈性調整」)。<br>
+    <b>實際規範以校方、院系所及授課教師的政策為準;教師在課程中的規定優先於本工具的任何預設。使用前請依所屬單位政策彈性調整。</b> 校內規範與更多說明請見 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener">政大圖書館 AI 使用倫理指引</a>。<br>
+    <span class="faint">Offered by the NCCU Library as a reference, not a mandate. Your college, department, and course policies govern; your instructor's course rule always takes precedence. Adapt before use.</span>
+  </div>
+  <div class="footnote">
+    完全在你的瀏覽器裡執行,不會上傳或儲存任何內容。<span class="faint">Runs entirely in your browser. Nothing is uploaded or stored.</span> · 可自由 fork 修改。
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+"use strict";
+
+/* ---------- data ---------- */
+const TIERS = [
+  {id:1, zh:"不使用 AI", en:"No AI",
+   desc:"這份作業要評的能力,必須由你獨立完成。",
+   descEn:"The skills assessed here must be your own, unaided.", discloses:false},
+  {id:2, zh:"AI 協助構思", en:"AI Planning",
+   desc:"可用 AI 發想、找方向、整理資料,但產出的文字與分析要你自己來。",
+   descEn:"AI may help you brainstorm and organise, but the writing and analysis are yours.", discloses:false},
+  {id:3, zh:"AI 協作", en:"AI Collaboration",
+   desc:"過程中可與 AI 協作(找資料、修改、翻譯、除錯等),須揭露用在哪些環節。",
+   descEn:"You may collaborate with AI across the process, and disclose where.", discloses:true,
+   focus:"揭露重點:說清楚 AI 參與了哪些環節、你自己做了什麼。",
+   focusEn:"Focus: which parts AI touched, and what you did yourself."},
+  {id:4, zh:"AI 全面使用", en:"Full AI",
+   desc:"可用 AI 產出大部分內容;重點改評你如何提問、判斷、整合與查證。",
+   descEn:"AI may produce much of the output; you're assessed on how you prompt, judge, integrate and verify.", discloses:true,
+   focus:"揭露重點:AI 既然做很多,「你自己做了什麼」與「查證」請多寫——那才是被評的地方。",
+   focusEn:"Focus: since AI did a lot, write more on what you did and what you verified — that's what's assessed."}
+];
+
+/* Work/method profiles (multi-select). Replaces the older discipline presets. */
+const PROFILES = [
+  {id:"interpret",     zh:"詮釋・論證", en:"Interpretive / argumentative", note:"文本・史料判讀、論證、書寫(多數人文、理論社會科學、法律)"},
+  {id:"qualitative",   zh:"質性經驗", en:"Qualitative empirical",       note:"田野、訪談、編碼、主題分析"},
+  {id:"quantitative",  zh:"量化・實證", en:"Quantitative empirical",     note:"資料、統計、建模"},
+  {id:"computational", zh:"計算・技術", en:"Computational / technical",  note:"程式、系統、資料工程"},
+  {id:"creative",      zh:"創作・設計", en:"Creative / design",          note:"媒體生成、設計、工作室創作"}
+];
+const ALL  = ["interpret","qualitative","quantitative","computational","creative"];
+const EMP4 = ["interpret","qualitative","quantitative","computational"]; // all but creative
+const QC   = ["quantitative","computational"];
+
+/* Task groups with GAIDeT-derived fine items, tagged to work profiles */
+const GROUPS = [
+  {id:"ideas", zh:"想法與方向", en:"Ideas & direction", items:[
+    {id:"idea_gen",  zh:"發想主題、點子",        en:"Idea generation",              presets:ALL},
+    {id:"objective", zh:"界定問題意識、研究目的", en:"Defining the objective",        presets:ALL},
+    {id:"questions", zh:"形成研究問題或假設",     en:"Research questions & hypotheses", presets:EMP4},
+    {id:"scope",     zh:"評估可行性與範圍",       en:"Feasibility & scoping",         presets:ALL}
+  ]},
+  {id:"sources", zh:"找與讀資料", en:"Finding & reading sources", items:[
+    {id:"lit_search",   zh:"搜尋與整理文獻",   en:"Literature search",          presets:ALL},
+    {id:"explain",      zh:"解釋難懂的材料",   en:"Explaining difficult material", presets:ALL},
+    {id:"summarize_src",zh:"摘要文獻或資料",   en:"Summarizing sources",        presets:ALL},
+    {id:"lit_review",   zh:"撰寫文獻回顧",     en:"Writing the literature review", presets:EMP4},
+    {id:"gaps",         zh:"找出研究缺口、評估新穎性", en:"Identifying gaps / novelty", presets:EMP4}
+  ]},
+  {id:"interp", zh:"詮釋與分析", en:"Interpretation & analysis", items:[
+    {id:"analysis",   zh:"協助分析或論證",   en:"Analysis / argumentation",   presets:["interpret","qualitative","creative"]},
+    {id:"compare",    zh:"比對不同觀點或詮釋", en:"Comparing perspectives",    presets:["interpret","qualitative","creative"]},
+    {id:"source_crit",zh:"史料、文本判讀",   en:"Source & text interpretation", presets:["interpret","qualitative"]},
+    {id:"design",     zh:"研究設計",         en:"Research design",            presets:["qualitative","quantitative","computational"]},
+    {id:"methods",    zh:"選擇研究方法",     en:"Selecting research methods", presets:["qualitative","quantitative","computational"]},
+    {id:"protocol",   zh:"發展研究流程、協定", en:"Developing protocols",      presets:QC}
+  ]},
+  {id:"qual", zh:"質性資料", en:"Qualitative data", items:[
+    {id:"transcript",  zh:"整理逐字稿", en:"Transcription cleanup", presets:["qualitative"]},
+    {id:"code_suggest",zh:"建議編碼",   en:"Suggesting codes",      presets:["qualitative"]},
+    {id:"code_apply",  zh:"套用編碼簿", en:"Applying a codebook",   presets:["qualitative"]},
+    {id:"themes",      zh:"找出主題",   en:"Theme identification",  presets:["qualitative"]}
+  ]},
+  {id:"data", zh:"資料與統計", en:"Data & statistics", items:[
+    {id:"data_collect",zh:"蒐集資料",       en:"Data collection",        presets:QC},
+    {id:"data_clean",  zh:"資料清理",       en:"Data cleaning",          presets:QC},
+    {id:"data_org",    zh:"資料整理與組織", en:"Curation & organization", presets:QC},
+    {id:"data_analyze",zh:"資料分析",       en:"Data analysis",          presets:QC},
+    {id:"viz",         zh:"視覺化、製圖",   en:"Visualization",          presets:["quantitative","computational","creative"]},
+    {id:"validate",    zh:"檢核、驗證資料", en:"Validation",             presets:QC},
+    {id:"repro",       zh:"再現性測試",     en:"Reproducibility testing", presets:QC}
+  ]},
+  {id:"code", zh:"程式與自動化", en:"Code & automation", items:[
+    {id:"code_gen",  zh:"生成程式碼",   en:"Code generation",         presets:["computational","quantitative"]},
+    {id:"code_debug",zh:"除錯、最佳化", en:"Debugging / optimization", presets:["computational","quantitative"]},
+    {id:"automate",  zh:"流程自動化",   en:"Process automation",      presets:["computational","quantitative"]}
+  ]},
+  {id:"writing", zh:"文字與編輯", en:"Writing & editing", items:[
+    {id:"draft",        zh:"草擬文字",     en:"Drafting text",          presets:ALL},
+    {id:"rewrite",      zh:"改寫、潤稿",   en:"Rewriting",              presets:ALL},
+    {id:"proofread",    zh:"校對與編輯",   en:"Proofreading & editing", presets:ALL},
+    {id:"summarize_txt",zh:"摘要自己的文字", en:"Summarizing text",     presets:ALL},
+    {id:"conclude",     zh:"形成結論",     en:"Formulating conclusions", presets:EMP4},
+    {id:"tone",         zh:"調整語氣",     en:"Adjusting tone",         presets:["interpret","creative"]},
+    {id:"translate",    zh:"翻譯",         en:"Translation",            presets:ALL},
+    {id:"reformat",     zh:"重新排版、格式", en:"Reformatting",         presets:ALL}
+  ]},
+  {id:"media", zh:"圖像與媒體", en:"Image & media", items:[
+    {id:"image", zh:"生成圖像", en:"Image generation",       presets:["creative","interpret"]},
+    {id:"av",    zh:"生成影音", en:"Audio / video generation", presets:["creative"]}
+  ]},
+  {id:"review", zh:"檢核與反思", en:"Review & reflection", items:[
+    {id:"bias",    zh:"檢視偏見或歧視", en:"Bias check",             presets:ALL},
+    {id:"quality", zh:"品質檢核",       en:"Quality assessment",     presets:ALL},
+    {id:"limits",  zh:"找出限制",       en:"Identifying limitations", presets:EMP4}
+  ]},
+  {id:"misc", zh:"其他", en:"Other", items:[
+    {id:"other", zh:"其他(在下方「你自己做了什麼」說明)", en:"Other (describe below)", presets:ALL}
+  ]}
+];
+const ITEMS = {};
+GROUPS.forEach(g=>g.items.forEach(it=>{ ITEMS[it.id]={...it, group:g.id}; }));
+function groupsForPreset(pr){
+  const sel = (Array.isArray(pr) && pr.length) ? pr : ["interpret"];
+  return GROUPS.map(g=>({...g, items:g.items.filter(i=>i.presets.some(x=>sel.includes(x)))})).filter(g=>g.items.length);
+}
+
+/* fixed, always no-disclosure — kept separate from task clusters (no overlap, no confusion) */
+const BASELINE = [
+  {zh:"拼字與基本文法檢查", en:"Spell-check & basic grammar"},
+  {zh:"輸入法選字 / 自動完成", en:"IME / autocomplete"},
+  {zh:"一般搜尋引擎與資料庫檢索", en:"Ordinary search & databases"},
+  {zh:"引用格式的機械套用(如 Zotero)", en:"Mechanical citation formatting"}
+];
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const b64u = {
+  enc: str => btoa(String.fromCharCode(...new TextEncoder().encode(str))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''),
+  dec: b => new TextDecoder().decode(Uint8Array.from(atob(b.replace(/-/g,'+').replace(/_/g,'/')), c=>c.charCodeAt(0)))
+};
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),1900);}
+function esc(s){return (s||'').trim();}
+
+/* ---------- teacher form build ---------- */
+function buildTeacherForm(){
+  const ladder = $('#tierLadder');
+  ladder.innerHTML = TIERS.map(t=>`
+    <label class="tier" data-t="${t.id}">
+      <input type="radio" name="tier" value="${t.id}" ${t.id===3?'checked':''}>
+      <span class="dot"></span>
+      <span class="body">
+        <span class="name">層級${['一','二','三','四','五'][t.id-1]}・${t.zh} <span class="en">${t.en}</span></span>
+        <span class="desc">${t.desc}<br><span class="faint">${t.descEn}</span></span>
+        <span class="flag">${t.discloses?'→ 需要學生填寫揭露 / disclosure required':'→ 不需填寫揭露表 / no disclosure form'}</span>
+      </span>
+    </label>`).join('');
+  function paint(){ladder.querySelectorAll('.tier').forEach(el=>{
+    el.classList.toggle('sel', el.querySelector('input').checked);});}
+  ladder.addEventListener('change',paint); paint();
+
+  $('#tProfiles').innerHTML = PROFILES.map((pf,i)=>`
+    <label class="chk"><input type="checkbox" value="${pf.id}" ${i===0?'checked':''}>
+    <span class="ct">${pf.zh} <span class="en" style="display:inline">${pf.en}</span><span class="en">${pf.note}</span></span></label>`).join('');
+  $('#tProfiles').addEventListener('change', renderNoDisc);
+
+  $('#baselineList').innerHTML =
+    '<div class="sublab" style="font-weight:500;margin-bottom:2px">一般都不需揭露(固定)· Never needs disclosure:</div>'
+    + '<ul class="baseul">' + BASELINE.map(b=>`<li>${b.zh} <span class="faint">${b.en}</span></li>`).join('') + '</ul>';
+  renderNoDisc();
+}
+function selectedProfiles(){
+  const s = [...document.querySelectorAll('#tProfiles input:checked')].map(x=>x.value);
+  return s.length ? s : ["interpret"];
+}
+function renderNoDisc(){
+  $('#noDiscList').innerHTML = groupsForPreset(selectedProfiles()).map(g=>{
+    const items = g.items.filter(i=>i.id!=='other');
+    if(!items.length) return '';
+    return `<div class="cgroup"><div class="cglabel">${g.zh} <span class="en">${g.en}</span></div>`
+      + items.map(i=>`<label class="chk"><input type="checkbox" value="${i.id}">
+        <span class="ct">${i.zh}<span class="en">${i.en}</span></span></label>`).join('') + `</div>`;
+  }).join('');
+}
+
+function readPolicy(){
+  return {
+    c: esc($('#tCourse').value) || "本課程",
+    t: esc($('#tTeacher').value),
+    lv: +document.querySelector('input[name=tier]:checked').value,
+    pr: selectedProfiles(),
+    nd: [...document.querySelectorAll('#noDiscList input:checked')].map(x=>x.value),
+    pm: esc($('#tPromise').value),
+    tu: esc($('#tTeacherUse').value)
+  };
+}
+function studentUrl(p){
+  const u = new URL(location.href.split('?')[0]);
+  u.searchParams.set('policy', b64u.enc(JSON.stringify(p)));
+  return u.toString();
+}
+function syllabus(p){
+  const tier = TIERS.find(t=>t.id===p.lv);
+  const base = BASELINE.map(b=>b.zh).join('、');
+  const ndClusters = (p.nd||[]).map(id=>{const it=ITEMS[id];return it?it.zh:null;}).filter(Boolean);
+  const ndTxt = ndClusters.length ? base + ',以及' + ndClusters.join('、') : base;
+  return `本課程(${p.c})的生成式 AI 使用政策為【層級${['一','二','三','四','五'][p.lv-1]}・${tier.zh} / ${tier.en}】:${tier.desc}\n`
+    + (tier.discloses ? `使用 AI 時,請於作業附上 AI 使用揭露(可用本工具產生)。` : `本層級無須另附 AI 使用揭露。`)
+    + `\n以下項目無須揭露:${ndTxt}。\n`
+    + (p.pm ? `\n${p.pm}` : "");
+}
+
+/* ---------- teacher actions ---------- */
+function wireTeacher(){
+  $('#genPolicy').addEventListener('click',()=>{
+    const p = readPolicy();
+    $('#studentLink').value = studentUrl(p);
+    $('#syllabusText').textContent = syllabus(p);
+    $('#fileWarn').classList.toggle('hide', location.protocol!=='file:');
+    $('#qrHolder').innerHTML=''; $('#dlQR').classList.add('hide');
+    $('#teacherOut').classList.remove('hide');
+    $('#teacherOut').scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+  $('#copyLink').addEventListener('click',()=>{navigator.clipboard.writeText($('#studentLink').value).then(()=>toast('已複製學生連結'));});
+  $('#copySyllabus').addEventListener('click',()=>{navigator.clipboard.writeText($('#syllabusText').textContent).then(()=>toast('已複製大綱文字'));});
+  $('#makeQR').addEventListener('click',()=>{
+    const url=$('#studentLink').value;
+    if(!url){ toast('請先按「產生」'); return; }
+    if(typeof QRCode==='undefined'){ toast('QR 元件未載入(請連網後重試)'); return; }
+    const h=$('#qrHolder'); h.innerHTML='';
+    new QRCode(h,{text:url,width:190,height:190,correctLevel:QRCode.CorrectLevel.M});
+    $('#dlQR').classList.remove('hide');
+  });
+  $('#dlQR').addEventListener('click',()=>{
+    const cv=$('#qrHolder').querySelector('canvas');
+    const img=$('#qrHolder').querySelector('img');
+    const data = cv ? cv.toDataURL('image/png') : (img ? img.src : null);
+    if(!data){ toast('尚未產生 QR'); return; }
+    const a=document.createElement('a'); a.href=data; a.download='AI揭露_QR.png'; a.click(); toast('已下載 QR');
+  });
+  $('#previewAsStudent').addEventListener('click',()=>{
+    const p = readPolicy();
+    renderStudent(p); setMode('student');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+}
+
+/* ---------- student render ---------- */
+function renderStudent(p){
+  const tier = TIERS.find(t=>t.id===p.lv) || TIERS[2];
+  const area = $('#policyArea');
+  const tierColor = getComputedStyle(document.documentElement).getPropertyValue('--t'+p.lv);
+
+  let banner = `
+    <div class="policy">
+      <div class="head">
+        <div class="course">${p.c}</div>
+        ${p.t?`<div class="teacher">${p.t}</div>`:''}
+      </div>
+      <div class="band">
+        <div class="lvlrow"><span class="dot" style="background:${tierColor}"></span>
+          <span class="lvlname">層級${['一','二','三','四','五'][p.lv-1]}・${tier.zh} <span class="en">${tier.en}</span></span></div>
+        <div class="lvldesc">${tier.desc}<br><span class="faint">${tier.descEn}</span></div>
+        ${tier.focus?`<div class="lvlfocus">▸ ${tier.focus}<br><span class="faint">${tier.focusEn}</span></div>`:''}
+      </div>
+      ${p.pm?`<div class="promise">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3a6b5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div class="pt"><b>老師的承諾:</b> ${p.pm}</div></div>`:''}
+      ${tier.discloses?`<div class="nodisc"><b>不需揭露:</b>
+        <ul>${BASELINE.map(b=>`<li>${b.zh} <span class="faint">${b.en}</span></li>`).join('')}${(p.nd||[]).map(id=>{const it=ITEMS[id];return it?`<li>${it.zh} <span class="faint">· 本課</span></li>`:'';}).join('')}</ul></div>`:''}
+      ${p.tu?`<div class="nodisc" style="border-top:1px solid var(--line)"><b>老師自己的 AI 使用:</b> ${p.tu}</div>`:''}
+    </div>`;
+
+  let form;
+  if(!tier.discloses){
+    form = `<div class="card"><h2>這份作業不需填寫揭露</h2>
+      <p class="hint">${p.lv===1
+        ? '本課這一層不使用 AI。若你認為有需要例外,請先與老師討論,不要自行使用後再補揭露。'
+        : '這一層的 AI 使用不需另附揭露表。若你不確定某個用法算不算超出範圍,寧可先問老師一句。'}</p>
+      <p class="hint faint">${p.lv===1?'No AI at this level. Ask your instructor before any exception.':'No disclosure form needed at this level. When unsure, just ask.'}</p></div>`;
+  } else {
+    const groupsHtml = groupsForPreset(p.pr).map(g=>{
+      const items = g.items.filter(i=> !(p.nd||[]).includes(i.id));
+      if(!items.length) return '';
+      return `<div class="cgroup"><div class="cglabel">${g.zh} <span class="en">${g.en}</span></div>`
+        + items.map(i=>`<label class="chk"><input type="checkbox" value="${i.id}">
+          <span class="ct">${i.zh}<span class="en">${i.en}</span></span></label>`).join('') + `</div>`;
+    }).join('');
+    form = `
+    <div class="aidnote">這不是考試,也不是非填不可的表格——它是幫你把「怎麼跟 AI 協作」講給老師聽的工具。誠實說明,比填得完整更重要。<br><span class="faint">This isn't a test or a mandatory form — it helps you tell your instructor how you worked with AI. Being honest matters more than being complete.</span></div>
+    <div class="quicknote">⚡ 輕度使用?也只要三步:勾一項「AI 幫了什麼」(或勾「很輕微」)、寫一句「你自己做了什麼」、勾查證,就能產生。<span class="faint">Light use is still quick: tick one thing AI helped with (or "very light"), write one line on what you did, tick verification.</span></div>
+    <div class="card">
+      <h2><span class="step-n">1</span> 你用了哪個 AI 工具?(選填) <span class="en">Which tool(s), optional</span></h2>
+      <label class="field"><span class="sublab">寫出名稱與版本(若知道)。用了很多個就都列出來。· Name and version if known; list all you used.</span>
+        <input type="text" id="sTools" placeholder="例:ChatGPT (GPT-4o)、Claude、Google 翻譯、Grammarly"></label>
+      <label class="chk agenttoggle" style="margin-top:8px"><input type="checkbox" id="sAgent"><span class="ct">我用的是會<b>自主多步驟執行或採取行動</b>的 AI agent(如 deep research、coding agent、電腦操作 agent)<span class="en">I used an AI agent that runs multi-step or takes actions</span></span></label>
+      <div id="agentBlock" class="agentbox hide">
+        <div class="opthead" style="font-size:15px">AI agent 使用 <span class="en">Agentic AI use</span></div>
+        <p class="hint">agent 會自己跑很多步驟、中間你未必看得到——所以重點是說明它<b>做了什麼、你在哪裡把關</b>,而不只是它產出什麼。<br><span class="faint">Agents run many steps you may not see — so describe what it did and where you checked, not just what it produced.</span></p>
+        <label class="field"><span class="sublab">1. 它執行了哪些動作、用了哪些工具或資料?· What it did / accessed</span>
+          <input type="text" id="agAct" placeholder="例:自動檢索並整理 20 篇文獻、跑了統計、改了我的試算表"></label>
+        <label class="field"><span class="sublab">2. 你在哪裡實際把關?· Where you actually checked</span>
+          <select id="agOversight">
+            <option value="">— 請選擇 select —</option>
+            <option value="逐步審查每個步驟">逐步審查每個步驟 · reviewed each step</option>
+            <option value="在關鍵節點審查">在關鍵節點審查 · reviewed at key checkpoints</option>
+            <option value="只看了最終結果">只看了最終結果 · only saw the final result</option>
+          </select></label>
+        <label class="field"><span class="sublab">3. 執行紀錄 / log 連結(agent 情境強烈建議,因中間步驟你沒看到)· Run log link (strongly recommended)</span>
+          <input type="text" id="agLog" placeholder="https://…（執行/對話紀錄的分享連結)"></label>
+        <label class="chk" style="margin-top:6px"><input type="checkbox" id="agAccount"><span class="ct">我了解:即使沒有逐步監督,我仍為這個 agent 的產出與行動負責。<span class="en">I remain accountable for the agent's outputs and actions, even where I didn't supervise each step.</span></span></label>
+        <div class="mapnote">agent 改變了揭露的單位:從「AI 寫了什麼」變成「它做了什麼、你在哪裡把關」。<a href="https://ascode.osu.edu/news/agentic-ai-higher-education" target="_blank" rel="noopener">Agentic AI in Higher Ed(2025)</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2><span class="step-n">2</span> AI 幫了哪些環節? <span class="en">Where AI helped</span><span class="rec"> · 建議填寫 recommended</span></h2>
+      <p class="hint">勾出 AI 實際參與的環節——這是揭露的核心。若只有很輕微的協助,勾第一項即可,再到下面說明。列在「不需揭露」的項目不會出現。<br><span class="faint">Tick where AI was actually involved — the heart of disclosure. If help was minimal, tick the first option and explain below. Filtered by the course's work profile.</span></p>
+      <div class="checks grouped" id="sClusters">
+        <label class="chk light"><input type="checkbox" value="__light__"><span class="ct">整體只有很輕微/一般性的協助(在下面「你自己做了什麼」說明)<span class="en">Only light, general help — explained below</span></span></label>
+        ${groupsHtml}
+      </div>
+    </div>
+    <div class="card">
+      <h2><span class="step-n">3</span> 你自己做了什麼、查證了什麼? <span class="en">What you did &amp; verified</span><span class="rec"> · 建議填寫 recommended</span></h2>
+      <p class="hint">用一句你自己的話說:你判斷、修改、或<b>否決</b>了 AI 的什麼?<br><span class="faint">In your own words: what did you judge, change, or <b>reject</b>?</span></p>
+      <label class="field"><textarea id="sMine" placeholder="例:AI 給的架構我採用了一半,自己重寫了論點與結論;有兩段建議我判斷不合適,沒有採用。"></textarea></label>
+
+      <div class="verify">
+        <div class="lab">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#245f59" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          你查證了 AI 的哪些輸出? <span class="en" style="font-weight:400">What you verified</span>
+        </div>
+        <div class="why">AI 會捏造、也會扭曲來源。逐層勾選你做到哪一步——這是讓讀者相信你判斷仍在的關鍵。<br><span style="color:var(--ink-faint)">AI both fabricates and distorts sources. Tick how far you checked — this is what shows the judgement is still yours.</span></div>
+        <div class="vladder">
+          <label class="vstep"><input type="checkbox" id="v1"><span><b>第 1 層・存在</b> 我確認 AI 引用的資料/來源<b>真實存在</b>(不是捏造)<span class="en" style="display:block;font-weight:400">Level 1 · Exists — the sources AI cited are real, not fabricated</span></span></label>
+          <label class="vstep"><input type="checkbox" id="v2"><span><b>第 2 層・一致</b> 我確認資料的實際內容與 AI 的摘要/轉述<b>一致</b>(沒有被扭曲)<span class="en" style="display:block;font-weight:400">Level 2 · Consistent — the source actually says what AI claimed</span></span></label>
+          <label class="vstep"><input type="checkbox" id="v3"><span><b>第 3 層・佐證</b> 我確認資料<b>確實能支持</b>我用它佐證的論點(不是被誤用)<span class="en" style="display:block;font-weight:400">Level 3 · Supports — the source really backs the point I use it for</span></span></label>
+          <label class="vstep none"><input type="checkbox" id="v0"><span>這次沒有用到需要查證的外部資料/來源<span class="en" style="display:block;font-weight:400">No external sources needing verification this time</span></span></label>
+        </div>
+        <label class="field"><span class="sublab" style="margin-top:10px">舉一個你查證的例子(選填,但很有說服力)· One example (optional, but persuasive)</span>
+          <input type="text" id="sVerifyEg" placeholder="例:AI 給的 3 筆文獻,我逐一核對,1 筆查無此文已刪;另 1 筆內容與摘要不符,已更正。"></label>
+        <details class="vmore">
+          <summary>其他類型的查證(選填)· Other checks +</summary>
+          <div class="vinner checks" id="vOther">
+            <label class="chk"><input type="checkbox" value="數據:重算或抽查過數字"><span class="ct">數據:重算或抽查過數字<span class="en">Data: recomputed or spot-checked numbers</span></span></label>
+            <label class="chk"><input type="checkbox" value="翻譯:核對過是否忠實、無誤譯"><span class="ct">翻譯:核對過是否忠實、無誤譯<span class="en">Translation: checked it's faithful</span></span></label>
+            <label class="chk"><input type="checkbox" value="引文:逐字且未斷章取義"><span class="ct">引文:逐字且未斷章取義<span class="en">Quotes: verbatim and in context</span></span></label>
+            <label class="chk"><input type="checkbox" value="程式:實際執行或測試過"><span class="ct">程式:實際執行或測試過<span class="en">Code: actually ran or tested it</span></span></label>
+            <label class="chk"><input type="checkbox" value="觀點:檢視過 AI 遺漏的角度或反證"><span class="ct">觀點:檢視過 AI 遺漏的角度或反證<span class="en">Perspective: checked for angles/counter-evidence AI missed</span></span></label>
+          </div>
+        </details>
+        <div class="mapnote">三層階梯(存在→一致→佐證)為本工具原創,對應 AI 引用的三種失效:捏造、曲解、誤用。<br>The three-level ladder is original to this tool, matching AI citation's three failure modes: fabrication, distortion, misuse.</div>
+      </div>
+    </div>
+
+    <details class="card optional">
+      <summary>加分:你怎麼挑戰或改進 AI?(選填)· Bonus: how you pushed back (optional)<span class="advchev">▶</span></summary>
+      <div class="optbody">
+        <div class="optsec">
+          <p class="hint">能發現並修正 AI 的錯誤、追問讓它變好,是最能證明主導權在你手上的訊號。<br><span class="faint">Catching AI's errors and pushing it to do better is the strongest sign you're in charge.</span></p>
+          <div class="checks" id="sChallenge">
+            <label class="chk"><input type="checkbox" value="發現並更正了 AI 的錯誤(事實、邏輯或來源)"><span class="ct">我發現並更正了 AI 的錯誤(事實、邏輯或來源)<span class="en">I found and corrected an AI error</span></span></label>
+            <label class="chk"><input type="checkbox" value="追問或反駁,讓 AI 修正了原本的答案"><span class="ct">我追問或反駁,讓 AI 修正了原本的答案<span class="en">I pushed back until AI corrected itself</span></span></label>
+            <label class="chk"><input type="checkbox" value="提供資料或脈絡,引導 AI 產出更貼近的結果"><span class="ct">我提供資料或脈絡,引導 AI 產出更貼近的結果<span class="en">I gave it sources/context for a closer result</span></span></label>
+            <label class="chk"><input type="checkbox" value="拒絕了 AI 的建議,改用自己的判斷"><span class="ct">我拒絕了 AI 的建議,改用自己的判斷<span class="en">I rejected AI's suggestion, used my own judgement</span></span></label>
+            <label class="chk"><input type="checkbox" value="比對多個工具或多個版本後,自己取捨"><span class="ct">我比對多個工具或多個版本後,自己取捨<span class="en">I compared tools/versions and decided myself</span></span></label>
+          </div>
+          <label class="field"><span class="sublab" style="margin-top:10px">舉一個你挑戰或改進 AI 的具體例子(選填,最有價值的一欄)· One concrete example (optional, the most valuable)</span>
+            <textarea id="sChallengeEg" placeholder="例:AI 一開始把某學者的立場說反了,我用原文反駁後它才更正;我再追問要它區分兩個概念,第三版才夠準確。"></textarea></label>
+          <div class="mapnote">依據「AI 錯誤的教學法」與批判性 AI 素養研究。Grounded in the "pedagogy of AI mistakes" &amp; critical AI-literacy research. <a href="https://arxiv.org/pdf/2605.05472" target="_blank" rel="noopener">Hosseini 2026</a></div>
+          <label class="field" style="margin-top:16px"><span class="sublab">歷程佐證連結(選填、自願)· Optional process record</span>
+            <input type="text" id="sProof" placeholder="https://…（對話分享連結、草稿版本史)"></label>
+          <div class="mapnote">用了多個工具、來回追問很多輪時,<b>一條可分享的對話連結或草稿版本史,遠比抄一句提示更能誠實呈現那段歷程</b>。<br>With many tools and turns, a shareable conversation link conveys the process far more honestly than one prompt.</div>
+        </div>
+      </div>
+    </details>
+    <div class="card">
+      <h2>產生揭露說明 <span class="en">Generate disclosure</span></h2>
+      <p class="hint faint" style="margin-top:10px">輸出格式參照 Monash 大學的 AI 使用揭露範本(工具·日期·用途·你的判斷與查證)。</p>
+      <p class="citenote">若你在作業中<b>直接引用</b>了 AI 產出的文字或圖像,除了這份揭露,可能還需正式引用它。三大格式都<b>不</b>把 AI 當作者,也都提醒 AI 會捏造來源、務必點回原始出處查證:
+        <a href="https://style.mla.org/citing-generative-ai-updated-revised/" target="_blank" rel="noopener">MLA</a> ·
+        <a href="https://apastyle.apa.org/blog/cite-generative-ai-references" target="_blank" rel="noopener">APA</a> ·
+        Chicago(18 版 §14.112)。<br>
+        更多校內規範請見 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener"><b>政大圖書館 AI 使用倫理指引</b></a>。</p>
+      <div class="btn-row">
+        <button class="btn primary" id="sGen">產生 · Generate</button>
+        <button class="btn ghost" id="sClear">清除 · Clear</button>
+      </div>
+      <div id="sOutWrap" class="hide">
+        <div class="divider"></div>
+        <div class="output" id="sOut"></div>
+        <div class="btn-row">
+          <button class="btn ghost" id="sCopy">複製 · Copy</button>
+          <button class="btn ghost" id="sDownload">下載 .txt · Download</button>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  area.innerHTML = banner + form;
+  area.classList.remove('hide');
+  $('#noPolicy').classList.add('hide');
+
+  if(tier.discloses) wireStudentForm(p, tier);
+}
+
+function wireStudentForm(p, tier){
+  const gen = ()=>{
+    const tools = esc($('#sTools').value) || "(未填工具名稱)";
+    const used = [...document.querySelectorAll('#sClusters input:checked')].map(x=> x.value==='__light__' ? '整體僅輕微/一般性協助' : (ITEMS[x.value]? ITEMS[x.value].zh : x.value));
+    const mine = esc($('#sMine').value);
+    const v1=$('#v1').checked, v2=$('#v2').checked, v3=$('#v3').checked, v0=$('#v0').checked;
+    const vEg = esc($('#sVerifyEg').value);
+    const vOther = [...document.querySelectorAll('#vOther input:checked')].map(x=>x.value);
+    const chal = [...document.querySelectorAll('#sChallenge input:checked')].map(x=>x.value);
+    const chalEg = esc($('#sChallengeEg').value);
+    const proof = esc($('#sProof').value);
+    const agent = $('#sAgent') && $('#sAgent').checked;
+    let agentBlock = '';
+    if(agent){
+      const agAct = esc($('#agAct').value);
+      const agOv = $('#agOversight').value;
+      const agLog = esc($('#agLog').value);
+      const agAcc = $('#agAccount').checked;
+      agentBlock = '\n\nAI agent 使用 Agentic AI use:'
+        + '\n· 執行的動作/存取 Actions & access:' + (agAct || '(未填寫)')
+        + '\n· 我的把關 Oversight:' + (agOv || '(未填寫)')
+        + (agLog ? '\n· 執行紀錄 Run log:' + agLog : '')
+        + (agAcc ? '\n· 我為此 agent 的產出與行動負責。I remain accountable for its outputs and actions.' : '');
+    }
+    const missing = [];
+    if(!used.length) missing.push('AI 幫了什麼');
+    if(!mine) missing.push('你自己做了什麼');
+    if(!(v1||v2||v3||v0)) missing.push('查證');
+    if(missing.length) toast('補上「'+missing.join('、')+'」會讓說明更完整——仍可直接產生');
+    const L=['一','二','三','四','五'][p.lv-1];
+    const today = new Date().toLocaleDateString('zh-TW',{year:'numeric',month:'long',day:'numeric'});
+    let vLines;
+    if(v0){ vLines = '· 本次未使用需查證的外部資料/來源'; }
+    else {
+      const lv=[];
+      if(v1) lv.push('· 第 1 層・存在:確認來源真實存在');
+      if(v2) lv.push('· 第 2 層・一致:確認內容與 AI 摘要一致');
+      if(v3) lv.push('· 第 3 層・佐證:確認資料確能支持我的論點');
+      vLines = lv.length ? lv.join('\n') : '· (未填寫)';
+    }
+    if(vOther.length) vLines += (vLines?'\n':'') + vOther.map(x=>'· '+x).join('\n');
+    if(vEg) vLines += '\n  例:'+vEg;
+    let chalBlock = '';
+    if(chal.length || chalEg){
+      chalBlock = '\n\n我如何挑戰或改進 AI What I did to push back / improve:\n'
+        + (chal.length ? chal.map(x=>'· '+x).join('\n') : '')
+        + (chalEg ? (chal.length?'\n':'') + '  例:'+chalEg : '');
+    }
+    const out =
+`—— AI 使用揭露 / AI Use Disclosure ——
+課程 Course:${p.c}
+本課層級 Level:層級${L}・${tier.zh} / ${tier.en}
+使用工具 Tool(s):${tools}
+日期 Date:${today}
+
+AI 協助的環節 What AI helped with:
+${used.length? used.map(u=>'· '+u).join('\n') : '· (未勾選特定環節)'}
+
+我自己的工作 What I did (judgement, edits, rejections):
+${mine || '(未填寫)'}
+
+我查證的部分 What I verified:
+${vLines}${chalBlock}${agentBlock}
+${proof? '\n歷程佐證 Process record:'+proof : ''}
+
+—— 依《${p.c}》課程 AI 政策自我揭露 ——`;
+    $('#sOut').textContent = out;
+    $('#sOutWrap').classList.remove('hide');
+    $('#sOutWrap').scrollIntoView({behavior:'smooth',block:'nearest'});
+  };
+  $('#sGen').addEventListener('click',gen);
+  if($('#sAgent')) $('#sAgent').addEventListener('change', e=>$('#agentBlock').classList.toggle('hide', !e.target.checked));
+  $('#sClear').addEventListener('click',()=>{
+    ['sTools','sMine','sVerifyEg','sChallengeEg','sProof','agAct','agLog'].forEach(id=>{const el=$('#'+id); if(el) el.value='';});
+    ['v1','v2','v3','v0','sAgent','agAccount'].forEach(id=>{const el=$('#'+id); if(el) el.checked=false;});
+    if($('#agOversight')) $('#agOversight').value='';
+    if($('#agentBlock')) $('#agentBlock').classList.add('hide');
+    document.querySelectorAll('#sClusters input:checked, #vOther input:checked, #sChallenge input:checked').forEach(x=>x.checked=false);
+    $('#sOutWrap').classList.add('hide');
+  });
+  $('#sCopy').addEventListener('click',()=>navigator.clipboard.writeText($('#sOut').textContent).then(()=>toast('已複製揭露說明')));
+  $('#sDownload').addEventListener('click',()=>{
+    const blob=new Blob([$('#sOut').textContent],{type:'text/plain;charset=utf-8'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='AI使用揭露.txt';a.click();URL.revokeObjectURL(a.href);toast('已下載 .txt');
+  });
+}
+
+/* ---------- mode switching ---------- */
+function setMode(m){
+  const stu = m==='student';
+  $('#studentView').classList.toggle('hide',!stu);
+  $('#teacherView').classList.toggle('hide',stu);
+  $('#tabStudent').setAttribute('aria-selected',stu);
+  $('#tabTeacher').setAttribute('aria-selected',!stu);
+}
+
+/* ---------- init ---------- */
+buildTeacherForm();
+wireTeacher();
+$('#tabStudent').addEventListener('click',()=>setMode('student'));
+$('#tabTeacher').addEventListener('click',()=>setMode('teacher'));
+$('#loadDemo').addEventListener('click',()=>{
+  renderStudent({c:"質性研究方法(範例)",t:"陳老師",lv:3,pr:["qualitative","interpret"],
+    nd:["translate"],
+    pm:"誠實揭露 AI 使用不會讓你被扣分。我把它當作理解你學習歷程的方式。有疑問時,寧可多寫一句,我們再討論。",
+    tu:"我用 Claude 協助整理本課投影片大綱,內容都已檢查。"});
+});
+
+(function bootFromUrl(){
+  const raw = new URLSearchParams(location.search).get('policy');
+  if(raw){
+    // a student opened the shared link → show the student view with this course's policy
+    try{ const p=JSON.parse(b64u.dec(raw)); renderStudent(p); setMode('student'); return; }
+    catch(e){ console.warn('bad policy param',e); }
+  }
+  setMode('teacher'); // no policy in URL → this is an instructor; default to the teacher setup
+})();
+</script>
+</body>
+</html>
