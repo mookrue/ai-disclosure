@@ -38,6 +38,7 @@
   }
   .wrap{max-width:var(--maxw);margin:0 auto}
   h1,h2,h3{font-family:"Noto Serif TC",Georgia,serif;line-height:1.35;margin:0}
+  b,strong{font-weight:600}
   .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:500}
   .muted{color:var(--ink-soft)}
   .faint{color:var(--ink-faint)}
@@ -339,7 +340,7 @@
       <h2><span class="step-n">6</span> 老師自己也揭露(選填) <span class="en">Model it yourself</span></h2>
       <p class="hint">學生最反感「只准我揭露、老師卻自由使用」。你先示範,信任才立得起來。<br>
         <span class="faint">Students resent asymmetry. Modelling disclosure builds trust.</span></p>
-      <label class="field"><textarea id="tTeacherUse" placeholder="例:我用 Claude 協助整理本課投影片大綱,所有內容我都已檢查。"></textarea></label>
+      <label class="field"><textarea id="tTeacherUse" placeholder="例:我用 Claude 協助整理本課投影片大綱,所有內容我都已檢查。 e.g. I used Claude to help outline the slides; I checked everything."></textarea></label>
     </div>
     </details>
 
@@ -358,11 +359,10 @@
         </div>
         <div id="fileWarn" class="hide" style="margin-top:8px;font-size:12.5px;color:#a1442e;background:#fdf1ee;border:1px solid #f0d3ca;border-radius:8px;padding:9px 11px">⚠ 你現在是用本機檔案(file://)開啟,產生的連結別人無法點開。請先把工具部署到公開網址(如 GitHub Pages),再從那個網址產生連結。<br><span class="faint">You're viewing a local file — this link won't work for others. Deploy the tool to a public URL first, then generate the link there.</span></div>
         <div class="howto">
-          <b>怎麼把連結交給學生?</b>擇一即可:<br>
-          ① 貼進<b>課程大綱或 LMS(數位學苑/Moodle)</b>的作業說明——連同下方大綱段落一起貼。<br>
-          ② 課堂第一週用 <b>QR 碼</b>投影,讓學生掃(按下面按鈕產生)。<br>
-          ③ 網址太長可用 <b>reurl.cc</b> 或 TinyURL 縮短再分享。<br>
-          <span class="faint">Give students the link by: pasting it into your syllabus/LMS, showing a QR code in class, or shortening it first.</span>
+          <b>怎麼把連結交給學生? · How to share the link</b>(擇一 · pick one):<br>
+          ① 貼進<b>課程大綱或 LMS(數位學苑 / Moodle)</b>的作業說明。· Paste into your syllabus or LMS.<br>
+          ② 課堂用 <b>QR 碼</b>投影讓學生掃(按下面按鈕產生)。· Show a QR code in class (button below).<br>
+          ③ 網址太長可用 <b>reurl.cc</b> 或 TinyURL 縮短。· Shorten the URL if it's long.
           <div class="btn-row" style="margin-top:12px">
             <button class="btn ghost" id="makeQR">產生 QR 碼 · Make QR code</button>
             <button class="btn ghost hide" id="dlQR">下載 QR · Download</button>
@@ -381,7 +381,7 @@
     <details class="sources guide">
       <summary><span>收到揭露後,怎麼讀? · Reading what students submit <span class="en">for instructors</span></span><span class="chev">▶</span></summary>
       <div class="inner">
-        <p class="lead">工具幫學生產出揭露,但怎麼讀、怎麼回應同樣重要。研究一致指出:自陳制無法查證、偵測工具不可靠,誠實仰賴的是安全感而非稽查。幾個原則:</p>
+        <p class="lead">工具幫學生產出揭露,但怎麼讀、怎麼回應同樣重要。研究一致指出:自陳制無法查證、偵測工具不可靠,誠實仰賴的是安全感而非稽查。幾個原則:<br><span class="faint">The tool helps students disclose, but how you read and respond matters just as much. Self-report can't be verified and detectors are unreliable — honesty rests on safety, not policing. A few principles:</span></p>
         <ul class="guidelist">
           <li><b>用理解歷程的眼光,不是抓錯。</b>揭露是了解學生怎麼工作的窗口,不是自白書。<span class="faint">Read it as a window into process, not a confession.</span></li>
           <li><b>把查證階梯與「挑戰/改進 AI」欄當作正面訊號。</b>勾到第 3 層、或寫得出自己否決了 AI 什麼,是判斷力的證據,值得肯定。<span class="faint">Verification and push-back are positive signals — reward them.</span></li>
@@ -433,11 +433,11 @@ const TIERS = [
 
 /* Work/method profiles (multi-select). Replaces the older discipline presets. */
 const PROFILES = [
-  {id:"interpret",     zh:"詮釋・論證", en:"Interpretive / argumentative", note:"文本・史料判讀、論證、書寫(多數人文、理論社會科學、法律)"},
-  {id:"qualitative",   zh:"質性經驗", en:"Qualitative empirical",       note:"田野、訪談、編碼、主題分析"},
-  {id:"quantitative",  zh:"量化・實證", en:"Quantitative empirical",     note:"資料、統計、建模"},
-  {id:"computational", zh:"計算・技術", en:"Computational / technical",  note:"程式、系統、資料工程"},
-  {id:"creative",      zh:"創作・設計", en:"Creative / design",          note:"媒體生成、設計、工作室創作"}
+  {id:"interpret",     zh:"詮釋・論證", en:"Interpretive / argumentative", note:"文本・史料判讀、論證、書寫 · text/source interpretation, argument, writing"},
+  {id:"qualitative",   zh:"質性經驗", en:"Qualitative empirical",       note:"田野、訪談、編碼、主題分析 · fieldwork, interviews, coding, thematic analysis"},
+  {id:"quantitative",  zh:"量化・實證", en:"Quantitative empirical",     note:"資料、統計、建模 · data, statistics, modelling"},
+  {id:"computational", zh:"計算・技術", en:"Computational / technical",  note:"程式、系統、資料工程 · code, systems, data engineering"},
+  {id:"creative",      zh:"創作・設計", en:"Creative / design",          note:"媒體生成、設計、工作室創作 · media generation, design, studio work"}
 ];
 const ALL  = ["interpret","qualitative","quantitative","computational","creative"];
 const EMP4 = ["interpret","qualitative","quantitative","computational"]; // all but creative
