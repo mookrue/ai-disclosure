@@ -242,6 +242,66 @@
   .guide .guidelist li b{color:var(--ink)}
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
   @media(max-width:520px){body{padding:22px 14px 70px}.card{padding:20px 17px}}
+  /* ===== merged: researcher tab (indigo) ===== */
+  :root{--warn:#a1442e;--warn-wash:#fdf1ee;--ok:#3a6b5f;--ok-wash:#eaf2ee}
+  #researcherView{--accent:#3b4a80;--accent-deep:#2c3861;--accent-wash:#ecedf6}
+  #researcherView .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:560px){#researcherView .row2{grid-template-columns:1fr}}
+  #researcherView label.field .lab{font-weight:500;font-size:14.5px;display:block;margin-bottom:6px}
+  #researcherView .verify .vh{font-weight:600;color:#245f59;display:flex;align-items:center;gap:7px;font-size:14px}
+  .principle{background:var(--accent-wash);border-radius:var(--radius-sm);padding:13px 15px;font-size:13.5px;color:var(--accent-deep);margin-top:12px;line-height:1.6}
+  .principle b{color:var(--accent-deep)}
+  .ledger{margin-top:14px;border:1px solid var(--accent);border-radius:var(--radius-sm);overflow:hidden;background:#fff}
+  .ledger .lhead{background:var(--accent);color:#fff;padding:11px 16px;font-size:13px;letter-spacing:.04em;display:flex;justify-content:space-between;align-items:center}
+  .ledger .lhead .en{color:#c8cde6}
+  .lrow{display:flex;gap:12px;padding:12px 16px;border-top:1px solid var(--line);align-items:flex-start}
+  .lrow:first-of-type{border-top:0}
+  .lrow .num{flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--accent-wash);color:var(--accent-deep);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:1px;font-variant-numeric:tabular-nums}
+  .lrow .lt{font-size:14px}
+  .lrow .lt b{color:var(--ink)}
+  .lrow .lt .why{color:var(--ink-faint);font-size:12.5px;display:block;margin-top:1px}
+  .lrow .lt .why em{font-style:normal;color:var(--warn)}
+  .agentcaution{margin-top:12px;background:#faf9fe;border:1px solid #cdc6e6;border-radius:var(--radius-sm);padding:12px 15px;font-size:13px;color:#4a3f6b;line-height:1.6}
+  .agentcaution b{color:#3d3357}
+  .pubcard{margin-top:14px;border:1px solid var(--line);border-radius:var(--radius-sm);background:#fbfbfc;padding:0;overflow:hidden}
+  .pubcard .ph{background:var(--ink);color:#fff;padding:12px 16px;font-family:"Noto Serif TC",serif;font-size:16px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .pubcard .ph a{color:#c8cde6;font-family:"Noto Sans TC",sans-serif;font-size:12.5px;font-weight:400}
+  .pubcard .pb{padding:6px 16px 14px}
+  .prow{display:grid;grid-template-columns:120px 1fr;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:13.5px;line-height:1.5}
+  .prow:first-child{border-top:0}
+  .prow .pk{color:var(--ink-faint);font-size:12.5px}
+  .pubcard.strict .ph{background:var(--warn)}
+  .strictwarn{background:var(--warn-wash);border:1px solid #f0d3ca;color:#8a3a26;font-size:13px;padding:10px 13px;border-radius:8px;margin:10px 16px 4px;line-height:1.5}
+  .advcard{border-color:var(--accent);background:linear-gradient(180deg,#f7f8fc 0%,#ffffff 40%)}
+  .advcard h2{color:var(--accent-deep)}
+  .advance{border-left:3px solid var(--accent);background:#f7f8fc;border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:13px 16px;margin-top:14px}
+  .advance .ah{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15px;color:var(--accent-deep);margin-bottom:5px}
+  .advance p{margin:0;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+  .advance p b{color:var(--ink)}
+  .advance .try{display:block;background:#fff;border:1px dashed var(--line-strong);border-radius:8px;padding:8px 11px;margin:8px 0;font-size:13px;color:var(--accent-deep)}
+  .advance a{display:inline-block;margin-top:4px;font-weight:500;font-size:12.5px}
+  .pcard{border-color:#e6c9bf;background:linear-gradient(180deg,#fdf6f3 0%,#ffffff 40%)}
+  .pcard h2{color:var(--warn)}
+  .pblock{border-left:3px solid var(--warn);background:#fdf6f3;border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:13px 16px;margin-top:14px}
+  .pblock .ah{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15px;color:#8a3a26;margin-bottom:5px}
+  .pblock p{margin:0;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+  .pblock p b{color:var(--ink)}
+  .pblock a{display:inline-block;margin-top:6px;font-weight:500;font-size:12.5px}
+  .grantcard{border-color:#d3d7ea}
+  .grantcard h2{color:var(--accent-deep)}
+  .gblock{border-left:3px solid var(--line-strong);background:#fbfbfc;border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:12px 16px;margin-top:12px}
+  .gblock .ah{font-family:"Noto Serif TC",serif;font-weight:600;font-size:14.5px;color:var(--ink);margin-bottom:4px}
+  .gblock p{margin:0;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+  .gblock p b{color:var(--ink)}
+  .gblock a{display:inline-block;margin-top:5px;font-weight:500;font-size:12.5px}
+  .usenote{background:var(--accent-wash);border:1px solid #d3d7ea;border-radius:var(--radius);padding:13px 18px;margin:0 0 4px;font-size:13.5px;color:var(--accent-deep);line-height:1.6}
+  #researcherView .usenote{--accent-wash:#ecedf6}
+  .usenote .faint{display:block;margin-top:3px}
+  .teamnote{margin-top:14px;background:#fbfbfc;border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 15px;font-size:13px;color:var(--ink-soft);line-height:1.6}
+  .teamnote .faint{display:block;margin-top:2px}
+  .reassure{background:var(--ok-wash);border:1px solid #cfe2da;border-radius:var(--radius-sm);padding:12px 15px;margin:6px 0 4px;font-size:13.5px;color:#245f59;line-height:1.6}
+  .reassure .faint{display:block;margin-top:3px}
+
 </style>
 </head>
 <body>
@@ -255,10 +315,11 @@
     <div class="switch" role="tablist" aria-label="模式">
       <button id="tabTeacher" role="tab" aria-selected="true">老師設定 · Teacher</button>
       <button id="tabStudent" role="tab" aria-selected="false">學生揭露 · Student</button>
+      <button id="tabResearcher" role="tab" aria-selected="false">研究者 · Researcher</button>
     </div>
   </header>
 
-  <details class="sources">
+  <details class="sources" id="aboutSources">
     <summary><span>依據與彈性調整 · About &amp; sources <span class="en">why you can trust this, and how to adapt it</span></span><span class="chev">▶</span></summary>
     <div class="inner">
       <p class="lead">本工具由政治大學圖書館整理,作為<b>參考</b>(非強制),搭配 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener"><b>政大圖書館 AI 使用倫理指引</b></a> 一併使用。下表只列<b>真正支撐設計、且維持在最新(2025–2026)</b>的關鍵來源;AI 變化快,連結會指向最新的概念與實務。實際規範以校方、院系所與授課教師政策為準。</p>
@@ -395,12 +456,205 @@
     </details>
   </section>
 
+  <!-- ================= RESEARCHER ================= -->
+  <section id="researcherView" class="hide">
+  <div class="eyebrow" style="margin-bottom:10px">研究者 · 投稿與送計畫的 AI 揭露規劃 / For researchers — journals &amp; grants</div>
+
+  <div class="usenote">🧭 <b>怎麼用:</b>現在就做 <b>1–3</b>(規劃 AI 使用 + 開始留紀錄),投稿時再回來做 <b>4–5</b>(對規定、產生聲明)。<b>還沒選定期刊?沒關係</b>——先選領域與取徑,期刊之後再說。<br><span class="faint">Do steps 1–3 now (plan &amp; start logging); come back for 4–5 at submission. No target journal yet? That's fine — pick field and approach first.</span></div>
+
+  <div class="card">
+    <h2><span class="step-n">1</span> 你的情境 <span class="en">Your context</span></h2>
+    <div class="row2">
+      <label class="field" style="margin-top:8px"><span class="lab">研究領域 <span class="en">Field</span></span>
+        <select id="field">
+          <option value="humanities">人文 · Humanities</option>
+          <option value="social">社會科學 · Social sciences</option>
+          <option value="science">自然科學 · Natural sciences</option>
+          <option value="engineering">工程 / 資訊 · Engineering / CS</option>
+          <option value="medical">醫學 / 生醫 · Medical / biomedical</option>
+          <option value="inter">跨領域 · Interdisciplinary</option>
+        </select></label>
+      <label class="field" style="margin-top:8px"><span class="lab">研究取徑 <span class="en">Approach</span></span>
+        <select id="approach">
+          <option value="qual">質性 · Qualitative</option>
+          <option value="quant">量化 / 計算 · Quantitative / computational</option>
+          <option value="mixed">混合 · Mixed methods</option>
+          <option value="theory">理論 / 詮釋 · Theoretical / interpretive</option>
+        </select></label>
+    </div>
+    <label class="field"><span class="lab">目標期刊 / 出版社 <span class="en">Target publisher</span></span>
+      <select id="pub">
+        <option value="other">尚未決定 / 其他 · Undecided / other</option>
+        <option value="nature">Nature / Springer Nature</option>
+        <option value="elsevier">Elsevier(含 Cell Press)</option>
+        <option value="wiley">Wiley</option>
+        <option value="science">Science / AAAS</option>
+        <option value="plos">PLOS</option>
+        <option value="ieee">IEEE / ACM</option>
+        <option value="tf">Taylor &amp; Francis / SAGE / MDPI</option>
+        <option value="medical">醫學期刊(ICMJE / JAMA / BMJ)</option>
+      </select></label>
+    <div class="principle" style="margin-top:16px">所有主要出版社的共同底線(2026):<b>AI 不能列為作者、人須為內容負全責、相關 AI 使用須揭露、且須自行查證輸出</b>。差別在<b>「哪些要揭露、寫在哪裡、要多細」</b>——下面依你選的期刊顯示。</div>
+  </div>
+
+  <div class="card">
+    <h2><span class="step-n">2</span> 你會用到哪些 AI 活動? <span class="en">Which AI activities</span></h2>
+    <p class="hint">分類與邊界取自 STM 出版商協會的九類活動(2025)。勾選你(可能)會用到的——邊界那行(≠)幫你判斷哪些其實不算、或被禁止。</p>
+    <div id="polishNote" class="principle" style="margin-top:12px"></div>
+    <div class="checks" id="activities"></div>
+  </div>
+
+  <div class="card" style="border-color:var(--accent)">
+    <h2><span class="step-n">3</span> 從第一天就留好這些紀錄 <span class="en">Keep these records from day one</span></h2>
+    <p class="hint">這是本工具的重點,而且<b>會依你的研究取徑調整</b>——質性要留的(稽核軌跡)和量化/計算要留的(版本、參數、可複製性)不一樣。<b>邊做邊留,揭露就只是把紀錄謄上去。</b></p>
+    <div class="ledger" id="ledger">
+      <div class="lhead"><span>我的 AI 使用紀錄本 · My AI-use log</span><span class="en" id="ledgerBadge">keep as you go</span></div>
+      <div id="ledgerRows"></div>
+    </div>
+    <label class="chk agenttoggle" style="margin-top:14px"><input type="checkbox" id="agent"><span class="ct">我(可能)會用到<b>會自主多步驟執行或採取行動的 AI agent</b>(如 deep research、coding agent、自動化實驗/分析)<span class="en">I use an AI agent that runs multi-step or takes actions</span></span></label>
+    <div id="agentCaution" class="hide agentcaution">
+      <b>代理式 AI 改變了該留存的東西:</b>單位從「輸出」變成「行動路徑」——它自己跑很多步驟、你未必看得到中間。上方紀錄本已為你加入 agent 專屬項目。兩個提醒:<b>(1) 可複製性</b>——代理式研究常因中間資訊缺漏而無法重現,務必留下可檢視的產物與軌跡;<b>(2) 你仍為 agent 的產出與行動負全責</b>,且已有「AI 生成研究抄襲」的案例,原創性要自行查核。
+    </div>
+    <div class="teamnote">👥 <b>共同作者/團隊:</b>投稿前和所有共同作者對齊揭露內容(每個人用了什麼、由誰查證)。若你是 PI,可用這套紀錄慣例讓實驗室與學生從一開始就一致地留紀錄。<br><span class="faint">Align disclosure with all co-authors before submission; PIs can use this to set a shared lab record-keeping habit.</span></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="step-n">4</span> 你目標期刊的規定 <span class="en">Your target's rules</span></h2>
+    <p class="hint">政策更新很快——請務必<b>投稿前再確認一次目標期刊的現行作者指南</b>。以下為 2025–2026 的重點整理。</p>
+    <div id="pubRules"></div>
+  </div>
+
+  <div class="card grantcard">
+    <h2>📋 送計畫也要注意:補助機構的 AI 規定 <span class="en">Grant proposals too</span></h2>
+    <p class="hint">揭露的戰場不只期刊。這一兩年主要補助機構都出了規定,而且比期刊更嚴——共通點是:<b>你為提案負全責、不能整份(或整段)由 AI 生成、審查稿件別上傳 AI</b>。</p>
+    <div class="gblock">
+      <div class="ah">美國 NIH <span class="en">National Institutes of Health</span></div>
+      <p>自 <b>2025/9/25</b> 起,<b>大幅由 AI 生成的提案(或有段落大幅由 AI 生成)不視為申請人原創,不予受理</b>;另有每位 PI 每年 6 件的上限。審查者<b>禁止</b>用生成式 AI 分析或撰寫評審意見,上傳申請內容即違反保密。<br>
+        <a href="https://grants.nih.gov/news-events/nih-extramural-nexus-news/2025/07/apply-responsibly-policy-on-ai-use-in-nih-research-applications-and-limiting-submissions-per-pi" target="_blank" rel="noopener">NIH 提案政策 ↗</a> · <a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-23-149.html" target="_blank" rel="noopener">NIH 審查禁令 ↗</a></p>
+    </div>
+    <div class="gblock">
+      <div class="ah">美國 NSF <span class="en">National Science Foundation</span></div>
+      <p>允許在計畫準備時使用 AI,但<b>申請人對準確性與真實性負全責</b>,並<b>應在計畫書中揭露</b>是否及如何使用;把提案或審查資訊上傳到開放 AI 系統,會被視為公開揭露、危及保密。審查者禁止上傳提案內容到未核可的 AI。</p>
+    </div>
+    <div class="gblock">
+      <div class="ah">台灣 <span class="en">Taiwan</span></div>
+      <p>國科會訂有《行政院及所屬機關(構)使用生成式 AI 參考指引》(原則:負責任、可信賴、安全、隱私與資料治理、問責;<b>非強制、無罰則</b>,但用於執行業務/服務應揭露)。學術研究層面多依<b>學術倫理框架與各校指引</b>(成大、台大、陽明交大等),共通原則是<b>使用生成式 AI 應適當揭露使用程度與範圍</b>。<br>
+        <a href="https://ethics-s.moe.edu.tw/static/ethics/u03/p14.html" target="_blank" rel="noopener">臺灣學術倫理教育資源中心:政府規範整理 ↗</a></p>
+    </div>
+    <p class="hint faint" style="margin-top:12px">其他補助機構(UKRI、Horizon Europe/ERC、DOE)亦各有規定。各機構更新快,<b>送件前以官方公告為準</b>。</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="step-n">5</span> 產生揭露聲明 <span class="en">Generate statement</span></h2>
+    <p class="hint">準備好投稿時,把紀錄填進來,產生一段可貼進稿件的揭露文字。</p>
+    <div class="reassure">💬 <b>放心揭露。</b>好好揭露 AI 使用是當前的專業常態,是在<b>保護你自己</b>(顯示你有查證、負責),不是認錯、也不減損你的貢獻。誠實而完整地報,通常遠比事後被發現安全。<br><span class="faint">Disclosing well is normal and protective — it shows you verified and took responsibility. It's not a confession, and it doesn't diminish your contribution.</span></div>
+    <label class="field"><span class="lab">工具、版本與日期 <span class="en">Tools, versions, dates</span></span>
+      <input type="text" id="gTools" placeholder="例:ChatGPT (GPT-4o),2026-03;DeepL,2026-04"></label>
+    <label class="field"><span class="lab">用 AI 做了什麼(承第 2 步)<span class="en">What AI was used for</span></span>
+      <textarea id="gUses" placeholder="例:潤飾語言、翻譯摘要、協助整理參考文獻清單(所有引用皆已人工核對)"></textarea></label>
+    <div class="verify">
+      <div class="vh">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#245f59" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        我已查證 · Verified</div>
+      <div class="checks" style="margin-top:6px">
+        <label class="chk"><input type="checkbox" class="gv" value="所有 AI 提及的引用皆經人工核對存在且相符"><span class="ct">引用:AI 提及的參考文獻皆經人工核對(存在、相符、非捏造)</span></label>
+        <label class="chk"><input type="checkbox" class="gv" value="AI 協助處理的數據/結果皆經人工檢核"><span class="ct">數據:AI 協助的數據/圖表皆經人工檢核</span></label>
+        <label class="chk"><input type="checkbox" class="gv" value="AI 產出的文字皆經作者審閱、修改並負責"><span class="ct">文字:AI 產出皆經作者審閱、修改並負責</span></label>
+      </div>
+    </div>
+    <label class="field" style="margin-top:16px"><span class="sublab">保留的佐證(選填):對話/執行 log、草稿版本史連結 · Optional evidence link</span>
+      <input type="text" id="gLog" placeholder="https://…（可留空)"></label>
+    <div class="citenote">若你在文中<b>直接引用</b>了 AI 產出的文字,除了揭露,還需依格式正式引用(三家都不把 AI 當作者):
+      <a href="https://apastyle.apa.org/blog/cite-generative-ai-references" target="_blank" rel="noopener">APA</a> ·
+      <a href="https://style.mla.org/citing-generative-ai-updated-revised/" target="_blank" rel="noopener">MLA</a> · Chicago 18 §14.112 · AMA。務必點回原始出處查證,AI 會捏造來源。</div>
+    <div class="btn-row">
+      <button class="btn primary" id="gen">產生 · Generate</button>
+      <button class="btn ghost" id="clr">清除 · Clear</button>
+    </div>
+    <div id="outWrap" class="hide">
+      <div class="divider"></div>
+      <div class="output" id="out"></div>
+      <div class="btn-row">
+        <button class="btn ghost" id="copy">複製 · Copy</button>
+        <button class="btn ghost" id="dl">下載 .txt · Download</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card pcard">
+    <h2>⚠ 壓力時刻的注意事項 <span class="en">When you reach for AI under pressure</span></h2>
+    <p class="hint">你伸手求助 AI 的那一刻——趕死線、被審查意見煩到——<b>恰恰是判斷力最弱的一刻</b>。實證顯示 automation bias 在時間壓力下會被放大、反思評估被壓抑。所以此刻更要刻意保留一個查證步驟。</p>
+
+    <div class="pblock">
+      <div class="ah">趕稿 / 死線 <span class="en">On a deadline</span></div>
+      <p>再急也要<b>逐字讀過、每條引用都查證</b>——「貼上去卻沒讀」是最常見的失誤。真實案例:一篇論文把 ChatGPT 的「Regenerate Response」字樣誤複製進正文而遭撤稿;另有論文導言直接留著「Certainly, here is…」與「as an AI language model」。科研誠信偵探已在文獻裡揪出數百篇這類痕跡。<br>
+        <a href="https://www.nature.com/articles/d41586-025-01180-2" target="_blank" rel="noopener">Nature:數百篇未揭露 AI 使用的痕跡 ↗</a></p>
+    </div>
+
+    <div class="pblock">
+      <div class="ah">回應審查意見 <span class="en">Responding to reviewers</span></div>
+      <p>可以讓 AI 幫你<b>釐清審查者的意思、整理回應語氣</b>,但<b>實質論點與每一條引用都要是你的、且經查證</b>。特別注意:LLM 無法可靠辨識已撤稿論文、還會引用其內容,你趕出來的答辯可能悄悄帶進假的或已被否定的來源。若 AI 實質形塑了修改,投稿時要揭露。</p>
+    </div>
+
+    <div class="pblock">
+      <div class="ah">你擔任審查者時 <span class="en">If you're the reviewer</span></div>
+      <p><b>多數期刊禁止把稿件上傳到 AI 系統</b>(約 91%,基於保密與智財;不少醫學期刊與大型會議明文禁止 AI 審查)——同儕審查所需的人類問責無法委派。也<b>絕不要在自己的稿件裡植入隱藏提示</b>操縱 AI 審查:這被認定為新型態的研究不當行為,連意圖本身就構成違規,且已有會議用陷阱提示大量 desk-reject。<br>
+        <a href="https://cacm.acm.org/opinion/hidden-prompts-in-manuscripts-exploit-ai-assisted-peer-review/" target="_blank" rel="noopener">CACM:操縱 AI 審查的隱藏提示 ↗</a></p>
+    </div>
+  </div>
+
+  <div class="card advcard">
+    <h2>✦ 進階使用:讓 AI 帶你更遠 <span class="en">Going further</span></h2>
+    <p class="hint">揭露與倫理是底線;但 AI 也能讓研究更好、甚至開啟新可能。以下是<b>邀請、不是要求</b>,每一條都附實證。</p>
+
+    <div class="advance">
+      <div class="ah">1 · 找到更多洞見與意外 <span class="en">Insight &amp; surprise</span></div>
+      <p>讓 AI 當<b>對抗性的第二讀者</b>,而非只求快。實證上,人與 AI <b>各自獨立編碼、再做「不一致分析」</b>,能浮現人類單獨找不到的洞見;也可以直接請它「提出挑戰我初始架構的方式,以確保分析更平衡」,逼出你的盲點。選哪個提示、如何驗證、放進哪個理論框架——仍是你的判斷。<br>
+        <span class="try">試試看:「請對我的編碼架構提出三個最可能的反例或另一種讀法。」</span>
+        <a href="https://journals.sagepub.com/doi/full/10.1177/16094069251322346" target="_blank" rel="noopener">實證:LLM 作為反身性夥伴 ↗</a></p>
+    </div>
+
+    <div class="advance">
+      <div class="ah">2 · 維護正確性與可複製性 <span class="en">Accuracy &amp; reproducibility</span></div>
+      <p>把可複製性當成<b>進階能力</b>,不只是合規。收斂中的報告共識:宣告 AI 的角色、記下<b>模型確切版本 + 日期 + 參數 + 提示設計 + 執行軌跡</b>、需要時優先用<b>開放權重並鎖版本</b>、並以<b>人類判斷驗證</b> AI 輸出。為什麼重要:一項檢視發現 18 篇用 OpenAI 的論文只有 5 篇能執行、沒有一篇能完全重現。這些紀錄第 3 步已幫你備好。<br>
+        <a href="https://llm-guidelines.org" target="_blank" rel="noopener">LLM 實證研究報告指引(living)↗</a></p>
+    </div>
+
+    <div class="advance">
+      <div class="ah">3 · 開啟以前做不到的研究 <span class="en">New research types</span></div>
+      <p>AI 正在讓單一實驗室難以企及的研究型態變得可能:<b>假設生成 × 自主實驗 × 大規模分析</b>。例如 AI agent 團隊已設計出新的 SARS-CoV-2 奈米抗體並登上《Nature》,自主研究系統產出的論文也被同儕審查的 workshop 接受。<b>但要誠實地配上但書:novelty 要查(已有 AI 生成研究抄襲的案例)、結果要能複製、你仍為一切負責。</b><br>
+        <a href="https://arxiv.org/abs/2508.14111" target="_blank" rel="noopener">綜述:從 AI for Science 到 Agentic Science ↗</a></p>
+    </div>
+  </div>
+
+  <details class="sources">
+    <summary><span>依據與連結 · Sources <span class="en">2025–2026</span></span><span>▶</span></summary>
+    <div class="inner">
+      分類骨幹:<a href="https://s3.eu-west-2.amazonaws.com/stm.offloadmedia/wp-content/uploads/2025/04/23020709/STM_AI_Classification_Recs_19_Sept2025-1.pdf" target="_blank" rel="noopener">STM 九類活動分類</a>(2025)· 研究全流程委派:<a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT</a>。<br>
+      出版社政策:<a href="https://www.nature.com/nature-portfolio/editorial-policies/ai" target="_blank" rel="noopener">Nature/Springer</a> · <a href="https://www.elsevier.com/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier" target="_blank" rel="noopener">Elsevier</a>(其餘請查各社作者指南)。<br>
+      質性揭露與稽核軌跡:<a href="https://journals.sagepub.com/doi/10.1177/16094069251404329" target="_blank" rel="noopener">Jones 2025 的 20 問揭露啟發式</a> · <a href="https://journals.sagepub.com/doi/10.1177/14687941251390794" target="_blank" rel="noopener">技術反身性</a>。<br>
+      領域差異(潤稿):<a href="https://www.nature.com/articles/s41599-025-05351-4" target="_blank" rel="noopener">非母語研究者的身分協商</a>(HSS Communications 2025)。<br>
+      可複製性報告:<a href="https://llm-guidelines.org" target="_blank" rel="noopener">LLM 實證研究指引</a> · 代理式科研:<a href="https://arxiv.org/abs/2508.14111" target="_blank" rel="noopener">Agentic Science 綜述</a>。<br>
+      壓力下的使用:<a href="https://www.nature.com/articles/d41586-025-01180-2" target="_blank" rel="noopener">未揭露 AI 痕跡</a>(Nature 2025)· <a href="https://cacm.acm.org/opinion/hidden-prompts-in-manuscripts-exploit-ai-assisted-peer-review/" target="_blank" rel="noopener">操縱 AI 審查</a>(CACM)· automation bias 在時間壓力下被放大的實證。<br>
+      補助機構:<a href="https://grants.nih.gov/news-events/nih-extramural-nexus-news/2025/07/apply-responsibly-policy-on-ai-use-in-nih-research-applications-and-limiting-submissions-per-pi" target="_blank" rel="noopener">NIH 提案政策</a> · <a href="https://www.science.org/content/page/science-journals-editorial-policies" target="_blank" rel="noopener">Science 編輯政策</a> · <a href="https://taylorandfrancis.com/our-policies/ai-policy/" target="_blank" rel="noopener">Taylor &amp; Francis</a> · <a href="https://ethics-s.moe.edu.tw/static/ethics/u03/p14.html" target="_blank" rel="noopener">臺灣學術倫理教育資源中心</a>。<br>
+      「該保留哪些紀錄」的缺口參酌 A Faceted Proposal for Transparent Attribution(2026)——政策多未指明提示、log、模型版本、中間草稿是否留存。
+    </div>
+  </details>
+
   <div class="disclaimer">
+    <b>關於這個工具 / About.</b> 由政治大學圖書館整理,作為研究者規劃與揭露 AI 使用的<b>參考</b>,非強制。<b>投稿前務必以目標期刊/出版社的現行作者指南為準;政策變動快,本整理僅供起步規劃。</b> 更多見 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener">政大圖書館 AI 使用倫理指引</a>。<br>
+    <span class="faint">A reference for planning and disclosing AI use, not a mandate. Always defer to your target journal's current author guidelines — policies change fast.</span>
+  </div>
+  <div class="footnote">完全在你的瀏覽器裡執行,不會上傳或儲存任何內容。<span class="faint">Runs entirely in your browser. Nothing is uploaded.</span> · 可自由 fork 修改。</div>
+
+  </section>
+
+  <div class="disclaimer" id="sharedDisclaimer">
     <b>關於這個工具 / About.</b> 本工具由政治大學圖書館整理,作為校內師生溝通與揭露 AI 使用的<b>參考</b>,並非強制規範。層級架構改編自 AI Assessment Scale(Perkins, Roe &amp; Furze),設計取向參酌 Russell Group 五項原則、Monash、Stanford、Oxford、HKU 等校公開政策、MLA/APA 引用規範,以及多項同儕審查實證研究(見上方「依據與彈性調整」)。<br>
     <b>實際規範以校方、院系所及授課教師的政策為準;教師在課程中的規定優先於本工具的任何預設。使用前請依所屬單位政策彈性調整。</b> 校內規範與更多說明請見 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener">政大圖書館 AI 使用倫理指引</a>。<br>
     <span class="faint">Offered by the NCCU Library as a reference, not a mandate. Your college, department, and course policies govern; your instructor's course rule always takes precedence. Adapt before use.</span>
   </div>
-  <div class="footnote">
+  <div class="footnote" id="sharedFootnote">
     完全在你的瀏覽器裡執行,不會上傳或儲存任何內容。<span class="faint">Runs entirely in your browser. Nothing is uploaded or stored.</span> · 可自由 fork 修改。
   </div>
 </div>
@@ -885,18 +1139,197 @@ ${proof? '\n歷程佐證 Process record:'+proof : ''}
 
 /* ---------- mode switching ---------- */
 function setMode(m){
-  const stu = m==='student';
-  $('#studentView').classList.toggle('hide',!stu);
-  $('#teacherView').classList.toggle('hide',stu);
-  $('#tabStudent').setAttribute('aria-selected',stu);
-  $('#tabTeacher').setAttribute('aria-selected',!stu);
+  const isS=m==='student', isT=m==='teacher', isR=m==='researcher';
+  $('#studentView').classList.toggle('hide',!isS);
+  $('#teacherView').classList.toggle('hide',!isT);
+  $('#researcherView').classList.toggle('hide',!isR);
+  $('#tabStudent').setAttribute('aria-selected',isS);
+  $('#tabTeacher').setAttribute('aria-selected',isT);
+  $('#tabResearcher').setAttribute('aria-selected',isR);
+  ['#aboutSources','#sharedDisclaimer','#sharedFootnote'].forEach(id=>{const e=$(id); if(e) e.classList.toggle('hide',isR);});
+  window.scrollTo({top:0,behavior:'smooth'});
 }
+
+/* ===== RESEARCHER TAB (merged) ===== */
+
+/* STM 9 activities (adapted, bilingual) with boundary (≠) and disclosure hint */
+const ACTIVITIES=[
+ {id:1,zh:"語言潤飾(改善清晰度)",en:"Language editing for clarity",bound:"≠ 生成正文;純拼字/文法檢查通常<b>免揭露</b>",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:2,zh:"撰寫或草擬正文",en:"Writing / drafting manuscript text",bound:"AI 生成部分或全部文字——<b>幾乎都要揭露</b>",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:5,zh:"翻譯稿件(譯為另一語言)",en:"Translating the manuscript",bound:"≠ 研究過程中翻譯來源材料",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:8,zh:"協助蒐集參考文獻",en:"Gathering references",bound:"≠ <b>生成不存在的假引用(禁止)</b>;找到後務必逐一核對",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:3,zh:"既有資料的呈現與排版",en:"Formatting reported data",bound:"≠ 竄改、修改或分析資料本身",fields:["social","science","engineering","medical","inter"]},
+ {id:6,zh:"研究數據/結果的視覺化",en:"Visualising research data",bound:"≠ 傳統統計軟體(R、SAS…)產圖",fields:["science","engineering","medical","social","inter"]},
+ {id:7,zh:"程式碼的呈現與排版(不改功能)",en:"Formatting reported code",bound:"≠ 生成研究用的新程式或改變功能",fields:["engineering","science","inter"]},
+ {id:4,zh:"插圖性質的圖像/圖表",en:"Illustrative images / figures",bound:"≠ 呈現真實數據;<b>Nature、Elsevier 等禁止 AI 生成影像</b>",fields:["humanities","social","science","engineering","medical","inter"],ban:true},
+ {id:9,zh:"把 AI 生成內容當成原始研究數據呈現",en:"Passing AI output off as real data",bound:"<b>各社一致禁止</b>——這是學術不當行為",fields:["humanities","social","science","engineering","medical","inter"],ban:true}
+];
+
+/* records to keep — the core ledger */
+const BASE_RECORDS=[
+ {t:"工具名稱 + 確切版本",why:"例:ChatGPT (GPT-4o)、Claude Opus 4.x、DeepL。供應商常在名稱不變下更動模型,版本越具體越好。"},
+ {t:"使用日期",why:"APA、AMA 與多數期刊都要求;供應商會改模型,日期是重要定錨。"},
+ {t:"每次用途對應哪一類活動",why:"對上第 2 步的 STM 分類,揭露時才分得清「潤稿」與「生成正文」。"},
+ {t:"你查證了哪些輸出",why:"<em>引用是否真實存在、數據是否重算</em>——這是你為內容負責的核心動作。"}
+];
+/* method-specific records (approach) */
+const APPROACH_RECORDS={
+ qual:[
+  {t:"提示的版本、編碼簿的修訂與裁決註記",why:"質性研究的稽核軌跡:系統性記錄提示版本、編碼簿怎麼改、爭議如何裁決。"},
+  {t:"反身性備忘錄(AI 影響了什麼)",why:"記下 AI 的摘要/編碼在哪裡形塑了你的詮釋,以及你如何回應——這是技術反身性的核心。"},
+  {t:"AI 產出連回原始資料",why:"把 AI 的摘要/編碼標記清楚、可連回原文(如 MAXQDA 的做法),以便逐步比對與檢視。"},
+  {t:"參與者資料的處理與同意",why:"把訪談等個資丟進 AI 前,確認去識別化與同意範圍;這也是揭露的一部分。"}
+ ],
+ quant:[
+  {t:"模型確切版本 + 存取日期 + 系統指紋",why:"託管模型會隨時間漂移(有任務準確率三個月從 84% 掉到 51%),版本與日期是可複製性底線。系統指紋=模型回傳的識別碼,若有就一併記下。"},
+  {t:"參數:temperature、seed、top_p 等",why:"設定會大幅改變輸出。白話:temperature=隨機/發散程度、seed=亂數種子(讓結果可重跑)、top_p=取樣範圍。能設就設 temperature=0、記下 seed,但註明 seed 在託管 API 上不保證重現。"},
+  {t:"系統與提示設計、執行/session 軌跡",why:"提示格式本身就能讓準確率變動數十個百分點;軌跡=你與 AI 的完整互動/執行紀錄,完整留存才可稽核。"},
+  {t:"優先開放權重、本地鎖版本",why:"開放權重=模型參數公開、可下載鎖住版本;能連同分析一起釋出供他人複製,是專有模型做不到的。需要可複製時優先採用。"},
+  {t:"以人類判斷驗證 AI 輸出",why:"把 AI 的分類/標註拿人工核對,並報告一致性——別把 AI 輸出當定論。"}
+ ],
+ mixed:[
+  {t:"質性面:提示版本、編碼簿修訂、反身性備忘錄",why:"質性分析段落沿用稽核軌跡的做法。"},
+  {t:"量化面:模型版本、參數、執行軌跡、人工驗證",why:"計算分析段落沿用可複製性的報告項。"},
+  {t:"兩面如何整合的判斷",why:"混合方法的可信度在於整合邏輯——記下 AI 在各面各做了什麼、你如何併起來。"}
+ ],
+ theory:[
+  {t:"提示與完整對話紀錄",why:"詮釋/論證型研究,思路歷程就是貢獻;留下對話才說得清哪裡是你、哪裡受 AI 影響。"},
+  {t:"論證中哪些是你的、哪些是 AI 促發的",why:"標明 AI 在哪裡提出反例或另一種讀法、你如何採納或否決——這維護作者性。"},
+  {t:"引用與文獻的逐一查證",why:"AI 會捏造貌似合理的來源;每一條都要點回原始出處確認存在且相符。"}
+ ]
+};
+function recordsFor(ap){return BASE_RECORDS.concat(APPROACH_RECORDS[ap]||[]);}
+
+/* agent-specific records (appended when agent toggle is on) */
+const AGENT_RECORDS=[
+ {t:"行動與存取紀錄",why:"agent 執行了哪些動作、存取了哪些工具/資料/來源——代理式的揭露單位是「行動路徑」,不只是輸出。"},
+ {t:"可檢視的產物 + 驗證鉤",why:"白話:patch/diff=程式碼的逐項修改紀錄、驗證鉤=自動跑的測試或一致性檢查。把這些可稽核產物留著,是可複製迭代的關鍵。"},
+ {t:"監督層級(哪些你實際檢視)",why:"標明哪些步驟你真的把關、哪些是自動執行;責任落差要靠這個補上。"},
+ {t:"novelty / 原創性查核",why:"已有 AI 生成研究抄襲的案例;agent 產出的想法與文字要自行確認原創、可溯源(provenance=來源可追溯)。"}
+];
+
+/* field-aware note on AI text-polishing acceptance */
+const POLISH_NOTES={
+ writing:"你的領域<b>以書寫為核心</b>:文字往往承載學術貢獻本身(聲音、詮釋、論證),所以 AI 潤稿比在理工領域更敏感、也更需要揭露到位。實證顯示書寫核心領域的研究者對 AI 輔助寫作有更深的身分衝突。判準始終是:<b>內容是否正確、清楚,且思路是你的</b>——而非用什麼工具潤了語言。",
+ stem:"在理工/應用領域,文字多為傳達結果的載體,AI 潤稿較被接受為服務性工具;但仍須揭露、且注意:AI 偵測器常把非母語者的文字誤判為「AI 生成」,所以審查重點應是<b>內容是否正確清楚</b>,而非查工具。"
+};
+
+const PUBS={
+ nature:{name:"Nature / Springer Nature",where:"方法(Methods);無方法時放合適段落",copyedit:"純語言潤稿<b>免揭露</b>",images:"<b>禁止</b> AI 生成圖像/影片",prompts:"未特別要求逐字提示",note:"強調可問責與可重現",url:"https://www.nature.com/nature-portfolio/editorial-policies/ai"},
+ elsevier:{name:"Elsevier(含 Cell Press)",where:"參考文獻前的<b>獨立段落</b>(並於 cover letter 說明)",copyedit:"純潤稿免揭露",images:"<b>禁止</b> AI 生成圖像;Cell Press 對圖較嚴",prompts:"未特別要求逐字提示",note:"要求作者監督、查證、揭露;會出現在刊出版本",url:"https://www.elsevier.com/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier"},
+ wiley:{name:"Wiley",where:"方法(Methods)",copyedit:"—",images:"部分限制",prompts:"<b>要求詳述</b>:軟體、供應商,有時含提示",note:"作者保有全部責任",url:""},
+ science:{name:"Science / AAAS",where:"誌謝與方法",copyedit:"僅文法/拼字可免",images:"限制",prompts:"<b>要求完整揭露提示</b>",note:"⚠ 最嚴:AI 生成正文近乎視為不當行為;用 AI 產文即使揭露也可能被拒",url:"https://www.science.org/content/page/science-journals-editorial-policies",strict:true},
+ plos:{name:"PLOS",where:"方法(含詳細評估說明)",copyedit:"—",images:"鼓勵透明,無明文禁圖",prompts:"—",note:"須確保正確性與正確歸屬",url:""},
+ ieee:{name:"IEEE / ACM",where:"誌謝(Acknowledgments)",copyedit:"—",images:"—",prompts:"—",note:"IEEE 須標明:<b>AI 系統、受影響段落、使用程度</b>",url:""},
+ tf:{name:"Taylor & Francis / SAGE / MDPI",where:"方法或誌謝",copyedit:"純潤稿多可免",images:"—",prompts:"—",note:"允許但須揭露、作者負責;部分期刊限語言改善",url:"https://taylorandfrancis.com/our-policies/ai-policy/"},
+ medical:{name:"醫學期刊(ICMJE / JAMA / BMJ)",where:"誌謝 / 方法 + <b>投稿系統的 AI 提問</b>",copyedit:"—",images:"—",prompts:"視期刊",note:"投稿系統常有必答的 AI 使用題,須與內文揭露一致",url:""},
+ other:{name:"尚未決定 / 其他",where:"多數為方法或誌謝",copyedit:"純潤稿常可免",images:"多家禁止 AI 生成圖像",prompts:"視期刊",note:"選定後請以該社作者指南為準",url:""}
+};
+
+/* render activities filtered/ordered by field */
+function renderActivities(){
+  const f=$('#field').value;
+  const list=ACTIVITIES.filter(a=>a.fields.includes(f));
+  $('#activities').innerHTML=list.map(a=>`
+    <label class="chk ${a.ban?'ban':''}"><input type="checkbox" value="${a.zh}" data-id="${a.id}">
+      <span class="ct">${a.zh}<span class="en">${a.en}</span><span class="bound">${a.bound}</span></span></label>`).join('');
+}
+/* field-aware polishing note */
+function renderPolish(){
+  const f=$('#field').value;
+  const writing=(f==='humanities'||f==='social');
+  $('#polishNote').innerHTML='✍ '+(writing?POLISH_NOTES.writing:POLISH_NOTES.stem);
+}
+/* method-aware ledger */
+const APPROACH_LABEL={qual:"質性 · qualitative",quant:"量化/計算 · quantitative",mixed:"混合 · mixed",theory:"理論/詮釋 · interpretive"};
+function renderLedger(){
+  const ap=$('#approach').value;
+  $('#ledgerBadge').textContent=APPROACH_LABEL[ap]||'keep as you go';
+  let rows=recordsFor(ap);
+  if($('#agent') && $('#agent').checked) rows=rows.concat(AGENT_RECORDS);
+  $('#ledgerRows').innerHTML=rows.map((r,i)=>`
+    <div class="lrow"><span class="num">${i+1}</span><span class="lt"><b>${r.t}</b><span class="why">${r.why}</span></span></div>`).join('');
+}
+
+/* render publisher rules */
+function renderPub(){
+  const p=PUBS[$('#pub').value]||PUBS.other;
+  const link=p.url?`<a href="${p.url}" target="_blank" rel="noopener">官方政策 ↗</a>`:`<span style="color:#c8cde6;font-size:12.5px">查該社作者指南確認</span>`;
+  $('#pubRules').innerHTML=`
+    <div class="pubcard ${p.strict?'strict':''}">
+      <div class="ph"><span>${p.name}</span>${link}</div>
+      ${p.strict?`<div class="strictwarn">⚠ 這是最嚴格的一類:用 AI 生成正文即使揭露也可能被視為不當行為。投稿前務必逐字確認其現行政策。</div>`:''}
+      <div class="pb">
+        <div class="prow"><span class="pk">揭露寫在哪</span><span>${p.where}</span></div>
+        <div class="prow"><span class="pk">純潤稿</span><span>${p.copyedit}</span></div>
+        <div class="prow"><span class="pk">AI 生成圖像</span><span>${p.images}</span></div>
+        <div class="prow"><span class="pk">提示 prompts</span><span>${p.prompts}</span></div>
+        <div class="prow"><span class="pk">重點</span><span>${p.note}</span></div>
+      </div>
+    </div>`;
+}
+
+/* generate statement */
+function genR(){
+  const p=PUBS[$('#pub').value]||PUBS.other;
+  const tools=esc($('#gTools').value)||"(未填工具與版本)";
+  const acts=[...document.querySelectorAll('#activities input:checked')].map(x=>x.value);
+  const uses=esc($('#gUses').value);
+  const vs=[...document.querySelectorAll('.gv:checked')].map(x=>x.value);
+  const log=esc($('#gLog').value);
+  const where=p.where.replace(/<[^>]+>/g,'');
+  const today=new Date().toLocaleDateString('zh-TW',{year:'numeric',month:'long',day:'numeric'});
+  const usedAgent=$('#agent') && $('#agent').checked;
+  const agentLine=usedAgent?`\n代理式 AI Agentic AI:本研究使用了會自主多步驟執行的 AI agent;已保留其行動與存取紀錄、可檢視產物,作者於檢查點審視並為其產出與行動負責。\n  An autonomous multi-step AI agent was used; its actions and artifacts were logged and reviewed, and the authors remain accountable.\n`:'';
+  const out=
+`—— AI 使用揭露聲明(建議置於:${where})——
+AI Use Disclosure (suggested placement: ${where})
+
+作者於本稿準備過程中使用了下列生成式 AI 工具:
+${tools}
+
+用途 Used for:
+${acts.length?acts.map(a=>'· '+a).join('\n'):(uses?'· '+uses:'· (未指定)')}
+${uses&&acts.length?'補充:'+uses:''}
+${agentLine}
+查證與負責 Verification & accountability:
+${vs.length?vs.map(v=>'· '+v).join('\n'):'· (建議勾選查證項目)'}
+· AI 未被列為作者;作者對本文全部內容之正確性與完整性負責。
+  AI is not listed as an author; the authors take full responsibility for all content.
+${log?'\n佐證 Evidence:'+log:''}
+
+(整理於 ${today}，投稿前請以 ${p.name.replace(/<[^>]+>/g,'')} 現行作者指南為準)`;
+  $('#out').textContent=out;
+  $('#outWrap').classList.remove('hide');
+  $('#outWrap').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+$('#field').addEventListener('change',()=>{renderActivities();renderPolish();});
+$('#approach').addEventListener('change',renderLedger);
+$('#agent').addEventListener('change',e=>{renderLedger();$('#agentCaution').classList.toggle('hide',!e.target.checked);});
+$('#pub').addEventListener('change',renderPub);
+$('#gen').addEventListener('click',genR);
+$('#clr').addEventListener('click',()=>{
+  ['gTools','gUses','gLog'].forEach(id=>$('#'+id).value='');
+  document.querySelectorAll('#activities input:checked, .gv:checked').forEach(x=>x.checked=false);
+  if($('#agent')){$('#agent').checked=false;$('#agentCaution').classList.add('hide');renderLedger();}
+  $('#outWrap').classList.add('hide');
+});
+$('#copy').addEventListener('click',()=>navigator.clipboard.writeText($('#out').textContent).then(()=>toast('已複製')));
+$('#dl').addEventListener('click',()=>{
+  const b=new Blob([$('#out').textContent],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='AI使用揭露聲明.txt';a.click();URL.revokeObjectURL(a.href);toast('已下載');
+});
+
+renderActivities(); renderPolish(); renderLedger(); renderPub();
+
 
 /* ---------- init ---------- */
 buildTeacherForm();
 wireTeacher();
 $('#tabStudent').addEventListener('click',()=>setMode('student'));
 $('#tabTeacher').addEventListener('click',()=>setMode('teacher'));
+$('#tabResearcher').addEventListener('click',()=>setMode('researcher'));
 $('#loadDemo').addEventListener('click',()=>{
   renderStudent({c:"質性研究方法(範例)",t:"陳老師",lv:3,pr:["qualitative","interpret"],
     nd:["translate"],
@@ -905,7 +1338,9 @@ $('#loadDemo').addEventListener('click',()=>{
 });
 
 (function bootFromUrl(){
-  const raw = new URLSearchParams(location.search).get('policy');
+  const params=new URLSearchParams(location.search);
+  if(params.get('tab')==='researcher'){ setMode('researcher'); return; }
+  const raw = params.get('policy');
   if(raw){
     // a student opened the shared link → show the student view with this course's policy
     try{ const p=JSON.parse(b64u.dec(raw)); renderStudent(p); setMode('student'); return; }
