@@ -326,6 +326,9 @@
   .faqlink{display:inline-block;margin-top:2px;color:var(--accent-deep);cursor:pointer;font-size:13px;font-weight:500}
   .faqlink:hover{text-decoration:underline}
   .faqpoint{text-align:center;margin:18px 0 2px;font-size:13px;color:var(--ink-soft)}
+  .selfdisc{margin-top:16px;background:var(--accent-wash);border:1px solid var(--line);border-radius:var(--radius-sm);padding:13px 16px;font-size:13px;color:var(--ink-soft);line-height:1.7}
+  .selfdisc b{color:var(--ink)}
+  .selfdisc .faint{display:block;margin-top:4px}
   .navguide{display:grid;gap:7px;margin:16px 0 4px}
   .navrow{display:flex;gap:12px;align-items:baseline;text-align:left;width:100%;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 15px;cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s}
   .navrow:hover{border-color:var(--accent);background:var(--accent-wash)}
@@ -376,7 +379,7 @@
   <details class="sources" id="aboutSources">
     <summary><span>依據與彈性調整 · About &amp; sources <span class="en">why you can trust this, and how to adapt it</span></span><span class="chev">▶</span></summary>
     <div class="inner">
-      <p class="lead">本工具由政治大學圖書館整理,作為<b>參考</b>(非強制),搭配 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener"><b>政大圖書館 AI 使用倫理指引</b></a> 一併使用。下表只列<b>真正支撐設計、且維持在最新(2025–2026)</b>的關鍵來源;AI 變化快,連結會指向最新的概念與實務。實際規範以校方、院系所與授課教師政策為準。</p>
+      <p class="lead">本工具由政治大學圖書館整理,作為<b>參考</b>(非強制),搭配 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener"><b>政大圖書館 AI 使用指引</b></a> 一併使用。下表只列<b>真正支撐設計、且維持在最新(2025–2026)</b>的關鍵來源;AI 變化快,連結會指向最新的概念與實務。實際規範以校方、院系所與授課教師政策為準。</p>
       <div class="mapgrid">
         <div class="maprow"><div class="mapwhat">五層級權限量表(中性、非紅綠燈)</div><div class="mapsrc"><a href="https://arxiv.org/abs/2412.09029" target="_blank" rel="noopener">AI Assessment Scale</a> — Perkins, Roe &amp; Furze</div></div>
         <div class="maprow"><div class="mapwhat">任務揭露的 43 項細目</div><div class="mapsrc"><a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT 分類法</a>(Suchikova et al.),即 CUNY AI Lab 工具所用</div></div>
@@ -389,6 +392,7 @@
         <div class="maprow"><div class="mapwhat">取向=方法輪廓(非科系)</div><div class="mapsrc">改寫自 Biglan(1973)/ Becher &amp; Trowler 的 hard↔soft 連續體</div></div>
       </div>
       <p class="lead" style="margin-top:14px"><b>投稿前參考:</b>各大學術出版社(Nature、Elsevier、IEEE、Science、COPE、ICMJE)一致要求:<b>AI 不能列為作者、AI 使用須揭露、作者須自行查證並為內容負責</b>。</p>
+      <div class="selfdisc">🔎 <b>本站自己的 AI 使用揭露 · This tool's own AI disclosure.</b> 這個網頁在政大圖書館的構想與規劃下,由 <b>Claude Opus 4.8</b> 協助整理內容、撰寫程式與查找資料。所有資料來源、政策與案例都經人工核對,設計判斷與最終定稿由館方負責。我們把這段揭露放在這裡,讓這個工具本身也成為一個誠實揭露 AI 使用的實例。<br><span class="faint">Conceived and directed by NCCU Library, this site was built with help from Claude Opus 4.8 (drafting content, writing code, finding sources). All sources, policies and cases were human-checked; design choices and the final version are the library's own. We disclose this so the tool itself is a working example of honest AI-use disclosure.</span></div>
     </div>
   </details>
 
@@ -439,7 +443,8 @@
       <h2><span class="step-n">4</span> 給學生的承諾 <span class="en">Your promise to students</span></h2>
       <p class="hint">這是整個工具最重要的一欄,也會顯示在學生頁面最上方。研究顯示,學生隱瞞 AI 使用多半是理性的自保,除非誠實是安全的。這句話讓誠實變安全。<br>
         <span class="faint">The single most important field, shown atop the student page. Students hide AI use rationally, unless honesty is made safe.</span></p>
-      <label class="field"><textarea id="tPromise">誠實揭露 AI 使用不會讓你被扣分。我把它當作理解你學習歷程的方式,而不是抓錯。有疑問時,寧可多寫一句,我們再一起討論。</textarea></label>
+      <label class="field"><textarea id="tPromise">誠實揭露 AI 使用不會讓你被扣分。我把它當作理解你學習歷程的方式,而不是抓錯。有疑問時,寧可多寫一句,我們再一起討論。
+Honestly disclosing your AI use won't cost you marks. I read it as a way to understand your learning, not to catch you out. When in doubt, write one extra line and we'll talk it through.</textarea></label>
     </div>
 
     <details class="advanced">
@@ -665,7 +670,8 @@
   </details>
 
   <div class="disclaimer">
-    <b>關於這個工具 / About.</b> 由政治大學圖書館整理,作為研究者規劃與揭露 AI 使用的<b>參考</b>,非強制。<b>投稿前務必以目標期刊/出版社的現行作者指南為準;政策變動快,本整理僅供起步規劃。</b> 更多見 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener">政大圖書館 AI 使用倫理指引</a>。<br>
+    <b>關於這個工具 / About.</b> 由政治大學圖書館整理,作為研究者規劃與揭露 AI 使用的<b>參考</b>,非強制。<b>投稿前務必以目標期刊/出版社的現行作者指南為準;政策變動快,本整理僅供起步規劃。</b> 更多 AI 使用方式說明請參考 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener">政大圖書館 AI 使用指引</a>。<br>
+    <span class="faint">🔎 本站由政大圖書館規劃、Claude Opus 4.8 協助製作,資料經人工核對,作為 AI 使用揭露的實例。 · Built by NCCU Library with help from Claude Opus 4.8; sources human-checked — a live example of AI-use disclosure.</span><br>
     <span class="faint">A reference for planning and disclosing AI use, not a mandate. Always defer to your target journal's current author guidelines — policies change fast.</span>
   </div>
   <div class="footnote">完全在你的瀏覽器裡執行,不會上傳或儲存任何內容。<span class="faint">Runs entirely in your browser. Nothing is uploaded.</span> · 可自由 fork 修改。</div>
@@ -714,7 +720,7 @@
         <div class="fpoint"><div class="fh">社會科學 <span class="en">Social science</span></div>
           <p>質性研究可以讓人和 AI 各自獨立編碼,再比對不一致的地方,常能找到人單獨看不到的洞見;量化和計算分析則要記模型版本、參數、可複製。訪談稿整理、大規模社群文本分析也很實用。研究者頁的方法別紀錄本就是為這些設計的。<br><span class="faint">Qualitative: code independently from AI, then compare disagreements for new insight. Quantitative: log versions, parameters, reproducibility. Also useful for transcript cleanup and large-scale text analysis.</span></p></div>
         <div class="fpoint"><div class="fh">商管 <span class="en">Business &amp; management</span></div>
-          <p>研究發現顧問用 AI 後產出更快也更好,而且對原本表現較弱的人幫助更大(有「拉平」效果)。但要小心在自己不熟的決策上過度依賴。教學上很適合做案例分析、市場資料整理。<br><span class="faint">Studies show consultants produced faster, better work with AI, with the biggest lift for lower performers — but watch over-reliance on decisions outside your expertise.</span></p></div>
+          <p>研究發現顧問用 AI 後產出更快也更好,而且對原本表現較弱的人幫助更大(有「拉平」效果)。但同一份研究也發現,用在能力邊界外的任務反而更差、而且人會過度依賴,所以自己不熟的決策要特別小心。教學上很適合做案例分析、市場資料整理。<br><span class="faint">A 758-consultant BCG field experiment found faster, better work with AI and the biggest lift for lower performers — but worse results on tasks outside AI's frontier, with people over-relying. Be careful on decisions outside your expertise.</span> <a href="https://aiinstitute.hbs.edu/back-to-the-beginnings-of-ai-at-work/" target="_blank" rel="noopener">研究 ↗</a></p></div>
         <div class="fpoint"><div class="fh">傳播 / 新聞 <span class="en">Communication &amp; journalism</span></div>
           <p>AI 可以幫初稿、整理資料、轉錄逐字稿;但新聞的核心是查證,AI 會捏造。它也是很好的媒體素養教材,例如辨識深偽和 AI 生成內容。<br><span class="faint">AI helps with drafts, research and transcription, but journalism runs on verification and AI fabricates. Also great material for media literacy — spotting deepfakes and AI-generated content.</span></p></div>
         <div class="fpoint"><div class="fh">教育 <span class="en">Education</span></div>
@@ -861,7 +867,7 @@
 
   <div class="disclaimer" id="sharedDisclaimer">
     <b>關於這個工具 / About.</b> 本工具由政治大學圖書館整理,作為校內師生溝通與揭露 AI 使用的<b>參考</b>,並非強制規範。層級架構改編自 AI Assessment Scale(Perkins, Roe &amp; Furze),設計取向參酌 Russell Group 五項原則、Monash、Stanford、Oxford、HKU 等校公開政策、MLA/APA 引用規範,以及多項同儕審查實證研究(見上方「依據與彈性調整」)。<br>
-    <b>實際規範以校方、院系所及授課教師的政策為準;教師在課程中的規定優先於本工具的任何預設。使用前請依所屬單位政策彈性調整。</b> 校內規範與更多說明請見 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener">政大圖書館 AI 使用倫理指引</a>。<br>
+    <b>實際規範以校方、院系所及授課教師的政策為準;教師在課程中的規定優先於本工具的任何預設。使用前請依所屬單位政策彈性調整。</b> 更多 AI 使用方式說明請參考 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener">政大圖書館 AI 使用指引</a>。<br>
     <span class="faint">Offered by the NCCU Library as a reference, not a mandate. Your college, department, and course policies govern; your instructor's course rule always takes precedence. Adapt before use.</span>
   </div>
   <div class="footnote" id="sharedFootnote">
@@ -1067,8 +1073,7 @@ function syllabus(p){
   const en = `This course (${p.c}) sets its generative-AI policy at Level ${p.lv} — ${tier.en}: ${tier.descEn}\n`
     + (tier.discloses ? `When you use AI, attach an AI-use disclosure with your work (you can make one with this tool).` : `No AI-use disclosure is required at this level.`)
     + `\nThese need no disclosure: ${ndTxtEn}.`;
-  const promise = p.pm ? `\n\n${p.pm}` : "";
-  return zh + `\n\n— English —\n` + en + promise;
+  return zh + `\n\n— English —\n` + en;
 }
 
 /* ---------- teacher actions ---------- */
@@ -1110,7 +1115,7 @@ function renderStudent(p){
       </div>
       ${p.pm?`<div class="promise">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3a6b5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-        <div class="pt"><b>老師的承諾:</b> ${p.pm}</div></div>`:''}
+        <div class="pt"><b>老師的承諾 · Your instructor's promise:</b><br>${p.pm.replace(/\n/g,"<br>")}</div></div>`:''}
       ${tier.discloses?`<div class="nodisc"><b>不需揭露:</b>
         <ul>${BASELINE.map(b=>`<li>${b.zh} <span class="faint">${b.en}</span></li>`).join('')}${(p.nd||[]).map(id=>{const it=ITEMS[id];return it?`<li>${it.zh} <span class="faint">· 本課</span></li>`:'';}).join('')}</ul></div>`:''}
       ${p.tu?`<div class="nodisc" style="border-top:1px solid var(--line)"><b>老師自己的 AI 使用:</b> ${p.tu}</div>`:''}
@@ -1226,7 +1231,7 @@ function renderStudent(p){
         <a href="https://style.mla.org/citing-generative-ai-updated-revised/" target="_blank" rel="noopener">MLA</a> ·
         <a href="https://apastyle.apa.org/blog/cite-generative-ai-references" target="_blank" rel="noopener">APA</a> ·
         Chicago(18 版 §14.112)。<br>
-        更多校內規範請見 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener"><b>政大圖書館 AI 使用倫理指引</b></a>。</p>
+        更多 AI 使用方式說明請參考 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener"><b>政大圖書館 AI 使用指引</b></a>。</p>
       <div class="btn-row">
         <button class="btn primary" id="sGen">產生 · Generate</button>
         <button class="btn ghost" id="sClear">清除 · Clear</button>
@@ -1584,7 +1589,7 @@ $('#tabFaq').addEventListener('click',()=>setMode('faq'));
 $('#loadDemo').addEventListener('click',()=>{
   renderStudent({c:"質性研究方法(範例)",t:"陳老師",lv:3,pr:["qualitative","interpret"],
     nd:["translate"],
-    pm:"誠實揭露 AI 使用不會讓你被扣分。我把它當作理解你學習歷程的方式。有疑問時,寧可多寫一句,我們再討論。",
+    pm:"誠實揭露 AI 使用不會讓你被扣分。我把它當作理解你學習歷程的方式,而不是抓錯。有疑問時,寧可多寫一句,我們再一起討論。\nHonestly disclosing your AI use won't cost you marks. I read it as a way to understand your learning, not to catch you out. When in doubt, write one extra line and we'll talk it through.",
     tu:"我用 Claude 協助整理本課投影片大綱,內容都已檢查。"});
 });
 
