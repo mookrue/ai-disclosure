@@ -27,7 +27,7 @@
     --radius:14px;
     --radius-sm:9px;
     --shadow:0 1px 2px rgba(35,42,61,.04),0 8px 28px rgba(35,42,61,.06);
-    --maxw:720px;
+    --maxw:900px;
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
@@ -557,11 +557,14 @@
 
   <div class="card" style="border-color:var(--accent)">
     <h2><span class="step-n">3</span> 從第一天就留好這些紀錄 <span class="en">Keep these records from day one</span></h2>
-    <p class="hint">這是本工具的重點,而且<b>會依你的研究取徑調整</b>。質性要留的(稽核軌跡)和量化/計算要留的(版本、參數、可複製性)不一樣。<b>邊做邊留,揭露就只是把紀錄謄上去。</b><br><span class='faint'>This is the heart of the tool, and it adapts to your approach — qualitative (audit trail) vs. quantitative/computational (versions, parameters, reproducibility) keep different things. Log as you go, and disclosure is just transcribing your notes.</span></p>
+    <p class="hint">這不是一張要你當場填的表,而是一份<b>「該記下哪些東西」的參考清單</b>,會依你的研究取徑調整。質性要留的(稽核軌跡)和量化/計算要留的(版本、參數、可複製性)不一樣。實際紀錄可以用下面推薦的現成範本,重點是<b>邊做邊留,投稿時就只是把紀錄謄上去。</b><br><span class="faint">This isn't a form to fill in here — it's a reference checklist of what to record, adapted to your approach. Keep the actual log in one of the templates below; the point is to log as you go.</span></p>
     <div class="ledger" id="ledger">
       <div class="lhead"><span>我的 AI 使用紀錄本 · My AI-use log</span><span class="en" id="ledgerBadge">keep as you go</span></div>
       <div id="ledgerRows"></div>
     </div>
+    <details class="foldnote" style="margin-top:14px"><summary>要一份可以實際填的紀錄範本?<span class="en">Want a fillable log template?</span><span class="foldchev">▶</span></summary>
+      <div class="principle" style="margin:0 15px 14px;border-radius:8px">別人已經設計好一些現成的:<a href="https://ai-cards.org/" target="_blank" rel="noopener">AI Usage Cards</a>(以結構化卡片記錄工具、用途、提示,附學術論文支持)、<a href="https://lehren-und-lernen-mit-ki.uni-graz.at/en/options-for-ai-labeling/options-for-ai-labeling/" target="_blank" rel="noopener">格拉茨大學的 AI 標示與紀錄指引</a>(在附錄放提示紀錄、研究日誌的做法)。也可以簡單用一份 <b>ai_log</b>(工具、日期、段落、用途、你查證了什麼)自己記。<br><span class="faint">Ready-made options: AI Usage Cards (structured cards, backed by a paper) and the University of Graz guide (prompt logs and research diaries in an appendix). Or keep a simple ai_log yourself.</span></div>
+    </details>
     <label class="chk agenttoggle" style="margin-top:14px"><input type="checkbox" id="agent"><span class="ct">我(可能)會用到<b>會自主多步驟執行或採取行動的 AI agent</b>(如 deep research、coding agent、自動化實驗/分析)<span class="en">I use an AI agent that runs multi-step or takes actions</span></span></label>
     <div id="agentCaution" class="hide agentcaution">
       <b>代理式 AI 改變了該留存的東西:</b>單位從「輸出」變成「行動路徑」。它自己跑很多步驟、你未必看得到中間。上方紀錄本已為你加入 agent 專屬項目。兩個提醒:<b>(1) 可複製性</b>:代理式研究常因中間資訊缺漏而無法重現,務必留下可檢視的產物與軌跡;<b>(2) 你仍為 agent 的產出與行動負全責</b>,且已有「AI 生成研究抄襲」的案例,原創性要自行查核。<br><span class='faint'>Agents shift what you must keep: the unit becomes the action path, not the output. Two reminders: (1) reproducibility — agentic research often can't be reproduced when intermediate detail is missing, so keep inspectable artifacts and traces; (2) you remain fully accountable for the agent's outputs and actions.</span>
@@ -1249,69 +1252,89 @@ function renderStudent(p){
 function wireStudentForm(p, tier){
   const gen = ()=>{
     const tools = esc($('#sTools').value) || "(未填工具名稱)";
-    const used = [...document.querySelectorAll('#sClusters input:checked')].map(x=> x.value==='__light__' ? '整體僅輕微/一般性協助 / only light, general help' : (ITEMS[x.value]? ITEMS[x.value].zh+' / '+ITEMS[x.value].en : x.value));
+    const checked = [...document.querySelectorAll('#sClusters input:checked')];
+    const usedZh = checked.map(x=> x.value==='__light__' ? '整體僅輕微/一般性協助' : (ITEMS[x.value]? ITEMS[x.value].zh : x.value));
+    const usedEn = checked.map(x=> x.value==='__light__' ? 'only light, general help' : (ITEMS[x.value]? ITEMS[x.value].en : x.value));
     const mine = esc($('#sMine').value);
     const v1=$('#v1').checked, v2=$('#v2').checked, v3=$('#v3').checked, v0=$('#v0').checked;
     const vEg = esc($('#sVerifyEg').value);
-    const vOther = [...document.querySelectorAll('#vOther input:checked')].map(x=>{const en=x.closest('label').querySelector('.en'); return x.value + (en?' / '+en.textContent:'');});
-    const chal = [...document.querySelectorAll('#sChallenge input:checked')].map(x=>{const en=x.closest('label').querySelector('.en'); return x.value + (en?' / '+en.textContent:'');});
+    const vOtherEls = [...document.querySelectorAll('#vOther input:checked')];
+    const vOtherZh = vOtherEls.map(x=>x.value);
+    const vOtherEn = vOtherEls.map(x=>{const en=x.closest('label').querySelector('.en'); return en?en.textContent:x.value;});
+    const chalEls = [...document.querySelectorAll('#sChallenge input:checked')];
+    const chalZh = chalEls.map(x=>x.value);
+    const chalEn = chalEls.map(x=>{const en=x.closest('label').querySelector('.en'); return en?en.textContent:x.value;});
     const chalEg = esc($('#sChallengeEg').value);
     const proof = esc($('#sProof').value);
     const agent = $('#sAgent') && $('#sAgent').checked;
-    let agentBlock = '';
-    if(agent){
-      const agAct = esc($('#agAct').value);
-      const agOv = $('#agOversight').value;
-      const agLog = esc($('#agLog').value);
-      const agAcc = $('#agAccount').checked;
-      agentBlock = '\n\nAI agent 使用 Agentic AI use:'
-        + '\n· 執行的動作/存取 Actions & access:' + (agAct || '(未填寫)')
-        + '\n· 我的把關 Oversight:' + (agOv || '(未填寫)')
-        + (agLog ? '\n· 執行紀錄 Run log:' + agLog : '')
-        + (agAcc ? '\n· 我為此 agent 的產出與行動負責。I remain accountable for its outputs and actions.' : '');
-    }
+    const agAct = agent?esc($('#agAct').value):'', agOv = agent?$('#agOversight').value:'', agLog = agent?esc($('#agLog').value):'', agAcc = agent?$('#agAccount').checked:false;
     const missing = [];
-    if(!used.length) missing.push('AI 幫了什麼');
+    if(!checked.length) missing.push('AI 幫了什麼');
     if(!mine) missing.push('你自己做了什麼');
     if(!(v1||v2||v3||v0)) missing.push('查證');
     if(missing.length) toast('補上「'+missing.join('、')+'」會讓說明更完整,不過也可以直接產生');
     const L=['一','二','三','四','五'][p.lv-1];
     const today = new Date().toLocaleDateString('zh-TW',{year:'numeric',month:'long',day:'numeric'});
-    let vLines;
-    if(v0){ vLines = '· 本次未使用需查證的外部資料/來源 / No external sources needing verification'; }
+    const todayEn = new Date().toLocaleDateString('en-CA');
+    // verification lines (zh / en)
+    let vZh, vEn;
+    if(v0){ vZh='· 本次未使用需查證的外部資料/來源'; vEn='· No external sources needing verification'; }
     else {
-      const lv=[];
-      if(v1) lv.push('· 第 1 層・存在:確認來源真實存在 / L1 Exists: the source is real');
-      if(v2) lv.push('· 第 2 層・一致:確認內容與 AI 摘要一致 / L2 Matches: content matches AI\'s summary');
-      if(v3) lv.push('· 第 3 層・佐證:確認資料確能支持我的論點 / L3 Supports: it backs my point');
-      vLines = lv.length ? lv.join('\n') : '· (未填寫)';
+      const az=[], ae=[];
+      if(v1){ az.push('· 第 1 層・存在:確認來源真實存在'); ae.push('· L1 Exists: the source is real'); }
+      if(v2){ az.push('· 第 2 層・一致:確認內容與 AI 摘要一致'); ae.push('· L2 Matches: content matches AI\'s summary'); }
+      if(v3){ az.push('· 第 3 層・佐證:確認資料確能支持我的論點'); ae.push('· L3 Supports: it backs my point'); }
+      vZh = az.length?az.join('\n'):'· (未填寫)'; vEn = ae.length?ae.join('\n'):'· (not filled in)';
     }
-    if(vOther.length) vLines += (vLines?'\n':'') + vOther.map(x=>'· '+x).join('\n');
-    if(vEg) vLines += '\n  例:'+vEg;
-    let chalBlock = '';
-    if(chal.length || chalEg){
-      chalBlock = '\n\n我如何挑戰或改進 AI What I did to push back / improve:\n'
-        + (chal.length ? chal.map(x=>'· '+x).join('\n') : '')
-        + (chalEg ? (chal.length?'\n':'') + '  例:'+chalEg : '');
+    if(vOtherZh.length){ vZh+='\n'+vOtherZh.map(x=>'· '+x).join('\n'); vEn+='\n'+vOtherEn.map(x=>'· '+x).join('\n'); }
+    if(vEg){ vZh+='\n  例:'+vEg; vEn+='\n  e.g.: '+vEg; }
+    // challenge blocks
+    let chalZhB='', chalEnB='';
+    if(chalZh.length || chalEg){
+      chalZhB = '\n\n我如何挑戰或改進 AI:\n'+(chalZh.length?chalZh.map(x=>'· '+x).join('\n'):'')+(chalEg?(chalZh.length?'\n':'')+'  例:'+chalEg:'');
+      chalEnB = '\n\nHow I pushed back / improved AI:\n'+(chalEn.length?chalEn.map(x=>'· '+x).join('\n'):'')+(chalEg?(chalEn.length?'\n':'')+'  e.g.: '+chalEg:'');
     }
-    const out =
-`—— AI 使用揭露 / AI Use Disclosure ——
-課程 Course:${p.c}
-本課層級 Level:層級${L}・${tier.zh} / ${tier.en}
-使用工具 Tool(s):${tools}
-日期 Date:${today}
+    // agent blocks
+    let agZh='', agEn='';
+    if(agent){
+      agZh = '\n\nAI agent 使用:\n· 執行的動作/存取:'+(agAct||'(未填寫)')+'\n· 我的把關:'+(agOv||'(未填寫)')+(agLog?'\n· 執行紀錄:'+agLog:'')+(agAcc?'\n· 我為此 agent 的產出與行動負責。':'');
+      agEn = '\n\nAgentic AI use:\n· Actions & access: '+(agAct||'(not filled in)')+'\n· Oversight: '+(agOv||'(not filled in)')+(agLog?'\n· Run log: '+agLog:'')+(agAcc?'\n· I remain accountable for its outputs and actions.':'');
+    }
+    const zhOut =
+`—— AI 使用揭露 ——
+課程:${p.c}
+本課層級:層級${L}・${tier.zh}
+使用工具:${tools}
+日期:${today}
 
-AI 協助的環節 What AI helped with:
-${used.length? used.map(u=>'· '+u).join('\n') : '· (未勾選特定環節)'}
+AI 協助的環節:
+${usedZh.length? usedZh.map(u=>'· '+u).join('\n') : '· (未勾選特定環節)'}
 
-我自己的工作 What I did (judgement, edits, rejections):
+我自己的工作(判斷、修改、否決):
 ${mine || '(未填寫)'}
 
-我查證的部分 What I verified:
-${vLines}${chalBlock}${agentBlock}
-${proof? '\n歷程佐證 Process record:'+proof : ''}
+我查證的部分:
+${vZh}${chalZhB}${agZh}${proof? '\n\n歷程佐證:'+proof : ''}
 
-—— 依《${p.c}》課程 AI 政策自我揭露 · Self-disclosed under the course AI policy ——`;
+—— 依《${p.c}》課程 AI 政策自我揭露 ——`;
+    const enOut =
+`—— AI Use Disclosure ——
+Course: ${p.c}
+Level: Level ${p.lv} — ${tier.en}
+Tool(s): ${tools}
+Date: ${todayEn}
+
+What AI helped with:
+${usedEn.length? usedEn.map(u=>'· '+u).join('\n') : '· (no specific parts selected)'}
+
+What I did (judgement, edits, rejections):
+${mine || '(not filled in)'}
+
+What I verified:
+${vEn}${chalEnB}${agEn}${proof? '\n\nProcess record: '+proof : ''}
+
+— Self-disclosed under the course AI policy —`;
+    const out = zhOut + '\n\n──────────────────────────\n\n' + enOut;
     $('#sOut').textContent = out;
     $('#sOutWrap').classList.remove('hide');
     $('#sOutWrap').scrollIntoView({behavior:'smooth',block:'nearest'});
@@ -1385,7 +1408,7 @@ const APPROACH_RECORDS={
   {t:"參與者資料的處理與同意 <span class='en'>Participant data & consent</span>",why:"把訪談等個資丟進 AI 前,確認去識別化與同意範圍;這也是揭露的一部分。<br><span class='en'>Before putting interviews or personal data into AI, confirm de-identification and consent scope — this is part of disclosure.</span>"}
  ],
  quant:[
-  {t:"模型確切版本 + 存取日期 + 系統指紋 <span class='en'>Exact version + date + system fingerprint</span>",why:"託管模型會隨時間漂移(有任務準確率三個月從 84% 掉到 51%),版本與日期是可複製性底線。系統指紋=模型回傳的識別碼,若有就一併記下。<br><span class='en'>Hosted models drift (one task's accuracy fell 84%→51% in three months); version + date are the reproducibility floor. A system fingerprint is the model's returned identifier — log it if available.</span>"},
+  {t:"模型確切版本 + 存取日期 + 系統指紋 <span class='en'>Exact version + date + system fingerprint</span>",why:"託管模型會隨時間漂移(有任務準確率三個月從 84% 掉到 51%),版本與日期是可複製性底線。系統指紋=模型回傳的識別碼,若有就一併記下。<br><span class='en'>Hosted models drift (one task's accuracy fell 84%→51% in three months); version + date are the reproducibility floor. A system fingerprint is the model's returned identifier — log it if available.</span> <a href='https://arxiv.org/abs/2307.09009' target='_blank' rel='noopener'>來源:模型漂移研究 ↗</a>"},
   {t:"參數:temperature、seed、top_p 等 <span class='en'>Parameters</span>",why:"設定會大幅改變輸出。白話:temperature=隨機/發散程度、seed=亂數種子(讓結果可重跑)、top_p=取樣範圍。能設就設 temperature=0、記下 seed,但註明 seed 在託管 API 上不保證重現。<br><span class='en'>Settings change outputs a lot. Plainly: temperature = randomness, seed = a number that makes runs repeatable, top_p = sampling range. Set temperature=0 and record the seed where you can, but note seeds don't guarantee reproducibility on hosted APIs.</span>"},
   {t:"系統與提示設計、執行/session 軌跡 <span class='en'>Prompt design & run traces</span>",why:"提示格式本身就能讓準確率變動數十個百分點;軌跡=你與 AI 的完整互動/執行紀錄,完整留存才可稽核。<br><span class='en'>Prompt formatting alone can shift accuracy by tens of points; a trace is your full interaction/run log — keep it complete for auditability.</span>"},
   {t:"優先開放權重、本地鎖版本 <span class='en'>Prefer open-weight, pinned models</span>",why:"開放權重=模型參數公開、可下載鎖住版本;能連同分析一起釋出供他人複製,是專有模型做不到的。需要可複製時優先採用。<br><span class='en'>Open-weight = public parameters you can pin and release with your analysis for others to reproduce — something proprietary models can't. Prefer them when reproducibility matters.</span>"},
@@ -1477,34 +1500,53 @@ function renderPub(){
 function genR(){
   const p=PUBS[$('#pub').value]||PUBS.other;
   const tools=esc($('#gTools').value)||"(未填工具與版本)";
-  const acts=[...document.querySelectorAll('#activities input:checked')].map(x=>{const en=x.closest('label').querySelector('.en'); return x.value + (en?' / '+en.textContent:'');});
+  const actEls=[...document.querySelectorAll('#activities input:checked')];
+  const actsZh=actEls.map(x=>x.value);
+  const actsEn=actEls.map(x=>{const en=x.closest('label').querySelector('.en'); return en?en.textContent:x.value;});
   const uses=esc($('#gUses').value);
-  const vs=[...document.querySelectorAll('.gv:checked')].map(x=>{const en=x.closest('label').querySelector('.en'); return x.value + (en?' / '+en.textContent:'');});
+  const vEls=[...document.querySelectorAll('.gv:checked')];
+  const vsZh=vEls.map(x=>x.value);
+  const vsEn=vEls.map(x=>{const en=x.closest('label').querySelector('.en'); return en?en.textContent:x.value;});
   const log=esc($('#gLog').value);
-  const where=p.where.replace(/<[^>]+>/g,'');
+  const whereZh=(p.where.split('<br>')[0]||'').replace(/<[^>]+>/g,'');
+  const mEn=p.where.match(/class=['"]en['"][^>]*>([^<]*)</); const whereEn=mEn?mEn[1]:whereZh;
+  const nameClean=p.name.replace(/<[^>]+>/g,'');
   const today=new Date().toLocaleDateString('zh-TW',{year:'numeric',month:'long',day:'numeric'});
+  const todayEn=new Date().toLocaleDateString('en-CA');
   const usedAgent=$('#agent') && $('#agent').checked;
-  const agentLine=usedAgent?`\n代理式 AI Agentic AI:本研究使用了會自主多步驟執行的 AI agent;已保留其行動與存取紀錄、可檢視產物,作者於檢查點審視並為其產出與行動負責。\n  An autonomous multi-step AI agent was used; its actions and artifacts were logged and reviewed, and the authors remain accountable.\n`:'';
-  const out=
-`—— AI 使用揭露聲明(建議置於:${where})——
-AI Use Disclosure (suggested placement: ${where})
+  const agentZh=usedAgent?`\n代理式 AI:本研究使用了會自主多步驟執行的 AI agent;已保留其行動與存取紀錄、可檢視產物,作者於檢查點審視並為其產出與行動負責。\n`:'';
+  const agentEn=usedAgent?`\nAgentic AI: an autonomous multi-step AI agent was used; its actions and artifacts were logged and reviewed, and the authors remain accountable.\n`:'';
+  const zhOut=
+`—— AI 使用揭露聲明(建議置於:${whereZh})——
 
 作者於本稿準備過程中使用了下列生成式 AI 工具:
+${tools}
+
+用途:
+${actsZh.length?actsZh.map(a=>'· '+a).join('\n'):(uses?'· '+uses:'· (未指定)')}
+${uses&&actsZh.length?'補充:'+uses:''}
+${agentZh}查證與負責:
+${vsZh.length?vsZh.map(v=>'· '+v).join('\n'):'· (建議勾選查證項目)'}
+· AI 未被列為作者;作者對本文全部內容之正確性與完整性負責。
+${log?'\n佐證:'+log:''}
+
+(整理於 ${today},投稿前請以 ${nameClean} 現行作者指南為準)`;
+  const enOut=
+`—— AI Use Disclosure (suggested placement: ${whereEn}) ——
+
 The authors used the following generative-AI tools in preparing this manuscript:
 ${tools}
 
-用途 Used for:
-${acts.length?acts.map(a=>'· '+a).join('\n'):(uses?'· '+uses:'· (未指定 / not specified)')}
-${uses&&acts.length?'補充 Note: '+uses:''}
-${agentLine}
-查證與負責 Verification & accountability:
-${vs.length?vs.map(v=>'· '+v).join('\n'):'· (建議勾選查證項目)'}
-· AI 未被列為作者;作者對本文全部內容之正確性與完整性負責。
-  AI is not listed as an author; the authors take full responsibility for all content.
-${log?'\n佐證 Evidence:'+log:''}
+Used for:
+${actsEn.length?actsEn.map(a=>'· '+a).join('\n'):(uses?'· '+uses:'· (not specified)')}
+${uses&&actsEn.length?'Note: '+uses:''}
+${agentEn}Verification & accountability:
+${vsEn.length?vsEn.map(v=>'· '+v).join('\n'):'· (please tick the verification items)'}
+· AI is not listed as an author; the authors take full responsibility for all content.
+${log?'\nEvidence: '+log:''}
 
-(整理於 ${today}，投稿前請以 ${p.name.replace(/<[^>]+>/g,'')} 現行作者指南為準)
-(Compiled ${today}; defer to ${p.name.replace(/<[^>]+>/g,'')}'s current author guidelines before submission.)`;
+(Compiled ${todayEn}; defer to ${nameClean}'s current author guidelines before submission.)`;
+  const out=zhOut+'\n\n──────────────────────────\n\n'+enOut;
   $('#out').textContent=out;
   $('#outWrap').classList.remove('hide');
   $('#outWrap').scrollIntoView({behavior:'smooth',block:'nearest'});
