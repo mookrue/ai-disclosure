@@ -195,6 +195,12 @@
   .baseul li{font-size:13.5px;color:var(--ink-soft);padding:2px 0}
   .baseul li::before{content:"—";color:var(--ink-faint);margin-right:7px}
   .citenote{font-size:12.5px;color:var(--ink-soft);background:#fbfaf7;border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 13px;margin-top:16px;line-height:1.6}
+  .exblock{margin-top:14px;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden}
+  .exlabel{background:var(--accent-wash);color:var(--accent-deep);font-weight:600;font-size:13.5px;padding:9px 14px}
+  .exlabel .en{font-weight:400;color:var(--ink-faint);font-size:12px}
+  .exstmt{padding:12px 14px;font-family:"Iowan Old Style",Georgia,serif;font-size:13.5px;color:var(--ink);line-height:1.65;background:#fff;white-space:pre-wrap}
+  .exnote{padding:9px 14px 11px;font-size:12.5px;color:var(--ink-soft);background:#fbfbfc;border-top:1px solid var(--line);line-height:1.6}
+  .exnote b{color:var(--ink)}
   /* provenance mapping */
   .mapgrid{margin-top:12px;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden}
   .maprow{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:10px 14px;border-top:1px solid var(--line);font-size:13px;line-height:1.5}
@@ -329,12 +335,18 @@
   .selfdisc{margin-top:16px;background:var(--accent-wash);border:1px solid var(--line);border-radius:var(--radius-sm);padding:13px 16px;font-size:13px;color:var(--ink-soft);line-height:1.7}
   .selfdisc b{color:var(--ink)}
   .selfdisc .faint{display:block;margin-top:4px}
+  .minbox{background:#fff8ec;border:1px solid #f0e0c0;border-radius:var(--radius-sm);padding:11px 14px;margin:10px 0 4px;font-size:13.5px;color:#7a5a1e;line-height:1.6}
+  .minbox .faint{display:block;margin-top:3px;color:var(--ink-faint)}
+  .submitnote{margin-top:12px;background:var(--accent-wash);border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 14px;font-size:13px;color:var(--ink-soft);line-height:1.6}
+  .submitnote b{color:var(--ink)}
+  .submitnote .faint{display:block;margin-top:3px}
   .navguide{display:grid;gap:7px;margin:16px 0 4px}
   .navrow{display:flex;gap:12px;align-items:baseline;text-align:left;width:100%;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 15px;cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s}
   .navrow:hover{border-color:var(--accent);background:var(--accent-wash)}
   .navrow .nlabel{flex:0 0 92px;font-weight:600;color:var(--accent-deep);font-size:14px}
   .navrow .nlabel .en{display:block;font-weight:400;color:var(--ink-faint);font-size:11px}
   .navrow .ndesc{flex:1;color:var(--ink-soft);font-size:13px;line-height:1.5}
+  .navrow .ndesc .en{display:block;color:var(--ink-faint);font-size:11.5px;margin-top:1px}
   @media(max-width:520px){.navrow{flex-direction:column;gap:2px}.navrow .nlabel{flex:none}}
 
   #frontierView{--accent:#5f4a7a;--accent-deep:#48395e;--accent-wash:#efeaf4}
@@ -357,14 +369,14 @@
   <header class="top">
     <div class="eyebrow">政大圖書館 · AI 素養資源 / NCCU Library · AI literacy</div>
     <h1>AI 用得誠實,也用得好 <span class="en" style="font-size:16px">Using AI honestly, and well</span></h1>
-    <div class="sub">政大圖書館做的參考。不強制、不評分,只是幫你把 AI 怎麼用講清楚。挑最符合你現在要做的事:<br><span class="faint">A reference from NCCU Library — not required, not graded. Just here to help you say clearly how you use AI. Pick what fits what you're doing:</span></div>
+    <div class="sub">政大圖書館做的參考。不強制、不評分,只是幫你把 AI 怎麼用講清楚。挑最符合你現在要做的事:<br><span class="faint">A guide from NCCU Library. It is not required and not graded. It helps you explain how you use AI. Choose the tab that fits your task:</span></div>
     <div class="navguide">
-      <button class="navrow" onclick="setMode('teacher')"><span class="nlabel">老師 <span class="en">Teacher</span></span><span class="ndesc">把課堂能不能用 AI、用到哪裡講清楚,產生一份給學生看的說明。</span></button>
-      <button class="navrow" onclick="setMode('student')"><span class="nlabel">學生 <span class="en">Student</span></span><span class="ndesc">說明你這份作業是怎麼跟 AI 一起做的。</span></button>
-      <button class="navrow" onclick="setMode('researcher')"><span class="nlabel">研究者 <span class="en">Researcher</span></span><span class="ndesc">投稿和送計畫要揭露什麼,邊做邊留紀錄。</span></button>
-      <button class="navrow" onclick="setMode('frontier')"><span class="nlabel">突破與前瞻 <span class="en">Frontiers</span></span><span class="ndesc">AI 讓教、學、研更好的做法,還有名校的參考。</span></button>
-      <button class="navrow" onclick="setMode('pressure')"><span class="nlabel">壓力時刻 <span class="en">Under pressure</span></span><span class="ndesc">趕作業、備課、投稿壓力大時,怎麼用 AI 又不出錯。</span></button>
-      <button class="navrow" onclick="setMode('faq')"><span class="nlabel">常見問題 <span class="en">FAQ</span></span><span class="ndesc">大家最常問、最擔心的,一次說清楚。</span></button>
+      <button class="navrow" onclick="setMode('teacher')"><span class="nlabel">老師 <span class="en">Teacher</span></span><span class="ndesc">把課堂能不能用 AI、用到哪裡講清楚,產生一份給學生看的說明。<span class="en">Set the rules for AI in your class, and make a note to share with students.</span></span></button>
+      <button class="navrow" onclick="setMode('student')"><span class="nlabel">學生 <span class="en">Student</span></span><span class="ndesc">說明你這份作業是怎麼跟 AI 一起做的。<span class="en">Show how you used AI in your work.</span></span></button>
+      <button class="navrow" onclick="setMode('researcher')"><span class="nlabel">研究者 <span class="en">Researcher</span></span><span class="ndesc">投稿和送計畫要揭露什麼,邊做邊留紀錄。<span class="en">See what to disclose for journals and grants, and keep notes as you go.</span></span></button>
+      <button class="navrow" onclick="setMode('frontier')"><span class="nlabel">突破與前瞻 <span class="en">Frontiers</span></span><span class="ndesc">AI 讓教、學、研更好的做法,還有名校的參考。<span class="en">Better ways to use AI in teaching, learning and research, with examples from top schools.</span></span></button>
+      <button class="navrow" onclick="setMode('pressure')"><span class="nlabel">壓力時刻 <span class="en">Under pressure</span></span><span class="ndesc">趕作業、備課、投稿壓力大時,怎麼用 AI 又不出錯。<span class="en">How to use AI safely when you are busy or stressed.</span></span></button>
+      <button class="navrow" onclick="setMode('faq')"><span class="nlabel">常見問題 <span class="en">FAQ</span></span><span class="ndesc">大家最常問、最擔心的,一次說清楚。<span class="en">Common questions and worries, answered simply.</span></span></button>
     </div>
     <div class="switch" role="tablist" aria-label="模式">
       <button id="tabTeacher" role="tab" aria-selected="true">老師設定 · Teacher</button>
@@ -398,17 +410,8 @@
 
   <!-- ================= STUDENT ================= -->
   <section id="studentView">
-    <!-- empty state when no policy present -->
-    <div id="noPolicy" class="empty">
-      <h2>還沒有載入課程政策 · No course policy loaded</h2>
-      <p>請用老師在課程大綱裡提供的連結開啟這個工具,它會自動帶入本課的 AI 使用規則。<br>
-      <span class="faint">Open this tool from the link your instructor put in the syllabus — it loads your course's AI rules automatically.</span></p>
-      <p style="margin-top:14px"><span class="inline-link" id="loadDemo">先看一個範例 · Preview with a sample course →</span></p>
-    <div class="faqpoint">有疑慮或常見問題?<span class="faqlink" onclick="setMode('faq')">看「常見問題」分頁 →</span> <span class="faint">· Questions? See the FAQ tab.</span></div>
-    </div>
-
-    <!-- policy banner + form injected here -->
-    <div id="policyArea" class="hide"></div>
+    <!-- standalone student disclosure form injected here -->
+    <div id="policyArea"></div>
   </section>
 
   <!-- ================= TEACHER ================= -->
@@ -467,30 +470,19 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
     </details>
 
     <div class="card">
-      <h2>產生給學生的連結與大綱文字 <span class="en">Generate</span></h2>
+      <h2>產生課程 AI 規則說明 <span class="en">Generate the course rules</span></h2>
+      <p class="hint">產生一段可貼進<b>課程大綱、LMS 或作業說明</b>的文字,把你的 AI 規則講清楚給學生。學生會自己到「學生」分頁,照你的規則填一份揭露,<b>不需要任何連結</b>。<br><span class="faint">Generate a paragraph for your syllabus, LMS or assignment brief. Students fill in their own disclosure on the Student tab following your rules — no link needed.</span></p>
       <div class="btn-row">
         <button class="btn primary" id="genPolicy">產生 · Generate</button>
-        <button class="btn ghost" id="previewAsStudent">預覽學生會看到的頁面 · Preview the student page</button>
       </div>
       <div id="teacherOut" class="hide">
         <div class="divider"></div>
-        <div class="lab" style="font-weight:600;font-size:14.5px;margin-bottom:6px">學生連結 · Student link</div>
-        <div class="linkbox">
-          <input type="text" id="studentLink" readonly>
-          <button class="btn ghost" id="copyLink">複製 · Copy</button>
-        </div>
-        <div id="fileWarn" class="hide" style="margin-top:8px;font-size:12.5px;color:#a1442e;background:#fdf1ee;border:1px solid #f0d3ca;border-radius:8px;padding:9px 11px">⚠ 你現在是用本機檔案(file://)開啟,產生的連結別人無法點開。請先把工具部署到公開網址(如 GitHub Pages),再從那個網址產生連結。<br><span class="faint">You're viewing a local file — this link won't work for others. Deploy the tool to a public URL first, then generate the link there.</span></div>
-        <div class="howto">
-          <b>怎麼把連結交給學生? · How to share the link</b>(擇一 · pick one):<br>
-          ① 貼進<b>課程大綱或 LMS(數位學苑 / Moodle)</b>的作業說明。· Paste into your syllabus or LMS.<br>
-          ② 網址太長可用 <b>reurl.cc</b> 或 TinyURL 縮短。· Shorten the URL if it's long.
-        </div>
-        <div class="divider"></div>
-        <div class="lab" style="font-weight:600;font-size:14.5px;margin-bottom:6px">課程大綱段落 · Syllabus paragraph</div>
+        <div class="lab" style="font-weight:600;font-size:14.5px;margin-bottom:6px">課程規則說明(中英)· Course rules paragraph</div>
         <div class="output" id="syllabusText"></div>
         <div class="btn-row">
-          <button class="btn ghost" id="copySyllabus">複製大綱文字 · Copy paragraph</button>
+          <button class="btn ghost" id="copySyllabus">複製文字 · Copy</button>
         </div>
+        <div class="howto">怎麼給學生:貼進<b>課程大綱或 LMS</b>,或用口頭/書面說明。學生自己到「學生」分頁,照這些規則填揭露。<br><span class="faint">Share it via your syllabus or LMS; students then disclose on the Student tab following these rules.</span></div>
       </div>
     </div>
 
@@ -547,7 +539,14 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
         <option value="science">Science / AAAS</option>
         <option value="plos">PLOS</option>
         <option value="ieee">IEEE / ACM</option>
-        <option value="tf">Taylor &amp; Francis / SAGE / MDPI</option>
+        <option value="tf">Taylor &amp; Francis</option>
+        <option value="sage">SAGE</option>
+        <option value="mdpi">MDPI</option>
+        <option value="frontiers">Frontiers</option>
+        <option value="oup">Oxford Academic (OUP)</option>
+        <option value="cup">Cambridge University Press</option>
+        <option value="emerald">Emerald</option>
+        <option value="apa">APA(美國心理學會)</option>
         <option value="medical">醫學期刊(ICMJE / JAMA / BMJ)</option>
       </select></label>
     <div class="principle" style="margin-top:16px">所有主要出版社的共同底線(2026):<b>AI 不能列為作者、人須為內容負全責、相關 AI 使用須揭露、且須自行查證輸出</b>。差別在<b>「哪些要揭露、寫在哪裡、要多細」</b>。下面會依你選的期刊顯示。<br><span class='faint'>The shared baseline across all major publishers (2026): AI can't be an author, humans are fully accountable, AI use must be disclosed, and authors must verify outputs. What differs is what to disclose, where, and in how much detail.</span></div>
@@ -618,40 +617,39 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
   </details>
 
   <div class="card">
-    <h2><span class="step-n">5</span> 產生揭露聲明 <span class="en">Generate statement</span></h2>
-    <p class="hint">準備好投稿時,把紀錄填進來,產生一段可貼進稿件的揭露文字。</p>
-    <div class="reassure">💬 <b>放心揭露。</b>好好揭露 AI 使用是當前的專業常態,是在<b>保護你自己</b>(顯示你有查證、負責),不是認錯、也不減損你的貢獻。誠實而完整地報,通常遠比事後被發現安全。<br><span class="faint">Disclosing well is normal and protective — it shows you verified and took responsibility. It's not a confession, and it doesn't diminish your contribution.</span></div>
-    <label class="field"><span class="lab">工具、版本與日期 <span class="en">Tools, versions, dates</span></span>
-      <input type="text" id="gTools" placeholder="例:ChatGPT (GPT-4o),2026-03;DeepL,2026-04"></label>
-    <label class="field"><span class="lab">用 AI 做了什麼(承第 2 步)<span class="en">What AI was used for</span></span>
-      <textarea id="gUses" placeholder="例:潤飾語言、翻譯摘要、協助整理參考文獻清單(所有引用皆已人工核對)"></textarea></label>
-    <div class="verify">
-      <div class="vh">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#245f59" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        我已查證 · Verified</div>
-      <div class="checks" style="margin-top:6px">
-        <label class="chk"><input type="checkbox" class="gv" value="所有 AI 提及的引用皆經人工核對存在且相符"><span class="ct">引用:AI 提及的參考文獻皆經人工核對(存在、相符、非捏造) <span class='en'>Citations: every AI-mentioned reference checked by hand (exists, matches, not fabricated).</span></span></label>
-        <label class="chk"><input type="checkbox" class="gv" value="AI 協助處理的數據/結果皆經人工檢核"><span class="ct">數據:AI 協助的數據/圖表皆經人工檢核 <span class='en'>Data: AI-assisted data/figures verified by hand.</span></span></label>
-        <label class="chk"><input type="checkbox" class="gv" value="AI 產出的文字皆經作者審閱、修改並負責"><span class="ct">文字:AI 產出皆經作者審閱、修改並負責 <span class='en'>Text: AI output reviewed, edited and owned by the authors.</span></span></label>
-      </div>
+    <h2>揭露聲明怎麼寫:實際範例 <span class="en">How to write it: real examples</span></h2>
+    <p class="hint">揭露聲明<b>沒有統一格式,要照你投稿期刊的規定寫</b>(見上面第 4 步)。這裡放幾個真實範例,從寬鬆到嚴格,你可以照著改。<br><span class="faint">There's no single format — write yours to your target journal's rules (see step 4). Here are real examples, from lenient to strict, to adapt.</span></p>
+    <div class="reassure">💬 <b>放心揭露。</b>好好揭露 AI 使用是當前的專業常態,是在保護你自己(顯示你有查證、負責),不是認錯、也不減損你的貢獻。<br><span class="faint">Disclosing well is normal and protective — it shows you verified and took responsibility. It isn't a confession.</span></div>
+
+    <div class="exblock">
+      <div class="exlabel">① 標準:語言潤稿(Elsevier 官方模板) <span class="en">Standard — language editing</span></div>
+      <div class="exstmt">During the preparation of this work the author(s) used [NAME TOOL / SERVICE] in order to [REASON, e.g. improve the language and readability]. After using this tool/service, the author(s) reviewed and edited the content as needed and take(s) full responsibility for the content of the publication.</div>
+      <div class="exnote">放在參考文獻前,標題「Declaration of Generative AI and AI-assisted technologies in the writing process」。純文法、拼字、標點的檢查不用聲明。<a href="https://www.elsevier.com/en-gb/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier" target="_blank" rel="noopener">Elsevier 官方 ↗</a></div>
     </div>
-    <label class="field" style="margin-top:16px"><span class="sublab">保留的佐證(選填):對話/執行 log、草稿版本史連結 · Optional evidence link</span>
-      <input type="text" id="gLog" placeholder="https://…（可留空)"></label>
+
+    <div class="exblock">
+      <div class="exlabel">② 劃清界線:只用於編輯、未生成內容 <span class="en">Editorial only, no content generated</span></div>
+      <div class="exstmt">During manuscript preparation, the authors used [tool, version] for limited editorial support (grammar, style, and clarity). Generative AI was not used to generate original content, analyses, arguments, findings, or interpretations. All academic contributions were produced by the authors, who take full responsibility for the originality, accuracy, and integrity of the manuscript.</div>
+      <div class="exnote">當你想明確說「AI 只碰語言、沒碰研究內容」時很好用。(改寫自實際論文的揭露段)</div>
+    </div>
+
+    <div class="exblock">
+      <div class="exlabel">③ 嚴格:需模型版本、用途、提示(JAMA、BMJ、Science 類) <span class="en">Strict — version, purpose, prompts</span></div>
+      <div class="exstmt">[Model name, version, manufacturer] was used on [date] to [specific task, e.g. summarise literature]. The full prompts and outputs are provided in the Supplementary Material. The authors reviewed and verified all outputs and take full responsibility for the content.</div>
+      <div class="exnote">嚴格期刊常要求寫明<b>模型名稱、版本、製造商、產生內容的確切性質</b>,並把提示與輸出附在補充資料;資料分析類的使用要寫在方法(Methods)。</div>
+    </div>
+
+    <div class="exblock">
+      <div class="exlabel">④ 完全沒用 AI(有些期刊也要聲明) <span class="en">None used</span></div>
+      <div class="exstmt">No generative AI tools were used in the preparation of this manuscript.</div>
+      <div class="exnote">部分期刊要求即使沒用也要聲明一句。SAGE 等則把「只用來潤飾你自己的文字」的輔助性 AI 視為不需聲明。</div>
+    </div>
+
+    <p class="hint faint">更多真實範例(依用途分:語言、寫程式、文獻摘要、發想、圖像、資料分析)可參考 <a href="https://www.usgs.gov/office-of-science-quality-and-integrity/example-ai-disclosure-statements-usgs-scientific" target="_blank" rel="noopener">美國地質調查局(USGS)的範例聲明</a>。<span class="faint">More real examples by use case at the U.S. Geological Survey.</span></p>
+
     <div class="citenote">若你在文中<b>直接引用</b>了 AI 產出的文字,除了揭露,還需依格式正式引用(三家都不把 AI 當作者):
       <a href="https://apastyle.apa.org/blog/cite-generative-ai-references" target="_blank" rel="noopener">APA</a> ·
-      <a href="https://style.mla.org/citing-generative-ai-updated-revised/" target="_blank" rel="noopener">MLA</a> · Chicago 18 §14.112 · AMA。務必點回原始出處查證,AI 會捏造來源。<br><span class='faint'>If you quote AI-generated text directly, besides disclosing you must also cite it formally (none of the three styles treat AI as an author). Always check back to the original source — AI fabricates references.</span></div>
-    <div class="btn-row">
-      <button class="btn primary" id="gen">產生 · Generate</button>
-      <button class="btn ghost" id="clr">清除 · Clear</button>
-    </div>
-    <div id="outWrap" class="hide">
-      <div class="divider"></div>
-      <div class="output" id="out"></div>
-      <div class="btn-row">
-        <button class="btn ghost" id="copy">複製 · Copy</button>
-        <button class="btn ghost" id="dl">下載 .txt · Download</button>
-      </div>
-    </div>
+      <a href="https://style.mla.org/citing-generative-ai-updated-revised/" target="_blank" rel="noopener">MLA</a> · Chicago 18 §14.112 · AMA。務必點回原始出處查證,AI 會捏造來源。<br><span class='faint'>If you quote AI-generated text directly, besides disclosing you must also cite it formally. Always check back to the original source — AI fabricates references.</span></div>
   </div>
 
   <details class="sources">
@@ -995,10 +993,6 @@ const BASELINE = [
 
 /* ---------- helpers ---------- */
 const $ = s => document.querySelector(s);
-const b64u = {
-  enc: str => btoa(String.fromCharCode(...new TextEncoder().encode(str))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''),
-  dec: b => new TextDecoder().decode(Uint8Array.from(atob(b.replace(/-/g,'+').replace(/_/g,'/')), c=>c.charCodeAt(0)))
-};
 function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),1900);}
 function esc(s){return (s||'').trim();}
 
@@ -1054,11 +1048,6 @@ function readPolicy(){
     tu: esc($('#tTeacherUse').value)
   };
 }
-function studentUrl(p){
-  const u = new URL(location.href.split('?')[0]);
-  u.searchParams.set('policy', b64u.enc(JSON.stringify(p)));
-  return u.toString();
-}
 function syllabus(p){
   const tier = TIERS.find(t=>t.id===p.lv);
   const base = BASELINE.map(b=>b.zh).join('、');
@@ -1080,71 +1069,44 @@ function syllabus(p){
 function wireTeacher(){
   $('#genPolicy').addEventListener('click',()=>{
     const p = readPolicy();
-    $('#studentLink').value = studentUrl(p);
     $('#syllabusText').textContent = syllabus(p);
-    $('#fileWarn').classList.toggle('hide', location.protocol!=='file:');
     $('#teacherOut').classList.remove('hide');
     $('#teacherOut').scrollIntoView({behavior:'smooth',block:'nearest'});
   });
-  $('#copyLink').addEventListener('click',()=>{navigator.clipboard.writeText($('#studentLink').value).then(()=>toast('已複製學生連結'));});
-  $('#copySyllabus').addEventListener('click',()=>{navigator.clipboard.writeText($('#syllabusText').textContent).then(()=>toast('已複製大綱文字'));});
-  $('#previewAsStudent').addEventListener('click',()=>{
-    const p = readPolicy();
-    renderStudent(p); setMode('student');
-    window.scrollTo({top:0,behavior:'smooth'});
-  });
+  $('#copySyllabus').addEventListener('click',()=>{navigator.clipboard.writeText($('#syllabusText').textContent).then(()=>toast('已複製'));});
 }
 
 /* ---------- student render ---------- */
-function renderStudent(p){
-  const tier = TIERS.find(t=>t.id===p.lv) || TIERS[2];
+const TYPEMAP={writing:['interpret'],qual:['qualitative','interpret'],quant:['quantitative'],comp:['computational'],creative:['creative'],all:['interpret','qualitative','quantitative','computational','creative']};
+function renderClusters(type){
+  const gs=groupsForPreset(TYPEMAP[type]||['interpret']);
+  const box=$('#sClusterGroups'); if(!box) return;
+  box.innerHTML=gs.map(g=>`<div class="cgroup"><div class="cglabel">${g.zh} <span class="en">${g.en}</span></div>`+g.items.map(i=>`<label class="chk"><input type="checkbox" value="${i.id}"><span class="ct">${i.zh}<span class="en">${i.en}</span></span></label>`).join('')+`</div>`).join('');
+}
+function renderStudent(){
   const area = $('#policyArea');
-  const tierColor = getComputedStyle(document.documentElement).getPropertyValue('--t'+p.lv);
-
-  let banner = `
-    <div class="policy">
-      <div class="head">
-        <div class="course">${p.c}</div>
-        ${p.t?`<div class="teacher">${p.t}</div>`:''}
-      </div>
-      <div class="band">
-        <div class="lvlrow"><span class="dot" style="background:${tierColor}"></span>
-          <span class="lvlname">層級${['一','二','三','四','五'][p.lv-1]}・${tier.zh} <span class="en">${tier.en}</span></span></div>
-        <div class="lvldesc">${tier.desc}<br><span class="faint">${tier.descEn}</span></div>
-        ${tier.focus?`<div class="lvlfocus">▸ ${tier.focus}<br><span class="faint">${tier.focusEn}</span></div>`:''}
-      </div>
-      ${p.pm?`<div class="promise">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3a6b5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-        <div class="pt"><b>老師的承諾 · Your instructor's promise:</b><br>${p.pm.replace(/\n/g,"<br>")}</div></div>`:''}
-      ${tier.discloses?`<div class="nodisc"><b>不需揭露:</b>
-        <ul>${BASELINE.map(b=>`<li>${b.zh} <span class="faint">${b.en}</span></li>`).join('')}${(p.nd||[]).map(id=>{const it=ITEMS[id];return it?`<li>${it.zh} <span class="faint">· 本課</span></li>`:'';}).join('')}</ul></div>`:''}
-      ${p.tu?`<div class="nodisc" style="border-top:1px solid var(--line)"><b>老師自己的 AI 使用:</b> ${p.tu}</div>`:''}
-    </div>`;
-
-  let form;
-  if(!tier.discloses){
-    form = `<div class="card"><h2>這份作業不需填寫揭露</h2>
-      <p class="hint">${p.lv===1
-        ? '本課這一層不使用 AI。若你認為有需要例外,請先與老師討論,不要自行使用後再補揭露。'
-        : '這一層的 AI 使用不需另附揭露表。若你不確定某個用法算不算超出範圍,寧可先問老師一句。'}</p>
-      <p class="hint faint">${p.lv===1?'No AI at this level. Ask your instructor before any exception.':'No disclosure form needed at this level. When unsure, just ask.'}</p></div>`;
-  } else {
-    const groupsHtml = groupsForPreset(p.pr).map(g=>{
-      const items = g.items.filter(i=> !(p.nd||[]).includes(i.id));
-      if(!items.length) return '';
-      return `<div class="cgroup"><div class="cglabel">${g.zh} <span class="en">${g.en}</span></div>`
-        + items.map(i=>`<label class="chk"><input type="checkbox" value="${i.id}">
-          <span class="ct">${i.zh}<span class="en">${i.en}</span></span></label>`).join('') + `</div>`;
-    }).join('');
-    form = `
-    <div class="aidnote">這不是考試,也不是非填不可的表格。它就是幫你把「你怎麼跟 AI 一起做的」講給老師聽。誠實說明,比填得完整更重要。<br><span class="faint">This isn't a test or a mandatory form — it helps you tell your instructor how you worked with AI. Being honest matters more than being complete.</span></div>
-    <div class="quicknote">⚡ 輕度使用?也只要三步:勾一項「AI 幫了什麼」(或勾「很輕微」)、寫一句「你自己做了什麼」、勾查證,就能產生。<span class="faint">Light use is still quick: tick one thing AI helped with (or "very light"), write one line on what you did, tick verification.</span></div>
+  const context = `<div class="card"><h2>你的作業情境 <span class="en">Your context</span></h2><p class="hint">先照老師訂的規則填一下。老師怎麼規定,以課程說明為準;這裡只幫你把揭露寫清楚。<br><span class="faint">Fill this in based on your teacher's rules. This tool just helps you write your AI statement.</span></p><div class="row2"><label class="field"><span class="sublab">課程名稱(選填)· Course (optional)</span><input type="text" id="sCourse" placeholder="例:質性研究方法"></label><label class="field"><span class="sublab">老師允許的 AI 程度 · AI level your course allows</span><select id="sLevel"><option value="">未指定 / 不確定 · unspecified</option><option value="層級一・不使用 AI / Level 1 — no AI">層級一・不使用 AI</option><option value="層級二・AI 協助構思 / Level 2 — AI for ideas">層級二・AI 協助構思</option><option value="層級三・AI 協作 / Level 3 — collaboration">層級三・AI 協作</option><option value="層級四・AI 全面使用 / Level 4 — full use">層級四・AI 全面使用</option><option value="老師另有規定 / instructor has other rules">老師另有規定</option></select></label></div><p class="hint faint" style="margin-top:4px">照老師說的填就好,不確定就問老師;老師沒特別分級也沒關係,留「未指定」即可。<span class="faint">Just use what your teacher said. If you are not sure, ask. You can also choose "unspecified".</span></p><label class="field" style="margin-top:10px"><span class="sublab">這份作業比較像哪種?(幫你濾掉用不到的選項)· What kind of work is this? (this hides options you do not need)</span><select id="sType"><option value="writing">一般寫作 / 報告 · Writing / report</option><option value="qual">質性研究 · Qualitative</option><option value="quant">量化 / 數據 · Quantitative / data</option><option value="comp">程式 / 計算 · Coding</option><option value="creative">創作 / 設計 · Creative</option><option value="all">都有 / 不確定 · Mixed / unsure</option></select></label></div>`;
+  const form = `
+    <div class="reassure">💬 <b>放心:</b>誠實揭露通常不會讓你被扣分。這是讓老師了解你怎麼學的,不是抓錯。不確定就多寫一句,或直接問老師。<br><span class="faint">Being honest about AI use will usually not lower your grade. It helps your teacher understand how you learn. It is not used to find mistakes. If you are not sure, write one more line, or ask your teacher.</span></div>
+    <div class="aidnote">這不是考試,也不是非填不可的表格。它就是幫你把「你怎麼跟 AI 一起做的」講給老師聽。誠實說明,比填得完整更重要。<br><span class="faint">This is not a test, and you do not have to fill in everything. It helps you tell your teacher how you used AI. Being honest is more important than filling every box.</span></div>
+    <div class="minbox">⏱ <b>趕時間?最少填這三個就能產生:</b>① 勾一項「AI 幫了什麼」(或勾「很輕微」)② 寫一句「你自己做了什麼」③ 勾查證。其他都是選填。<br><span class="faint">In a hurry? You only need three things: ① tick one thing AI helped with ② write one line about what you did ③ tick what you checked. The rest is optional.</span></div>
     <div class="card">
       <h2><span class="step-n">1</span> 你用了哪個 AI 工具?(選填) <span class="en">Which tool(s), optional</span></h2>
       <label class="field"><span class="sublab">寫出名稱與版本(若知道)。用了很多個就都列出來。· Name and version if known; list all you used.</span>
         <input type="text" id="sTools" placeholder="例:ChatGPT (GPT-4o)、Claude、Google 翻譯、Grammarly"></label>
-      <label class="chk agenttoggle" style="margin-top:8px"><input type="checkbox" id="sAgent"><span class="ct">我用的是會<b>自主多步驟執行或採取行動</b>的 AI agent(如 deep research、coding agent、電腦操作 agent)<span class="en">I used an AI agent that runs multi-step or takes actions</span></span></label>
-      <div id="agentBlock" class="agentbox hide">
+    </div>
+    <div class="card">
+      <h2><span class="step-n">2</span> AI 幫了哪些環節? <span class="en">Where AI helped</span><span class="rec"> · 建議填寫 recommended</span></h2>
+      <p class="hint">勾出 AI 實際參與的環節,這是揭露的重點。若只有很輕微的協助,勾第一項就好,再到下面說明。選項會依上面「作業類型」調整。<br><span class="faint">Tick the parts where you really used AI. This is the most important part. If you used it only a little, tick the first box and explain below. The options change with the work type you chose above.</span></p>
+      <div class="checks grouped" id="sClusters">
+        <label class="chk light"><input type="checkbox" value="__light__"><span class="ct">整體只有很輕微/一般性的協助(在下面「你自己做了什麼」說明)<span class="en">Only light, general help — explained below</span></span></label>
+        <div id="sClusterGroups"></div>
+      </div>
+    </div>
+    <details class="card optional" id="agentDetails">
+      <summary>用的是會自己多步驟執行的 AI agent 嗎?大多數人可以跳過 · Did you use an AI agent that works in many steps by itself? Most people can skip this.<span class="advchev">▶</span></summary>
+      <div class="optbody">
+      <div id="agentBlock" class="agentbox">
         <div class="opthead" style="font-size:15px">AI agent 使用 <span class="en">Agentic AI use</span></div>
         <p class="hint">agent 會自己跑很多步驟、中間你未必看得到,所以重點是說清楚它<b>做了什麼、你在哪裡把關</b>,而不只是它產出什麼。<br><span class="faint">Agents run many steps you may not see — so describe what it did and where you checked, not just what it produced.</span></p>
         <label class="field"><span class="sublab">1. 它執行了哪些動作、用了哪些工具或資料?· What it did / accessed</span>
@@ -1161,15 +1123,8 @@ function renderStudent(p){
         <label class="chk" style="margin-top:6px"><input type="checkbox" id="agAccount"><span class="ct">我了解:即使沒有逐步監督,我仍為這個 agent 的產出與行動負責。<span class="en">I remain accountable for the agent's outputs and actions, even where I didn't supervise each step.</span></span></label>
         <div class="mapnote">agent 改變了揭露的單位:從「AI 寫了什麼」變成「它做了什麼、你在哪裡把關」。<a href="https://ascode.osu.edu/news/agentic-ai-higher-education" target="_blank" rel="noopener">Agentic AI in Higher Ed(2025)</a></div>
       </div>
-    </div>
-    <div class="card">
-      <h2><span class="step-n">2</span> AI 幫了哪些環節? <span class="en">Where AI helped</span><span class="rec"> · 建議填寫 recommended</span></h2>
-      <p class="hint">勾出 AI 實際參與的環節,這是揭露的重點。若只有很輕微的協助,勾第一項即可,再到下面說明。列在「不需揭露」的項目不會出現。<br><span class="faint">Tick where AI was actually involved — the heart of disclosure. If help was minimal, tick the first option and explain below. Filtered by the course's work profile.</span></p>
-      <div class="checks grouped" id="sClusters">
-        <label class="chk light"><input type="checkbox" value="__light__"><span class="ct">整體只有很輕微/一般性的協助(在下面「你自己做了什麼」說明)<span class="en">Only light, general help — explained below</span></span></label>
-        ${groupsHtml}
       </div>
-    </div>
+    </details>
     <div class="card">
       <h2><span class="step-n">3</span> 你自己做了什麼、查證了什麼? <span class="en">What you did &amp; verified</span><span class="rec"> · 建議填寫 recommended</span></h2>
       <p class="hint">用一句你自己的話說:你判斷、修改、或<b>否決</b>了 AI 的什麼?<br><span class="faint">In your own words: what did you judge, change, or <b>reject</b>?</span></p>
@@ -1226,11 +1181,11 @@ function renderStudent(p){
     </details>
     <div class="card">
       <h2>產生揭露說明 <span class="en">Generate disclosure</span></h2>
-      <p class="hint faint" style="margin-top:10px">輸出格式參照 Monash 大學的 AI 使用揭露範本(工具·日期·用途·你的判斷與查證)。</p>
+      <p class="hint faint" style="margin-top:10px">輸出格式參照 Monash 大學的 AI 使用揭露範本(工具·日期·用途·你的判斷與查證)。<br><span class="faint">The format follows Monash University's AI-use template: tool, date, use, and your own checking.</span></p>
       <p class="citenote">若你在作業中<b>直接引用</b>了 AI 產出的文字或圖像,除了這份揭露,可能還需正式引用它。三大格式都<b>不</b>把 AI 當作者,也都提醒 AI 會捏造來源、務必點回原始出處查證:
         <a href="https://style.mla.org/citing-generative-ai-updated-revised/" target="_blank" rel="noopener">MLA</a> ·
         <a href="https://apastyle.apa.org/blog/cite-generative-ai-references" target="_blank" rel="noopener">APA</a> ·
-        Chicago(18 版 §14.112)。<br>
+        Chicago(18 版 §14.112)。<br><span class="faint">If you quote AI-made text or images directly, you may also need to cite it. None of these three styles list AI as an author, and all warn that AI can make up sources, so always check the original.</span><br>
         更多 AI 使用方式說明請參考 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener"><b>政大圖書館 AI 使用指引</b></a>。</p>
       <div class="btn-row">
         <button class="btn primary" id="sGen">產生 · Generate</button>
@@ -1243,20 +1198,19 @@ function renderStudent(p){
           <button class="btn ghost" id="sCopy">複製 · Copy</button>
           <button class="btn ghost" id="sDownload">下載 .txt · Download</button>
         </div>
+        <div class="submitnote">📎 <b>怎麼交:</b>把這段貼在作業最後,或依老師指定的方式繳交(有些老師會另外收)。<br><span class="faint">How to hand it in: paste this at the end of your work, or give it to your teacher the way they ask.</span></div>
       </div>
     </div>`;
-  }
-
-  area.innerHTML = banner + form;
+  area.innerHTML = context + form;
   area.classList.remove('hide');
-  $('#noPolicy').classList.add('hide');
-
-  if(tier.discloses) wireStudentForm(p, tier);
+  renderClusters('writing');
+  $('#sType') && $('#sType').addEventListener('change',e=>renderClusters(e.target.value));
+  wireStudentForm();
 }
 
-function wireStudentForm(p, tier){
+function wireStudentForm(){
   const gen = ()=>{
-    const tools = esc($('#sTools').value) || "(未填工具名稱)";
+    const tools = esc($('#sTools').value) || "(未填工具名稱 / tool not given)";
     const checked = [...document.querySelectorAll('#sClusters input:checked')];
     const usedZh = checked.map(x=> x.value==='__light__' ? '整體僅輕微/一般性協助' : (ITEMS[x.value]? ITEMS[x.value].zh : x.value));
     const usedEn = checked.map(x=> x.value==='__light__' ? 'only light, general help' : (ITEMS[x.value]? ITEMS[x.value].en : x.value));
@@ -1271,14 +1225,17 @@ function wireStudentForm(p, tier){
     const chalEn = chalEls.map(x=>{const en=x.closest('label').querySelector('.en'); return en?en.textContent:x.value;});
     const chalEg = esc($('#sChallengeEg').value);
     const proof = esc($('#sProof').value);
-    const agent = $('#sAgent') && $('#sAgent').checked;
+    const agent = $('#agentDetails') && $('#agentDetails').open;
     const agAct = agent?esc($('#agAct').value):'', agOv = agent?$('#agOversight').value:'', agLog = agent?esc($('#agLog').value):'', agAcc = agent?$('#agAccount').checked:false;
     const missing = [];
     if(!checked.length) missing.push('AI 幫了什麼');
     if(!mine) missing.push('你自己做了什麼');
     if(!(v1||v2||v3||v0)) missing.push('查證');
     if(missing.length) toast('補上「'+missing.join('、')+'」會讓說明更完整,不過也可以直接產生');
-    const L=['一','二','三','四','五'][p.lv-1];
+    const course = esc($('#sCourse').value) || "(未填課程)";
+    const lvVal = $('#sLevel').value;
+    const levelZh = lvVal ? lvVal.split(' / ')[0] : "(未指定)";
+    const levelEn = lvVal ? (lvVal.split(' / ')[1] || levelZh) : "(unspecified)";
     const today = new Date().toLocaleDateString('zh-TW',{year:'numeric',month:'long',day:'numeric'});
     const todayEn = new Date().toLocaleDateString('en-CA');
     // verification lines (zh / en)
@@ -1307,8 +1264,8 @@ function wireStudentForm(p, tier){
     }
     const zhOut =
 `—— AI 使用揭露 ——
-課程:${p.c}
-本課層級:層級${L}・${tier.zh}
+課程:${course}
+AI 使用層級:${levelZh}
 使用工具:${tools}
 日期:${today}
 
@@ -1321,11 +1278,11 @@ ${mine || '(未填寫)'}
 我查證的部分:
 ${vZh}${chalZhB}${agZh}${proof? '\n\n歷程佐證:'+proof : ''}
 
-—— 依《${p.c}》課程 AI 政策自我揭露 ——`;
+—— 依課程 AI 規則自我揭露 ——`;
     const enOut =
 `—— AI Use Disclosure ——
-Course: ${p.c}
-Level: Level ${p.lv} — ${tier.en}
+Course: ${course}
+AI level: ${levelEn}
 Tool(s): ${tools}
 Date: ${todayEn}
 
@@ -1345,12 +1302,11 @@ ${vEn}${chalEnB}${agEn}${proof? '\n\nProcess record: '+proof : ''}
     $('#sOutWrap').scrollIntoView({behavior:'smooth',block:'nearest'});
   };
   $('#sGen').addEventListener('click',gen);
-  if($('#sAgent')) $('#sAgent').addEventListener('change', e=>$('#agentBlock').classList.toggle('hide', !e.target.checked));
   $('#sClear').addEventListener('click',()=>{
     ['sTools','sMine','sVerifyEg','sChallengeEg','sProof','agAct','agLog'].forEach(id=>{const el=$('#'+id); if(el) el.value='';});
-    ['v1','v2','v3','v0','sAgent','agAccount'].forEach(id=>{const el=$('#'+id); if(el) el.checked=false;});
+    ['v1','v2','v3','v0','agAccount'].forEach(id=>{const el=$('#'+id); if(el) el.checked=false;});
     if($('#agOversight')) $('#agOversight').value='';
-    if($('#agentBlock')) $('#agentBlock').classList.add('hide');
+    if($('#agentDetails')) $('#agentDetails').open=false;
     document.querySelectorAll('#sClusters input:checked, #vOther input:checked, #sChallenge input:checked').forEach(x=>x.checked=false);
     $('#sOutWrap').classList.add('hide');
   });
@@ -1453,8 +1409,15 @@ const PUBS={
  science:{name:"Science / AAAS",where:"誌謝與方法<br><span class='en'>acknowledgments & Methods</span>",copyedit:"僅文法/拼字可免<br><span class='en'>only grammar/spelling exempt</span>",images:"限制<br><span class='en'>restricted</span>",prompts:"<b>要求完整揭露提示</b><br><span class='en'>full prompt disclosure required</span>",note:"⚠ 最嚴:AI 生成正文近乎視為不當行為;用 AI 產文即使揭露也可能被拒<br><span class='en'>Strictest: AI-generated text treated as near-misconduct; may be rejected even if disclosed</span>",url:"https://www.science.org/content/page/science-journals-editorial-policies",strict:true},
  plos:{name:"PLOS",where:"方法(含詳細評估說明)<br><span class='en'>in Methods, with evaluation detail</span>",copyedit:"—",images:"鼓勵透明,無明文禁圖<br><span class='en'>transparency encouraged; no explicit image ban</span>",prompts:"—",note:"須確保正確性與正確歸屬<br><span class='en'>ensure accuracy & correct attribution</span>",url:"https://journals.plos.org/plosone/s/ethical-publishing-practice"},
  ieee:{name:"IEEE / ACM",where:"誌謝(Acknowledgments)<br><span class='en'>in Acknowledgments</span>",copyedit:"—",images:"—",prompts:"—",note:"IEEE 須標明:<b>AI 系統、受影響段落、使用程度</b><br><span class='en'>identify the AI system, affected sections, and level of use</span>",url:"https://open.ieee.org/author-guidelines-for-artificial-intelligence-ai-generated-text/"},
- tf:{name:"Taylor & Francis / SAGE / MDPI",where:"方法或誌謝<br><span class='en'>Methods or acknowledgments</span>",copyedit:"純潤稿多可免<br><span class='en'>copy-edit usually exempt</span>",images:"—",prompts:"—",note:"允許但須揭露、作者負責;部分期刊限語言改善<br><span class='en'>allowed with disclosure; some journals limit to language</span>",url:"https://taylorandfrancis.com/our-policies/ai-policy/"},
- medical:{name:"醫學期刊(ICMJE / JAMA / BMJ)",where:"誌謝 / 方法 + <b>投稿系統的 AI 提問</b><br><span class='en'>acknowledgments/Methods + the AI questions in the submission system</span>",copyedit:"—",images:"—",prompts:"視期刊<br><span class='en'>journal-dependent</span>",note:"投稿系統常有必答的 AI 使用題,須與內文揭露一致<br><span class='en'>submission-system AI questions must match your in-text disclosure</span>",url:""},
+ tf:{name:"Taylor & Francis",where:"方法或誌謝<br><span class='en'>Methods or acknowledgments</span>",copyedit:"純潤稿多可免<br><span class='en'>copy-edit usually exempt</span>",images:"—",prompts:"—",note:"允許但須揭露、作者負責;部分期刊限語言改善<br><span class='en'>allowed with disclosure; some journals limit to language</span>",url:"https://taylorandfrancis.com/our-policies/ai-policy/"},
+ medical:{name:"醫學期刊(ICMJE / JAMA / BMJ)",where:"誌謝 / 方法 + <b>投稿系統的 AI 提問</b><br><span class='en'>acknowledgments/Methods + the AI questions in the submission system</span>",copyedit:"—",images:"—",prompts:"視期刊<br><span class='en'>journal-dependent</span>",note:"投稿系統常有必答的 AI 使用題,須與內文一致;<b>JAMA、BMJ 要求寫明模型名稱、版本、製造商與產生內容的性質</b><br><span class='en'>mandatory AI questions in the submission system; JAMA/BMJ require model name, version, manufacturer, and nature of content</span>",url:""},
+ sage:{name:"SAGE",where:"方法或致謝<br><span class='en'>Methods or acknowledgments</span>",copyedit:"<b>輔助性 AI(潤飾你自己的文字)不用聲明</b><br><span class='en'>assistive AI needs no disclosure</span>",images:"—",prompts:"—",note:"區分輔助 vs 生成:生成新內容須引用並標註;規範較彈性、格式指引較少<br><span class='en'>distinguishes assistive vs generative; flexible, less format guidance</span>",url:"https://www.sagepub.com/journals/publication-ethics-policies/artificial-intelligence-policy"},
+ mdpi:{name:"MDPI",where:"方法或致謝<br><span class='en'>Methods or acknowledgments</span>",copyedit:"純潤稿多可免<br><span class='en'>copy-edit usually exempt</span>",images:"對 AI 輔助視覺較寬鬆<br><span class='en'>more permissive on AI visuals</span>",prompts:"—",note:"允許但須揭露;開放取用、規範相對彈性<br><span class='en'>allowed with disclosure; adaptive</span>",url:""},
+ frontiers:{name:"Frontiers",where:"方法或致謝<br><span class='en'>Methods or acknowledgments</span>",copyedit:"純潤稿多可免<br><span class='en'>copy-edit usually exempt</span>",images:"對 AI 輔助視覺較寬鬆<br><span class='en'>more permissive on AI visuals</span>",prompts:"—",note:"允許但須揭露;開放取用<br><span class='en'>allowed with disclosure; open access</span>",url:""},
+ oup:{name:"Oxford Academic(OUP)",where:"<b>cover letter 與方法/致謝都要</b><br><span class='en'>cover letter AND Methods/Acknowledgments</span>",copyedit:"—",images:"—",prompts:"—",note:"原則導向、格式指引較少;AI 不能掛名,會篩查作者欄<br><span class='en'>principle-oriented; screens author lists</span>",url:""},
+ cup:{name:"Cambridge University Press",where:"寫作流程須揭露<br><span class='en'>disclose in the writing process</span>",copyedit:"—",images:"—",prompts:"—",note:"AI 不能掛名(問責);指引主要涵蓋寫作流程<br><span class='en'>AI can\'t be author; guidelines cover writing</span>",url:""},
+ emerald:{name:"Emerald",where:"須在論文中標明任何 AI 使用<br><span class='en'>flag any AI use in the paper</span>",copyedit:"—",images:"禁止 AI 生成圖像<br><span class='en'>prohibits AI-generated images</span>",prompts:"—",note:"相對嚴格:任何 AI 使用都要標明;AI 不能掛名<br><span class='en'>restrictive; flag all AI use</span>",url:""},
+ apa:{name:"APA(美國心理學會)",where:"方法(Methods)並須<b>正式引用</b><br><span class='en'>in Methods, and cite it</span>",copyedit:"—",images:"—",prompts:"—",note:"在方法揭露並正式引用 AI;AI 不能掛名<br><span class='en'>disclose in Methods and cite; AI can\'t be author</span>",url:""},
  other:{name:"尚未決定 / 其他",where:"多數為方法或誌謝<br><span class='en'>usually Methods or acknowledgments</span>",copyedit:"純潤稿常可免<br><span class='en'>copy-edit often exempt</span>",images:"多家禁止 AI 生成圖像<br><span class='en'>many ban AI images</span>",prompts:"視期刊<br><span class='en'>journal-dependent</span>",note:"選定後請以該社作者指南為準<br><span class='en'>once chosen, follow that publisher's author guidelines</span>",url:""}
 };
 
@@ -1501,78 +1464,11 @@ function renderPub(){
     </div>`;
 }
 
-/* generate statement */
-function genR(){
-  const p=PUBS[$('#pub').value]||PUBS.other;
-  const tools=esc($('#gTools').value)||"(未填工具與版本)";
-  const actEls=[...document.querySelectorAll('#activities input:checked')];
-  const actsZh=actEls.map(x=>x.value);
-  const actsEn=actEls.map(x=>{const en=x.closest('label').querySelector('.en'); return en?en.textContent:x.value;});
-  const uses=esc($('#gUses').value);
-  const vEls=[...document.querySelectorAll('.gv:checked')];
-  const vsZh=vEls.map(x=>x.value);
-  const vsEn=vEls.map(x=>{const en=x.closest('label').querySelector('.en'); return en?en.textContent:x.value;});
-  const log=esc($('#gLog').value);
-  const whereZh=(p.where.split('<br>')[0]||'').replace(/<[^>]+>/g,'');
-  const mEn=p.where.match(/class=['"]en['"][^>]*>([^<]*)</); const whereEn=mEn?mEn[1]:whereZh;
-  const nameClean=p.name.replace(/<[^>]+>/g,'');
-  const today=new Date().toLocaleDateString('zh-TW',{year:'numeric',month:'long',day:'numeric'});
-  const todayEn=new Date().toLocaleDateString('en-CA');
-  const usedAgent=$('#agent') && $('#agent').checked;
-  const agentZh=usedAgent?`\n代理式 AI:本研究使用了會自主多步驟執行的 AI agent;已保留其行動與存取紀錄、可檢視產物,作者於檢查點審視並為其產出與行動負責。\n`:'';
-  const agentEn=usedAgent?`\nAgentic AI: an autonomous multi-step AI agent was used; its actions and artifacts were logged and reviewed, and the authors remain accountable.\n`:'';
-  const zhOut=
-`—— AI 使用揭露聲明(建議置於:${whereZh})——
-
-作者於本稿準備過程中使用了下列生成式 AI 工具:
-${tools}
-
-用途:
-${actsZh.length?actsZh.map(a=>'· '+a).join('\n'):(uses?'· '+uses:'· (未指定)')}
-${uses&&actsZh.length?'補充:'+uses:''}
-${agentZh}查證與負責:
-${vsZh.length?vsZh.map(v=>'· '+v).join('\n'):'· (建議勾選查證項目)'}
-· AI 未被列為作者;作者對本文全部內容之正確性與完整性負責。
-${log?'\n佐證:'+log:''}
-
-(整理於 ${today},投稿前請以 ${nameClean} 現行作者指南為準)`;
-  const enOut=
-`—— AI Use Disclosure (suggested placement: ${whereEn}) ——
-
-The authors used the following generative-AI tools in preparing this manuscript:
-${tools}
-
-Used for:
-${actsEn.length?actsEn.map(a=>'· '+a).join('\n'):(uses?'· '+uses:'· (not specified)')}
-${uses&&actsEn.length?'Note: '+uses:''}
-${agentEn}Verification & accountability:
-${vsEn.length?vsEn.map(v=>'· '+v).join('\n'):'· (please tick the verification items)'}
-· AI is not listed as an author; the authors take full responsibility for all content.
-${log?'\nEvidence: '+log:''}
-
-(Compiled ${todayEn}; defer to ${nameClean}'s current author guidelines before submission.)`;
-  const out=zhOut+'\n\n──────────────────────────\n\n'+enOut;
-  $('#out').textContent=out;
-  $('#outWrap').classList.remove('hide');
-  $('#outWrap').scrollIntoView({behavior:'smooth',block:'nearest'});
-}
 
 $('#field').addEventListener('change',()=>{renderActivities();renderPolish();});
 $('#approach').addEventListener('change',renderLedger);
 $('#agent').addEventListener('change',e=>{renderLedger();$('#agentCaution').classList.toggle('hide',!e.target.checked);});
 $('#pub').addEventListener('change',renderPub);
-$('#gen').addEventListener('click',genR);
-$('#clr').addEventListener('click',()=>{
-  ['gTools','gUses','gLog'].forEach(id=>$('#'+id).value='');
-  document.querySelectorAll('#activities input:checked, .gv:checked').forEach(x=>x.checked=false);
-  if($('#agent')){$('#agent').checked=false;$('#agentCaution').classList.add('hide');renderLedger();}
-  $('#outWrap').classList.add('hide');
-});
-$('#copy').addEventListener('click',()=>navigator.clipboard.writeText($('#out').textContent).then(()=>toast('已複製')));
-$('#dl').addEventListener('click',()=>{
-  const b=new Blob([$('#out').textContent],{type:'text/plain;charset=utf-8'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='AI使用揭露聲明.txt';a.click();URL.revokeObjectURL(a.href);toast('已下載');
-});
 
 renderActivities(); renderPolish(); renderLedger(); renderPub();
 
@@ -1586,26 +1482,17 @@ $('#tabResearcher').addEventListener('click',()=>setMode('researcher'));
 $('#tabFrontier').addEventListener('click',()=>setMode('frontier'));
 $('#tabPressure').addEventListener('click',()=>setMode('pressure'));
 $('#tabFaq').addEventListener('click',()=>setMode('faq'));
-$('#loadDemo').addEventListener('click',()=>{
-  renderStudent({c:"質性研究方法(範例)",t:"陳老師",lv:3,pr:["qualitative","interpret"],
-    nd:["translate"],
-    pm:"誠實揭露 AI 使用不會讓你被扣分。我把它當作理解你學習歷程的方式,而不是抓錯。有疑問時,寧可多寫一句,我們再一起討論。\nHonestly disclosing your AI use won't cost you marks. I read it as a way to understand your learning, not to catch you out. When in doubt, write one extra line and we'll talk it through.",
-    tu:"我用 Claude 協助整理本課投影片大綱,內容都已檢查。"});
-});
+
+renderStudent();  // standalone student form (no teacher link needed)
 
 (function bootFromUrl(){
   const params=new URLSearchParams(location.search);
+  if(params.get('tab')==='student'){ setMode('student'); return; }
   if(params.get('tab')==='researcher'){ setMode('researcher'); return; }
   if(params.get('tab')==='frontier'){ setMode('frontier'); return; }
   if(params.get('tab')==='pressure'){ setMode('pressure'); return; }
   if(params.get('tab')==='faq'){ setMode('faq'); return; }
-  const raw = params.get('policy');
-  if(raw){
-    // a student opened the shared link → show the student view with this course's policy
-    try{ const p=JSON.parse(b64u.dec(raw)); renderStudent(p); setMode('student'); return; }
-    catch(e){ console.warn('bad policy param',e); }
-  }
-  setMode('teacher'); // no policy in URL → this is an instructor; default to the teacher setup
+  setMode('teacher');
 })();
 </script>
 </body>
