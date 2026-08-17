@@ -341,8 +341,16 @@
   .submitnote b{color:var(--ink)}
   .submitnote .faint{display:block;margin-top:3px}
   .navguide{display:grid;gap:7px;margin:16px 0 4px}
-  .navrow{display:flex;gap:12px;align-items:baseline;text-align:left;width:100%;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 15px;cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s}
+  .navrow{display:flex;gap:12px;align-items:baseline;text-align:left;width:100%;background:#eaf0ec;border:1px solid #d6e0da;border-radius:var(--radius-sm);padding:11px 15px;cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s}
   .navrow:hover{border-color:var(--accent);background:var(--accent-wash)}
+  .navrow.active{border-color:var(--accent);background:var(--accent-wash);box-shadow:inset 3px 0 0 var(--accent)}
+  .navrow.active .nlabel{color:var(--accent-deep)}
+  .themehead{background:#f4ece6;border-left:5px solid #9a5a3a;border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:16px 22px;margin-bottom:18px}
+  .themehead h2{font-family:"Noto Serif TC",Georgia,serif;font-size:23px;font-weight:700;color:#7a4529;margin:0;border:0;padding:0}
+  .themehead h2 .en{font-size:15px;font-weight:400;color:var(--ink-faint)}
+  .themehead .th-sub{margin:7px 0 0;font-size:13.5px;color:var(--ink-soft);line-height:1.6}
+  .themehead .th-sub .faint{display:block;margin-top:2px}
+  @media(max-width:520px){.themehead h2{font-size:20px}}
   .navrow .nlabel{flex:0 0 92px;font-weight:600;color:var(--accent-deep);font-size:14px}
   .navrow .nlabel .en{display:block;font-weight:400;color:var(--ink-faint);font-size:11px}
   .navrow .ndesc{flex:1;color:var(--ink-soft);font-size:13px;line-height:1.5}
@@ -350,6 +358,7 @@
   @media(max-width:520px){.navrow{flex-direction:column;gap:2px}.navrow .nlabel{flex:none}}
 
   #frontierView{--accent:#5f4a7a;--accent-deep:#48395e;--accent-wash:#efeaf4}
+  #creativeView{--accent:#9a5a3a;--accent-deep:#7a4529;--accent-wash:#f4ece6}
   #frontierView .foldcard{border-color:#ddd3e6}
   #frontierView .foldcard>summary{color:var(--accent-deep)}
   .fpoint{border-left:3px solid var(--accent);background:#f6faf8;border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:12px 16px;margin-top:12px}
@@ -371,20 +380,13 @@
     <h1>AI 用得誠實,也用得好 <span class="en" style="font-size:16px">Using AI honestly, and well</span></h1>
     <div class="sub">政大圖書館做的參考。不強制、不評分,只是幫你把 AI 怎麼用講清楚。挑最符合你現在要做的事:<br><span class="faint">A guide from NCCU Library. It is not required and not graded. It helps you explain how you use AI. Choose the tab that fits your task:</span></div>
     <div class="navguide">
-      <button class="navrow" onclick="setMode('teacher')"><span class="nlabel">老師 <span class="en">Teacher</span></span><span class="ndesc">把課堂能不能用 AI、用到哪裡講清楚,產生一份給學生看的說明。<span class="en">Set the rules for AI in your class, and make a note to share with students.</span></span></button>
-      <button class="navrow" onclick="setMode('student')"><span class="nlabel">學生 <span class="en">Student</span></span><span class="ndesc">說明你這份作業是怎麼跟 AI 一起做的。<span class="en">Show how you used AI in your work.</span></span></button>
-      <button class="navrow" onclick="setMode('researcher')"><span class="nlabel">研究者 <span class="en">Researcher</span></span><span class="ndesc">投稿和送計畫要揭露什麼,邊做邊留紀錄。<span class="en">See what to disclose for journals and grants, and keep notes as you go.</span></span></button>
-      <button class="navrow" onclick="setMode('frontier')"><span class="nlabel">突破與前瞻 <span class="en">Frontiers</span></span><span class="ndesc">AI 讓教、學、研更好的做法,還有名校的參考。<span class="en">Better ways to use AI in teaching, learning and research, with examples from top schools.</span></span></button>
-      <button class="navrow" onclick="setMode('pressure')"><span class="nlabel">壓力時刻 <span class="en">Under pressure</span></span><span class="ndesc">趕作業、備課、投稿壓力大時,怎麼用 AI 又不出錯。<span class="en">How to use AI safely when you are busy or stressed.</span></span></button>
-      <button class="navrow" onclick="setMode('faq')"><span class="nlabel">常見問題 <span class="en">FAQ</span></span><span class="ndesc">大家最常問、最擔心的,一次說清楚。<span class="en">Common questions and worries, answered simply.</span></span></button>
-    </div>
-    <div class="switch" role="tablist" aria-label="模式">
-      <button id="tabTeacher" role="tab" aria-selected="true">老師設定 · Teacher</button>
-      <button id="tabStudent" role="tab" aria-selected="false">學生揭露 · Student</button>
-      <button id="tabResearcher" role="tab" aria-selected="false">研究者 · Researcher</button>
-      <button id="tabFrontier" role="tab" aria-selected="false">突破與前瞻 · Frontiers</button>
-      <button id="tabPressure" role="tab" aria-selected="false">壓力時刻 · Pressure</button>
-      <button id="tabFaq" role="tab" aria-selected="false">常見問題 · FAQ</button>
+      <button class="navrow" data-mode="teacher" onclick="setMode('teacher')"><span class="nlabel">老師 <span class="en">Teacher</span></span><span class="ndesc">把課堂能不能用 AI、用到哪裡講清楚,產生一份給學生看的說明。<span class="en">Set the rules for AI in your class, and make a note to share with students.</span></span></button>
+      <button class="navrow" data-mode="student" onclick="setMode('student')"><span class="nlabel">學生 <span class="en">Student</span></span><span class="ndesc">說明你這份作業是怎麼跟 AI 一起做的。<span class="en">Show how you used AI in your work.</span></span></button>
+      <button class="navrow" data-mode="researcher" onclick="setMode('researcher')"><span class="nlabel">研究者 <span class="en">Researcher</span></span><span class="ndesc">投稿和送計畫要揭露什麼,邊做邊留紀錄。<span class="en">See what to disclose for journals and grants, and keep notes as you go.</span></span></button>
+      <button class="navrow" data-mode="creative" onclick="setMode('creative')"><span class="nlabel">創作領域 <span class="en">Creative</span></span><span class="ndesc">文學獎與圖像影片創作的揭露規定,和學術很不一樣。<span class="en">AI rules for literary and image/video work — very different from academic ones.</span></span></button>
+      <button class="navrow" data-mode="frontier" onclick="setMode('frontier')"><span class="nlabel">突破與前瞻 <span class="en">Frontiers</span></span><span class="ndesc">AI 讓教、學、研更好的做法,還有名校的參考。<span class="en">Better ways to use AI in teaching, learning and research, with examples from top schools.</span></span></button>
+      <button class="navrow" data-mode="pressure" onclick="setMode('pressure')"><span class="nlabel">壓力時刻 <span class="en">Under pressure</span></span><span class="ndesc">趕作業、備課、投稿壓力大時,怎麼用 AI 又不出錯。<span class="en">How to use AI safely when you are busy or stressed.</span></span></button>
+      <button class="navrow" data-mode="faq" onclick="setMode('faq')"><span class="nlabel">常見問題 <span class="en">FAQ</span></span><span class="ndesc">大家最常問、最擔心的,一次說清楚。<span class="en">Common questions and worries, answered simply.</span></span></button>
     </div>
   </header>
 
@@ -410,12 +412,13 @@
 
   <!-- ================= STUDENT ================= -->
   <section id="studentView">
-    <!-- standalone student disclosure form injected here -->
+    <div class="themehead"><h2>學生揭露 <span class="en">Student</span></h2><p class="th-sub">照老師的規則,說明你這份作業是怎麼跟 AI 一起做的。<span class="faint">Following your teacher's rules, show how you used AI in your work.</span></p></div>
     <div id="policyArea"></div>
   </section>
 
   <!-- ================= TEACHER ================= -->
   <section id="teacherView" class="hide">
+    <div class="themehead"><h2>老師設定 <span class="en">Teacher</span></h2><p class="th-sub">把這門課的 AI 規則講清楚,產生一段給學生看的說明。<span class="faint">Set your course's AI rules and generate a note to share with students.</span></p></div>
     <div class="quicknote">⚡ <b>快速設定:</b>填課程名稱、選一個層級,按產生就完成,其餘都有合理預設,想細調再展開「進階設定」。<span class="faint">Quick path: course name + one level → Generate. Everything else has sensible defaults.</span></div>
     <div class="faqpoint">有疑慮或常見問題?<span class="faqlink" onclick="setMode('faq')">看「常見問題」分頁 →</span> <span class="faint">· Questions? See the FAQ tab.</span></div>
     <div class="card">
@@ -505,7 +508,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
 
   <!-- ================= RESEARCHER ================= -->
   <section id="researcherView" class="hide">
-  <div class="eyebrow" style="margin-bottom:10px">研究者 · 投稿與送計畫的 AI 揭露規劃 / For researchers — journals &amp; grants</div>
+  <div class="themehead"><h2>研究者 <span class="en">Researcher</span></h2><p class="th-sub">投稿與送計畫的 AI 揭露規劃,邊做邊留紀錄。<span class="faint">Plan AI disclosure for journals and grants, and keep records as you go.</span></p></div>
 
   <div class="usenote">🧭 <b>怎麼用:</b>現在就做 <b>1–3</b>(規劃 AI 使用 + 開始留紀錄),投稿時再回來做 <b>4–5</b>(對規定、產生聲明)。<b>還沒選定期刊?沒關係</b>,先選領域與取徑,期刊之後再說。<br><span class="faint">Do steps 1–3 now (plan &amp; start logging); come back for 4–5 at submission. No target journal yet? That's fine — pick field and approach first.</span></div>
     <div class="faqpoint">有疑慮或常見問題?<span class="faqlink" onclick="setMode('faq')">看「常見問題」分頁 →</span> <span class="faint">· Questions? See the FAQ tab.</span></div>
@@ -676,11 +679,106 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
 
   </section>
 
+  <!-- ================= CREATIVE ================= -->
+  <section id="creativeView" class="hide">
+    <div class="themehead">
+      <h2>創作領域的 AI 揭露 <span class="en">AI disclosure in creative work</span></h2>
+      <p class="th-sub">寫作、圖像、影片這些創作領域,揭露的邏輯和學術很不一樣。學術重點是「說清楚你怎麼用 AI」,揭露了通常就沒事;創作領域更常是在管「到底能不能用」和「這是不是人做的」。有時候承認用了 AI,反而會讓你直接失去資格。<br><span class="faint">Disclosure works differently in creative fields. Academic rules ask you to explain how you used AI. Creative fields care more about whether AI is allowed at all, and whether a human made it — and admitting AI use can sometimes make you ineligible.</span></p>
+    </div>
+
+    <div class="card">
+      <h2>目前有統一的標準嗎? <span class="en">Is there a single standard yet?</span></h2>
+      <p class="hint"><b>還沒有。</b>創作領域不像學術出版界那樣逐漸收斂:文學看各獎項與平台、新聞看各家媒體、圖像看各平台與法規、版權看各國著作權局。共同浮現的原則是:<b>人負責、實質使用要揭露或標示、用來源憑證(C2PA)留下證明</b>。但細節分歧、變動很快,所以務必逐一查你要投的獎、平台、媒體或單位「當年」的規定。<br><span class="faint">Not yet. Unlike academic publishing, creative fields haven't converged on one rule: literature follows each prize/platform, news each outlet, images each platform and law, copyright each country's office. The shared principles: humans are accountable, disclose or label material AI use, and use provenance (C2PA) as proof. Details differ and change fast — always check the current rules of the specific prize, platform, outlet or office.</span></p>
+      <div class="fpoint"><div class="fh">版權提醒 <span class="en">Copyright note</span></div>
+        <p>美國著作權局自 2023 年起要求登記作品時<b>揭露 AI 生成的部分</b>、並說明人類創作的貢獻;純 AI 生成通常不受著作權保護。在這裡,揭露也是<b>保護你自己的權利</b>。<br><span class="faint">Since 2023 the US Copyright Office requires you to disclose AI-generated parts when registering a work and describe the human contribution; purely AI-generated work usually isn't protected. Here, disclosing also protects your own rights.</span></p></div>
+    </div>
+
+    <div class="card">
+      <h2>文學創作 / 文學獎 <span class="en">Literary &amp; creative writing</span></h2>
+      <div class="fpoint"><div class="fh">有些直接禁 <span class="en">Some ban it</span></div>
+        <p>美國科幻奇幻作家協會(SFWA,星雲獎)規定用大型語言模型寫的作品,不論全部或部分,一律沒有參賽資格;美國羅曼史作家協會(RWA)也禁止未經實質人類創作、由 AI 生成的敘事文字。<br><span class="faint">SFWA's Nebula Awards make work written wholly or partly by large language models ineligible. Romance Writers of America bans AI-generated narrative text without real human authorship.</span> <a href="https://sfwa.org/advocacy-corner/" target="_blank" rel="noopener">SFWA 官方 ↗</a></p></div>
+      <div class="fpoint"><div class="fh">有些反過來要「證明是人寫的」 <span class="en">Others ask you to prove a human wrote it</span></div>
+        <p>美國作家協會(Authors Guild)2025 年推出「Human Authored」認證,作家可申請一個商標印記,聲明作品出自人腦、不是 AI 生成。方向和學術剛好相反:不是「我用了 AI」,而是「這是人寫的」。<br><span class="faint">The Authors Guild's 2025 "Human Authored" mark lets writers certify a book came from a human, not AI — the opposite direction to academic disclosure.</span> <a href="https://authorsguild.org/human/" target="_blank" rel="noopener">Authors Guild ↗</a></p></div>
+      <div class="fpoint"><div class="fh">區分「AI 生成」與「AI 輔助」 <span class="en">"AI-generated" vs "AI-assisted"</span></div>
+        <p>Amazon KDP 要作者向平台申報「AI 生成」的文字、圖像、翻譯(就算事後有改也要),但「AI 輔助」(給點子、改文法、列大綱)不用報;而且是報給平台、不是給讀者。<br><span class="faint">Amazon KDP makes authors tell the platform if text, images or translations are "AI-generated" (even if edited), but not if AI only "assisted." The report goes to the platform, not readers.</span></p></div>
+      <div class="fpoint"><div class="fh">得獎案例 <span class="en">A prize-winner</span></div>
+        <p>2024 年 1 月,日本作家九段理江以《東京都同情塔》拿下芥川獎,自己說書中約 5% 的文字是 ChatGPT 逐字生成的。<br><span class="faint">In January 2024, Japanese author Rie Kudan won the Akutagawa Prize and said about 5% of her book was written word-for-word by ChatGPT.</span> <a href="https://www.semafor.com/article/01/18/2024/ai-assisted-novels-are-winning-more-awards" target="_blank" rel="noopener">報導 ↗</a></p></div>
+      <div class="fpoint"><div class="fh">實際怎麼揭露(範例) <span class="en">How to actually disclose</span></div>
+        <p><b>書籍版權頁或前言</b>可放一句聲明:</p>
+        <div class="exstmt">本書部分內容在寫作過程中使用了 [工具] 協助 [用途,例如潤飾語言];所有內容經作者審閱與編輯,文責由作者自負。</div>
+        <div class="exstmt">This book was written by a human. No generative AI was used to create the text.(想聲明「純人類創作」時)</div>
+        <p><b>投文學獎或雜誌</b>:先看徵稿的 AI 條款。允許輔助時,在投稿信或表單註明「AI 僅用於 [X],創作內容為本人原創」;若規則禁止,就別投用了 AI 的作品(投了可能失格)。<br>
+        <b>Amazon KDP</b>:上架時在「Content」頁回答 AI 問題。判準是<b>「這段文字、圖或翻譯的第一版是誰做的」</b>——AI 做的選「AI-generated」(要申報),你寫的、AI 只幫潤飾則是「AI-assisted」(不用報)。這個申報只給平台,讀者看不到。<br>
+        <b>想主張純人類創作</b>:可申請 Authors Guild 的「Human Authored」印記。<br>
+        <span class="faint">Put one line in the book's copyright page or preface (an "AI-assisted" note, or a "written by a human" note). For prizes/magazines, check the AI rules first and note in your cover letter what AI did. On Amazon KDP, answer the AI question on the Content page — the test is who made the first version; the report is private to the platform. To claim fully human work, apply for the Authors Guild "Human Authored" mark.</span></p></div>
+    </div>
+
+    <div class="card">
+      <h2>圖像 / 影片 / 攝影 <span class="en">Image, video &amp; photography</span></h2>
+      <p class="hint">這一塊的揭露越來越是「自動又技術性」的,跟寫一段聲明不一樣:很多時候是檔案自動帶標記、平台自動加標籤。<br><span class="faint">Here disclosure is increasingly automatic and technical — files carry markers and platforms add labels, rather than you writing a statement.</span></p>
+      <div class="fpoint"><div class="fh">平台標示(看「像不像真的」) <span class="en">Platform labels (based on realism)</span></div>
+        <p>YouTube(2024 年政策、2025 年起執行)要求為「擬真的合成或改造內容」加標示,例如 AI 換臉、AI 配音;TikTok 的 AIGC 標示更全面,還會讀檔案裡的來源資料自動加標;Meta 的 IG/FB 也會自動標「AI Info」。重點是「會不會誤導」,純創意、明顯不是真的的內容通常不用標。<br><span class="faint">YouTube (policy 2024, enforced 2025) requires labels for realistic synthetic or altered content, like AI faces or voices. TikTok's AI label is the most complete and auto-reads file metadata; Meta adds "AI Info" on IG/FB. The test is whether it could mislead — clearly unreal, creative content usually needs no label.</span> <a href="https://support.google.com/youtube/answer/14328491?hl=en" target="_blank" rel="noopener">YouTube 官方說明 ↗</a></p></div>
+      <div class="fpoint"><div class="fh">圖庫平台各有規定 <span class="en">Stock platforms have their own rules</span></div>
+        <p>Getty Images 直接<b>全面禁止</b> AI 生成內容;Adobe Stock <b>要求標示</b>;Shutterstock 也在檢查來源憑證。你的作品若走這些平台,帶 AI 標記可能被退件。<br><span class="faint">Getty Images bans AI-generated content entirely; Adobe Stock requires disclosure; Shutterstock checks content credentials. On these platforms, AI markers can mean automatic rejection.</span> <a href="https://www.artforum.com/news/getty-images-bans-ai-generated-content-over-legal-concerns-252131/" target="_blank" rel="noopener">Getty 禁令報導 ↗</a></p></div>
+      <div class="fpoint"><div class="fh">內容來源憑證(C2PA / Content Credentials) <span class="en">Provenance (C2PA / Content Credentials)</span></div>
+        <p>這是新的技術標準,把「用什麼工具做的、什麼時候、改了什麼」簽進檔案裡。現在主流 AI 工具(Adobe Firefly、DALL·E / Sora、Google Imagen、Midjourney)大多預設就嵌入這種標記,連相機(Sony、Nikon、iPhone)也開始在拍照當下簽章。所以你用 AI 生的圖,常常自己就帶標記,不管你知不知道。<br><span class="faint">C2PA signs into a file what tool made it, when, and what was edited. Major AI tools now embed it by default, and cameras are starting to sign real photos too. Your AI image often carries a marker whether you know it or not.</span> <a href="https://techcrunch.com/2024/09/17/google-will-begin-flagging-ai-generated-images-in-search-later-this-year" target="_blank" rel="noopener">C2PA 說明 ↗</a></p></div>
+      <div class="fpoint"><div class="fh">法規 <span class="en">The law</span></div>
+        <p>歐盟《AI 法案》第 50 條(2026 年 8 月起)要求 AI 生成的影音內容要有機器可讀的標記,深偽要清楚標示;美國 FTC 也把「沒揭露的 AI 誤導」當成欺騙行為。<br><span class="faint">The EU AI Act (Article 50, from August 2026) requires machine-readable marking of AI-generated media, with deepfakes clearly labeled; the US FTC treats undisclosed, misleading AI as deceptive.</span> <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener">EU AI 法案第 50 條 ↗</a></p></div>
+      <div class="fpoint"><div class="fh">攝影獎案例 <span class="en">A photo-contest case</span></div>
+        <p>2023 年,藝術家 Boris Eldagsen 以一張 AI 生成的作品拿下索尼世界攝影獎,隨後<b>公開拒領</b>,說想藉此逼大家討論「AI 影像算不算攝影」。這也讓許多攝影比賽開始明訂 AI 規則。<br><span class="faint">In 2023, artist Boris Eldagsen won the Sony World Photography Award with an AI image, then refused the prize to force a debate on whether AI images count as photography. Many photo contests then wrote AI rules.</span> <a href="https://www.bbc.com/news/entertainment-arts-65296763" target="_blank" rel="noopener">BBC 報導 ↗</a></p></div>
+      <div class="fpoint"><div class="fh">實際怎麼揭露(步驟) <span class="en">How to actually disclose</span></div>
+        <p>1. <b>別刪掉檔案的內容來源憑證(Content Credentials)。</b>可用官方的線上 Verify 工具查一張圖帶了什麼標記。<br>
+        2. <b>加可見的圖說或 alt text</b>,例如「AI 生成圖像(工具:[X])」。<br>
+        3. <b>上平台開內建的 AI 標示</b>:YouTube 上傳時勾「改造或合成內容」、TikTok 開 AIGC 標籤、IG/FB 對擬真內容也要自己開。判準是「像不像真的、會不會誤導」——純創意、明顯不是真的的圖通常不用標。<br>
+        4. <b>投攝影獎或圖庫前先查規定</b>:Getty 全面禁、Adobe Stock 要標,多數攝影比賽要求純攝影或明確標示 AI。<br>
+        <span class="faint">1. Keep the file's Content Credentials — don't strip the metadata; you can check a file with the official online verify tool. 2. Add a visible caption or alt text, e.g. "AI-generated image (tool: X)". 3. Turn on the platform's AI label (YouTube's "altered or synthetic content," TikTok's AIGC label, Meta's for realistic content) — the test is whether it could look real and mislead. 4. Check the rules before entering photo contests or stock sites: Getty bans AI, Adobe Stock requires labeling.</span></p></div>
+    </div>
+
+    <div class="card">
+      <h2>新聞 / 媒體 <span class="en">Journalism &amp; media</span></h2>
+      <p class="hint">新聞業也沒有統一標準,各家自訂;共同點是「人審 + 實質使用要揭露」。<br><span class="faint">No single standard here either; each outlet sets its own, but the common thread is human review plus disclosing material AI use.</span></p>
+      <div class="fpoint"><div class="fh">AP(美聯社) <span class="en">Associated Press</span></div>
+        <p>AI 可協助早期研究、摘要、轉錄、翻譯、下標建議、文法;但每則產出都要記者審閱編輯後才發。報導中若出現 AI 生成或改造的內容,要清楚標明並說明脈絡;生成式 AI 有「實質作用」時要揭露。<br><span class="faint">AI may help with research, summaries, transcription, translation, headline ideas and grammar, but every output is reviewed by a journalist before publishing; AI content in coverage must be clearly identified, and material AI use is disclosed.</span> <a href="https://www.editorandpublisher.com/stories/ap-updates-newsroom-standards-for-artificial-intelligence,262741" target="_blank" rel="noopener">AP 標準 ↗</a></p></div>
+      <div class="fpoint"><div class="fh">BBC <span class="en">BBC</span></div>
+        <p>BBC 做了「How we used AI」的標籤(六角形圖示)放在內容最上方,沒有記者審過就不發。它也公布研究,發現 AI 助手約 45% 會曲解新聞內容。<br><span class="faint">The BBC created a "How we used AI" label (a hexagon icon) at the top of content, and publishes nothing without journalist review; its study found AI assistants misrepresented news about 45% of the time.</span> <a href="https://www.niemanlab.org/2026/07/how-three-newsrooms-are-charting-different-paths-for-ai-use/" target="_blank" rel="noopener">三家新聞室比較 ↗</a></p></div>
+      <div class="fpoint"><div class="fh">實際怎麼做 <span class="en">What to do</span></div>
+        <p>查你投稿或任職媒體的 AI 準則;AI 有實質參與就揭露;AI 產出一律人工查證,尤其事實與引用。<br><span class="faint">Check your outlet's AI policy; disclose material AI use; verify every AI output by hand, especially facts and citations.</span></p></div>
+    </div>
+
+    <div class="card">
+      <h2>一句話對照 <span class="en">In one line</span></h2>
+      <p class="hint"><b>學術:</b>好好揭露你怎麼用 AI,通常就沒事。<br><b>文學獎:</b>先看規定,有的用了 AI 直接失格;有的要你證明是「人寫的」。<br><b>圖像影片:</b>很多時候不用你寫聲明,而是檔案自動帶標記、平台自動加標籤;你要做的是別把擬真的 AI 內容當成真的照片或影片發出去。<br><span class="faint">Academic: disclose how you used AI and you're usually fine. Literary prizes: check the rules first — AI can disqualify you, or you may need to prove it's human-made. Image/video: often no written statement, but automatic file markers and platform labels — don't pass off realistic AI content as real.</span></p>
+    </div>
+
+    <details class="foldcard">
+      <summary>延伸閱讀與相關討論 <span class="en">Sources &amp; further reading</span><span class="foldchev">▶</span></summary>
+      <div class="foldbody">
+        <p class="hint"><b>文學 / 文學獎</b><br>
+        · <a href="https://sfwa.org/advocacy-corner/" target="_blank" rel="noopener">SFWA:哪些算「人類創作」(Nebula 規則)</a><br>
+        · <a href="https://sfwa.org/complete-nebula-awards-rules/" target="_blank" rel="noopener">SFWA:完整 Nebula 獎規則</a><br>
+        · <a href="https://authorsguild.org/human/" target="_blank" rel="noopener">Authors Guild:「Human Authored」認證</a><br>
+        · <a href="https://www.semafor.com/article/01/18/2024/ai-assisted-novels-are-winning-more-awards" target="_blank" rel="noopener">Semafor:芥川獎得主九段理江用 ChatGPT</a></p>
+        <p class="hint"><b>圖像 / 影片 / 攝影</b><br>
+        · <a href="https://support.google.com/youtube/answer/14328491?hl=en" target="_blank" rel="noopener">YouTube 官方:如何揭露 AI 內容</a><br>
+        · <a href="https://www.artforum.com/news/getty-images-bans-ai-generated-content-over-legal-concerns-252131/" target="_blank" rel="noopener">Artforum:Getty 全面禁止 AI 生成內容</a><br>
+        · <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener">歐盟 AI 法案第 50 條(透明義務)</a> · <a href="https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content" target="_blank" rel="noopener">歐盟官方:AI 內容標示行為準則</a><br>
+        · <a href="https://techcrunch.com/2024/09/17/google-will-begin-flagging-ai-generated-images-in-search-later-this-year" target="_blank" rel="noopener">TechCrunch:C2PA 內容來源憑證與 Google 標示</a><br>
+        · <a href="https://www.bbc.com/news/entertainment-arts-65296763" target="_blank" rel="noopener">BBC:索尼攝影獎 AI 得獎後拒領</a></p>
+        <p class="hint"><b>相關討論(不同立場)</b><br>
+        · <a href="https://selfpublishingadvice.org/nebula-awards-ai-policy/" target="_blank" rel="noopener">Alliance of Independent Authors:Nebula AI 政策的爭議</a><br>
+        · <a href="https://bernoff.com/blog/moral-panic-over-ai-at-the-nebula-awards" target="_blank" rel="noopener">Josh Bernoff:對 Nebula AI 規則的另一種看法</a><br>
+        <span class="faint">These discussions take different sides — read them to see the range of views.</span></p>
+      </div>
+    </details>
+
+    <div class="footnote">案例整理自 2024–2026 公開資料(SFWA、RWA、Authors Guild、Amazon KDP、芥川獎;YouTube、TikTok、Meta、Getty、Adobe Stock、C2PA、歐盟 AI 法案)。這領域變動很快,投稿或發布前請以該獎項/平台/法規的最新規定為準。<span class="faint">Cases from 2024–2026 public sources; this area changes fast, so always check the latest rules of the prize, platform or law.</span></div>
+  </section>
+
   <!-- ================= FRONTIER ================= -->
   <section id="frontierView" class="hide">
-    <div class="card">
+    <div class="themehead">
       <h2>突破與前瞻 <span class="en">Frontiers</span></h2>
-      <p class="hint">AI 不只是要防的東西,也能把教、學、研做得更好,甚至做到以前做不到的事。這頁給老師、學生、研究者參考,重點放在怎麼把 AI 用出價值,不只是怎麼防弊。<br><span class="faint">AI isn't only a risk to manage — it can make teaching, learning and research better, even open what wasn't possible before. Reference points for going further, not just staying safe.</span></p>
+      <p class="th-sub">AI 不只是要防的東西,也能把教、學、研做得更好,甚至做到以前做不到的事。這頁給老師、學生、研究者參考,重點放在怎麼把 AI 用出價值,不只是怎麼防弊。<br><span class="faint">AI isn't only a risk to manage — it can make teaching, learning and research better, even open what wasn't possible before. Reference points for going further, not just staying safe.</span></p>
     </div>
 
     <div class="card">
@@ -705,6 +803,27 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
         <p>開啟以前做不到的研究型態:<b>假設生成 × 自主實驗 × 大規模分析</b>。AI agent 團隊已設計出新的奈米抗體並登上《Nature》,自主系統產出的論文也被同儕審查的 workshop 接受。<b>但要誠實配上但書:novelty 要查(已有抄襲案例)、結果要能複製、你仍為一切負責。</b><br><span class="faint">New research modes — hypothesis generation, autonomous experiments, large-scale analysis — with honest caveats: check novelty, ensure reproducibility, stay accountable.</span></p></div>
       <div class="fpoint"><div class="fh">方式 <span class="en">Methods</span></div>
         <p><b>找更多洞見</b>:人與 AI 各自獨立編碼、再做「不一致分析」,能浮現人類單獨找不到的洞見;把 AI 當對抗性的第二讀者。<b>維護可複製性</b>:報告模型版本+日期+參數+執行軌跡、優先開放權重、以人工驗證。<b>加速流程</b>:文獻整理、資料清理、程式輔助,但每一步都要查證。<br><span class="faint">Find insight (parallel human–AI coding + disagreement analysis); protect reproducibility (version, date, settings, traces, open-weight, human validation); accelerate — while verifying every step.</span> <a href="https://arxiv.org/abs/2508.14111" target="_blank" rel="noopener">綜述:Agentic Science ↗</a></p></div>
+    </div>
+
+    <div class="card">
+      <h2>⚠ 用 AI 守門:辨識假訊息與學術不當 <span class="en">Using AI to spot fake news &amp; misconduct</span></h2>
+      <p class="hint">AI 讓假訊息、假圖片、假論文更容易大量做出來(論文工廠、造假圖、捏造數據與引用、深偽),所以更要提高警覺。好消息是,同一批技術也能幫忙偵測——但工具會誤判、只能當「初篩」,最後判斷還是人。<br><span class="faint">AI makes fake news, fake images and fake papers easier to mass-produce, so stay alert. The same tech can help detect them — but tools make mistakes and only give a first screen; the final call is human.</span></p>
+      <div class="fpoint"><div class="fh">辨識假新聞 / 不實訊息 <span class="en">Spotting fake news</span></div>
+        <p>・<b>反向圖片搜尋</b>(Google Lens、TinEye):查一張圖是不是舊圖被移花接木。<br>
+        ・<b>看內容來源憑證(C2PA / Content Credentials)</b>:檢查圖或影片是不是 AI 生成或改造過。<br>
+        ・<b>橫向閱讀(SIFT)</b>:先停一下 → 查來源是誰 → 找其他可信報導佐證 → 追回原始出處。<br>
+        ・<b>把 AI 當助手、不當裁判</b>:它能幫你快速比對、找反例,但它自己也會編造,所以每一條都要回原始出處查。深偽偵測工具可參考,但不可靠、會誤判,別當唯一依據。<br>
+        <b>警戒:</b>AI 生成的假訊息又快又像真的,別因為「看起來很專業、很流暢」就相信。<br>
+        <span class="faint">Reverse image search (Google Lens, TinEye) to catch recycled photos; check Content Credentials for AI origin; use lateral reading (SIFT: Stop, Investigate the source, Find other coverage, Trace to the original); treat AI as a helper not a judge — it also fabricates, so verify everything. Deepfake detectors are unreliable — don't rely on them alone. Fluent and polished does not mean true.</span></p></div>
+      <div class="fpoint warn"><div class="fh">辨識學術不當 <span class="en">Spotting research misconduct</span></div>
+        <p>給老師、編輯、審查者,也給學生自我檢查:<br>
+        ・<b>影像造假 / 重複</b>:Proofig、ImageTwin、FigCheck 用 AI 比對圖片重複與竄改(Science 系列、AACR、ASM 等期刊已採用);當「初篩」,不是判決。<br>
+        ・<b>論文工廠 / 扭曲用詞</b>:機器改寫會留下「tortured phrases」(例如用 fake neural organization 代替 artificial neural network)。可查 <a href="https://www.irit.fr/~Guillaume.Cabanac/problematic-paper-screener" target="_blank" rel="noopener">Problematic Paper Screener</a>、STM Integrity Hub、Clear Skies 的 Papermill Alarm。<br>
+        ・<b>捏造引用 / 假文獻</b>:逐條回查參考文獻是否真的存在(AI 常編造);到 Retraction Watch 看是否已被撤稿。<br>
+        ・<b>事後同儕檢視</b>:上 <a href="https://pubpeer.com" target="_blank" rel="noopener">PubPeer</a> 看某篇論文有沒有被公開指出問題。<br>
+        <b>警戒:</b>AI 讓假數據、假圖、假引用更容易做出來;偵測工具能揪出「可疑」,但也會誤判——重點是保持懷疑、交叉查證,不要盲信任何一個分數或標籤。<br>
+        <span class="faint">For teachers, editors, reviewers — and for checking your own work: AI image tools (Proofig, ImageTwin, FigCheck) flag duplicated/manipulated figures (used by Science, AACR, ASM) as a first screen, not a verdict; the Problematic Paper Screener and Papermill Alarm catch "tortured phrases" from machine paraphrasing; check every reference actually exists and look it up on Retraction Watch; see PubPeer for post-publication concerns. Detectors flag "suspicious," not "guilty" — stay skeptical and cross-check.</span> <a href="https://www.the-scientist.com/detection-or-deception-the-double-edged-sword-of-ai-in-research-misconduct-72354" target="_blank" rel="noopener">綜述 ↗</a></p></div>
+      <p class="hint faint" style="margin-top:12px">共通原則:工具只負責「標出可疑」,不負責「判定有罪」。無論偵測或創作,保持懷疑、交叉查證,別盲信任何一個分數。<span class="faint">The common rule: tools flag "suspicious," they don't decide "guilty." Stay skeptical and cross-check.</span></p>
     </div>
 
     <details class="foldcard">
@@ -756,14 +875,26 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
       </div>
     </details>
 
+    <details class="foldcard">
+      <summary>🎨 創作領域的突破與前瞻 <span class="en">Creative work</span><span class="foldchev">▶</span></summary>
+      <div class="foldbody">
+        <div class="fpoint"><div class="fh">共創與探索 <span class="en">Co-creation &amp; exploration</span></div>
+          <p>把 AI 當發想、風格探索、跨語言的夥伴,可以打開新的創作方式;判斷、選擇與最後的作品仍是你的。<br><span class="faint">AI as a partner for ideas, style exploration and crossing languages can open new ways to create — the judgement and final work stay yours.</span></p></div>
+        <div class="fpoint"><div class="fh">無障礙創作 <span class="en">More accessible creation</span></div>
+          <p>對行動或表達受限的人,AI 能降低門檻,讓更多人也能創作、出版。<br><span class="faint">AI can lower barriers so more people — including those with disabilities — can create and publish.</span></p></div>
+        <div class="fpoint"><div class="fh">標準逐步成形 <span class="en">Standards are forming</span></div>
+          <p>來源憑證(C2PA)正在普及、平台標示逐漸標準化、「Human Authored」這類人類創作標章出現、各國著作權規則陸續到位。提醒:標準還在成形,早點養成「留紀錄、該標就標」的習慣,將來最省事。<br><span class="faint">Provenance (C2PA) is spreading, platform labels are becoming standard, "Human Authored" marks are appearing, and copyright rules are catching up. Build the habit of logging and labelling early.</span></p></div>
+      </div>
+    </details>
+
     <div class="footnote">標竿與案例整理自 2025–2026 的公開資料(雪梨大學、TEQSA、Vanderbilt、ACU、Adelphi 等),以及 NAIRR、CSIS、IMF 等對算力鴻溝與減緩做法的討論。<span class="faint">Benchmarks and cases from 2025–2026 public sources.</span></div>
   </section>
 
   <!-- ================= PRESSURE ================= -->
   <section id="pressureView" class="hide">
-    <div class="card">
+    <div class="themehead">
       <h2>壓力時刻 <span class="en">Under pressure</span></h2>
-      <p class="hint">趕的時候最容易出事。時間一趕、壓力一大,人就容易把 AI 給的東西直接拿來用,少了查證。這是有研究的:時間壓力下,人會更依賴 AI 的建議、更少去質疑。這頁先講三種趕時間的狀況,後面再看其他也容易太依賴 AI 的時刻。<br><span class="faint">When you're rushed, mistakes slip in. Under time pressure people lean harder on AI and question it less. First three deadline situations, then other moments where over-reliance creeps in.</span></p>
+      <p class="th-sub">趕的時候最容易出事。時間一趕、壓力一大,人就容易把 AI 給的東西直接拿來用,少了查證。這是有研究的:時間壓力下,人會更依賴 AI 的建議、更少去質疑。這頁先講三種趕時間的狀況,後面再看其他也容易太依賴 AI 的時刻。<br><span class="faint">When you're rushed, mistakes slip in. Under time pressure people lean harder on AI and question it less. First three deadline situations, then other moments where over-reliance creeps in.</span></p>
     </div>
 
     <div class="card">
@@ -804,14 +935,26 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
       <p class="hint faint" style="margin-top:14px">共通的解法很簡單:在你要用 AI 的地方,刻意留一個自己動腦、自己查證的步驟。越是你判斷不了的地方,越要留。<span class="faint">The common fix: keep a deliberate step where you think and verify yourself — especially where you can judge least.</span></p>
     </div>
 
+    <div class="card">
+      <h2>創作者:接案、量產與模仿 <span class="en">Creators: deadlines, volume &amp; mimicry</span></h2>
+        <div class="fpoint warn"><div class="fh">接案 / 趕稿 <span class="en">Deadlines &amp; client work</span></div>
+          <p>再急也別交出沒查過的 AI 生成內容——出錯會砸招牌、失去客戶信任。<br><span class="faint">However tight the deadline, don't hand over unchecked AI content — errors cost your reputation and clients' trust.</span></p></div>
+        <div class="fpoint warn"><div class="fh">量產的誘惑 <span class="en">The temptation to mass-produce</span></div>
+          <p>平台會盯異常高的產出(Amazon KDP 就明說正常作者不會一天出十本),別為了衝量賭上帳號。<br><span class="faint">Platforms watch for abnormal output (Amazon KDP notes real authors don't publish ten books a day) — don't risk your account chasing volume.</span></p></div>
+        <div class="fpoint warn"><div class="fh">風格模仿 <span class="en">Copying a living creator's style</span></div>
+          <p>用 AI 模仿在世創作者的風格,有倫理與法律風險,尤其是拿去商用時。<br><span class="faint">Using AI to imitate a living creator's style carries ethical and legal risk, especially for commercial use.</span></p></div>
+        <div class="fpoint warn"><div class="fh">冒名與深偽 <span class="en">Impersonation &amp; deepfakes</span></div>
+          <p>別用 AI 假造他人的聲音、肖像或簽名——這可能觸法,也傷害他人。<br><span class="faint">Never use AI to fake someone's voice, likeness or signature — it can be illegal and harmful.</span></p></div>
+      </div>
+
     <div class="footnote">「時間壓力下更依賴 AI」有行為研究支持;偵測誤判與撤稿案例見「突破與前瞻」分頁。<span class="faint">The time-pressure effect is documented; detection and retraction cases are on the Frontiers tab.</span></div>
   </section>
 
   <!-- ================= FAQ ================= -->
   <section id="faqView" class="hide">
-    <div class="card">
+    <div class="themehead">
       <h2>常見問題 <span class="en">Frequently asked questions</span></h2>
-      <p class="hint">這裡收集了師生和研究者實際會問、會擔心的問題,一個一個老實回答。不強制什麼,就是把大家最常有的疑慮講清楚。<br><span class="faint">Real questions and worries from students, teachers and researchers, answered plainly. Nothing here compels anyone — it just clears up the most common doubts.</span></p>
+      <p class="th-sub">這裡收集了師生和研究者實際會問、會擔心的問題,一個一個老實回答。不強制什麼,就是把大家最常有的疑慮講清楚。<br><span class="faint">Real questions and worries from students, teachers and researchers, answered plainly. Nothing here compels anyone — it just clears up the most common doubts.</span></p>
     </div>
 
     <div class="card">
@@ -857,6 +1000,22 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
           <div class="a">不算。把 AI 當<b>對抗性的第二讀者</b>能讓研究更嚴謹;它擴充你的工具箱,而選哪個提示、如何驗證、放進哪個框架,仍是你的判斷與責任。<br><span class="en">No. Used as an adversarial second reader it makes work more rigorous; the prompts, verification and framing remain your judgement.</span></div></div>
         <div class="qa"><div class="q">要留這麼多紀錄,太麻煩了。 <span class="en">This is a lot of record-keeping.</span></div>
           <div class="a">重點是<b>邊做邊留</b>,投稿時就只是把紀錄謄上去;紀錄本會依你的研究取徑,只顯示你需要的那幾項。<br><span class="en">The point is to log as you go — at submission you just transcribe, and the ledger shows only the items your approach needs.</span></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>給創作者 <span class="en">For creators</span></h2>
+      <div class="faq">
+        <div class="qa"><div class="q">用 AI 潤稿,作品還算我的嗎? <span class="en">If AI polished it, is it still mine?</span></div>
+          <div class="a">看程度和該領域規定。文法、拼字潤飾通常還算你的;但如果 AI 生成了大段內容或情節,就不一定,可能要揭露、或不符某些獎項的資格。<br><span class="faint">It depends on how much, and on the field's rules. Grammar and spelling fixes are usually still yours; large AI-generated passages may need disclosure or make you ineligible for some prizes.</span></div></div>
+        <div class="qa"><div class="q">投稿時沒說用了 AI,會怎樣? <span class="en">What if I don't mention AI?</span></div>
+          <div class="a">可能被取消資格、撤稿,或失去信任。有疑慮就先問主辦或編輯,別賭。<br><span class="faint">You could be disqualified, have work withdrawn, or lose trust. If unsure, ask the organiser or editor first.</span></div></div>
+        <div class="qa"><div class="q">AI 生成的圖或文有版權嗎? <span class="en">Is AI-generated work copyrighted?</span></div>
+          <div class="a">純 AI 生成多半不受著作權保護;要有實質的人類創作才可能登記,而且在美國登記時還要揭露 AI 的部分。<br><span class="faint">Purely AI-generated work usually isn't protected; meaningful human authorship is needed to register, and in the US you must disclose the AI parts.</span></div></div>
+        <div class="qa"><div class="q">平台或編輯偵測得出來嗎? <span class="en">Can platforms or editors detect it?</span></div>
+          <div class="a">有 C2PA 來源憑證和偵測工具,但都不可靠、會誤判。這不是「抓不到就沒事」——誠實比較安全。<br><span class="faint">There are C2PA credentials and detectors, but they're unreliable and misfire. "Not getting caught" isn't the point — honesty is safer.</span></div></div>
+        <div class="qa"><div class="q">怎麼證明是我創作的? <span class="en">How do I prove I made it?</span></div>
+          <div class="a">留下草稿、版本紀錄、發想過程;圖像作品保留內容來源憑證(別刪掉 metadata)。<br><span class="faint">Keep drafts, version history and your process notes; for images, keep the Content Credentials — don't strip the metadata.</span></div></div>
       </div>
     </div>
 
@@ -1320,20 +1479,16 @@ ${vEn}${chalEnB}${agEn}${proof? '\n\nProcess record: '+proof : ''}
 
 /* ---------- mode switching ---------- */
 function setMode(m){
-  const isS=m==='student', isT=m==='teacher', isR=m==='researcher', isF=m==='faq', isX=m==='frontier', isP=m==='pressure';
+  const isS=m==='student', isT=m==='teacher', isR=m==='researcher', isF=m==='faq', isX=m==='frontier', isP=m==='pressure', isC=m==='creative';
   $('#studentView').classList.toggle('hide',!isS);
   $('#teacherView').classList.toggle('hide',!isT);
   $('#researcherView').classList.toggle('hide',!isR);
+  $('#creativeView').classList.toggle('hide',!isC);
   $('#frontierView').classList.toggle('hide',!isX);
   $('#pressureView').classList.toggle('hide',!isP);
   $('#faqView').classList.toggle('hide',!isF);
-  $('#tabStudent').setAttribute('aria-selected',isS);
-  $('#tabTeacher').setAttribute('aria-selected',isT);
-  $('#tabResearcher').setAttribute('aria-selected',isR);
-  $('#tabFrontier').setAttribute('aria-selected',isX);
-  $('#tabPressure').setAttribute('aria-selected',isP);
-  $('#tabFaq').setAttribute('aria-selected',isF);
-  const hideShared = isR || isF || isX || isP;
+  document.querySelectorAll('.navrow').forEach(r=>r.classList.toggle('active', r.dataset.mode===m));
+  const hideShared = isR || isF || isX || isP || isC;
   ['#aboutSources','#sharedDisclaimer','#sharedFootnote'].forEach(id=>{const e=$(id); if(e) e.classList.toggle('hide',hideShared);});
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -1476,12 +1631,6 @@ renderActivities(); renderPolish(); renderLedger(); renderPub();
 /* ---------- init ---------- */
 buildTeacherForm();
 wireTeacher();
-$('#tabStudent').addEventListener('click',()=>setMode('student'));
-$('#tabTeacher').addEventListener('click',()=>setMode('teacher'));
-$('#tabResearcher').addEventListener('click',()=>setMode('researcher'));
-$('#tabFrontier').addEventListener('click',()=>setMode('frontier'));
-$('#tabPressure').addEventListener('click',()=>setMode('pressure'));
-$('#tabFaq').addEventListener('click',()=>setMode('faq'));
 
 renderStudent();  // standalone student form (no teacher link needed)
 
@@ -1489,6 +1638,7 @@ renderStudent();  // standalone student form (no teacher link needed)
   const params=new URLSearchParams(location.search);
   if(params.get('tab')==='student'){ setMode('student'); return; }
   if(params.get('tab')==='researcher'){ setMode('researcher'); return; }
+  if(params.get('tab')==='creative'){ setMode('creative'); return; }
   if(params.get('tab')==='frontier'){ setMode('frontier'); return; }
   if(params.get('tab')==='pressure'){ setMode('pressure'); return; }
   if(params.get('tab')==='faq'){ setMode('faq'); return; }
