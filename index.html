@@ -9,16 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#f5f3f2;
+    --paper:#f6f4f0;
     --surface:#ffffff;
-    --ink:#232a3d;
-    --ink-soft:#5a6072;
-    --ink-faint:#8b90a0;
-    --line:#e3e1db;
-    --line-strong:#cfcdc6;
+    --ink:#2b2926;
+    --ink-soft:#5e5950;
+    --ink-faint:#948e84;
+    --line:#e8e3da;
+    --line-strong:#d5cfc4;
     --accent:#0d4b3c;        /* 政大綠 NCCU green — primary */
-    --accent-deep:#08382c;
-    --accent-wash:#e8efec;
+    --accent-deep:#093a2e;
+    --accent-wash:#e7eeea;
     --gold:#b59650; --pink:#f19db5; --purple:#c5a4cc; --yellow:#e1c845; --nccugray:#cfd2d3;
     --safe:#3a6b5f;
     --safe-wash:#eaf2ee;
@@ -249,7 +249,11 @@
   @media(max-width:520px){body{padding:22px 14px 70px}.card{padding:20px 17px}}
   /* ===== merged: researcher tab (indigo) ===== */
   :root{--warn:#a1442e;--warn-wash:#fdf1ee;--ok:#3a6b5f;--ok-wash:#eaf2ee}
-  #researcherView{--accent:#7d6230;--accent-deep:#5e4a24;--accent-wash:#f3eede}
+  #studentView{--accent:#2f6a5a;--accent-deep:#234f43;--accent-wash:#e7f0ec}
+  #researcherView{--accent:#7a6636;--accent-deep:#5c4c26;--accent-wash:#f2eee1}
+  #pressureView{--accent:#965566;--accent-deep:#73404e;--accent-wash:#f4ebee}
+  #gatekeepView{--accent:#3f6377;--accent-deep:#2f4b5b;--accent-wash:#e8eef2}
+  #faqView{--accent:#55606e;--accent-deep:#3f4855;--accent-wash:#edeef0}
   #researcherView .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   @media(max-width:560px){#researcherView .row2{grid-template-columns:1fr}}
   #researcherView label.field .lab{font-weight:500;font-size:14.5px;display:block;margin-bottom:6px}
@@ -343,25 +347,25 @@
   .submitnote b{color:var(--ink)}
   .submitnote .faint{display:block;margin-top:3px}
   .navguide{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0 4px}
-  .navrow{display:flex;flex-direction:column;gap:3px;text-align:left;background:var(--accent-wash);border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 14px;cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s}
-  .navrow:hover{border-color:var(--accent);background:var(--accent-wash)}
-  .navrow.active{border-color:var(--accent);background:var(--accent-wash);box-shadow:inset 3px 0 0 var(--accent)}
-  .navrow.active .nlabel{color:var(--accent-deep)}
-  .themehead{background:#f4ece6;border-left:5px solid #9a5a3a;border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:16px 22px;margin-bottom:18px}
-  .themehead h2{font-family:"Noto Serif TC",Georgia,serif;font-size:23px;font-weight:700;color:#7a4529;margin:0;border:0;padding:0}
+  .navrow{display:flex;flex-direction:column;gap:3px;text-align:left;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--nav,var(--accent));border-radius:var(--radius-sm);padding:11px 14px;cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s}
+  .navrow:hover{background:var(--navw,var(--accent-wash))}
+  .navrow.active{background:var(--navw,var(--accent-wash));border-color:var(--nav,var(--accent))}
+  .navrow .nlabel{color:var(--nav,var(--accent-deep))}
+  .themehead{background:var(--accent-wash);border-left:5px solid var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:16px 22px;margin-bottom:18px}
+  .themehead h2{font-family:"Noto Serif TC",Georgia,serif;font-size:23px;font-weight:700;color:var(--accent-deep);margin:0;border:0;padding:0}
   .themehead h2 .en{font-size:15px;font-weight:400;color:var(--ink-faint)}
   .themehead .th-sub{margin:7px 0 0;font-size:13.5px;color:var(--ink-soft);line-height:1.6}
   .themehead .th-sub .faint{display:block;margin-top:2px}
   @media(max-width:520px){.themehead h2{font-size:20px}}
-  .navrow .nlabel{font-weight:700;color:var(--accent-deep);font-size:14.5px}
+  .navrow .nlabel{font-weight:700;font-size:14.5px}
   .navrow .nlabel .en{font-weight:400;color:var(--ink-faint);font-size:11.5px;margin-left:4px}
   .navrow .ndesc{color:var(--ink-soft);font-size:12.5px;line-height:1.45}
   .navrow .ndesc .en{display:block;color:var(--ink-faint);font-size:11.5px;margin-top:1px}
   @media(max-width:760px){.navguide{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:440px){.navguide{grid-template-columns:1fr}}
 
-  #frontierView{--accent:#5f4a7a;--accent-deep:#48395e;--accent-wash:#efeaf4}
-  #creativeView{--accent:#9a5a3a;--accent-deep:#7a4529;--accent-wash:#f4ece6}
+  #frontierView{--accent:#4d5878;--accent-deep:#39435f;--accent-wash:#ecedf3}
+  #creativeView{--accent:#a05a3a;--accent-deep:#7c4429;--accent-wash:#f4ece5}
   #frontierView .foldcard{border-color:#ddd3e6}
   #frontierView .foldcard>summary{color:var(--accent-deep)}
   .fpoint{border-left:3px solid var(--accent);background:#f6faf8;border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:12px 16px;margin-top:12px}
@@ -383,14 +387,14 @@
     <h1>AI 用得誠實，也用得好 <span class="en" style="font-size:16px">Using AI honestly, and well</span></h1>
     <div class="sub">政大圖書館做的參考。不強制、不評分，只是幫你把 AI 怎麼用講清楚。挑最符合你現在要做的事：<br><span class="faint">A guide from NCCU Library. It is not required and not graded. It helps you explain how you use AI. Choose the tab that fits your task:</span></div>
     <div class="navguide">
-      <button class="navrow" data-mode="teacher" onclick="setMode('teacher')"><span class="nlabel">老師 <span class="en">Teacher</span></span><span class="ndesc">把課堂能不能用 AI、用到哪裡講清楚，產生一份給學生看的說明。<span class="en">Set the rules for AI in your class, and make a note to share with students.</span></span></button>
-      <button class="navrow" data-mode="student" onclick="setMode('student')"><span class="nlabel">學生 <span class="en">Student</span></span><span class="ndesc">說明你這份作業是怎麼跟 AI 一起做的。<span class="en">Show how you used AI in your work.</span></span></button>
-      <button class="navrow" data-mode="researcher" onclick="setMode('researcher')"><span class="nlabel">研究者 <span class="en">Researcher</span></span><span class="ndesc">投稿和送計畫要揭露什麼，邊做邊留紀錄。<span class="en">See what to disclose for journals and grants, and keep notes as you go.</span></span></button>
-      <button class="navrow" data-mode="creative" onclick="setMode('creative')"><span class="nlabel">創作領域 <span class="en">Creative</span></span><span class="ndesc">文學獎與圖像影片創作的揭露規定，和學術很不一樣。<span class="en">AI rules for literary and image/video work — very different from academic ones.</span></span></button>
-      <button class="navrow" data-mode="frontier" onclick="setMode('frontier')"><span class="nlabel">突破與前瞻 <span class="en">Frontiers</span></span><span class="ndesc">AI 讓教、學、研更好的做法，還有名校的參考。<span class="en">Better ways to use AI in teaching, learning and research, with examples from top schools.</span></span></button>
-      <button class="navrow" data-mode="pressure" onclick="setMode('pressure')"><span class="nlabel">壓力時刻 <span class="en">Under pressure</span></span><span class="ndesc">趕作業、備課、投稿壓力大時，怎麼用 AI 又不出錯。<span class="en">How to use AI safely when you are busy or stressed.</span></span></button>
-      <button class="navrow" data-mode="gatekeep" onclick="setMode('gatekeep')"><span class="nlabel">AI 守門 <span class="en">Integrity</span></span><span class="ndesc">用 AI 協助辨識假訊息與學術不當，保持警覺。<span class="en">Spot fake news and misconduct, and stay alert.</span></span></button>
-      <button class="navrow" data-mode="faq" onclick="setMode('faq')"><span class="nlabel">常見問題 <span class="en">FAQ</span></span><span class="ndesc">大家最常問、最擔心的，一次說清楚。<span class="en">Common questions and worries, answered simply.</span></span></button>
+      <button class="navrow" data-mode="teacher" style="--nav:#0d4b3c;--navw:#e7eeea" onclick="setMode('teacher')"><span class="nlabel">老師 <span class="en">Teacher</span></span><span class="ndesc">把課堂能不能用 AI、用到哪裡講清楚，產生一份給學生看的說明。<span class="en">Set the rules for AI in your class, and make a note to share with students.</span></span></button>
+      <button class="navrow" data-mode="student" style="--nav:#2f6a5a;--navw:#e7f0ec" onclick="setMode('student')"><span class="nlabel">學生 <span class="en">Student</span></span><span class="ndesc">說明你這份作業是怎麼跟 AI 一起做的。<span class="en">Show how you used AI in your work.</span></span></button>
+      <button class="navrow" data-mode="researcher" style="--nav:#7a6636;--navw:#f2eee1" onclick="setMode('researcher')"><span class="nlabel">研究者 <span class="en">Researcher</span></span><span class="ndesc">投稿和送計畫要揭露什麼，邊做邊留紀錄。<span class="en">See what to disclose for journals and grants, and keep notes as you go.</span></span></button>
+      <button class="navrow" data-mode="creative" style="--nav:#a05a3a;--navw:#f4ece5" onclick="setMode('creative')"><span class="nlabel">創作領域 <span class="en">Creative</span></span><span class="ndesc">文學獎與圖像影片創作的揭露規定，和學術很不一樣。<span class="en">AI rules for literary and image/video work — very different from academic ones.</span></span></button>
+      <button class="navrow" data-mode="frontier" style="--nav:#4d5878;--navw:#ecedf3" onclick="setMode('frontier')"><span class="nlabel">突破與前瞻 <span class="en">Frontiers</span></span><span class="ndesc">AI 讓教、學、研更好的做法，還有名校的參考。<span class="en">Better ways to use AI in teaching, learning and research, with examples from top schools.</span></span></button>
+      <button class="navrow" data-mode="pressure" style="--nav:#965566;--navw:#f4ebee" onclick="setMode('pressure')"><span class="nlabel">壓力時刻 <span class="en">Under pressure</span></span><span class="ndesc">趕作業、備課、投稿壓力大時，怎麼用 AI 又不出錯。<span class="en">How to use AI safely when you are busy or stressed.</span></span></button>
+      <button class="navrow" data-mode="gatekeep" style="--nav:#3f6377;--navw:#e8eef2" onclick="setMode('gatekeep')"><span class="nlabel">AI 守門 <span class="en">Integrity</span></span><span class="ndesc">用 AI 協助辨識假訊息與學術不當，保持警覺。<span class="en">Spot fake news and misconduct, and stay alert.</span></span></button>
+      <button class="navrow" data-mode="faq" style="--nav:#55606e;--navw:#edeef0" onclick="setMode('faq')"><span class="nlabel">常見問題 <span class="en">FAQ</span></span><span class="ndesc">大家最常問、最擔心的，一次說清楚。<span class="en">Common questions and worries, answered simply.</span></span></button>
     </div>
   </header>
 
@@ -426,7 +430,7 @@
       <p class="hint">決定學生看到哪些「任務」選項。請<b>依這份作業的性質、而非科系</b>選擇。<b>可複選</b>。教統計/理工記得改這裡，否則學生會看到人文的清單。<br>
         <span class="faint">Sets which task options students see. Choose by the assignment's nature, not the department. Multi-select. If you teach stats/STEM, change this.</span></p>
       <div class="checks" id="tProfiles"></div>
-      <p class="hint faint" style="margin-top:8px">「方法輪廓」而非科系，對應 Biglan/Becher 的 hard↔soft 連續體並容納跨領域。<br>Profiles (not departments) follow Biglan/Becher's hard↔soft continuum.</p>
+      <p class="hint faint" style="margin-top:8px">這裡用「研究方法的輪廓」來分，不是用科系分，這樣跨領域的研究也放得進來。<br>These group by research method rather than department, so interdisciplinary work fits too.</p>
     </div>
 
     <div class="card">
