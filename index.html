@@ -90,6 +90,13 @@
   .tier[data-t="1"] .dot{background:var(--t1)} .tier[data-t="2"] .dot{background:var(--t2)}
   .tier[data-t="3"] .dot{background:var(--t3)} .tier[data-t="4"] .dot{background:var(--t5)}
   .explore-note{margin-top:14px;background:#f4f2fb;border:1px dashed #cdc6e6;border-radius:var(--radius-sm);padding:12px 14px;font-size:13px;color:#4a3f6b;line-height:1.55}
+  .tiersum{margin-top:14px;background:var(--accent-wash);border:1px solid var(--line);border-radius:var(--radius-sm);padding:13px 16px}
+  .tiersum .ts-h{font-weight:700;color:var(--accent-deep);font-size:15px;margin-bottom:5px}
+  .tiersum .ts-h .en{font-weight:400;color:var(--ink-faint);font-size:12.5px}
+  .tiersum .ts-row{display:flex;gap:10px;font-size:13.5px;line-height:1.55;margin-top:4px}
+  .tiersum .ts-k{flex:0 0 78px;color:var(--ink-faint);font-size:12px;padding-top:2px}
+  .tiersum .ts-v{flex:1;color:var(--ink-soft)}
+  .tiersum .ts-v b{color:var(--ink)}
   .explore-note b{color:#3d3357}
   .howto{margin-top:12px;background:#fbfaf7;border:1px solid var(--line);border-radius:var(--radius-sm);padding:13px 15px;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
   .howto b{color:var(--ink)}
@@ -342,6 +349,9 @@
   .selfdisc b{color:var(--ink)}
   .selfdisc .faint{display:block;margin-top:4px}
   .minbox{background:#fff8ec;border:1px solid #f0e0c0;border-radius:var(--radius-sm);padding:11px 14px;margin:10px 0 4px;font-size:13.5px;color:#7a5a1e;line-height:1.6}
+  .principles3{background:var(--accent-wash);border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 14px;margin:10px 0 4px;font-size:13.5px;color:var(--ink-soft);line-height:1.6}
+  .principles3 b{color:var(--ink)}
+  .principles3 .faint{display:block;margin-top:3px}
   .minbox .faint{display:block;margin-top:3px;color:var(--ink-faint)}
   .submitnote{margin-top:12px;background:var(--accent-wash);border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 14px;font-size:13px;color:var(--ink-soft);line-height:1.6}
   .submitnote b{color:var(--ink)}
@@ -422,6 +432,8 @@
       <p class="hint">每一層評的能力不同，沒有哪一層比較「進步」或「保守」。選一層作為本課預設。層級三、四都要學生揭露，差別在<b>重點</b>：三=協作、四=AI 做大部分（重判斷與查證）。<br>
         <span class="faint">Each level assesses something different. Levels 3–4 both require disclosure but differ in emphasis: 3 = collaboration, 4 = AI does most (judgement & verification matter).</span></p>
       <div class="ladder" id="tierLadder" role="radiogroup" aria-label="AI 使用層級"></div>
+      <div class="tiersum" id="tierSummary"></div>
+      <p class="hint faint" style="margin-top:8px">學生要揭露的項目（工具、用途、你做了什麼、查證）<b>各層都一樣</b>；層級決定的是「<b>AI 允許到哪</b>」和「<b>評什麼能力</b>」，不是揭露清單。<br><span class="faint">What students disclose (tool, use, what you did, verification) is the same at every level. The level sets how much AI is allowed and what's assessed — not the disclosure list.</span></p>
       <div class="explore-note">✦ <b>還有一個更進階的方向：AI 探索（Exploration）。</b>當作業本身就是要<b>探索或評估 AI</b>（例如比較不同模型、批判 AI 的侷限、以 AI 為對象的實驗或反思），那是超出上面權限刻度的特殊設計。它不是「用更多 AI」，而是換一種作業。若你想往這裡發展，選層級四、並在給學生的說明裡引導他們在揭露的「挑戰/改進 AI」多著墨。<br><span class="faint">A further direction: <b>AI Exploration</b> — when the assignment itself is to explore or evaluate AI. It's not "more AI use" but a different kind of task, beyond the permission scale above. To develop toward it, pick Level 4 and steer students to say more in the "how you pushed back" part of their disclosure.</span></div>
     </div>
 
@@ -477,22 +489,19 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
       </div>
     </div>
 
-    <div class="foldpeek">💡 <b>重點：</b>揭露是了解學習歷程的窗口、不是自白；把查證與挑戰當正面訊號，空白不等於作弊，別用偵測器。<b>展開</b>看完整讀法。 <span class="faint">A window into process, not a confession. Open for the full guide.</span></div>
-    <details class="sources guide">
-      <summary><span>收到揭露後，怎麼讀？ · Reading what students submit <span class="en">for instructors</span></span><span class="chev">▶</span></summary>
-      <div class="inner">
+    <div class="card">
+      <h2>怎麼看學生交來的揭露 <span class="en">How to read what students submit</span></h2>
         <p class="lead">工具幫學生產出揭露，但怎麼讀、怎麼回應同樣重要。研究一致指出：自陳制無法查證、偵測工具不可靠，誠實仰賴的是安全感而非稽查。幾個原則：<br><span class="faint">The tool helps students disclose, but how you read and respond matters just as much. Self-report can't be verified and detectors are unreliable — honesty rests on safety, not policing. A few principles:</span></p>
         <ul class="guidelist">
           <li><b>用理解歷程的眼光，不是抓錯。</b>揭露是了解學生怎麼工作的窗口，不是自白書。<span class="faint">Read it as a window into process, not a confession.</span></li>
           <li><b>把查證階梯與「挑戰/改進 AI」欄當作正面訊號。</b>勾到第 3 層、或寫得出自己否決了 AI 什麼，是判斷力的證據，值得肯定。<span class="faint">Verification and push-back are positive signals — reward them.</span></li>
+          <li><b>依你選的層級，用合適的方式看作業。</b>層級越高（AI 做越多），越把評分放在「你自己做了什麼、怎麼判斷與查證」；必要時用口頭確認、看草稿版本史，而不是猜哪句是 AI 寫的。<span class="faint">Match your assessment to the level: the more AI is allowed, the more you assess judgement and verification — use oral checks or draft history rather than guessing which sentence is AI.</span></li>
           <li><b>空白不等於作弊。</b>可能是輕度使用或不確定；必要時問一句，而不是預設有問題。<span class="faint">Blank ≠ cheating; ask before assuming.</span></li>
           <li><b>不要用 AI 偵測器。</b>它不可靠、對非母語者不公，而且研究顯示「被偵測抓到」比主動揭露更傷師生信任。<span class="faint">Avoid detectors: unreliable, unfair to non-native writers, and worse for trust.</span></li>
           <li><b>懷疑但無法證明時，用對話回應。</b>請學生說明歷程，不要直接指控，這樣也保護了那些誠實的人。<span class="faint">When unsure, respond by conversation, not accusation.</span></li>
           <li><b>揭露不必然影響成績。</b>除非你的層級明訂；把揭露與評分脫鉤，最能鼓勵誠實。<span class="faint">Decouple disclosure from grades where you can.</span></li>
         </ul>
-        <p class="lead faint">Disclosure is a window into process, not a confession. Treat verification and push-back as positive signals; blank ≠ cheating; avoid detectors; respond by conversation, not accusation; decouple disclosure from grades where you can.</p>
-      </div>
-    </details>
+    </div>
   </section>
 
   <!-- ================= RESEARCHER ================= -->
@@ -503,26 +512,17 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
     <div class="faqpoint">有疑慮或常見問題？<span class="faqlink" onclick="setMode('faq')">看「常見問題」分頁 →</span> <span class="faint">· Questions? See the FAQ tab.</span></div>
 
   <div class="card">
-    <h2><span class="step-n">1</span> 你的情境 <span class="en">Your context</span></h2>
-    <div class="row2">
-      <label class="field" style="margin-top:8px"><span class="lab">研究領域 <span class="en">Field</span></span>
-        <select id="field">
-          <option value="humanities">人文 · Humanities</option>
-          <option value="social">社會科學 · Social sciences</option>
-          <option value="science">自然科學 · Natural sciences</option>
-          <option value="engineering">工程 / 資訊 · Engineering / CS</option>
-          <option value="medical">醫學 / 生醫 · Medical / biomedical</option>
-          <option value="inter">跨領域 · Interdisciplinary</option>
-        </select></label>
-      <label class="field" style="margin-top:8px"><span class="lab">研究取徑 <span class="en">Approach</span></span>
-        <select id="approach">
+    <h2><span class="step-n">1</span> 你的情境與目標期刊 <span class="en">Context &amp; target publisher</span></h2>
+    <div class="principle">所有主要出版社的共同底線（2026）：<b>AI 不能列為作者、人須為內容負全責、相關 AI 使用須揭露、且須自行查證輸出</b>。差別在<b>「哪些要揭露、寫在哪裡、要多細」</b>，選期刊後下面就會顯示。<br><span class='faint'>The shared baseline across all major publishers (2026): AI can't be an author, humans are fully accountable, AI use must be disclosed, and authors must verify outputs. What differs is what to disclose, where, and in how much detail.</span></div>
+    <label class="field" style="margin-top:14px"><span class="lab">研究取徑 <span class="en">Approach</span></span>
+      <select id="approach">
           <option value="qual">質性 · Qualitative</option>
           <option value="quant">量化 / 計算 · Quantitative / computational</option>
           <option value="mixed">混合 · Mixed methods</option>
           <option value="theory">理論 / 詮釋 · Theoretical / interpretive</option>
         </select></label>
-    </div>
-    <label class="field"><span class="lab">目標期刊 / 出版社 <span class="en">Target publisher</span></span>
+    <p class="hint faint" style="margin-top:4px">👉 你選的<b>取徑</b>會決定第 3 步「該留哪些紀錄」顯示哪些項目（質性要留的稽核軌跡、量化要留的版本參數不一樣）。<br><span class="faint">Your approach changes which items the record checklist (step 3) shows.</span></p>
+    <label class="field" style="margin-top:14px"><span class="lab">目標期刊 / 出版社 <span class="en">Target publisher</span></span>
       <select id="pub">
         <option value="other">尚未決定 / 其他 · Undecided / other</option>
         <option value="nature">Nature / Springer Nature</option>
@@ -541,7 +541,16 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
         <option value="apa">APA（美國心理學會）</option>
         <option value="medical">醫學期刊（ICMJE / JAMA / BMJ）</option>
       </select></label>
-    <div class="principle" style="margin-top:16px">所有主要出版社的共同底線（2026）：<b>AI 不能列為作者、人須為內容負全責、相關 AI 使用須揭露、且須自行查證輸出</b>。差別在<b>「哪些要揭露、寫在哪裡、要多細」</b>。下面會依你選的期刊顯示。<br><span class='faint'>The shared baseline across all major publishers (2026): AI can't be an author, humans are fully accountable, AI use must be disclosed, and authors must verify outputs. What differs is what to disclose, where, and in how much detail.</span></div>
+    <p class="hint">👉 選了<b>目標期刊</b>，下面立刻顯示它的 AI 使用規定。政策更新很快，投稿前務必再確認該刊的現行作者指南。<br><span class='faint'>Pick a publisher and its rules appear below. Policies change fast — re-check the current author guidelines before submitting.</span></p>
+    <div id="pubRules"></div>
+    <div class="foldpeek">💡 <b>重點：</b>中文學術圈也有規範：台灣有中研院、學術倫理教育學會；中國大陸有出版界共識（AIGC 使用邊界指南）與 AIGC 偵測。<b>展開</b>看細節與連結。 <span class="faint">Chinese-language academia has rules too. Open for details.</span></div>
+    <details class="foldnote"><summary>中文學術圈的規範 · Chinese-language academia<span class="foldchev">▶</span></summary>
+      <div class="principle" style="margin-top:10px">
+      <b>中文學術圈的規範 / Chinese-language academia.</b> 上表以英文出版社為主；中文學術界多透過<b>機構與學會指引</b>規範，原則與國際一致：不掛名、須揭露實質使用、人負全責、不得捏造引用、審稿勿上傳 AI。<br>
+      <b>台灣：</b><a href="https://sub.daais.sinica.edu.tw/download/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95.pdf" target="_blank" rel="noopener">中央研究院《使用生成式 AI 之參考指引》</a>、臺灣學術倫理教育學會《人工智慧技術對學術倫理的影響及因應建議》、國科會參考指引、成大/陽明交大校級指引。<br>
+      <b>中國大陸：</b><a href="https://xuebao.zjhu.edu.cn/2024/1011/c2751a223187/page.htm" target="_blank" rel="noopener">中國科學技術信息研究所《學術出版中 AIGC 使用邊界指南 2.0》（2024 年 9 月）</a>（出版界共識，類似 STM）、<a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">科技部《負責任研究行為規範指引（2023）》（2023-12-21 發布）</a>、中國科學院誠信提醒、中華醫學會規定；並普遍使用 <b>AIGC 偵測</b>（知網/萬方/維普，部分期刊疑似比逾 20% 退稿）。這跟西方「重評量、不靠偵測」的方向不太一樣。<br>
+      <span class="faint">The table above is English-publisher-centric. Chinese-language academia regulates mainly through institutional and learned-society guidelines, with principles matching the international consensus (no AI authorship, disclose substantive use, human accountability, no fabricated citations, reviewers must not upload). Taiwan works via Academia Sinica, the academic-ethics society, NSTC and university guidelines; mainland China has a publisher-consensus guideline (ISTIC's AIGC Boundary Guide 2.0, akin to STM), national norms (MOST, CAS) and society rules, and leans notably on AIGC detection tools.</span>
+      </div></details>
   </div>
 
   <div class="card">
@@ -569,20 +578,6 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
     <div class="teamnote">👥 <b>共同作者/團隊：</b>投稿前和所有共同作者對齊揭露內容（每個人用了什麼、由誰查證）。若你是 PI，可用這套紀錄慣例讓實驗室與學生從一開始就一致地留紀錄。<br><span class="faint">Align disclosure with all co-authors before submission; PIs can use this to set a shared lab record-keeping habit.</span></div>
   </div>
 
-  <div class="card">
-    <h2><span class="step-n">4</span> 你目標期刊的規定 <span class="en">Your target's rules</span></h2>
-    <p class="hint">政策更新很快，請務必<b>投稿前再確認一次目標期刊的現行作者指南</b>。以下為 2025–2026 的重點整理。<br><span class='faint'>Policies change fast — always re-check your target journal's current author guidelines. Below is a 2025–2026 summary.</span></p>
-    <div id="pubRules"></div>
-    <div class="foldpeek">💡 <b>重點：</b>中文學術圈也有規範：台灣有中研院、學術倫理教育學會；中國大陸有出版界共識（AIGC 使用邊界指南）與 AIGC 偵測。<b>展開</b>看細節與連結。 <span class="faint">Chinese-language academia has rules too. Open for details.</span></div>
-    <details class="foldnote"><summary>中文學術圈的規範 · Chinese-language academia<span class="foldchev">▶</span></summary>
-      <div class="principle" style="margin-top:10px">
-      <b>中文學術圈的規範 / Chinese-language academia.</b> 上表以英文出版社為主；中文學術界多透過<b>機構與學會指引</b>規範，原則與國際一致：不掛名、須揭露實質使用、人負全責、不得捏造引用、審稿勿上傳 AI。<br>
-      <b>台灣：</b><a href="https://sub.daais.sinica.edu.tw/download/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95.pdf" target="_blank" rel="noopener">中央研究院《使用生成式 AI 之參考指引》</a>、臺灣學術倫理教育學會《人工智慧技術對學術倫理的影響及因應建議》、國科會參考指引、成大/陽明交大校級指引。<br>
-      <b>中國大陸：</b><a href="https://xuebao.zjhu.edu.cn/2024/1011/c2751a223187/page.htm" target="_blank" rel="noopener">中國科學技術信息研究所《學術出版中 AIGC 使用邊界指南 2.0》</a>（出版界共識，類似 STM）、<a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">科技部《負責任研究行為規範》</a>、中國科學院誠信提醒、中華醫學會規定；並普遍使用 <b>AIGC 偵測</b>（知網/萬方/維普，部分期刊疑似比逾 20% 退稿）。這跟西方「重評量、不靠偵測」的方向不太一樣。<br>
-      <span class="faint">The table above is English-publisher-centric. Chinese-language academia regulates mainly through institutional and learned-society guidelines, with principles matching the international consensus (no AI authorship, disclose substantive use, human accountability, no fabricated citations, reviewers must not upload). Taiwan works via Academia Sinica, the academic-ethics society, NSTC and university guidelines; mainland China has a publisher-consensus guideline (ISTIC's AIGC Boundary Guide 2.0, akin to STM), national norms (MOST, CAS) and society rules, and leans notably on AIGC detection tools.</span>
-      </div></details>
-  </div>
-
   <details class="foldcard grantcard">
     <summary>📋 送計畫也要注意：補助機構的 AI 規定 <span class="en">Grant proposals too</span><span class="foldchev">▶</span></summary>
     <div class="foldbody">
@@ -590,7 +585,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
     <div class="gblock">
       <div class="ah">美國 NIH <span class="en">National Institutes of Health</span></div>
       <p>自 <b>2025/9/25</b> 起，<b>大幅由 AI 生成的提案（或有段落大幅由 AI 生成）不視為申請人原創，不予受理</b>；另有每位 PI 每年 6 件的上限。審查者<b>禁止</b>用生成式 AI 分析或撰寫評審意見，上傳申請內容即違反保密。<br><span class='faint'>From 2025/9/25, proposals substantially developed by AI (whole or in sections) are not treated as the applicant's original ideas and won't be considered; PIs are also capped at 6 applications/year. Reviewers may not use generative AI, and uploading application content breaches confidentiality.</span><br>
-        <a href="https://grants.nih.gov/news-events/nih-extramural-nexus-news/2025/07/apply-responsibly-policy-on-ai-use-in-nih-research-applications-and-limiting-submissions-per-pi" target="_blank" rel="noopener">NIH 提案政策 ↗</a> · <a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-23-149.html" target="_blank" rel="noopener">NIH 審查禁令 ↗</a></p>
+        <a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-25-132.html" target="_blank" rel="noopener">NIH 提案政策 ↗</a> · <a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-23-149.html" target="_blank" rel="noopener">NIH 審查禁令 ↗</a></p>
     </div>
     <div class="gblock">
       <div class="ah">美國 NSF <span class="en">National Science Foundation</span></div>
@@ -598,15 +593,49 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
     </div>
     <div class="gblock">
       <div class="ah">台灣 <span class="en">Taiwan</span></div>
-      <p>國科會訂有《行政院及所屬機關（構）使用生成式 AI 參考指引》（原則：負責任、可信賴、安全、隱私與資料治理、問責；<b>非強制、無罰則</b>，但用於執行業務/服務應揭露）。學術研究層面多依<b>學術倫理框架與各校指引</b>（成大、台大、陽明交大等），共通原則是<b>使用生成式 AI 應適當揭露使用程度與範圍</b>。<br><span class='faint'>Taiwan's NSTC has a reference guideline for government use of generative AI (principles: responsible, trustworthy, security, privacy, accountability; non-binding, no penalties, but disclose when used for official services). For research, Taiwan works mainly through academic-integrity frameworks and each university's own guidelines; the shared principle is to disclose the extent and scope of AI use.</span><br>
-        <a href="https://ethics-s.moe.edu.tw/static/ethics/u03/p14.html" target="_blank" rel="noopener">臺灣學術倫理教育資源中心：政府規範整理 ↗</a></p>
+      <p>行政院發布、國科會研擬《行政院及所屬機關（構）使用生成式 AI 參考指引》（原則：負責任、可信賴、安全、隱私與資料治理、問責；<b>非強制、無罰則</b>，但用於執行業務/服務應揭露）。學術研究層面多依<b>學術倫理框架與各校指引</b>（成大、台大、陽明交大等），共通原則是<b>使用生成式 AI 應適當揭露使用程度與範圍</b>。<br><span class='faint'>Taiwan's Executive Yuan (drafted by NSTC) issued a reference guideline for government use of generative AI (principles: responsible, trustworthy, security, privacy, accountability; non-binding, no penalties, but disclose when used for official services). For research, Taiwan works mainly through academic-integrity frameworks and each university's own guidelines; the shared principle is to disclose the extent and scope of AI use.</span><br>
+        <a href="https://www.ey.gov.tw/Page/448DE008087A1971/40c1a925-121d-4b6b-8f40-7e9e1a5401f2" target="_blank" rel="noopener">行政院參考指引 ↗</a> · <a href="https://www.nstc.gov.tw/folksonomy/detail/d21566a0-3465-4b63-84b7-5d7cb2e1e5ff?l=ch" target="_blank" rel="noopener">國科會 FAQ ↗</a></p>
     </div>
     <div class="gblock">
       <div class="ah">英國與歐盟 <span class="en">UK &amp; EU</span></div>
-      <p><b>UKRI</b>(2024）：申請人須透明揭露；<b>評審與委員一律禁止在評審中使用生成式 AI</b>。<b>Wellcome</b>：申請時須聲明 AI 使用（僅基礎語言協助可免）；審查者不得把機密申請上傳 AI。<b>ERC / Horizon Europe</b>：採「不可委派」原則，申請人負全責。<br><span class="faint">UKRI (2024): applicants must be transparent; assessors are barred from using generative AI in assessment. Wellcome: declare AI use when applying (except basic language help); reviewers must not upload confidential applications. ERC / Horizon Europe: a non-delegation principle — the applicant is fully accountable.</span><br>
-        <a href="https://www.ukri.org/publications/generative-artificial-intelligence-in-application-and-assessment-policy/" target="_blank" rel="noopener">UKRI ↗</a> · <a href="https://wellcome.org/research-funding/guidance/policies-grant-conditions/use-of-generative-ai" target="_blank" rel="noopener">Wellcome ↗</a> · <a href="https://wellcome.org/about-us/positions-and-statements/joint-statement-generative-ai" target="_blank" rel="noopener">Funders 聯合聲明 ↗</a></p>
+      <p><b>UKRI</b>：申請人須透明揭露；<b>評審與委員除用於語言潤飾外，不得在評審中使用生成式 AI</b>（2024 年發布、2026 年 7 月更新）。<b>Wellcome</b>：申請時須聲明 AI 使用（僅基礎語言協助可免）；審查者不得把機密申請上傳 AI。<b>ERC / Horizon Europe</b>：申請人須揭露 AI 使用，並對稿件內容負完全責任（AI 不得列為作者）。<br><span class="faint">UKRI: applicants must be transparent; assessors may not use generative AI in assessment except for language refinement (issued 2024, updated July 2026). Wellcome: declare AI use when applying (except basic language help); reviewers must not upload confidential applications. ERC / Horizon Europe: applicants must disclose AI use and take full responsibility for the content (AI cannot be an author).</span><br>
+        <a href="https://www.ukri.org/publications/generative-artificial-intelligence-in-application-and-assessment-policy/use-of-generative-artificial-intelligence-in-application-preparation-and-assessment/" target="_blank" rel="noopener">UKRI ↗</a> · <a href="https://wellcome.org/research-funding/guidance/policies-grant-conditions/use-of-generative-ai" target="_blank" rel="noopener">Wellcome ↗</a> · <a href="https://erc.europa.eu/system/files/2026-03/Use-AI-grant-proposal-evaluation.pdf" target="_blank" rel="noopener">ERC 評審中 AI 使用 ↗</a></p>
     </div>
-    <p class="hint faint" style="margin-top:12px">其他機構（DOE、各國基金會）亦各有規定。各機構更新快，<b>送件前以官方公告為準</b>。<br><span class='faint'>Other bodies (DOE, national foundations) have their own rules. These change fast — before submitting, defer to the official notice.</span></p>
+    <div class="gblock">
+      <div class="ah">德國 DFG <span class="en">Deutsche Forschungsgemeinschaft</span></div>
+      <p>申請人須揭露與內容相關的 AI 使用（含模型、用途、範圍），純文法／翻譯可免。值得一提的是：DFG 2023 年的審查禁令已於 2025 年 12 月屆滿，現在<b>允許審查者在遵守規範與申報的前提下使用 AI</b>，但須在 elan 系統申報並取得著作權同意才能將提案文字餵入 AI。<br><span class='faint'>DFG requires applicants to disclose content-relevant AI use (models, purpose, extent); grammar/translation exempt. Notably, DFG's 2023 review ban lapsed in Dec 2025 — AI is now permitted in reviews under a binding guideline with mandatory declaration in elan and copyright consent for feeding proposal text.</span><br>
+        <a href="https://www.dfg.de/de/grundlagen-themen/digitale-themen/ki/antragstellung" target="_blank" rel="noopener">DFG 申請政策 ↗</a> · <a href="https://www.dfg.de/de/grundlagen-themen/digitale-themen/ki/begutachtung" target="_blank" rel="noopener">DFG 審查政策 ↗</a></p>
+    </div>
+    <div class="gblock">
+      <div class="ah">日本 JSPS / JST <span class="en">Japan</span></div>
+      <p>允許在申請準備時使用 AI，但申請人須自行負責準確性與原創性；<b>禁止把提案文字輸入生成式 AI</b>（JSPS 科研費）。審查者禁止將審查資訊輸入未經核可的 AI。<br><span class='faint'>Japan's JSPS/JST allow AI in proposal preparation at the applicant's responsibility for accuracy/originality, but entering proposal text into generative AI is prohibited (JSPS KAKENHI); reviewers must not enter review information into unapproved AI.</span><br>
+        <a href="https://www.jsps.go.jp/file/storage/kaken_kiban_2026_g_4978/r9_7_kobo_e.pdf" target="_blank" rel="noopener">JSPS 科研費要領 ↗</a></p>
+    </div>
+    <div class="gblock">
+      <div class="ah">澳洲 ARC <span class="en">Australian Research Council</span></div>
+      <p>2026.1 版政策（2026/4/28 生效）：AI 僅可用於語言潤飾，<b>禁止把資料輸入公開 AI 工具</b>；申請人對內容負全責，並應應要求揭露 AI 使用。<br><span class='faint'>ARC policy v2026.1 (effective 28 Apr 2026): AI may be used only for language polishing; inputting material into public AI tools is prohibited; applicants are fully responsible and should disclose AI use on request.</span><br>
+        <a href="https://www.arc.gov.au/system/files/2026-04/arc-ai-policy-2026.1-1.pdf" target="_blank" rel="noopener">ARC AI 政策 ↗</a></p>
+    </div>
+    <div class="gblock">
+      <div class="ah">加拿大 Tri-Agency / CIHR <span class="en">Canada</span></div>
+      <p>三機構（CIHR、NSERC、SSHRC）政策：研究人員須為 AI 協助之產出負全責並揭露；<b>審查者禁止用線上 AI 工具處理申請</b>，CIHR 另禁止在審查會議使用 AI 轉錄。<br><span class='faint'>Canada's tri-agency policy: researchers are fully responsible for and must disclose AI-assisted outputs; reviewers may not use online AI tools on applications, and CIHR additionally bans AI transcription in review meetings.</span><br>
+        <a href="https://science.gc.ca/site/science/en/interagency-research-funding/policies-and-guidelines/use-generative-artificial-intelligence-development-and-review-research-proposals" target="_blank" rel="noopener">Tri-Agency 政策 ↗</a> · <a href="https://cihr-irsc.gc.ca/e/54129.html" target="_blank" rel="noopener">CIHR 審查規定 ↗</a></p>
+    </div>
+    <div class="gblock">
+      <div class="ah">荷蘭 NWO <span class="en">Netherlands</span></div>
+      <p>申請人可使用 AI 但須自行負責並應要求揭露；<b>審查者全面禁止在審查中使用生成式 AI</b>，且不得將申請內容輸入 AI。<br><span class='faint'>NWO: applicants may use AI at their own responsibility and should disclose on request; reviewers are fully banned from using generative AI in review and must not enter application content into AI.</span><br>
+        <a href="https://www.nwo.nl/en/news/nwo-sets-policy-on-the-use-of-generative-ai" target="_blank" rel="noopener">NWO 政策 ↗</a></p>
+    </div>
+    <div class="gblock">
+      <div class="ah">瑞士 SNSF <span class="en">Switzerland</span></div>
+      <p>申請人須揭露 AI 使用並為內容負全責；審查者因保密考量不得將申請資料輸入 AI。<br><span class='faint'>SNSF: applicants must disclose AI use and are fully responsible; reviewers must not enter application material into AI for confidentiality reasons.</span></p>
+    </div>
+    <div class="gblock">
+      <div class="ah">中國 NSFC <span class="en">National Natural Science Foundation of China</span></div>
+      <p>2026 年新規要求：申請人須自行查證、如實申報、加適當標示，<b>不得提交由 AI 生成的申請書</b>。<br><span class='faint'>NSFC's 2026 clause requires human verification, full truthful declaration, appropriate labelling, and prohibits AI-generated applications.</span><br>
+        <a href="https://www.nsfc.gov.cn/u/cms/www/202601/190844586k0w.pdf" target="_blank" rel="noopener">NSFC 申請指南 ↗</a></p>
+    </div>
+    <p class="hint faint" style="margin-top:12px">其他機構（如美國 DOE、法國 ANR、新加坡 A*STAR 等）亦可能陸續訂有規定；部分（如法國 ANR 2026 指南）尚未明訂 AI 條款。各機構更新快，<b>送件前以官方公告為準</b>。<br><span class='faint'>Other bodies (e.g., US DOE, France's ANR, Singapore's A*STAR) may set rules over time; some (e.g., ANR's 2026 guide) have no AI clause yet. These change fast — before submitting, defer to the official notice.</span></p>
   </div>
   </details>
 
@@ -655,8 +684,8 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
       領域差異（潤稿）：<a href="https://www.nature.com/articles/s41599-025-05351-4" target="_blank" rel="noopener">非母語研究者的身分協商</a>（HSS Communications 2025）。<br>
       可複製性報告：<a href="https://llm-guidelines.org" target="_blank" rel="noopener">LLM 實證研究指引</a> · 代理式科研：<a href="https://arxiv.org/abs/2508.14111" target="_blank" rel="noopener">Agentic Science 綜述</a>。<br>
       壓力下的使用：<a href="https://www.nature.com/articles/d41586-025-01180-2" target="_blank" rel="noopener">未揭露 AI 痕跡</a>（Nature 2025）· <a href="https://cacm.acm.org/opinion/hidden-prompts-in-manuscripts-exploit-ai-assisted-peer-review/" target="_blank" rel="noopener">操縱 AI 審查</a>（CACM）· automation bias 在時間壓力下被放大的實證。<br>
-      補助機構：<a href="https://grants.nih.gov/news-events/nih-extramural-nexus-news/2025/07/apply-responsibly-policy-on-ai-use-in-nih-research-applications-and-limiting-submissions-per-pi" target="_blank" rel="noopener">NIH</a> · <a href="https://www.ukri.org/publications/generative-artificial-intelligence-in-application-and-assessment-policy/" target="_blank" rel="noopener">UKRI</a> · <a href="https://wellcome.org/research-funding/guidance/policies-grant-conditions/use-of-generative-ai" target="_blank" rel="noopener">Wellcome</a> · <a href="https://ethics-s.moe.edu.tw/static/ethics/u03/p14.html" target="_blank" rel="noopener">臺灣學術倫理教育資源中心</a>。出版社官方政策（第 4 步各卡內連結）：Nature、Elsevier、Wiley、Science、PLOS、IEEE、T&amp;F。<br>
-      中文學術圈：<a href="https://sub.daais.sinica.edu.tw/download/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95.pdf" target="_blank" rel="noopener">中央研究院指引</a> · <a href="https://xuebao.zjhu.edu.cn/2024/1011/c2751a223187/page.htm" target="_blank" rel="noopener">學術出版 AIGC 使用邊界指南 2.0</a>（中國）· <a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">中國科技部負責任研究行為規範</a>。<br>
+      補助機構：<a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-25-132.html" target="_blank" rel="noopener">NIH</a> · <a href="https://www.ukri.org/publications/generative-artificial-intelligence-in-application-and-assessment-policy/" target="_blank" rel="noopener">UKRI</a> · <a href="https://wellcome.org/research-funding/guidance/policies-grant-conditions/use-of-generative-ai" target="_blank" rel="noopener">Wellcome</a> · <a href="https://www.ey.gov.tw/Page/448DE008087A1971/40c1a925-121d-4b6b-8f40-7e9e1a5401f2" target="_blank" rel="noopener">行政院參考指引</a> · <a href="https://www.nstc.gov.tw/folksonomy/detail/d21566a0-3465-4b63-84b7-5d7cb2e1e5ff?l=ch" target="_blank" rel="noopener">國科會 FAQ</a>。出版社官方政策（第 4 步各卡內連結）：Nature、Elsevier、Wiley、Science、PLOS、IEEE、T&amp;F。<br>
+      中文學術圈：<a href="https://sub.daais.sinica.edu.tw/download/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95.pdf" target="_blank" rel="noopener">中央研究院指引</a> · <a href="https://xuebao.zjhu.edu.cn/2024/1011/c2751a223187/page.htm" target="_blank" rel="noopener">學術出版 AIGC 使用邊界指南 2.0（2024 年 9 月）</a>（中國）· <a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">中國科技部《負責任研究行為規範指引（2023）》</a>。<br>
       「該保留哪些紀錄」的缺口參酌 A Faceted Proposal for Transparent Attribution（2026）。政策多半沒講清楚提示、log、模型版本、中間草稿是否留存。
     </div>
   </details>
@@ -689,7 +718,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
       <div class="fpoint"><div class="fh">有些直接禁 <span class="en">Some ban it</span></div>
         <p>美國科幻奇幻作家協會（SFWA，星雲獎）規定用大型語言模型寫的作品，不論全部或部分，一律沒有參賽資格；美國羅曼史作家協會（RWA）也禁止未經實質人類創作、由 AI 生成的敘事文字。<br><span class="faint">SFWA's Nebula Awards make work written wholly or partly by large language models ineligible. Romance Writers of America bans AI-generated narrative text without real human authorship.</span> <a href="https://sfwa.org/advocacy-corner/" target="_blank" rel="noopener">SFWA 官方 ↗</a></p></div>
       <div class="fpoint"><div class="fh">有些反過來要「證明是人寫的」 <span class="en">Others ask you to prove a human wrote it</span></div>
-        <p>美國作家協會（Authors Guild）2025 年推出「Human Authored」認證，作家可申請一個商標印記，聲明作品出自人腦、不是 AI 生成。方向和學術剛好相反：不是「我用了 AI」，而是「這是人寫的」。<br><span class="faint">The Authors Guild's 2025 "Human Authored" mark lets writers certify a book came from a human, not AI — the opposite direction to academic disclosure.</span> <a href="https://authorsguild.org/human/" target="_blank" rel="noopener">Authors Guild ↗</a></p></div>
+        <p>美國作家協會（Authors Guild）2025 年 1 月會員測試、2026 年 3 月公開上線「Human Authored」認證，作家可申請一個商標印記，聲明作品出自人腦、不是 AI 生成。方向和學術剛好相反：不是「我用了 AI」，而是「這是人寫的」。<br><span class="faint">The Authors Guild's "Human Authored" mark (beta Jan 2025, public launch March 2026) lets writers certify a book came from a human, not AI — the opposite direction to academic disclosure.</span> <a href="https://authorsguild.org/human/" target="_blank" rel="noopener">Authors Guild ↗</a></p></div>
       <div class="fpoint"><div class="fh">區分「AI 生成」與「AI 輔助」 <span class="en">"AI-generated" vs "AI-assisted"</span></div>
         <p>Amazon KDP 要作者向平台申報「AI 生成」的文字、圖像、翻譯（就算事後有改也要），但「AI 輔助」（給點子、改文法、列大綱）不用報；而且是報給平台、不是給讀者。<br><span class="faint">Amazon KDP makes authors tell the platform if text, images or translations are "AI-generated" (even if edited), but not if AI only "assisted." The report goes to the platform, not readers.</span></p></div>
       <div class="fpoint"><div class="fh">得獎案例 <span class="en">A prize-winner</span></div>
@@ -708,13 +737,13 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
       <h2>圖像 / 影片 / 攝影 <span class="en">Image, video &amp; photography</span></h2>
       <p class="hint">這一塊的揭露越來越是「自動又技術性」的，跟寫一段聲明不一樣：很多時候是檔案自動帶標記、平台自動加標籤。<br><span class="faint">Here disclosure is increasingly automatic and technical — files carry markers and platforms add labels, rather than you writing a statement.</span></p>
       <div class="fpoint"><div class="fh">平台標示（看「像不像真的」） <span class="en">Platform labels (based on realism)</span></div>
-        <p>YouTube（2024 年政策、2025 年起執行）要求為「擬真的合成或改造內容」加標示，例如 AI 換臉、AI 配音；TikTok 的 AIGC 標示更全面，還會讀檔案裡的來源資料自動加標；Meta 的 IG/FB 也會自動標「AI Info」。重點是「會不會誤導」，純創意、明顯不是真的的內容通常不用標。<br><span class="faint">YouTube (policy 2024, enforced 2025) requires labels for realistic synthetic or altered content, like AI faces or voices. TikTok's AI label is the most complete and auto-reads file metadata; Meta adds "AI Info" on IG/FB. The test is whether it could mislead — clearly unreal, creative content usually needs no label.</span> <a href="https://support.google.com/youtube/answer/14328491?hl=en" target="_blank" rel="noopener">YouTube 官方說明 ↗</a></p></div>
+        <p>YouTube（2024 年 3 月起要求標示）要求為「擬真的合成或改造內容」加標示，例如 AI 換臉、AI 配音；TikTok 也提供 AIGC 標示，並可依內容憑證自動加標；Meta 的 IG/FB 也會自動標「AI Info」。重點是「會不會誤導」，純創意、明顯不是真的的內容通常不用標。<br><span class="faint">YouTube (since March 2024) requires labels for realistic synthetic or altered content, like AI faces or voices. TikTok also offers an AIGC label and can auto-label from file content credentials; Meta adds "AI Info" on IG/FB. The test is whether it could mislead — clearly unreal, creative content usually needs no label.</span> <a href="https://support.google.com/youtube/answer/14328491?hl=en" target="_blank" rel="noopener">YouTube 官方說明 ↗</a></p></div>
       <div class="fpoint"><div class="fh">圖庫平台各有規定 <span class="en">Stock platforms have their own rules</span></div>
-        <p>Getty Images 直接<b>全面禁止</b> AI 生成內容；Adobe Stock <b>要求標示</b>；Shutterstock 也在檢查來源憑證。你的作品若走這些平台，帶 AI 標記可能被退件。<br><span class="faint">Getty Images bans AI-generated content entirely; Adobe Stock requires disclosure; Shutterstock checks content credentials. On these platforms, AI markers can mean automatic rejection.</span> <a href="https://www.artforum.com/news/getty-images-bans-ai-generated-content-over-legal-concerns-252131/" target="_blank" rel="noopener">Getty 禁令報導 ↗</a></p></div>
+        <p>Getty Images 直接<b>全面禁止</b> AI 生成內容；Adobe Stock <b>要求標示</b>；Shutterstock 不接受投稿者以 AI 生成的內容。你的作品若走這些平台，帶 AI 標記可能被退件。<br><span class="faint">Getty Images bans AI-generated content entirely; Adobe Stock requires disclosure; Shutterstock does not accept contributor AI-generated content. On these platforms, AI markers can mean automatic rejection.</span> <a href="https://www.artforum.com/news/getty-images-bans-ai-generated-content-over-legal-concerns-252131/" target="_blank" rel="noopener">Getty 禁令報導 ↗</a></p></div>
       <div class="fpoint"><div class="fh">內容來源憑證（C2PA / Content Credentials） <span class="en">Provenance (C2PA / Content Credentials)</span></div>
-        <p>這是新的技術標準，把「用什麼工具做的、什麼時候、改了什麼」簽進檔案裡。現在主流 AI 工具（Adobe Firefly、DALL·E / Sora、Google Imagen、Midjourney）大多預設就嵌入這種標記，連相機（Sony、Nikon、iPhone）也開始在拍照當下簽章。所以你用 AI 生的圖，常常自己就帶標記，不管你知不知道。<br><span class="faint">C2PA signs into a file what tool made it, when, and what was edited. Major AI tools now embed it by default, and cameras are starting to sign real photos too. Your AI image often carries a marker whether you know it or not.</span> <a href="https://techcrunch.com/2024/09/17/google-will-begin-flagging-ai-generated-images-in-search-later-this-year" target="_blank" rel="noopener">C2PA 說明 ↗</a></p></div>
+        <p>這是新的技術標準，把「用什麼工具做的、什麼時候、改了什麼」簽進檔案裡。現在部分主流 AI 工具（Adobe Firefly、DALL·E / Sora、Google Imagen、Midjourney）已開始嵌入這種標記，連相機（Sony、Nikon、iPhone）也開始在拍照當下簽章。所以你用 AI 生的圖，常常自己就帶標記，不管你知不知道。<br><span class="faint">C2PA signs into a file what tool made it, when, and what was edited. Some major AI tools now embed it, and cameras are starting to sign real photos too. Your AI image often carries a marker whether you know it or not.</span> <a href="https://c2pa.org/" target="_blank" rel="noopener">C2PA 標準 ↗</a></p></div>
       <div class="fpoint"><div class="fh">法規 <span class="en">The law</span></div>
-        <p>歐盟《AI 法案》第 50 條（2026 年 8 月起）要求 AI 生成的影音內容要有機器可讀的標記，深偽要清楚標示；美國 FTC 也把「沒揭露的 AI 誤導」當成欺騙行為。<br><span class="faint">The EU AI Act (Article 50, from August 2026) requires machine-readable marking of AI-generated media, with deepfakes clearly labeled; the US FTC treats undisclosed, misleading AI as deceptive.</span> <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener">EU AI 法案第 50 條 ↗</a></p></div>
+        <p>歐盟《AI 法案》第 50 條（2026 年 8 月起）要求 AI 生成的影音內容要有機器可讀的標記，深偽要清楚標示；美國 FTC 依《聯邦貿易委員會法》將具誤導性的 AI 內容視為欺騙行為（尚無一般性 AI 揭露義務）。歐盟另提供<b>免費官方圖示組</b>（基本／全 AI 生成／部分 AI 修改三類，SVG＋PNG，免標明出處）供標示使用。<br><span class="faint">The EU AI Act (Article 50, from August 2026) requires machine-readable marking of AI-generated media, with deepfakes clearly labeled; the US FTC treats misleading AI content as deceptive under the FTC Act (no general AI-disclosure duty yet). The EU also offers a free official icon set (Basic / Fully AI-Generated / Partially AI-Modified; SVG+PNG, no attribution needed).</span> <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener">EU AI 法案第 50 條 ↗</a> · <a href="https://digital-strategy.ec.europa.eu/en/policies/eu-icons-labelling-ai-generated-content" target="_blank" rel="noopener">EU 官方圖示組 ↗</a></p></div>
       <div class="fpoint"><div class="fh">攝影獎案例 <span class="en">A photo-contest case</span></div>
         <p>2023 年，藝術家 Boris Eldagsen 以一張 AI 生成的作品拿下索尼世界攝影獎，隨後<b>公開拒領</b>，說想藉此逼大家討論「AI 影像算不算攝影」。這也讓許多攝影比賽開始明訂 AI 規則。<br><span class="faint">In 2023, artist Boris Eldagsen won the Sony World Photography Award with an AI image, then refused the prize to force a debate on whether AI images count as photography. Many photo contests then wrote AI rules.</span> <a href="https://www.bbc.com/news/entertainment-arts-65296763" target="_blank" rel="noopener">BBC 報導 ↗</a></p></div>
       <div class="fpoint"><div class="fh">實際怎麼揭露（步驟） <span class="en">How to actually disclose</span></div>
@@ -726,12 +755,27 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
     </div>
 
     <div class="card">
+      <h2>各國 AI 標示法規速覽 <span class="en">AI labeling laws by country</span></h2>
+      <p class="hint">目前真正「強制」AI 生成內容要加標示的國家還不多；下面是 2026 年的現況。沒列到的多數國家（英、澳、日、新加坡、加拿大、巴西）目前仍無強制標示義務。<br><span class="faint">Only a few jurisdictions actually mandate labelling AI-generated content as of 2026; most others (UK, Australia, Japan, Singapore, Canada, Brazil) have no such duty yet.</span></p>
+      <div class="fpoint"><div class="fh">中國 <span class="en">China</span></div>
+        <p>三層規範：深度合成規定（2023/1/10 生效，要求植入技術標識、易混淆須顯著標示、不得移除標記）、《生成式 AI 服務管理暫行辦法》（2023/8/15），以及《AI 生成合成內容標識辦法》＋強制國標 GB 45438-2025（2025/9/1 生效），要求<b>顯性（可見）與隱性（metadata）雙重標識</b>，平台須檢測並分「確認／可能／疑似」。<br><span class="faint">Three layers: Deep Synthesis Provisions (10 Jan 2023), Generative AI Interim Measures (15 Aug 2023), and the AI-Generated Content Labelling Measures + mandatory standard GB 45438-2025 (1 Sept 2025), requiring both visible and metadata labels; platforms must detect and classify as confirmed/possible/suspected.</span> <a href="https://www.chinalawtranslate.com/en/ai-labeling/" target="_blank" rel="noopener">辦法譯文 ↗</a></p></div>
+      <div class="fpoint"><div class="fh">韓國 <span class="en">South Korea</span></div>
+        <p>《AI 基本法》2026/1/22 生效（含至少一年寬限期）；第 31 條要求事前告知 AI 使用、為生成式 AI 產出加標示，深偽內容須清楚標明；MSIT 指引要求可見／可聽標識（浮水印）或嵌入 metadata。<br><span class="faint">AI Basic Act (in force 22 Jan 2026, ≥1-year grace period): Art. 31 requires advance notice of AI use, labelling of generative-AI output, and clear marking of deepfakes; MSIT guidelines require visible/audible watermarks or embedded metadata.</span> <a href="https://www.msit.go.kr/eng/bbs/view.do?sCode=eng&mId=4&bbsSeqNo=42&nttSeqNo=1215" target="_blank" rel="noopener">MSIT 公告 ↗</a></p></div>
+      <div class="fpoint"><div class="fh">印度 <span class="en">India</span></div>
+        <p>《IT 規則》2026 修正案 2026/2/10 公告、2/20 生效：「合成生成資訊」須加顯著可見標示或語音前置揭露，並附帶含唯一識別碼的永久 metadata；發布前平台須查證用戶的 AI 聲明，疑似內容須於 3 小時內下架。<br><span class="faint">IT Amendment Rules 2026 (notified 10 Feb 2026, effective 20 Feb 2026): synthetically generated information needs prominent visible labels or prefixed audio disclosure plus permanent metadata with a unique identifier; platforms must verify user AI declarations before publication and take down suspected content within 3 hours.</span> <a href="https://www.meity.gov.in/static/uploads/2025/10/065b6deb585441b5ccdf8be42502a49c.pdf" target="_blank" rel="noopener">MeitY FAQ ↗</a></p></div>
+      <div class="fpoint"><div class="fh">美國加州 <span class="en">California (US state)</span></div>
+        <p>《AI 透明法》（SB 942 / AB 853）2026/8/2 生效：月活逾百萬的生成式 AI 服務須提供潛在＋顯性揭露與<b>免費公開偵測工具</b>（含 API），違者每日 5,000 美元；僅規範圖像／影片／音訊，不含文字。<b>注意</b>：加州另兩部選舉深偽法 AB 2655、AB 2839 已被法院以違憲／Section 230 為由推翻。<br><span class="faint">California AI Transparency Act (SB 942/AB 853), operative 2 Aug 2026: GenAI services with >1M monthly users must provide latent + manifest disclosures and a free public detection tool with API; $5,000/day penalties; images/video/audio only, not text. Note: the state's election-deepfake laws AB 2655 and AB 2839 were struck down/enjoined in 2025.</span> <a href="https://www.morganlewis.com/pubs/2026/08/new-california-ai-disclosure-rules-become-operative" target="_blank" rel="noopener">法律解析 ↗</a></p></div>
+      <div class="fpoint"><div class="fh">台灣 <span class="en">Taiwan</span></div>
+        <p>《人工智慧基本法》2026/1/14 生效，要求對 AI 生成或改造內容為<b>適當資訊揭露或標記</b>（授權各部會訂子法）；教育部 K-12「中小學生成式 AI 使用與學習指引」2026/6/5 通過，要求揭露工具名稱、版本與使用方式。<br><span class="faint">Taiwan's AI Basic Act (in force 14 Jan 2026) requires appropriate information disclosure or labelling of AI-generated/modified content (ministries to set sub-regulations); the MOE K-12 generative-AI guideline (approved 5 June 2026) requires disclosing the tool name, version, and manner of use.</span> <a href="https://moda.gov.tw/press/press-releases/18316" target="_blank" rel="noopener">數發部公告 ↗</a></p></div>
+    </div>
+
+    <div class="card">
       <h2>新聞 / 媒體 <span class="en">Journalism &amp; media</span></h2>
       <p class="hint">新聞業也沒有統一標準，各家自訂；共同點是「人審 + 實質使用要揭露」。<br><span class="faint">No single standard here either; each outlet sets its own, but the common thread is human review plus disclosing material AI use.</span></p>
       <div class="fpoint"><div class="fh">AP（美聯社） <span class="en">Associated Press</span></div>
         <p>AI 可協助早期研究、摘要、轉錄、翻譯、下標建議、文法；但每則產出都要記者審閱編輯後才發。報導中若出現 AI 生成或改造的內容，要清楚標明並說明脈絡；生成式 AI 有「實質作用」時要揭露。<br><span class="faint">AI may help with research, summaries, transcription, translation, headline ideas and grammar, but every output is reviewed by a journalist before publishing; AI content in coverage must be clearly identified, and material AI use is disclosed.</span> <a href="https://www.editorandpublisher.com/stories/ap-updates-newsroom-standards-for-artificial-intelligence,262741" target="_blank" rel="noopener">AP 標準 ↗</a></p></div>
       <div class="fpoint"><div class="fh">BBC <span class="en">BBC</span></div>
-        <p>BBC 做了「How we used AI」的標籤（六角形圖示）放在內容最上方，沒有記者審過就不發。它也公布研究，發現 AI 助手約 45% 會曲解新聞內容。<br><span class="faint">The BBC created a "How we used AI" label (a hexagon icon) at the top of content, and publishes nothing without journalist review; its study found AI assistants misrepresented news about 45% of the time.</span> <a href="https://www.niemanlab.org/2026/07/how-three-newsrooms-are-charting-different-paths-for-ai-use/" target="_blank" rel="noopener">三家新聞室比較 ↗</a></p></div>
+        <p>BBC 在 BBC Sport 試行「How we used AI」標籤（六角形圖示）放在內容最上方，強調須有人類監督與問責。它也公布研究，發現 AI 助手約 45% 會曲解新聞內容。<br><span class="faint">BBC is trialling a "How we used AI" label (a hexagon icon) at the top of content in BBC Sport, emphasising human oversight and accountability; its study found AI assistants misrepresented news about 45% of the time.</span> <a href="https://www.bbc.co.uk/mediacentre/2025/bbc-ebu-ai-chatbot-study" target="_blank" rel="noopener">BBC/EBU 研究與標籤 ↗</a></p></div>
       <div class="fpoint"><div class="fh">實際怎麼做 <span class="en">What to do</span></div>
         <p>查你投稿或任職媒體的 AI 準則；AI 有實質參與就揭露；AI 產出一律人工查證，尤其事實與引用。<br><span class="faint">Check your outlet's AI policy; disclose material AI use; verify every AI output by hand, especially facts and citations.</span></p></div>
     </div>
@@ -754,7 +798,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
         · <a href="https://support.google.com/youtube/answer/14328491?hl=en" target="_blank" rel="noopener">YouTube 官方：如何揭露 AI 內容</a><br>
         · <a href="https://www.artforum.com/news/getty-images-bans-ai-generated-content-over-legal-concerns-252131/" target="_blank" rel="noopener">Artforum:Getty 全面禁止 AI 生成內容</a><br>
         · <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener">歐盟 AI 法案第 50 條（透明義務）</a> · <a href="https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content" target="_blank" rel="noopener">歐盟官方：AI 內容標示行為準則</a><br>
-        · <a href="https://techcrunch.com/2024/09/17/google-will-begin-flagging-ai-generated-images-in-search-later-this-year" target="_blank" rel="noopener">TechCrunch:C2PA 內容來源憑證與 Google 標示</a><br>
+        · <a href="https://c2pa.org/" target="_blank" rel="noopener">C2PA:內容來源憑證標準</a><br>
         · <a href="https://www.bbc.com/news/entertainment-arts-65296763" target="_blank" rel="noopener">BBC：索尼攝影獎 AI 得獎後拒領</a></p>
         <p class="hint"><b>相關討論（不同立場）</b><br>
         · <a href="https://selfpublishingadvice.org/nebula-awards-ai-policy/" target="_blank" rel="noopener">Alliance of Independent Authors:Nebula AI 政策的爭議</a><br>
@@ -793,7 +837,9 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
       <h2>浮水印與內容標記的進展 <span class="en">Watermarks &amp; content marking</span></h2>
       <p class="hint">2026 年起，主要 AI 公司開始在生成內容裡加上「看不見的浮水印」和來源標記，主要是為了配合歐盟 AI 法案第 50 條（要求 AI 生成內容要有機器可讀的標記）。<br><span class="faint">Since 2026, major AI companies have started adding invisible watermarks and provenance marks to generated content, mainly to meet the EU AI Act (Article 50), which requires AI content to carry a machine-readable mark.</span></p>
       <div class="fpoint"><div class="fh">各公司在做什麼 <span class="en">What companies are doing</span></div>
-        <p><b>Anthropic</b> 從 2026 年 8 月起，讓 Claude 生成的文字帶上隱形浮水印（採用 Google 的 SynthID-Text 技術），圖片檔則附上 C2PA 來源標記，全球適用、沒有關閉選項。<b>Google</b> 的 SynthID 已預設用在 Gemini、Imagen 等產品，並整合進 Chrome 與搜尋。<b>OpenAI</b> 為圖片加上 C2PA 與 SynthID、提供線上查核工具，但文字目前不加浮水印（改寫幾句就失效，也怕誤傷非母語寫作者）。連音樂（Suno）、發布平台（Substack）也開始標記。<br><span class="faint">Anthropic (since Aug 2026) adds an invisible watermark to Claude's text (using Google's SynthID-Text) and C2PA marks to image files, worldwide, with no opt-out. Google's SynthID runs by default in Gemini and Imagen and is built into Chrome and Search. OpenAI marks images with C2PA and SynthID and offers a check tool, but does not watermark text yet. Even music (Suno) and platforms (Substack) are starting to mark content.</span> <a href="https://thenextweb.com/news/anthropic-watermarks-claude-output-eu-ai-act-article-50" target="_blank" rel="noopener">報導 ↗</a></p></div>
+        <p><b>Anthropic</b> 從 2026 年 8 月起，讓 Claude 生成的文字帶上隱形浮水印（採用 Google 的 SynthID-Text 技術），圖片檔則附上 C2PA 來源標記，全球適用、沒有關閉選項。<b>Google</b> 的 SynthID 已預設用在 Gemini、Imagen 等產品，並整合進 Chrome 與搜尋。<b>OpenAI</b> 為圖片加上 C2PA 與 SynthID、提供線上查核工具，但文字目前不加浮水印（改寫幾句就失效，也怕誤傷非母語寫作者）。音樂（Suno）開始加浮水印與指紋、發布平台（Substack）提供自願標示與 AI 掃描。<br><span class="faint">Anthropic (since Aug 2026) adds an invisible watermark to Claude's text (using Google's SynthID-Text) and C2PA marks to image files, worldwide, with no opt-out. Google's SynthID runs by default in Gemini and Imagen and is built into Chrome and Search. OpenAI marks images with C2PA and SynthID and offers a check tool, but does not watermark text yet. Music (Suno) is adding watermarks/fingerprints, and platforms (Substack) offer voluntary labeling and AI scans.</span> <a href="https://www.anthropic.com/news/claude-text-watermark" target="_blank" rel="noopener">官方說明 ↗</a></p></div>
+      <div class="fpoint"><div class="fh">2026 年新進展 <span class="en">What's new in 2026</span></div>
+        <p><b>C2PA 2.4</b>（2026/4）新增 <code>c2pa.ai-disclosure</code> 標記，可嵌入 HTML、Markdown、YAML 與原始碼。<b>Google</b> 2026/5/19 宣布 SynthID 已套用逾 1,000 億件內容，並開放企業 AI 內容偵測 API；<b>2026/8/14 起 Google 允許使用者關閉「可見」浮水印，但隱形 SynthID 仍保留</b>。<b>OpenAI</b> 2026/7/31 為音訊加上 SynthID 並推出驗證 API；<b>Microsoft Azure OpenAI</b> 自動為所有圖片簽入內容憑證。提醒：SynthID Detector 仍為申請制、尚未全面公開。<br><span class="faint">C2PA 2.4 (Apr 2026) adds a c2pa.ai-disclosure assertion and lets manifests embed in HTML/Markdown/YAML/source code. Google (19 May 2026) said SynthID now covers 100B+ items and opened an enterprise AI Content Detection API; from 14 Aug 2026 Google lets users turn off the visible watermark while keeping invisible SynthID. OpenAI (31 July 2026) added audio SynthID and a verification API; Microsoft Azure OpenAI auto-signs all images. Note: the SynthID Detector portal is still gated, not generally available.</span> <a href="https://blog.google/innovation-and-ai/products/identifying-ai-generated-media-online/" target="_blank" rel="noopener">Google 說明 ↗</a> · <a href="https://openai.com/index/advancing-content-provenance/" target="_blank" rel="noopener">OpenAI 說明 ↗</a></p></div>
       <div class="fpoint"><div class="fh">時程與法規 <span class="en">Timeline &amp; law</span></div>
         <p>歐盟 AI 法案第 50 條：2026 年 8 月 2 日後推出的新模型要立即標記；更早的模型最晚 2026 年 12 月 2 日前補上。違反最高可罰全球營收 3%。已有約 190 個組織簽署歐盟的「AI 內容標示行為準則」。<br><span class="faint">Under the EU AI Act (Article 50): models launched after 2 Aug 2026 must mark immediately; older ones by 2 Dec 2026. Fines can reach 3% of global turnover. Around 190 organisations have signed the EU's code of practice on marking AI content.</span> <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener">第 50 條 ↗</a> · <a href="https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content" target="_blank" rel="noopener">行為準則 ↗</a></p></div>
       <div class="fpoint warn"><div class="fh">要警覺的地方（很重要） <span class="en">Stay alert — this matters</span></div>
@@ -843,7 +889,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
       <div class="foldbody">
         <p class="hint">不同領域用 AI 的方式和踩的雷都不一樣。這裡各科挑一兩個真實例子，老師、學生、研究者都可以參考。<br><span class="faint">Each field uses AI differently and trips over different things. One or two real examples per discipline, for teachers, students and researchers.</span></p>
         <div class="fpoint"><div class="fh">法律 <span class="en">Law</span></div>
-          <p>美國律師把 ChatGPT 編造的假判例直接交上法院被罰：Mata v. Avianca 案罰 5,000 美元；一名加州律師因 21 筆假引用被罰 1 萬美元，他坦承送出前沒讀 AI 產生的內容。全球已累積上千件類似案例。教訓對誰都一樣：AI 可以幫你找方向、整理，但每一條引用都要自己回原始資料查。<br><span class="faint">US lawyers were fined for filing fake ChatGPT cases (Mata v. Avianca, $5,000; a California attorney $10,000 for 21 fabricated citations, admitting he never read the AI output). Over a thousand such cases worldwide. Verify every citation yourself.</span> <a href="https://calmatters.org/economy/technology/2025/09/chatgpt-lawyer-fine-ai-regulation/" target="_blank" rel="noopener">案例 ↗</a></p></div>
+          <p>美國律師把 ChatGPT 編造的假判例直接交上法院被罰：Mata v. Avianca 案罰 5,000 美元；一名加州律師因 21 筆假引用被罰 1 萬美元，他坦承送出前沒讀 AI 產生的內容；康乃狄克州最高法院亦於 2026/8 作出該州首例 AI 處分（對律師加處 6 小時進修）。全球已累積逾千件類似案例（截至 2026/6/24，公開追蹤資料庫已列 1,641 件）。教訓對誰都一樣：AI 可以幫你找方向、整理，但每一條引用都要自己回原始資料查。<br><span class="faint">US lawyers were fined for filing fake ChatGPT cases (Mata v. Avianca, $5,000; a California attorney $10,000 for 21 fabricated citations, admitting he never read the AI output; the Connecticut Supreme Court issued its first AI sanction in Aug 2026, ordering 6 extra CLE hours). Over a thousand such cases worldwide (public trackers listed 1,641 decisions as of 24 June 2026). Verify every citation yourself.</span> <a href="https://calmatters.org/economy/technology/2025/09/chatgpt-lawyer-fine-ai-regulation/" target="_blank" rel="noopener">案例 ↗</a> · <a href="https://www.reuters.com/legal/litigation/top-connecticut-court-warns-lawyers-ai-risks-after-fake-citations-2026-08-03/" target="_blank" rel="noopener">康乃狄克案 ↗</a> · <a href="https://www.damiencharlotin.com/hallucinations/" target="_blank" rel="noopener">案例追蹤資料庫 ↗</a></p></div>
         <div class="fpoint"><div class="fh">人文 <span class="en">Humanities</span></div>
           <p>數位人文用 AI 做大規模文本分析、遠讀（distant reading）、古籍 OCR 與翻譯，看得見人力看不完的規模。但詮釋和脈絡判斷還是人來，AI 是放大鏡不是結論。教學上可以讓學生比較「自己近讀」和「AI 遠讀」看到的東西差在哪。<br><span class="faint">Digital humanities uses AI for large-scale text analysis, distant reading, OCR and translation — seeing scale humans can't. Interpretation stays human. In class, compare your close reading with AI's distant reading.</span></p></div>
         <div class="fpoint"><div class="fh">社會科學 <span class="en">Social science</span></div>
@@ -870,7 +916,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
           <p><b>安全軌（Lane 1）</b>：監督式、口試、現場完成，驗證學生本人能力；<b>開放軌（Lane 2）</b>：可有意義地納入 AI。2025 年全面推行、每個學位的評量計畫年底到位；偵測器只作輔助、<b>絕不當唯一證據</b>。背後是 TEQSA 與 Dawson 團隊「重設計而非偵測」的共識，重點是把「AI 有沒有做」變得不重要。<br><span class="faint">Sydney sorts every assessment into secure (supervised, oral, in-person) or open (AI purposefully allowed); rolled out 2025; detectors never stand alone. TEQSA/Dawson: redesign, don't detect.</span>
             <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/" target="_blank" rel="noopener">Sydney 兩軌制 ↗</a></p></div>
         <div class="fpoint warn"><div class="fh">偵測法反而出事的教訓 <span class="en">When detection backfired</span></div>
-          <p>這些是真實案例，值得警惕：<b>Vanderbilt</b>（2023）停用 Turnitin AI 偵測器。就算只有 1% 誤判，乘上每年約 7.5 萬篇也會誤標約 750 名學生；<b>澳洲天主教大學（ACU）</b>2025 年停用，約四分之一轉介被駁回、凡以偵測器為唯一證據者立即撤案；<b>Adelphi 大學</b>一名自閉症新生被 Turnitin「100% AI」誤控，2025 年法院判決撤銷並清除紀錄（他只接受過語法輔導）；<b>UC Davis、密西根大學</b>等亦有多起誤控與訴訟。偵測器對<b>非母語者與身心障礙者尤其不公</b>。<br><span class="faint">Real cases: Vanderbilt and ACU dropped Turnitin's AI detector; an autistic Adelphi student's "100% AI" flag was annulled by a court; UC Davis and Michigan saw false accusations and lawsuits. Detectors are especially unfair to non-native and disabled writers.</span> <a href="https://www.rollingstone.com/culture/culture-features/student-accused-ai-cheating-turnitin-1234747351/" target="_blank" rel="noopener">UC Davis 案 ↗</a> · <a href="https://www.aol.com/articles/college-student-wins-groundbreaking-case-155155980.html" target="_blank" rel="noopener">Adelphi 判決 ↗</a> · <a href="https://futurism.com/artificial-intelligence/students-falsely-accused-cheating-with-ai" target="_blank" rel="noopener">ACU 停用 ↗</a> · <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/false-flags-and-broken-trust-can-we-tell-if-ai-has-been-used/" target="_blank" rel="noopener">Sydney：偵測不可靠 ↗</a></p></div>
+          <p>這些是真實案例，值得警惕：<b>Vanderbilt</b>（2023）停用 Turnitin AI 偵測器。就算只有 1% 誤判，乘上每年約 7.5 萬篇也會誤標約 750 名學生；<b>澳洲天主教大學（ACU）</b>2025 年停用，約四分之一轉介被駁回、凡以偵測器為唯一證據者立即撤案；<b>Adelphi 大學</b>一名自閉症新生被 Turnitin「100% AI」誤控，2026 年 1 月法院判決撤銷並清除紀錄（他只接受過語法輔導；法院審查發現另兩套獨立偵測器都判定該文為人類撰寫）；<b>UC Davis、密西根大學</b>等亦有多起誤控與訴訟。偵測器對<b>非母語者與身心障礙者尤其不公</b>。<br><span class="faint">Real cases: Vanderbilt and ACU dropped Turnitin's AI detector; an autistic Adelphi student's "100% AI" flag was annulled by a court (two other detectors had judged the work human-written); UC Davis and Michigan saw false accusations and lawsuits. Detectors are especially unfair to non-native and disabled writers.</span> <a href="https://www.rollingstone.com/culture/culture-features/student-accused-ai-cheating-turnitin-1234747351/" target="_blank" rel="noopener">UC Davis 案 ↗</a> · <a href="https://www.vanderbilt.edu/brightspace/2023/08/16/guidance-on-ai-detection-and-why-were-disabling-turnitins-ai-detector/" target="_blank" rel="noopener">Vanderbilt 停用 ↗</a> · <a href="https://caselaw.findlaw.com/court/ny-supreme-court/118148544.html" target="_blank" rel="noopener">Adelphi 判決 ↗</a> · <a href="https://www.abc.net.au/news/2025-10-09/artificial-intelligence-cheating-australian-catholic-university/105863524" target="_blank" rel="noopener">ACU 停用 ↗</a> · <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/false-flags-and-broken-trust-can-we-tell-if-ai-has-been-used/" target="_blank" rel="noopener">Sydney：偵測不可靠 ↗</a></p></div>
         <p class="hint faint">教訓很一致：<b>偵測不是解方，會傷人、招訴訟、損信任；公平又可行的路是重新設計評量。</b><span class="faint"> The lesson is consistent: you can't detect your way out — redesign assessment instead.</span></p>
       </div>
     </details>
@@ -879,9 +925,11 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
     <details class="foldcard">
       <summary>⚖ AI 與研究不平等：怎麼縮小 <span class="en">AI &amp; research inequality — how to narrow it</span><span class="foldchev">▶</span></summary>
       <div class="foldbody">
-        <p class="hint"><b>問題：</b>前沿 AI 需要龐大算力，集中在少數機構與大公司，形成「算力鴻溝」；連資源較少的大學都得靠有時限的免費平台（如 Colab），限制實驗規模與可複製性。全球看，IMF 警告 AI 可能擴大國家間不平等。<br><span class="faint">Frontier AI needs compute concentrated in a few institutions and firms — a "compute divide". Under-resourced labs rely on capped free platforms; the IMF warns AI may widen cross-country inequality.</span> <a href="https://www.csis.org/analysis/divide-delivery-how-ai-can-serve-global-south" target="_blank" rel="noopener">CSIS:AI 與全球落差 ↗</a></p>
+        <p class="hint"><b>問題：</b>前沿 AI 需要龐大算力，集中在少數機構與大公司，形成「算力鴻溝」；連資源較少的大學都得靠有時限的免費平台（如 Colab），限制實驗規模與可複製性。全球看，IMF 警告 AI 可能擴大國家間不平等。<br><span class="faint">Frontier AI needs compute concentrated in a few institutions and firms — a "compute divide". Under-resourced labs rely on capped free platforms; the IMF warns AI may widen cross-country inequality.</span> <a href="https://www.imf.org/en/Blogs/Articles/2024/01/14/ai-will-transform-the-global-economy-lets-make-sure-it-benefits-humanity" target="_blank" rel="noopener">IMF:AI 與全球不平等 ↗</a></p>
         <div class="fpoint"><div class="fh">爭取免費 / 補助算力 <span class="en">Apply for free or subsidised compute</span></div>
-          <p>美國 <b>NAIRR</b>（NSF 與 DOE 主導）提供<b>免費 12 個月</b>的算力、模型與資料，已支持逾 400 個團隊，研究生可由指導教授具名申請；另有 NSF ACCESS、雲端供應商的學研額度。台灣的研究者可循<b>國網中心（NCHC / 台灣杉 TWCC）</b>申請學研算力。<br><span class="faint">NAIRR (NSF/DOE) gives free 12-month compute, models and data to 400+ teams; also NSF ACCESS and cloud research credits. In Taiwan, NCHC/TWCC offers academic compute.</span> <a href="https://nairrpilot.org/opportunities/allocations" target="_blank" rel="noopener">NAIRR 申請 ↗</a></p></div>
+          <p>美國 <b>NAIRR</b>（NSF 與 DOE 主導）提供<b>免費 12 個月</b>的算力、模型與資料，已支持逾 600 個團隊，研究生可由指導教授具名申請；另有 NSF ACCESS、雲端供應商的學研額度。台灣的研究者可循<b>國網中心（NCHC / 台灣杉 TWCC）</b>申請學研算力。<br><span class="faint">NAIRR (NSF/DOE) gives free 12-month compute, models and data to 600+ teams; also NSF ACCESS and cloud research credits. In Taiwan, NCHC/TWCC offers academic compute.</span> <a href="https://nairrpilot.org/opportunities/allocations" target="_blank" rel="noopener">NAIRR 申請 ↗</a></p></div>
+        <div class="fpoint"><div class="fh">各國學研算力資源 <span class="en">Research compute by country</span></div>
+          <p>除了 NAIRR 與台灣國網中心，各國也提供學研算力：<b>日本</b>有產總研 ABCI 3.0（6,128 張 H200、6.22 EFLOPS）與理研 Fugaku（經 HPCI 共享）、JST 的 GENIAC／AI4S 計畫；<b>韓國</b>國家 AI 算力中心規劃 2028 年達逾 15,000 顆 GPU；<b>新加坡</b> NSCC 開放各大學與理工學院申請；<b>加拿大</b> Digital Research Alliance「Fir」主機已上線；<b>印度</b> IndiaAI 算力入口將學生列為補助對象，AIRAWAT 提供 200 AI PF；<b>歐盟</b> EuroHPC 已部署 19 座 AI Factory 與 13 座天線站，提供免費「AI for Science」算力；<b>英國</b> AIRR（Isambard-AI 5,448 顆 GH200）可經 Gateway 申請約 10,000 GPU-hours。<br><span class="faint">Beyond NAIRR and Taiwan's NCHC, other research-compute options: Japan (AIST ABCI 3.0 with 6,128 H200 GPUs and 6.22 EFLOPS, RIKEN Fugaku via HPCI, JST GENIAC/AI4S); South Korea's National AI Computing Center (15,000+ GPUs by 2028); Singapore's NSCC (open to universities/polytechnics); Canada's Digital Research Alliance "Fir"; India's IndiaAI compute portal (students subsidised) and AIRAWAT (200 AI PF); the EU's EuroHPC 19 AI Factories + 13 Antennas with free "AI for Science" access; the UK's AIRR (Isambard-AI, 5,448 GH200) via the Gateway route (~10,000 GPU-hours).</span></p></div>
         <div class="fpoint"><div class="fh">改用開源 / 開放權重模型 <span class="en">Use open-source / open-weight models</span></div>
           <p>開放權重模型可<b>本地執行、鎖版本、無每次呼叫成本、可複製</b>，也比較能支援在地語言，對<b>繁中和台灣本地語料</b>特別有用。需要可複製性或預算有限時，優先採用。<br><span class="faint">Open-weight models run locally, pin versions, cost nothing per call, reproduce cleanly, and often support local languages — valuable for Traditional Chinese corpora.</span></p></div>
         <div class="fpoint"><div class="fh">善用國家 / 區域計畫 <span class="en">Leverage national &amp; regional programmes</span></div>
@@ -955,7 +1003,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
         <div class="fpoint warn"><div class="fh">接案 / 趕稿 <span class="en">Deadlines &amp; client work</span></div>
           <p>再急也別交出沒查過的 AI 生成內容，出錯會砸招牌、失去客戶信任。<br><span class="faint">However tight the deadline, don't hand over unchecked AI content — errors cost your reputation and clients' trust.</span></p></div>
         <div class="fpoint warn"><div class="fh">量產的誘惑 <span class="en">The temptation to mass-produce</span></div>
-          <p>平台會盯異常高的產出（Amazon KDP 就明說正常作者不會一天出十本），別為了衝量賭上帳號。<br><span class="faint">Platforms watch for abnormal output (Amazon KDP notes real authors don't publish ten books a day) — don't risk your account chasing volume.</span></p></div>
+          <p>平台會盯異常高的產出（Amazon KDP 自 2023 年 9 月起限制每天上架新書 3 本），別為了衝量賭上帳號。<br><span class="faint">Platforms watch for abnormal output (Amazon KDP caps new titles at 3 per day since Sept 2023) — don't risk your account chasing volume.</span></p></div>
         <div class="fpoint warn"><div class="fh">風格模仿 <span class="en">Copying a living creator's style</span></div>
           <p>用 AI 模仿在世創作者的風格，有倫理與法律風險，尤其是拿去商用時。<br><span class="faint">Using AI to imitate a living creator's style carries ethical and legal risk, especially for commercial use.</span></p></div>
         <div class="fpoint warn"><div class="fh">冒名與深偽 <span class="en">Impersonation &amp; deepfakes</span></div>
@@ -984,7 +1032,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
         <div class="qa"><div class="q">這不就是在幫學生用 AI 作弊漂白？ <span class="en">Isn't this just laundering AI cheating?</span></div>
           <div class="a">不是。揭露本身不決定什麼被允許，那是課程或規範的事；揭露只是把「用了什麼、怎麼用」講清楚，讓規則能被檢視。<br><span class="en">No. Disclosure doesn't decide what's allowed — the rules do. It just makes what was used, and how, clear so those rules can be checked.</span></div></div>
         <div class="qa"><div class="q">揭露又查不出真假，而且偵測器還會誤判，有什麼用？ <span class="en">It can't be verified, and detectors misfire — what's the point?</span></div>
-          <div class="a">揭露是<b>溝通，不是測謊</b>。偵測器對非母語寫作的誤判率很高（研究約 61%），所以與其靠偵測，不如靠評量設計（口試、看草稿）來衡量「是誰的思考」。<br><span class="en">Disclosure is communication, not a lie-detector. Detectors misflag non-native writing about 61% of the time, so it's better to measure "whose thinking" through assessment design than detection.</span> <a href="https://www.aol.com/articles/college-student-wins-groundbreaking-case-155155980.html" target="_blank" rel="noopener">誤判撤銷案例 ↗</a> · <a href="https://www.teqsa.gov.au/guides-resources/higher-education-good-practice-hub/gen-ai-knowledge-hub/gen-ai-academic-integrity-and-assessment-reform" target="_blank" rel="noopener">評量設計 TEQSA ↗</a></div></div>
+          <div class="a">揭露是<b>溝通，不是測謊</b>。偵測器對非母語寫作的誤判率很高（研究約 61%），所以與其靠偵測，不如靠評量設計（口試、看草稿）來衡量「是誰的思考」。<br><span class="en">Disclosure is communication, not a lie-detector. Detectors misflag non-native writing about 61% of the time, so it's better to measure "whose thinking" through assessment design than detection.</span> <a href="https://caselaw.findlaw.com/court/ny-supreme-court/118148544.html" target="_blank" rel="noopener">誤判撤銷案例 ↗</a> · <a href="https://www.teqsa.gov.au/guides-resources/higher-education-good-practice-hub/gen-ai-knowledge-hub/gen-ai-academic-integrity-and-assessment-reform" target="_blank" rel="noopener">評量設計 TEQSA ↗</a></div></div>
         <div class="qa"><div class="q">憑什麼只管學生，老師自己還不是在用？ <span class="en">Why only students, not the teacher?</span></div>
           <div class="a">這是合理的提醒。好的做法是老師也揭露自己的 AI 使用；先示範，對稱的信任才立得起來。<br><span class="en">A fair point. Good practice is for teachers to disclose their own AI use too — modelling it first is how symmetric trust is built.</span></div></div>
         <div class="qa"><div class="q">把老師出的作業原封不動貼進 AI，算抄襲或侵權嗎？ <span class="en">Is pasting the whole assignment into AI plagiarism or IP misuse?</span></div>
@@ -1064,7 +1112,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
         <div class="maprow"><div class="mapwhat">引用格式</div><div class="mapsrc"><a href="https://style.mla.org/citing-generative-ai-updated-revised/" target="_blank" rel="noopener">MLA</a> · <a href="https://apastyle.apa.org/blog/cite-generative-ai-references" target="_blank" rel="noopener">APA</a> · Chicago 18 §14.112</div></div>
         <div class="maprow"><div class="mapwhat">取向=方法輪廓（非科系）</div><div class="mapsrc">改寫自 Biglan(1973)/ Becher &amp; Trowler 的 hard↔soft 連續體</div></div>
       </div>
-      <p class="lead" style="margin-top:14px"><b>投稿前參考：</b>各大學術出版社（Nature、Elsevier、IEEE、Science、COPE、ICMJE）一致要求：<b>AI 不能列為作者、AI 使用須揭露、作者須自行查證並為內容負責</b>。</p>
+      <p class="lead" style="margin-top:14px"><b>投稿前參考：</b>各大學術出版社（Nature、Elsevier、IEEE、Science、COPE、ICMJE）一致要求：<b>AI 不能列為作者、AI 使用須揭露、作者須自行查證並為內容負責</b>。<br>2026 動態：ICMJE 已於 2026/1 更新建議（明訂「人類必須對全部內容負責」）、Elsevier 於 2026/8 更新期刊生成式 AI 政策；另維基百科已於 2026 年禁止以 AI 生成內容。<span class='faint'>2026 updates: ICMJE revised its recommendations in Jan 2026; Elsevier updated its journal generative-AI policies in Aug 2026; Wikipedia banned AI-generated content in 2026.</span></p>
       <div class="selfdisc">🔎 <b>本站自己的 AI 使用揭露 · This tool's own AI disclosure.</b> 這個網頁在政大圖書館的構想與規劃下，由 <b>Claude Opus 4.8</b> 協助整理內容、撰寫程式與查找資料。所有資料來源、政策與案例都經人工核對，設計判斷與最終定稿由館方負責。我們把這段揭露放在這裡，讓這個工具本身也成為一個誠實揭露 AI 使用的實例。<br><span class="faint">Conceived and directed by NCCU Library, this site was built with help from Claude Opus 4.8 (drafting content, writing code, finding sources). All sources, policies and cases were human-checked; design choices and the final version are the library's own. We disclose this so the tool itself is a working example of honest AI-use disclosure.</span></div>
     </div>
   </details>
@@ -1216,7 +1264,19 @@ function buildTeacherForm(){
       </span>
     </label>`).join('');
   function paint(){ladder.querySelectorAll('.tier').forEach(el=>{
-    el.classList.toggle('sel', el.querySelector('input').checked);});}
+    el.classList.toggle('sel', el.querySelector('input').checked);});
+    const sel=document.querySelector('input[name=tier]:checked');
+    const box=$('#tierSummary'); if(!sel||!box) return;
+    const t=TIERS.find(x=>x.id==sel.value); if(!t) return;
+    const num=['一','二','三','四'][t.id-1];
+    const disc = t.discloses
+      ? `<b>需要揭露。</b>${(t.focus||'學生說明 AI 參與了哪些環節、自己做了什麼、怎麼查證。').replace(/^揭露重點：/,'')}`
+      : '<b>不需要填揭露表。</b>';
+    box.innerHTML =
+      `<div class="ts-h">層級${num}・${t.zh} <span class="en">${t.en}</span></div>`
+      + `<div class="ts-row"><span class="ts-k">允許 &amp; 評量</span><span class="ts-v">${t.desc}</span></div>`
+      + `<div class="ts-row"><span class="ts-k">學生揭露</span><span class="ts-v">${disc}</span></div>`;
+  }
   ladder.addEventListener('change',paint); paint();
 
   $('#tProfiles').innerHTML = PROFILES.map((pf,i)=>`
@@ -1291,11 +1351,12 @@ function renderClusters(type){
 }
 function renderStudent(){
   const area = $('#policyArea');
-  const context = `<div class="card"><h2>你的作業情境 <span class="en">Your context</span></h2><p class="hint">先照老師訂的規則填一下。老師怎麼規定，以課程說明為準；這裡只幫你把揭露寫清楚。<br><span class="faint">Fill this in based on your teacher's rules. This tool just helps you write your AI statement.</span></p><div class="row2"><label class="field"><span class="sublab">課程名稱（選填）· Course (optional)</span><input type="text" id="sCourse" placeholder="例：質性研究方法"></label><label class="field"><span class="sublab">老師允許的 AI 程度 · AI level your course allows</span><select id="sLevel"><option value="">未指定 / 不確定 · unspecified</option><option value="層級一・不使用 AI / Level 1 — no AI">層級一・不使用 AI</option><option value="層級二・AI 協助構思 / Level 2 — AI for ideas">層級二・AI 協助構思</option><option value="層級三・AI 協作 / Level 3 — collaboration">層級三・AI 協作</option><option value="層級四・AI 全面使用 / Level 4 — full use">層級四・AI 全面使用</option><option value="老師另有規定 / instructor has other rules">老師另有規定</option></select></label></div><p class="hint faint" style="margin-top:4px">照老師說的填就好，不確定就問老師；老師沒特別分級也沒關係，留「未指定」即可。<span class="faint">Just use what your teacher said. If you are not sure, ask. You can also choose "unspecified".</span></p><label class="field" style="margin-top:10px"><span class="sublab">這份作業比較像哪種？（幫你濾掉用不到的選項）· What kind of work is this? (this hides options you do not need)</span><select id="sType"><option value="writing">一般寫作 / 報告 · Writing / report</option><option value="qual">質性研究 · Qualitative</option><option value="quant">量化 / 數據 · Quantitative / data</option><option value="comp">程式 / 計算 · Coding</option><option value="creative">創作 / 設計 · Creative</option><option value="all">都有 / 不確定 · Mixed / unsure</option></select></label></div>`;
+  const context = `<div class="card"><h2>你的作業情境 <span class="en">Your context</span></h2><p class="hint">先照老師訂的規則填一下。老師怎麼規定，以課程說明為準；這裡只幫你把揭露寫清楚。<br><span class="faint">Fill this in based on your teacher's rules. This tool just helps you write your AI statement.</span></p><div class="row2"><label class="field"><span class="sublab">課程名稱（選填）· Course (optional)</span><input type="text" id="sCourse" placeholder="例：質性研究方法"></label><label class="field"><span class="sublab">老師允許的 AI 程度 · AI level your course allows</span><select id="sLevel"><option value="">未指定 / 不確定 · unspecified</option><option value="層級一・不使用 AI / Level 1 — no AI">層級一・不使用 AI</option><option value="層級二・AI 協助構思 / Level 2 — AI for ideas">層級二・AI 協助構思</option><option value="層級三・AI 協作 / Level 3 — collaboration">層級三・AI 協作</option><option value="層級四・AI 全面使用 / Level 4 — full use">層級四・AI 全面使用</option><option value="老師另有規定 / instructor has other rules">老師另有規定</option></select></label></div><p class="hint faint" style="margin-top:4px">照老師說的填就好，不確定就問老師；老師沒特別分級也沒關係，留「未指定」即可。<span class="faint">Just use what your teacher said. If you are not sure, ask. You can also choose "unspecified".</span></p><label class="field" style="margin-top:10px"><span class="sublab">這份作業比較像哪種？👉 這會決定下面「AI 幫了哪些環節」顯示哪些選項 · What kind of work is this? This sets which options appear below</span><select id="sType"><option value="writing">一般寫作 / 報告 · Writing / report</option><option value="qual">質性研究 · Qualitative</option><option value="quant">量化 / 數據 · Quantitative / data</option><option value="comp">程式 / 計算 · Coding</option><option value="creative">創作 / 設計 · Creative</option><option value="all">都有 / 不確定 · Mixed / unsure</option></select></label></div>`;
   const form = `
     <div class="reassure">💬 <b>放心：</b>誠實揭露通常不會讓你被扣分。這是讓老師了解你怎麼學的，不是抓錯。不確定就多寫一句，或直接問老師。<br><span class="faint">Being honest about AI use will usually not lower your grade. It helps your teacher understand how you learn. It is not used to find mistakes. If you are not sure, write one more line, or ask your teacher.</span></div>
     <div class="aidnote">這不是考試，也不是非填不可的表格。它就是幫你把「你怎麼跟 AI 一起做的」講給老師聽。誠實說明，比填得完整更重要。<br><span class="faint">This is not a test, and you do not have to fill in everything. It helps you tell your teacher how you used AI. Being honest is more important than filling every box.</span></div>
     <div class="minbox">⏱ <b>趕時間？最少填這三個就能產生：</b>① 勾一項「AI 幫了什麼」（或勾「很輕微」）② 寫一句「你自己做了什麼」③ 勾查證。其他都是選填。<br><span class="faint">In a hurry? You only need three things: ① tick one thing AI helped with ② write one line about what you did ③ tick what you checked. The rest is optional.</span></div>
+    <div class="principles3">✍ <b>揭露得好的三個原則：</b>① <b>具體，不要含糊</b>（寫「用 AI 改了第二段的邏輯」，別只寫「有用 AI」）② <b>留著你的草稿和過程</b>（真的被問時能自證）③ <b>內容你自己負責</b>（AI 給的每個事實、引用都要自己查過）。<br><span class="faint">Three principles for a good disclosure: be specific (what and where, not just "I used AI"); keep your drafts and process; and own the content — check every fact and citation AI gave you.</span></div>
     <div class="card">
       <h2><span class="step-n">1</span> 你用了哪個 AI 工具？（選填） <span class="en">Which tool(s), optional</span></h2>
       <label class="field"><span class="sublab">寫出名稱與版本（若知道）。用了很多個就都列出來。· Name and version if known; list all you used.</span>
@@ -1609,34 +1670,31 @@ const PUBS={
  nature:{name:"Nature / Springer Nature",where:"方法（Methods）；無方法時放合適段落<br><span class='en'>In Methods; elsewhere if no Methods</span>",copyedit:"純語言潤稿<b>免揭露</b><br><span class='en'>language copy-edit exempt</span>",images:"<b>禁止</b> AI 生成圖像/影片<br><span class='en'>No AI-generated images/video</span>",prompts:"未特別要求逐字提示<br><span class='en'>verbatim prompts not required</span>",note:"強調可問責與可重現<br><span class='en'>stresses accountability & reproducibility</span>",url:"https://www.nature.com/nature-portfolio/editorial-policies/ai"},
  elsevier:{name:"Elsevier（含 Cell Press）",where:"參考文獻前的<b>獨立段落</b>（並於 cover letter 說明）<br><span class='en'>a separate section before references (+ cover letter)</span>",copyedit:"純潤稿免揭露<br><span class='en'>copy-edit exempt</span>",images:"<b>禁止</b> AI 生成圖像；Cell Press 對圖較嚴<br><span class='en'>No AI images; Cell Press stricter</span>",prompts:"未特別要求逐字提示<br><span class='en'>verbatim prompts not required</span>",note:"要求作者監督、查證、揭露；會出現在刊出版本<br><span class='en'>oversight, verify, disclose; appears in published work</span>",url:"https://www.elsevier.com/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier"},
  wiley:{name:"Wiley",where:"方法（Methods）<br><span class='en'>in Methods</span>",copyedit:"—",images:"部分限制<br><span class='en'>some limits</span>",prompts:"<b>要求詳述</b>：軟體、供應商，有時含提示<br><span class='en'>detailed: software, provider, sometimes prompts</span>",note:"作者保有全部責任<br><span class='en'>authors retain full responsibility</span>",url:"https://authors.wiley.com/ethics-guidelines/index.html"},
- science:{name:"Science / AAAS",where:"誌謝與方法<br><span class='en'>acknowledgments & Methods</span>",copyedit:"僅文法/拼字可免<br><span class='en'>only grammar/spelling exempt</span>",images:"限制<br><span class='en'>restricted</span>",prompts:"<b>要求完整揭露提示</b><br><span class='en'>full prompt disclosure required</span>",note:"⚠ 最嚴：AI 生成正文近乎視為不當行為；用 AI 產文即使揭露也可能被拒<br><span class='en'>Strictest: AI-generated text treated as near-misconduct; may be rejected even if disclosed</span>",url:"https://www.science.org/content/page/science-journals-editorial-policies",strict:true},
+ science:{name:"Science / AAAS",where:"誌謝與方法<br><span class='en'>acknowledgments & Methods</span>",copyedit:"僅文法/拼字可免<br><span class='en'>only grammar/spelling exempt</span>",images:"限制<br><span class='en'>restricted</span>",prompts:"<b>要求完整揭露提示</b><br><span class='en'>full prompt disclosure required</span>",note:"要求在誌謝與方法揭露；方法須寫出<b>完整提示、工具與版本</b>；AI 不能掛名，作者負全責。屬揭露要求較細的一類（2023 年 11 月起改為可用但須完整揭露，非一律禁止）。<br><span class='en'>Disclose in acknowledgments and Methods; the Methods must give the full prompt, tool and version; AI can't be an author; authors are accountable. Among the more demanding on detail (since Nov 2023 it allows AI-assisted use with full disclosure rather than banning it).</span>",url:"https://www.science.org/content/page/science-journals-editorial-policies"},
  plos:{name:"PLOS",where:"方法（含詳細評估說明）<br><span class='en'>in Methods, with evaluation detail</span>",copyedit:"—",images:"鼓勵透明，無明文禁圖<br><span class='en'>transparency encouraged; no explicit image ban</span>",prompts:"—",note:"須確保正確性與正確歸屬<br><span class='en'>ensure accuracy & correct attribution</span>",url:"https://journals.plos.org/plosone/s/ethical-publishing-practice"},
  ieee:{name:"IEEE / ACM",where:"誌謝（Acknowledgments）<br><span class='en'>in Acknowledgments</span>",copyedit:"—",images:"—",prompts:"—",note:"IEEE 須標明：<b>AI 系統、受影響段落、使用程度</b><br><span class='en'>identify the AI system, affected sections, and level of use</span>",url:"https://open.ieee.org/author-guidelines-for-artificial-intelligence-ai-generated-text/"},
  tf:{name:"Taylor & Francis",where:"方法或誌謝<br><span class='en'>Methods or acknowledgments</span>",copyedit:"純潤稿多可免<br><span class='en'>copy-edit usually exempt</span>",images:"—",prompts:"—",note:"允許但須揭露、作者負責；部分期刊限語言改善<br><span class='en'>allowed with disclosure; some journals limit to language</span>",url:"https://taylorandfrancis.com/our-policies/ai-policy/"},
- medical:{name:"醫學期刊（ICMJE / JAMA / BMJ）",where:"誌謝 / 方法 + <b>投稿系統的 AI 提問</b><br><span class='en'>acknowledgments/Methods + the AI questions in the submission system</span>",copyedit:"—",images:"—",prompts:"視期刊<br><span class='en'>journal-dependent</span>",note:"投稿系統常有必答的 AI 使用題，須與內文一致；<b>JAMA、BMJ 要求寫明模型名稱、版本、製造商與產生內容的性質</b><br><span class='en'>mandatory AI questions in the submission system; JAMA/BMJ require model name, version, manufacturer, and nature of content</span>",url:""},
+ medical:{name:"醫學期刊（ICMJE / JAMA / BMJ）",where:"誌謝 / 方法 + <b>投稿系統的 AI 提問</b><br><span class='en'>acknowledgments/Methods + the AI questions in the submission system</span>",copyedit:"—",images:"—",prompts:"視期刊<br><span class='en'>journal-dependent</span>",note:"投稿系統常有必答的 AI 使用題，須與內文一致；<b>JAMA、BMJ 要求寫明模型名稱、版本、製造商與產生內容的性質</b><br><span class='en'>mandatory AI questions in the submission system; JAMA/BMJ require model name, version, manufacturer, and nature of content</span>",url:"https://www.icmje.org/recommendations/browse/artificial-intelligence/"},
  sage:{name:"SAGE",where:"方法或致謝<br><span class='en'>Methods or acknowledgments</span>",copyedit:"<b>輔助性 AI（潤飾你自己的文字）不用聲明</b><br><span class='en'>assistive AI needs no disclosure</span>",images:"—",prompts:"—",note:"區分輔助 vs 生成：生成新內容須引用並標註；規範較彈性、格式指引較少<br><span class='en'>distinguishes assistive vs generative; flexible, less format guidance</span>",url:"https://www.sagepub.com/journals/publication-ethics-policies/artificial-intelligence-policy"},
  mdpi:{name:"MDPI",where:"方法或致謝<br><span class='en'>Methods or acknowledgments</span>",copyedit:"純潤稿多可免<br><span class='en'>copy-edit usually exempt</span>",images:"對 AI 輔助視覺較寬鬆<br><span class='en'>more permissive on AI visuals</span>",prompts:"—",note:"允許但須揭露；開放取用、規範相對彈性<br><span class='en'>allowed with disclosure; adaptive</span>",url:""},
  frontiers:{name:"Frontiers",where:"方法或致謝<br><span class='en'>Methods or acknowledgments</span>",copyedit:"純潤稿多可免<br><span class='en'>copy-edit usually exempt</span>",images:"對 AI 輔助視覺較寬鬆<br><span class='en'>more permissive on AI visuals</span>",prompts:"—",note:"允許但須揭露；開放取用<br><span class='en'>allowed with disclosure; open access</span>",url:""},
  oup:{name:"Oxford Academic(OUP)",where:"<b>cover letter 與方法/致謝都要</b><br><span class='en'>cover letter AND Methods/Acknowledgments</span>",copyedit:"—",images:"—",prompts:"—",note:"原則導向、格式指引較少；AI 不能掛名，會篩查作者欄<br><span class='en'>principle-oriented; screens author lists</span>",url:""},
  cup:{name:"Cambridge University Press",where:"寫作流程須揭露<br><span class='en'>disclose in the writing process</span>",copyedit:"—",images:"—",prompts:"—",note:"AI 不能掛名（問責）；指引主要涵蓋寫作流程<br><span class='en'>AI can\'t be author; guidelines cover writing</span>",url:""},
  emerald:{name:"Emerald",where:"須在論文中標明任何 AI 使用<br><span class='en'>flag any AI use in the paper</span>",copyedit:"—",images:"禁止 AI 生成圖像<br><span class='en'>prohibits AI-generated images</span>",prompts:"—",note:"相對嚴格：任何 AI 使用都要標明；AI 不能掛名<br><span class='en'>restrictive; flag all AI use</span>",url:""},
- apa:{name:"APA（美國心理學會）",where:"方法（Methods）並須<b>正式引用</b><br><span class='en'>in Methods, and cite it</span>",copyedit:"—",images:"—",prompts:"—",note:"在方法揭露並正式引用 AI;AI 不能掛名<br><span class='en'>disclose in Methods and cite; AI can\'t be author</span>",url:""},
+ apa:{name:"APA（美國心理學會）",where:"方法（Methods）並須<b>正式引用</b><br><span class='en'>in Methods, and cite it</span>",copyedit:"—",images:"—",prompts:"—",note:"在方法揭露並正式引用 AI;AI 不能掛名<br><span class='en'>disclose in Methods and cite; AI can\'t be author</span>",url:"https://www.apa.org/pubs/journals/resources/publishing-tips/policy-generative-ai"},
  other:{name:"尚未決定 / 其他",where:"多數為方法或誌謝<br><span class='en'>usually Methods or acknowledgments</span>",copyedit:"純潤稿常可免<br><span class='en'>copy-edit often exempt</span>",images:"多家禁止 AI 生成圖像<br><span class='en'>many ban AI images</span>",prompts:"視期刊<br><span class='en'>journal-dependent</span>",note:"選定後請以該社作者指南為準<br><span class='en'>once chosen, follow that publisher's author guidelines</span>",url:""}
 };
 
 /* render activities filtered/ordered by field */
 function renderActivities(){
-  const f=$('#field').value;
-  const list=ACTIVITIES.filter(a=>a.fields.includes(f));
+  const list=ACTIVITIES;
   $('#activities').innerHTML=list.map(a=>`
     <label class="chk ${a.ban?'ban':''}"><input type="checkbox" value="${a.zh}" data-id="${a.id}">
       <span class="ct">${a.zh}<span class="en">${a.en}</span><span class="bound">${a.bound}</span></span></label>`).join('');
 }
 /* field-aware polishing note */
 function renderPolish(){
-  const f=$('#field').value;
-  const writing=(f==='humanities'||f==='social');
-  $('#polishNote').innerHTML='✍ '+(writing?POLISH_NOTES.writing:POLISH_NOTES.stem);
+  $('#polishNote').innerHTML='✍ <b>純語言潤稿多數期刊不用揭露</b>；但若 AI 改到內容、論點或翻譯，就要揭露。書寫核心的人文社科領域更敏感，揭露要到位。<span class="faint">Pure language editing usually needs no disclosure; substantive rewriting, translation or changed meaning does — and it\'s more sensitive in writing-centric humanities/social fields.</span>';
 }
 /* method-aware ledger */
 const APPROACH_LABEL={qual:"質性 · qualitative",quant:"量化/計算 · quantitative",mixed:"混合 · mixed",theory:"理論/詮釋 · interpretive"};
@@ -1668,7 +1726,6 @@ function renderPub(){
 }
 
 
-$('#field').addEventListener('change',()=>{renderActivities();renderPolish();});
 $('#approach').addEventListener('change',renderLedger);
 $('#agent').addEventListener('change',e=>{renderLedger();$('#agentCaution').classList.toggle('hide',!e.target.checked);});
 $('#pub').addEventListener('change',renderPub);
