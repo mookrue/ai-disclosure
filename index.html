@@ -397,7 +397,7 @@
 <div class="wrap">
 
   <header class="top">
-    <a class="langswitch" href="index-en.html" onclick="switchLang();return false;" aria-label="Switch to English">🌐 English</a>
+    <a class="langswitch" href="en.html" onclick="switchLang();return false;" aria-label="Switch to English">🌐 English</a>
     
     <h1>AI 用得誠實，也用得好</h1>
     <div class="sub">政大圖書館做的參考。不強制、不評分，只是幫你把 AI 怎麼用講清楚。挑最符合你現在要做的事：</div>
@@ -1125,7 +1125,7 @@ function switchLang(){
   var views={teacher:'teacherView',student:'studentView',researcher:'researcherView',creative:'creativeView',frontier:'frontierView',pressure:'pressureView',gatekeep:'gatekeepView',faq:'faqView'};
   var cur='teacher';
   for(var k in views){var el=document.getElementById(views[k]); if(el && !el.classList.contains('hide')){cur=k;break;}}
-  location.href='index-en.html?tab='+cur;
+  location.href='en.html?tab='+cur;
 }
 
 "use strict";
