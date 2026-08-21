@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Use Disclosure, a bilingual guide for classrooms and research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f4f0;
+    --surface:#ffffff;
+    --ink:#2b2926;
+    --ink-soft:#5e5950;
+    --ink-faint:#948e84;
+    --line:#e8e3da;
+    --line-strong:#d5cfc4;
+    --accent:#0d4b3c;        /* 政大綠 NCCU green — primary */
+    --accent-deep:#093a2e;
+    --accent-wash:#e7eeea;
+    --gold:#b59650; --pink:#f19db5; --purple:#c5a4cc; --yellow:#e1c845; --nccugray:#cfd2d3;
+    --safe:#3a6b5f;
+    --safe-wash:#eaf2ee;
+    /* neutral tier ramp — deliberately NOT a traffic light */
+    --t1:#b9bcc4; --t2:#9297a6; --t3:#6b7186; --t4:#454c63; --t5:#232a3d;
+    --radius:14px;
+    --radius-sm:9px;
+    --shadow:0 1px 2px rgba(35,42,61,.04),0 8px 28px rgba(35,42,61,.06);
+    --maxw:1040px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Noto Sans TC",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+    line-height:1.65;font-size:17px;
+    padding:32px 20px 80px;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto}
+  h1,h2,h3{font-family:"Noto Serif TC",Georgia,serif;line-height:1.35;margin:0}
+  b,strong{font-weight:600}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:500}
+  .muted{color:var(--ink-soft)}
+  .faint{color:var(--ink-faint)}
+  .en{color:var(--ink-faint);font-weight:400}
+
+  /* header */
+  header.top{margin-bottom:22px}
+  header.top h1{font-size:26px;font-weight:700;letter-spacing:-.01em}
+  header.top .sub{margin-top:6px;color:var(--ink-soft);font-size:14.5px}
+
+  /* mode switch */
+  .switch{display:inline-flex;background:#e9e8e3;border-radius:999px;padding:4px;margin:18px 0 10px;gap:2px}
+  .switch button{
+    border:0;background:transparent;font:inherit;font-size:13.5px;font-weight:500;color:var(--ink-soft);
+    padding:8px 16px;border-radius:999px;cursor:pointer;transition:background .15s,color .15s;
+  }
+  .switch button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+  .switch button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  /* cards */
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:24px 24px;margin:16px 0}
+  .card h2{font-size:18px;font-weight:600;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .card h2 .en{font-size:13px}
+  .card > p.hint{margin:6px 0 0;font-size:14px;color:var(--ink-soft)}
+  .step-n{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;
+    border-radius:7px;background:var(--ink);color:#fff;font-size:12.5px;font-weight:600;font-family:"Noto Sans TC",sans-serif;
+    transform:translateY(-1px)}
+
+  label.field{display:block;margin-top:16px}
+  label.field .lab{font-weight:500;font-size:14.5px;display:block;margin-bottom:6px}
+  label.field .lab .en{font-size:12.5px;margin-left:4px}
+  label.field .sublab{font-weight:400;font-size:13px;color:var(--ink-soft);margin-bottom:8px}
+  input[type=text],textarea,select{
+    width:100%;font:inherit;font-size:15px;color:var(--ink);background:#fcfcfb;
+    border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:11px 13px;transition:border-color .15s,box-shadow .15s}
+  textarea{resize:vertical;min-height:64px;line-height:1.6}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-wash)}
+  input::placeholder,textarea::placeholder{color:#a9adba}
+
+  /* tier ladder */
+  .ladder{margin-top:14px;display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden}
+  .tier{display:flex;gap:14px;padding:14px 15px;cursor:pointer;border-top:1px solid var(--line);background:var(--surface);transition:background .12s;align-items:flex-start}
+  .tier:first-child{border-top:0}
+  .tier:hover{background:#fafaf8}
+  .tier input{position:absolute;opacity:0;width:0;height:0}
+  .tier .dot{flex:0 0 auto;width:14px;height:14px;border-radius:50%;margin-top:5px;box-shadow:inset 0 0 0 2px #fff, 0 0 0 1px var(--line-strong)}
+  .tier[data-t="1"] .dot{background:var(--t1)} .tier[data-t="2"] .dot{background:var(--t2)}
+  .tier[data-t="3"] .dot{background:var(--t3)} .tier[data-t="4"] .dot{background:var(--t5)}
+  .explore-note{margin-top:14px;background:#f4f2fb;border:1px dashed #cdc6e6;border-radius:var(--radius-sm);padding:12px 14px;font-size:13px;color:#4a3f6b;line-height:1.55}
+  .tiersum{margin-top:14px;background:var(--accent-wash);border:1px solid var(--line);border-radius:var(--radius-sm);padding:13px 16px}
+  .tiersum .ts-h{font-weight:700;color:var(--accent-deep);font-size:15px;margin-bottom:5px}
+  .tiersum .ts-h .en{font-weight:400;color:var(--ink-faint);font-size:12.5px}
+  .tiersum .ts-row{display:flex;gap:10px;font-size:13.5px;line-height:1.55;margin-top:4px}
+  .tiersum .ts-k{flex:0 0 78px;color:var(--ink-faint);font-size:12px;padding-top:2px}
+  .tiersum .ts-v{flex:1;color:var(--ink-soft)}
+  .tiersum .ts-v b{color:var(--ink)}
+  .explore-note b{color:#3d3357}
+  .howto{margin-top:12px;background:#fbfaf7;border:1px solid var(--line);border-radius:var(--radius-sm);padding:13px 15px;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+  .howto b{color:var(--ink)}
+  .tier .body{flex:1}
+  .tier .name{font-weight:600;font-size:15px}
+  .tier .name .en{font-size:12.5px;font-weight:400;margin-left:6px}
+  .tier .desc{font-size:13.5px;color:var(--ink-soft);margin-top:2px}
+  .tier .flag{font-size:12px;color:var(--ink-faint);margin-top:5px}
+  .tier.sel{background:var(--accent-wash)}
+  .tier.sel .name{color:var(--accent-deep)}
+  .tier.sel .dot{box-shadow:inset 0 0 0 3px #fff,0 0 0 2px var(--accent)}
+  .tier:focus-within{background:#f4f9f8}
+
+  /* checkbox groups */
+  .checks{display:flex;flex-direction:column;gap:2px;margin-top:8px}
+  .checks.grouped{gap:0}
+  .cgroup{margin-top:12px}
+  .cgroup:first-child{margin-top:4px}
+  .cglabel{font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--ink-soft);padding:6px 4px 3px;border-bottom:1px solid var(--line);margin-bottom:3px}
+  .cglabel .en{font-weight:400;color:var(--ink-faint);font-size:11px;margin-left:5px}
+  .chk{display:flex;gap:11px;padding:9px 11px;border-radius:var(--radius-sm);cursor:pointer;transition:background .12s;align-items:flex-start}
+  .chk:hover{background:#f7f7f5}
+  .chk input{margin-top:3px;accent-color:var(--accent);width:16px;height:16px;flex:0 0 auto}
+  .chk .ct{font-size:14.5px}
+  .chk .ct .en{font-size:12px;display:block;color:var(--ink-faint)}
+  .chk.light{background:#f7f6f2;border:1px dashed var(--line-strong);border-radius:var(--radius-sm);margin-bottom:4px}
+
+  /* buttons */
+  .btn{font:inherit;font-weight:600;font-size:14.5px;border-radius:var(--radius-sm);padding:12px 20px;cursor:pointer;border:1px solid transparent;transition:transform .05s,background .15s,box-shadow .15s}
+  .btn:active{transform:translateY(1px)}
+  .btn.primary{background:var(--accent);color:#fff}
+  .btn.primary:hover{background:var(--accent-deep)}
+  .btn.ghost{background:var(--surface);border-color:var(--line-strong);color:var(--ink)}
+  .btn.ghost:hover{background:#f7f7f5}
+  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+
+  /* policy banner (student) */
+  .policy{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin:16px 0}
+  .policy .head{background:var(--ink);color:#fff;padding:16px 22px}
+  .policy .head .course{font-family:"Noto Serif TC",serif;font-size:19px;font-weight:600}
+  .policy .head .teacher{font-size:13px;color:#c3c6d1;margin-top:2px}
+  .policy .band{padding:16px 22px;border-top:1px solid var(--line)}
+  .policy .lvlrow{display:flex;align-items:center;gap:12px}
+  .policy .lvlrow .dot{width:16px;height:16px;border-radius:50%;flex:0 0 auto}
+  .policy .lvlname{font-weight:600;font-size:15.5px}
+  .policy .lvldesc{font-size:13.5px;color:var(--ink-soft);margin-top:6px}
+  .policy .lvlfocus{font-size:13px;color:var(--accent-deep);background:var(--accent-wash);border-radius:8px;padding:8px 11px;margin-top:9px;line-height:1.5}
+  .promise{background:var(--safe-wash);border-top:1px solid var(--line);padding:15px 22px;display:flex;gap:12px;align-items:flex-start}
+  .promise svg{flex:0 0 auto;margin-top:2px}
+  .promise .pt{font-size:14px;color:#2c4a41}
+  .promise .pt b{color:var(--safe)}
+  .nodisc{padding:14px 22px 16px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-soft)}
+  .nodisc b{color:var(--ink);font-weight:500}
+  .nodisc ul{margin:7px 0 0;padding-left:18px}
+  .nodisc li{margin:2px 0}
+
+  /* verify field emphasis */
+  .verify{border:1px solid var(--accent);background:var(--accent-wash);border-radius:var(--radius-sm);padding:14px 15px;margin-top:18px}
+  .verify .lab{font-weight:600;color:var(--accent-deep);display:flex;align-items:center;gap:7px}
+  .verify .why{font-size:12.5px;color:#3f6f68;margin:4px 0 9px}
+  .verify textarea{background:#fff;border-color:#a9cec9}
+
+  .req{color:var(--accent);font-weight:700}
+  .rec{color:var(--ink-faint);font-weight:500;font-size:12.5px}
+  .aidnote{background:var(--safe-wash);border:1px solid #cfe4db;border-radius:var(--radius-sm);padding:12px 15px;margin:0 0 12px;font-size:14px;color:#2c4a41;line-height:1.55}
+  .aidnote .faint{display:block;margin-top:3px}
+  .agenttoggle{background:#f4f2fb;border:1px dashed #cdc6e6;border-radius:var(--radius-sm)}
+  .agentbox{margin-top:12px;border:1px solid #cdc6e6;background:#faf9fe;border-radius:var(--radius-sm);padding:14px 15px}
+  .agentbox .opthead{color:#4a3f6b}
+
+  /* output */
+  .output{white-space:pre-wrap;font-family:"Noto Sans TC",ui-monospace,monospace;font-size:13.5px;line-height:1.7;
+    background:#fbfbfa;border:1px dashed var(--line-strong);border-radius:var(--radius-sm);padding:18px;color:var(--ink);margin-top:6px}
+  .empty{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:30px 24px;text-align:center;color:var(--ink-soft);background:#fafaf8}
+  .empty h2{font-size:17px;color:var(--ink);margin-bottom:8px}
+  .linkbox{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .linkbox input{flex:1;min-width:220px;font-size:12.5px;font-family:ui-monospace,monospace;color:var(--ink-soft)}
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;
+    padding:11px 20px;border-radius:999px;font-size:13.5px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:50}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .divider{height:1px;background:var(--line);margin:22px 0}
+  .footnote{font-size:12.5px;color:var(--ink-faint);margin-top:26px;text-align:center;line-height:1.7}
+  .hide{display:none!important}
+  .inline-link{color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+  a{color:var(--accent-deep);text-underline-offset:2px}
+  /* sources / about panel */
+  .sources{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin:14px 0 4px;overflow:hidden}
+  .sources summary{cursor:pointer;list-style:none;padding:15px 20px;font-weight:600;font-size:14.5px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .sources summary::-webkit-details-marker{display:none}
+  .sources summary .chev{color:var(--ink-faint);font-size:12px;transition:transform .15s}
+  .sources[open] summary .chev{transform:rotate(90deg)}
+  .sources summary .en{font-weight:400;font-size:12px;color:var(--ink-faint)}
+  .sources .inner{padding:2px 20px 20px;border-top:1px solid var(--line)}
+  .sources .lead{font-size:13px;color:var(--ink-soft);margin:12px 0 4px;line-height:1.6}
+  .src-group{margin-top:15px}
+  .src-group h4{font-family:"Noto Sans TC",sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin:0 0 7px}
+  .src-group ul{list-style:none;margin:0;padding:0}
+  .src-group li{font-size:13.5px;padding:3px 0;line-height:1.5}
+  .src-group li a{font-weight:500}
+  .src-group li .role{color:var(--ink-faint);font-size:12px}
+  .baseul{list-style:none;margin:6px 0 0;padding:0}
+  .baseul li{font-size:13.5px;color:var(--ink-soft);padding:2px 0}
+  .baseul li::before{content:"—";color:var(--ink-faint);margin-right:7px}
+  .citenote{font-size:12.5px;color:var(--ink-soft);background:#fbfaf7;border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 13px;margin-top:16px;line-height:1.6}
+  .exblock{margin-top:14px;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden}
+  .exlabel{background:var(--accent-wash);color:var(--accent-deep);font-weight:600;font-size:13.5px;padding:9px 14px}
+  .exlabel .en{font-weight:400;color:var(--ink-faint);font-size:12px}
+  .exstmt{padding:12px 14px;font-family:"Iowan Old Style",Georgia,serif;font-size:13.5px;color:var(--ink);line-height:1.65;background:#fff;white-space:pre-wrap}
+  .exnote{padding:9px 14px 11px;font-size:12.5px;color:var(--ink-soft);background:#fbfbfc;border-top:1px solid var(--line);line-height:1.6}
+  .exnote b{color:var(--ink)}
+  /* provenance mapping */
+  .mapgrid{margin-top:12px;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden}
+  .maprow{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:10px 14px;border-top:1px solid var(--line);font-size:13px;line-height:1.5}
+  .maprow:first-child{border-top:0}
+  .maprow:nth-child(odd){background:#fbfbfa}
+  .mapwhat{font-weight:500;color:var(--ink)}
+  .mapsrc{color:var(--ink-soft)}
+  @media(max-width:560px){.maprow{grid-template-columns:1fr;gap:3px}.mapwhat{color:var(--ink)}.mapsrc{font-size:12.5px}}
+  /* verification ladder */
+  .vladder{display:flex;flex-direction:column;gap:0;margin-top:10px;border:1px solid #bcdcd7;border-radius:var(--radius-sm);overflow:hidden;background:#fff}
+  .vstep{display:flex;gap:10px;padding:11px 12px;border-top:1px solid #d8ebe8;cursor:pointer;align-items:flex-start;font-size:14px;line-height:1.5}
+  .vstep:first-child{border-top:0}
+  .vstep:hover{background:#f4faf9}
+  .vstep input{margin-top:3px;accent-color:var(--accent);width:16px;height:16px;flex:0 0 auto}
+  .vstep b{color:var(--accent-deep)}
+  .vstep.none{color:var(--ink-soft)}
+  .vstep.none b{color:var(--ink-soft)}
+  .vmore{margin-top:12px;border:1px solid var(--line);border-radius:var(--radius-sm);background:#fff}
+  .vmore summary{cursor:pointer;list-style:none;padding:10px 13px;font-size:13.5px;font-weight:500;color:var(--ink-soft)}
+  .vmore summary::-webkit-details-marker{display:none}
+  .vmore .vinner{padding:2px 8px 8px;border-top:1px solid var(--line)}
+  .mapnote{font-size:12px;color:var(--ink-faint);margin-top:10px;line-height:1.55}
+  .disclaimer{background:#f7f6f2;border:1px solid var(--line);border-radius:var(--radius);padding:16px 20px;margin:22px 0 0;font-size:13px;color:var(--ink-soft);line-height:1.7}
+  .disclaimer b{color:var(--ink)}
+  /* quick path + collapsibles + submit note + guide */
+  .quicknote{background:var(--accent-wash);border:1px solid #bcdcd7;border-radius:var(--radius-sm);padding:12px 15px;margin:0 0 16px;font-size:14px;color:#2c4a41;line-height:1.55}
+  .quicknote .faint{display:block;margin-top:3px}
+  details.advanced{margin:16px 0}
+  details.advanced > summary, details.optional > summary{cursor:pointer;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:15px 20px;font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;display:flex;align-items:center;gap:8px}
+  details.advanced > summary::-webkit-details-marker, details.optional > summary::-webkit-details-marker{display:none}
+  .advsub{font-family:"Noto Sans TC",sans-serif;font-weight:400;font-size:12.5px;color:var(--ink-faint)}
+  .advchev{margin-left:auto;color:var(--ink-faint);font-size:12px;transition:transform .15s}
+  details[open] > summary .advchev{transform:rotate(90deg)}
+  details.advanced[open]{border:0}
+  details.optional{margin:16px 0}
+  .optbody{background:var(--surface);border:1px solid var(--line);border-top:0;border-radius:0 0 var(--radius) var(--radius);box-shadow:var(--shadow);padding:6px 24px 22px;margin-top:-6px}
+  details.optional > summary{border-radius:var(--radius)}
+  details.optional[open] > summary{border-radius:var(--radius) var(--radius) 0 0}
+  .optsec{padding-top:16px;margin-top:14px;border-top:1px solid var(--line)}
+  .optsec:first-child{border-top:0;margin-top:0}
+  .opthead{font-family:"Noto Serif TC",serif;font-size:16px;font-weight:600;margin-bottom:4px}
+  .guide .guidelist{margin:12px 0 0;padding-left:20px}
+  .guide .guidelist li{font-size:13.5px;line-height:1.6;margin:7px 0;color:var(--ink-soft)}
+  .guide .guidelist li b{color:var(--ink)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media(max-width:520px){body{padding:22px 14px 70px}.card{padding:20px 17px}}
+  /* ===== merged: researcher tab (indigo) ===== */
+  :root{--warn:#a1442e;--warn-wash:#fdf1ee;--ok:#3a6b5f;--ok-wash:#eaf2ee}
+  #studentView{--accent:#2f6a5a;--accent-deep:#234f43;--accent-wash:#e7f0ec}
+  #researcherView{--accent:#7a6636;--accent-deep:#5c4c26;--accent-wash:#f2eee1}
+  #pressureView{--accent:#965566;--accent-deep:#73404e;--accent-wash:#f4ebee}
+  #gatekeepView{--accent:#3f6377;--accent-deep:#2f4b5b;--accent-wash:#e8eef2}
+  #faqView{--accent:#55606e;--accent-deep:#3f4855;--accent-wash:#edeef0}
+  #researcherView .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:560px){#researcherView .row2{grid-template-columns:1fr}}
+  #researcherView label.field .lab{font-weight:500;font-size:14.5px;display:block;margin-bottom:6px}
+  #researcherView .verify .vh{font-weight:600;color:#245f59;display:flex;align-items:center;gap:7px;font-size:14px}
+  .principle{background:var(--accent-wash);border-radius:var(--radius-sm);padding:13px 15px;font-size:13.5px;color:var(--accent-deep);margin-top:12px;line-height:1.6}
+  .principle b{color:var(--accent-deep)}
+  .ledger{margin-top:14px;border:1px solid var(--accent);border-radius:var(--radius-sm);overflow:hidden;background:#fff}
+  .ledger .lhead{background:var(--accent);color:#fff;padding:11px 16px;font-size:13px;letter-spacing:.04em;display:flex;justify-content:space-between;align-items:center}
+  .ledger .lhead .en{color:#c8cde6}
+  .lrow{display:flex;gap:12px;padding:12px 16px;border-top:1px solid var(--line);align-items:flex-start}
+  .lrow:first-of-type{border-top:0}
+  .lrow .num{flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--accent-wash);color:var(--accent-deep);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:1px;font-variant-numeric:tabular-nums}
+  .lrow .lt{font-size:14px}
+  .lrow .lt b{color:var(--ink)}
+  .lrow .lt .why{color:var(--ink-faint);font-size:12.5px;display:block;margin-top:1px}
+  .lrow .lt .why em{font-style:normal;color:var(--warn)}
+  .agentcaution{margin-top:12px;background:#faf9fe;border:1px solid #cdc6e6;border-radius:var(--radius-sm);padding:12px 15px;font-size:13px;color:#4a3f6b;line-height:1.6}
+  .agentcaution b{color:#3d3357}
+  .pubcard{margin-top:14px;border:1px solid var(--line);border-radius:var(--radius-sm);background:#fbfbfc;padding:0;overflow:hidden}
+  .pubcard .ph{background:var(--ink);color:#fff;padding:12px 16px;font-family:"Noto Serif TC",serif;font-size:16px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .pubcard .ph a{color:#c8cde6;font-family:"Noto Sans TC",sans-serif;font-size:12.5px;font-weight:400}
+  .pubcard .pb{padding:6px 16px 14px}
+  .prow{display:grid;grid-template-columns:120px 1fr;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:13.5px;line-height:1.5}
+  .prow:first-child{border-top:0}
+  .prow .pk{color:var(--ink-faint);font-size:12.5px}
+  .pubcard.strict .ph{background:var(--warn)}
+  .strictwarn{background:var(--warn-wash);border:1px solid #f0d3ca;color:#8a3a26;font-size:13px;padding:10px 13px;border-radius:8px;margin:10px 16px 4px;line-height:1.5}
+  .advcard{border-color:var(--accent);background:linear-gradient(180deg,#f7f8fc 0%,#ffffff 40%)}
+  .advcard h2{color:var(--accent-deep)}
+  .advance{border-left:3px solid var(--accent);background:#f7f8fc;border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:13px 16px;margin-top:14px}
+  .advance .ah{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15px;color:var(--accent-deep);margin-bottom:5px}
+  .advance p{margin:0;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+  .advance p b{color:var(--ink)}
+  .advance .try{display:block;background:#fff;border:1px dashed var(--line-strong);border-radius:8px;padding:8px 11px;margin:8px 0;font-size:13px;color:var(--accent-deep)}
+  .advance a{display:inline-block;margin-top:4px;font-weight:500;font-size:12.5px}
+  .pcard{border-color:#e6c9bf;background:linear-gradient(180deg,#fdf6f3 0%,#ffffff 40%)}
+  .pcard h2{color:var(--warn)}
+  .pblock{border-left:3px solid var(--warn);background:#fdf6f3;border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:13px 16px;margin-top:14px}
+  .pblock .ah{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15px;color:#8a3a26;margin-bottom:5px}
+  .pblock p{margin:0;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+  .pblock p b{color:var(--ink)}
+  .pblock a{display:inline-block;margin-top:6px;font-weight:500;font-size:12.5px}
+  .grantcard{border-color:#d3d7ea}
+  .grantcard h2{color:var(--accent-deep)}
+  .gblock{border-left:3px solid var(--line-strong);background:#fbfbfc;border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:12px 16px;margin-top:12px}
+  .gblock .ah{font-family:"Noto Serif TC",serif;font-weight:600;font-size:14.5px;color:var(--ink);margin-bottom:4px}
+  .gblock p{margin:0;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+  .gblock p b{color:var(--ink)}
+  .gblock a{display:inline-block;margin-top:5px;font-weight:500;font-size:12.5px}
+  .usenote{background:var(--accent-wash);border:1px solid #d3d7ea;border-radius:var(--radius);padding:13px 18px;margin:0 0 4px;font-size:13.5px;color:var(--accent-deep);line-height:1.6}
+  #researcherView .usenote{--accent-wash:#ecedf6}
+  .usenote .faint{display:block;margin-top:3px}
+  .teamnote{margin-top:14px;background:#fbfbfc;border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 15px;font-size:13px;color:var(--ink-soft);line-height:1.6}
+  .teamnote .faint{display:block;margin-top:2px}
+  .reassure{background:var(--ok-wash);border:1px solid #cfe2da;border-radius:var(--radius-sm);padding:12px 15px;margin:6px 0 4px;font-size:13.5px;color:#245f59;line-height:1.6}
+  .reassure .faint{display:block;margin-top:3px}
+  .faq .qa{padding:11px 0;border-top:1px solid var(--line)}
+  .faq .qa:first-child{border-top:0}
+  .faq .q{font-weight:600;font-size:14px;color:var(--ink);margin-bottom:4px}
+  .faq .q .en{font-weight:400;font-size:12.5px;display:block;color:var(--ink-faint)}
+  .faq .a{font-size:13.5px;color:var(--ink-soft);line-height:1.65}
+  .faq .a .en{display:block;margin-top:3px;color:var(--ink-faint);font-size:12.5px}
+  .foldcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin:16px 0;overflow:hidden}
+  .foldcard>summary{cursor:pointer;list-style:none;padding:17px 24px;font-family:"Noto Serif TC",Georgia,serif;font-weight:600;font-size:16.5px;display:flex;align-items:center;gap:9px}
+  .foldcard>summary::-webkit-details-marker{display:none}
+  .foldcard>summary .en{font-size:13px;font-weight:400;color:var(--ink-faint)}
+  .foldcard>summary .foldchev{margin-left:auto;color:var(--ink-faint);font-size:11px;transition:transform .2s}
+  .foldcard[open]>summary .foldchev{transform:rotate(90deg)}
+  .foldcard .foldbody{padding:2px 24px 22px}
+  .foldcard .foldbody>.hint:first-child{margin-top:0}
+  .foldcard.grantcard{border-color:#d3d7ea} .foldcard.grantcard>summary{color:var(--accent-deep)}
+  .foldcard.pcard{border-color:#e6c9bf} .foldcard.pcard>summary{color:var(--warn)}
+  .foldcard.advcard{border-color:var(--accent);background:linear-gradient(180deg,#f7f8fc 0%,#ffffff 22%)} .foldcard.advcard>summary{color:var(--accent-deep)}
+  .foldnote{margin-top:14px;border:1px solid var(--line);border-radius:var(--radius-sm);background:#fbfbfc;overflow:hidden}
+  .foldnote>summary{cursor:pointer;list-style:none;padding:11px 15px;font-size:13.5px;font-weight:600;color:var(--accent-deep);display:flex;align-items:center;gap:8px}
+  .foldnote>summary::-webkit-details-marker{display:none}
+  .foldnote>summary .foldchev{margin-left:auto;color:var(--ink-faint);font-size:11px;transition:transform .2s}
+  .foldnote[open]>summary .foldchev{transform:rotate(90deg)}
+  .foldnote .principle{margin:0 15px 14px;border-radius:8px}
+  .foldpeek{margin:16px 0 -8px;padding:0 4px;font-size:12.5px;color:var(--ink-soft);line-height:1.55}
+  .foldpeek b{color:var(--ink)}
+  .faqlink{display:inline-block;margin-top:2px;color:var(--accent-deep);cursor:pointer;font-size:13px;font-weight:500}
+  .faqlink:hover{text-decoration:underline}
+  .faqpoint{text-align:center;margin:18px 0 2px;font-size:13px;color:var(--ink-soft)}
+  .selfdisc{margin-top:16px;background:var(--accent-wash);border:1px solid var(--line);border-radius:var(--radius-sm);padding:13px 16px;font-size:13px;color:var(--ink-soft);line-height:1.7}
+  .selfdisc b{color:var(--ink)}
+  .selfdisc .faint{display:block;margin-top:4px}
+  .minbox{background:#fff8ec;border:1px solid #f0e0c0;border-radius:var(--radius-sm);padding:11px 14px;margin:10px 0 4px;font-size:13.5px;color:#7a5a1e;line-height:1.6}
+  .principles3{background:var(--accent-wash);border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 14px;margin:10px 0 4px;font-size:13.5px;color:var(--ink-soft);line-height:1.6}
+  .principles3 b{color:var(--ink)}
+  .principles3 .faint{display:block;margin-top:3px}
+  .minbox .faint{display:block;margin-top:3px;color:var(--ink-faint)}
+  .submitnote{margin-top:12px;background:var(--accent-wash);border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 14px;font-size:13px;color:var(--ink-soft);line-height:1.6}
+  .submitnote b{color:var(--ink)}
+  .submitnote .faint{display:block;margin-top:3px}
+  .navguide{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0 4px}
+  .navrow{display:flex;flex-direction:column;gap:3px;text-align:left;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--nav,var(--accent));border-radius:var(--radius-sm);padding:11px 14px;cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s}
+  .navrow:hover{background:var(--navw,var(--accent-wash))}
+  .navrow.active{background:var(--navw,var(--accent-wash));border-color:var(--nav,var(--accent))}
+  .navrow .nlabel{color:var(--nav,var(--accent-deep))}
+  .themehead{background:var(--accent-wash);border-left:5px solid var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:16px 22px;margin-bottom:18px}
+  .themehead h2{font-family:"Noto Serif TC",Georgia,serif;font-size:23px;font-weight:700;color:var(--accent-deep);margin:0;border:0;padding:0}
+  .themehead h2 .en{font-size:15px;font-weight:400;color:var(--ink-faint)}
+  .themehead .th-sub{margin:7px 0 0;font-size:13.5px;color:var(--ink-soft);line-height:1.6}
+  .themehead .th-sub .faint{display:block;margin-top:2px}
+  @media(max-width:520px){.themehead h2{font-size:20px}}
+  .navrow .nlabel{font-weight:700;font-size:14.5px}
+  .navrow .nlabel .en{font-weight:400;color:var(--ink-faint);font-size:11.5px;margin-left:4px}
+  .navrow .ndesc{color:var(--ink-soft);font-size:12.5px;line-height:1.45}
+  .navrow .ndesc .en{display:block;color:var(--ink-faint);font-size:11.5px;margin-top:1px}
+  @media(max-width:760px){.navguide{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:440px){.navguide{grid-template-columns:1fr}}
+
+  #frontierView{--accent:#4d5878;--accent-deep:#39435f;--accent-wash:#ecedf3}
+  #creativeView{--accent:#a05a3a;--accent-deep:#7c4429;--accent-wash:#f4ece5}
+  #frontierView .foldcard{border-color:#ddd3e6}
+  #frontierView .foldcard>summary{color:var(--accent-deep)}
+  .fpoint{border-left:3px solid var(--accent);background:#f6faf8;border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:12px 16px;margin-top:12px}
+  .fpoint.warn{border-left-color:var(--warn);background:#fdf6f3}
+  .fpoint .fh{font-family:"Noto Serif TC",Georgia,serif;font-weight:600;font-size:14.5px;color:var(--accent-deep);margin-bottom:4px}
+  .fpoint.warn .fh{color:#8a3a26}
+  .fpoint p{margin:0;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+  .fpoint p b{color:var(--ink)}
+  .fpoint .faint{display:block;margin-top:3px}
+  .fpoint a{display:inline-block;margin-top:5px;font-weight:500;font-size:12.5px}
+
+.top{position:relative}
+.langswitch{position:absolute;top:2px;right:0;display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--ink-soft);cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s,color .15s;z-index:5}
+.langswitch:hover{background:var(--accent-wash);border-color:var(--accent);color:var(--accent-deep)}
+@media(max-width:520px){.langswitch{position:static;float:right;margin-bottom:8px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <a class="langswitch" href="index.html" onclick="switchLang();return false;" aria-label="切換為中文">🌐 中文</a>
+    
+    <h1>Use AI honestly, and use it well</h1>
+    <div class="sub">A guide from NCCU Library. It is not required and not graded. It helps you explain how you use AI. Choose the tab that fits your task:</div>
+    <div class="navguide">
+      <button class="navrow" data-mode="teacher" style="--nav:#0d4b3c;--navw:#e7eeea" onclick="setMode('teacher')"><span class="nlabel">Teacher</span><span class="ndesc">Set the rules for AI in your class, and make a note to share with students.</span></button>
+      <button class="navrow" data-mode="student" style="--nav:#2f6a5a;--navw:#e7f0ec" onclick="setMode('student')"><span class="nlabel">Student</span><span class="ndesc">Show how you used AI in your work.</span></button>
+      <button class="navrow" data-mode="researcher" style="--nav:#7a6636;--navw:#f2eee1" onclick="setMode('researcher')"><span class="nlabel">Researcher</span><span class="ndesc">See what to disclose for journals and grants, and keep notes as you go.</span></button>
+      <button class="navrow" data-mode="creative" style="--nav:#a05a3a;--navw:#f4ece5" onclick="setMode('creative')"><span class="nlabel">Creative</span><span class="ndesc">AI rules for literary and image/video work, very different from academic ones.</span></button>
+      <button class="navrow" data-mode="frontier" style="--nav:#4d5878;--navw:#ecedf3" onclick="setMode('frontier')"><span class="nlabel">Frontiers</span><span class="ndesc">Better ways to use AI in teaching, learning and research, with examples from top schools.</span></button>
+      <button class="navrow" data-mode="pressure" style="--nav:#965566;--navw:#f4ebee" onclick="setMode('pressure')"><span class="nlabel">Under pressure</span><span class="ndesc">How to use AI safely when you are busy or stressed.</span></button>
+      <button class="navrow" data-mode="gatekeep" style="--nav:#3f6377;--navw:#e8eef2" onclick="setMode('gatekeep')"><span class="nlabel">Integrity</span><span class="ndesc">Spot fake news and misconduct, and stay alert.</span></button>
+      <button class="navrow" data-mode="faq" style="--nav:#55606e;--navw:#edeef0" onclick="setMode('faq')"><span class="nlabel">FAQ</span><span class="ndesc">Common questions and worries, answered simply.</span></button>
+    </div>
+  </header>
+
+  <!-- ================= STUDENT ================= -->
+  <section id="studentView">
+    <div class="themehead"><h2>Student</h2><p class="th-sub">Following your teacher's rules, show how you used AI in your work.</p></div>
+    <div id="policyArea"></div>
+  </section>
+
+  <!-- ================= TEACHER ================= -->
+  <section id="teacherView" class="hide">
+    <div class="themehead"><h2>Teacher</h2><p class="th-sub">Set your course's AI rules and generate a note to share with students.</p></div>
+    <div class="quicknote">Quick path: course name + one level → Generate. Everything else has sensible defaults.</div>
+    <div class="faqpoint">Questions or unsure?<span class="faqlink" onclick="setMode('faq')">See the FAQ tab →</span>· Questions? See the FAQ tab.</div>
+    <div class="card">
+      <h2><span class="step-n">1</span>Course details</h2>
+      <label class="field"><span class="lab">Course name</span>
+        <input type="text" id="tCourse" placeholder="e.g. Qualitative Research Methods"></label>
+      <label class="field"><span class="lab">Instructor (optional)</span>
+        <input type="text" id="tTeacher" placeholder="e.g. Prof. Chen"></label>
+    </div>
+
+    <div class="card">
+      <h2><span class="step-n">2</span>Permitted level</h2>
+      <p class="hint">Each level assesses something different. Levels 3–4 both require disclosure but differ in emphasis: 3 = collaboration, 4 = AI does most (judgement & verification matter).</p>
+      <div class="ladder" id="tierLadder" role="radiogroup" aria-label="AI use level"></div>
+      <div class="tiersum" id="tierSummary"></div>
+      <p class="hint faint" style="margin-top:8px">What students disclose (tool, use, what you did, verification) is the same at every level. The level sets how much AI is allowed and what's assessed, not the disclosure list.</p>
+      <div class="explore-note">A further direction: <b>AI Exploration</b>. When the assignment itself is to explore or evaluate AI. It's not "more AI use" but a different kind of task, beyond the permission scale above. To develop toward it, pick Level 4 and steer students to say more in the "how you pushed back" part of their disclosure.</div>
+    </div>
+
+    <div class="card">
+      <h2><span class="step-n">3</span>Work profile</h2>
+      <p class="hint">Sets which task options students see. Choose by the assignment's nature, not the department. Multi-select. If you teach stats/STEM, change this.</p>
+      <div class="checks" id="tProfiles"></div>
+      <p class="hint faint" style="margin-top:8px">These group by research method rather than department, so interdisciplinary work fits too.</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="step-n">4</span>Your promise to students</h2>
+      <p class="hint">The single most important field, shown atop the student page. Students hide AI use rationally, unless honesty is made safe.</p>
+      <label class="field"><textarea id="tPromise">Honestly disclosing your AI use won't cost you marks. I read it as a way to understand your learning, not to catch you out. When in doubt, write one extra line and we'll talk it through.</textarea></label>
+    </div>
+
+    <details class="advanced">
+      <summary>Advanced (optional)<span class="advsub">. No-disclose list and your own use</span><span class="advchev">▶</span></summary>
+    <div class="card">
+      <h2><span class="step-n">5</span>No disclosure needed</h2>
+      <p class="hint">Naming what needn't be disclosed removes the anxiety that fuels box-ticking.</p>
+      <div id="baselineList"></div>
+      <div class="sublab" style="margin-top:15px;font-weight:500">Which tasks in this course count as everyday tools that need no disclosure? (based on the profile above)<span class="en" style="display:block;font-weight:400">Which tasks also count as everyday tools here? (ticking removes them from the student form)</span></div>
+      <div class="checks" id="noDiscList"></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="step-n">6</span>Model it yourself</h2>
+      <p class="hint">Students resent asymmetry. Modelling disclosure builds trust.</p>
+      <label class="field"><textarea id="tTeacherUse" placeholder="e.g. I used Claude to help outline the slides; I checked everything."></textarea></label>
+    </div>
+    </details>
+
+    <div class="card">
+      <h2>Generate the course rules</h2>
+      <p class="hint">Generate a paragraph for your syllabus, LMS or assignment brief. Students fill in their own disclosure on the Student tab following your rules. No link needed.</p>
+      <div class="btn-row">
+        <button class="btn primary" id="genPolicy">Generate</button>
+      </div>
+      <div id="teacherOut" class="hide">
+        <div class="divider"></div>
+        <div class="lab" style="font-weight:600;font-size:14.5px;margin-bottom:6px">Course rules (English)</div>
+        <div class="output" id="syllabusText"></div>
+        <div class="btn-row">
+          <button class="btn ghost" id="copySyllabus">Copy</button>
+        </div>
+        <div class="howto">Share it via your syllabus or LMS; students then disclose on the Student tab following these rules.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>How to read what students submit</h2>
+        <p class="lead">The tool helps students disclose, but how you read and respond matters just as much. Self-report can't be verified and detectors are unreliable. Honesty rests on safety, not policing. A few principles:</p>
+        <ul class="guidelist">
+          <li>Read it as a window into process, not a confession.</li>
+          <li>Verification and push-back are positive signals. Reward them.</li>
+          <li>Match your assessment to the level: the more AI is allowed, the more you assess judgement and verification. Use oral checks or draft history rather than guessing which sentence is AI.</li>
+          <li>Blank ≠ cheating; ask before assuming.</li>
+          <li>Avoid detectors: unreliable, unfair to non-native writers, and worse for trust.</li>
+          <li>When unsure, respond by conversation, not accusation.</li>
+          <li>Decouple disclosure from grades where you can.</li>
+        </ul>
+    </div>
+  </section>
+
+  <!-- ================= RESEARCHER ================= -->
+  <section id="researcherView" class="hide">
+  <div class="themehead"><h2>Researcher</h2><p class="th-sub">Plan AI disclosure for journals and grants, and keep records as you go.</p></div>
+
+  <div class="usenote">Do steps 1–3 now (plan &amp; start logging); come back for 4–5 at submission. No target journal yet? That's fine. Pick field and approach first.</div>
+    <div class="faqpoint">Questions or unsure?<span class="faqlink" onclick="setMode('faq')">See the FAQ tab →</span>· Questions? See the FAQ tab.</div>
+
+  <div class="card">
+    <h2><span class="step-n">1</span>Context &amp; target publisher</h2>
+    <div class="principle">The shared baseline across all major publishers (2026): AI can't be an author, humans are fully accountable, AI use must be disclosed, and authors must verify outputs. What differs is what to disclose, where, and in how much detail. This baseline also reflects the COPE, ICMJE and STM frameworks.</div>
+    <label class="field" style="margin-top:14px"><span class="lab">Approach</span>
+      <select id="approach">
+          <option value="qual">Qualitative</option>
+          <option value="quant">Quantitative / computational</option>
+          <option value="mixed">Mixed methods</option>
+          <option value="theory">Theoretical / interpretive</option>
+        </select></label>
+    <p class="hint faint" style="margin-top:4px">Your approach changes which items the record checklist (step 3) shows.</p>
+    <label class="field" style="margin-top:14px"><span class="lab">Target publisher</span>
+      <select id="pub">
+        <option value="other">Undecided / other</option>
+        <option value="nature">Nature / Springer Nature</option>
+        <option value="elsevier">Elsevier(incl. Cell Press)</option>
+        <option value="wiley">Wiley</option>
+        <option value="science">Science / AAAS</option>
+        <option value="plos">PLOS</option>
+        <option value="ieee">IEEE / ACM</option>
+        <option value="tf">Taylor &amp; Francis</option>
+        <option value="sage">SAGE</option>
+        <option value="mdpi">MDPI</option>
+        <option value="frontiers">Frontiers</option>
+        <option value="oup">Oxford Academic (OUP)</option>
+        <option value="cup">Cambridge University Press</option>
+        <option value="emerald">Emerald</option>
+        <option value="acs">ACS (American Chemical Society)</option>
+        <option value="apa">APA (American Psychological Association)</option>
+        <option value="medical">Medical journals (ICMJE / JAMA / BMJ)</option>
+      </select></label>
+    <p class="hint">Pick a publisher and its rules appear below. Policies change fast. Re-check the current author guidelines before submitting.</p>
+    <div id="pubRules"></div>
+    <div class="foldpeek">Chinese-language academia has rules too. Open for details.</div>
+    <details class="foldnote"><summary>Chinese-language academia<span class="foldchev">▶</span></summary>
+      <div class="principle" style="margin-top:10px">The table above is English-publisher-centric. Chinese-language academia regulates mainly through institutional and learned-society guidelines, with principles matching the international consensus (no AI authorship, disclose substantive use, human accountability, no fabricated citations, reviewers must not upload). Taiwan works via Academia Sinica, the academic-ethics society, NSTC and university guidelines; mainland China has a publisher-consensus guideline (ISTIC's AIGC Boundary Guide 2.0, akin to STM), national norms (MOST, CAS) and society rules, and leans notably on AIGC detection tools.
+      </div></details>
+  </div>
+
+  <div class="card">
+    <h2><span class="step-n">2</span>Which AI activities</h2>
+    <p class="hint">Categories and boundaries follow the STM publishers' 9 activities (2025). Tick what you might use. The ≠ line flags what doesn't count or is banned.</p>
+    <div id="polishNote" class="principle" style="margin-top:12px"></div>
+    <div class="checks" id="activities"></div>
+  </div>
+
+  <div class="card" style="border-color:var(--accent)">
+    <h2><span class="step-n">3</span>Keep these records from day one</h2>
+    <p class="hint">This isn't a form to fill in here. It's a reference checklist of what to record, adapted to your approach. Keep the actual log in one of the templates below; the point is to log as you go.</p>
+    <div class="ledger" id="ledger">
+      <div class="lhead"><span>My AI-use log</span><span class="en" id="ledgerBadge">keep as you go</span></div>
+      <div id="ledgerRows"></div>
+    </div>
+    <div class="foldpeek">Ready-made log templates you can use.</div>
+    <details class="foldnote" style="margin-top:14px"><summary>Want a fillable log template?<span class="foldchev">▶</span></summary>
+      <div class="principle" style="margin:0 15px 14px;border-radius:8px">Ready-made options: AI Usage Cards (structured cards, backed by a paper) and the University of Graz guide (prompt logs and research diaries in an appendix). Or keep a simple ai_log yourself.</div>
+    </details>
+    <label class="chk agenttoggle" style="margin-top:14px"><input type="checkbox" id="agent"><span class="ct">I use an AI agent that runs multi-step or takes actions</span></label>
+    <div id="agentCaution" class="hide agentcaution">Agents shift what you must keep: the unit becomes the action path, not the output. Two reminders: (1) reproducibility, agentic research often can't be reproduced when intermediate detail is missing, so keep inspectable artifacts and traces; (2) you remain fully accountable for the agent's outputs and actions.
+    </div>
+    <div class="teamnote">Align disclosure with all co-authors before submission; PIs can use this to set a shared lab record-keeping habit.</div>
+  </div>
+
+  <details class="foldcard grantcard">
+    <summary>Grant proposals too<span class="foldchev">▶</span></summary>
+    <div class="foldbody">
+    <p class="hint">Disclosure isn't only for journals. Major funders now have rules, often stricter. The common thread: you're fully accountable, proposals can't be (substantially) AI-generated, and don't upload manuscripts under review to AI.</p>
+    <div class="gblock">
+      <div class="ah">National Institutes of Health</div>
+      <p>From 2025/9/25, proposals substantially developed by AI (whole or in sections) are not treated as the applicant's original ideas and won't be considered; PIs are also capped at 6 applications/year. Reviewers may not use generative AI, and uploading application content breaches confidentiality.<br>
+        <a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-25-132.html" target="_blank" rel="noopener">NIH proposal policy ↗</a> · <a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-23-149.html" target="_blank" rel="noopener">NIH peer-review ban ↗</a></p>
+    </div>
+    <div class="gblock">
+      <div class="ah">National Science Foundation</div>
+      <p>AI is allowed in proposal preparation, but the applicant is fully responsible for accuracy and authenticity and should disclose in the project description; uploading proposal or review material to open AI systems counts as public disclosure and endangers confidentiality.</p>
+    </div>
+    <div class="gblock">
+      <div class="ah">Taiwan</div>
+      <p>Taiwan's Executive Yuan (drafted by NSTC) issued a reference guideline for government use of generative AI (principles: responsible, trustworthy, security, privacy, accountability; non-binding, no penalties, but disclose when used for official services). For research, Taiwan works mainly through academic-integrity frameworks and each university's own guidelines; the shared principle is to disclose the extent and scope of AI use.<br>
+        <a href="https://www.ey.gov.tw/Page/448DE008087A1971/40c1a925-121d-4b6b-8f40-7e9e1a5401f2" target="_blank" rel="noopener">Taiwan Executive Yuan guide ↗</a> · <a href="https://www.nstc.gov.tw/folksonomy/detail/d21566a0-3465-4b63-84b7-5d7cb2e1e5ff?l=ch" target="_blank" rel="noopener">Taiwan NSTC FAQ ↗</a></p>
+    </div>
+    <div class="gblock">
+      <div class="ah">UK &amp; EU</div>
+      <p>UKRI: applicants must be transparent; assessors may not use generative AI in assessment except for language refinement (issued 2024, updated July 2026). Wellcome: declare AI use when applying (except basic language help); reviewers must not upload confidential applications. ERC / Horizon Europe: applicants must disclose AI use and take full responsibility for the content (AI cannot be an author).<br>
+        <a href="https://www.ukri.org/publications/generative-artificial-intelligence-in-application-and-assessment-policy/use-of-generative-artificial-intelligence-in-application-preparation-and-assessment/" target="_blank" rel="noopener">UKRI ↗</a> · <a href="https://wellcome.org/research-funding/guidance/policies-grant-conditions/use-of-generative-ai" target="_blank" rel="noopener">Wellcome ↗</a> · <a href="https://erc.europa.eu/system/files/2026-03/Use-AI-grant-proposal-evaluation.pdf" target="_blank" rel="noopener">ERC: AI in evaluation ↗</a></p>
+    </div>
+    <div class="gblock">
+      <div class="ah">Deutsche Forschungsgemeinschaft</div>
+      <p>DFG requires applicants to disclose content-relevant AI use (models, purpose, extent); grammar/translation exempt. Notably, DFG's 2023 review ban lapsed in Dec 2025, AI is now permitted in reviews under a binding guideline with mandatory declaration in elan and copyright consent for feeding proposal text.<br>
+        <a href="https://www.dfg.de/de/grundlagen-themen/digitale-themen/ki/antragstellung" target="_blank" rel="noopener">DFG application policy ↗</a> · <a href="https://www.dfg.de/de/grundlagen-themen/digitale-themen/ki/begutachtung" target="_blank" rel="noopener">DFG review policy ↗</a></p>
+    </div>
+    <div class="gblock">
+      <div class="ah">Japan</div>
+      <p>Japan's JSPS/JST allow AI in proposal preparation at the applicant's responsibility for accuracy/originality, but entering proposal text into generative AI is prohibited (JSPS KAKENHI); reviewers must not enter review information into unapproved AI.<br>
+        <a href="https://www.jsps.go.jp/file/storage/kaken_kiban_2026_g_4978/r9_7_kobo_e.pdf" target="_blank" rel="noopener">JSPS KAKENHI rules ↗</a></p>
+    </div>
+    <div class="gblock">
+      <div class="ah">Australian Research Council</div>
+      <p>ARC policy v2026.1 (effective 28 Apr 2026): AI may be used only for language polishing; inputting material into public AI tools is prohibited; applicants are fully responsible and should disclose AI use on request.<br>
+        <a href="https://www.arc.gov.au/system/files/2026-04/arc-ai-policy-2026.1-1.pdf" target="_blank" rel="noopener">ARC AI policy ↗</a></p>
+    </div>
+    <div class="gblock">
+      <div class="ah">Canada</div>
+      <p>Canada's tri-agency policy: researchers are fully responsible for and must disclose AI-assisted outputs; reviewers may not use online AI tools on applications, and CIHR additionally bans AI transcription in review meetings.<br>
+        <a href="https://science.gc.ca/site/science/en/interagency-research-funding/policies-and-guidelines/use-generative-artificial-intelligence-development-and-review-research-proposals" target="_blank" rel="noopener">Tri-Agency policy ↗</a> · <a href="https://cihr-irsc.gc.ca/e/54129.html" target="_blank" rel="noopener">CIHR review rules ↗</a></p>
+    </div>
+    <div class="gblock">
+      <div class="ah">Netherlands</div>
+      <p>NWO: applicants may use AI at their own responsibility and should disclose on request; reviewers are fully banned from using generative AI in review and must not enter application content into AI.<br>
+        <a href="https://www.nwo.nl/en/news/nwo-sets-policy-on-the-use-of-generative-ai" target="_blank" rel="noopener">NWO policy ↗</a></p>
+    </div>
+    <div class="gblock">
+      <div class="ah">Switzerland</div>
+      <p>SNSF: applicants must disclose AI use and are fully responsible; reviewers must not enter application material into AI for confidentiality reasons.</p>
+    </div>
+    <div class="gblock">
+      <div class="ah">National Natural Science Foundation of China</div>
+      <p>NSFC's 2026 clause requires human verification, full truthful declaration, appropriate labelling, and prohibits AI-generated applications.<br>
+        <a href="https://www.nsfc.gov.cn/u/cms/www/202601/190844586k0w.pdf" target="_blank" rel="noopener">NSFC application guide ↗</a></p>
+    </div>
+    <p class="hint faint" style="margin-top:12px">Other bodies (e.g., US DOE, France's ANR, Singapore's A*STAR) may set rules over time; some (e.g., ANR's 2026 guide) have no AI clause yet. These change fast. Before submitting, defer to the official notice.</p>
+  </div>
+  </details>
+
+  <div class="card">
+    <h2>How to write it: real examples</h2>
+    <p class="hint">There's no single format. Write yours to your target journal's rules (see step 4). Here are real examples, from lenient to strict, to adapt.</p>
+    <div class="reassure">Disclosing well is normal and protective. It shows you verified and took responsibility. It isn't a confession.</div>
+
+    <div class="exblock">
+      <div class="exlabel">Standard. Language editing</div>
+      <div class="exstmt">During the preparation of this work the author(s) used [NAME TOOL / SERVICE] in order to [REASON, e.g. improve the language and readability]. After using this tool/service, the author(s) reviewed and edited the content as needed and take(s) full responsibility for the content of the publication.</div>
+      <div class="exnote">Place it before the references, under the heading "Declaration of Generative AI and AI-assisted technologies in the writing process". A plain check of grammar, spelling and punctuation needs no statement.<a href="https://www.elsevier.com/en-gb/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier" target="_blank" rel="noopener">Elsevier official ↗</a></div>
+    </div>
+
+    <div class="exblock">
+      <div class="exlabel">Editorial only, no content generated</div>
+      <div class="exstmt">During manuscript preparation, the authors used [tool, version] for limited editorial support (grammar, style, and clarity). Generative AI was not used to generate original content, analyses, arguments, findings, or interpretations. All academic contributions were produced by the authors, who take full responsibility for the originality, accuracy, and integrity of the manuscript.</div>
+      <div class="exnote">Useful when you want to say clearly that AI touched only the language, not the research content. (Adapted from a real paper's disclosure.)</div>
+    </div>
+
+    <div class="exblock">
+      <div class="exlabel">Strict. Version, purpose, prompts</div>
+      <div class="exstmt">[Model name, version, manufacturer] was used on [date] to [specific task, e.g. summarise literature]. The full prompts and outputs are provided in the Supplementary Material. The authors reviewed and verified all outputs and take full responsibility for the content.</div>
+      <div class="exnote">Stricter journals often ask for the <b>model name, version, maker, and the exact nature of what was generated</b>, with prompts and outputs placed in the supplementary material; any use for data analysis goes in the Methods.</div>
+    </div>
+
+    <div class="exblock">
+      <div class="exlabel">None used</div>
+      <div class="exstmt">No generative AI tools were used in the preparation of this manuscript.</div>
+      <div class="exnote">SAGE and others treat assistive AI used only to polish your own words as not needing a statement.</div>
+    </div>
+
+    <p class="hint faint">More real examples by use case at the U.S. Geological Survey.</p>
+
+    <div class="citenote">If you quote AI-generated text directly, besides disclosing you must also cite it formally. Always check back to the original source, AI fabricates references.</div>
+  </div>
+
+  <details class="sources">
+    <summary><span>2025–2026</span><span>▶</span></summary>
+    <div class="inner">
+      Classification backbone: <a href="https://s3.eu-west-2.amazonaws.com/stm.offloadmedia/wp-content/uploads/2025/04/23020709/STM_AI_Classification_Recs_19_Sept2025-1.pdf" target="_blank" rel="noopener">STM's nine activity categories</a>(2025) · Whole-process delegation: <a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT</a>.<br> Publisher policies: <a href="https://www.nature.com/nature-portfolio/editorial-policies/ai" target="_blank" rel="noopener">Nature/Springer</a> · <a href="https://www.elsevier.com/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier" target="_blank" rel="noopener">Elsevier</a>(for the rest, see each publisher's author guide).<br> Qualitative disclosure and audit trail: <a href="https://journals.sagepub.com/doi/10.1177/16094069251404329" target="_blank" rel="noopener">Jones 2025: a 20-question disclosure heuristic</a> · <a href="https://journals.sagepub.com/doi/10.1177/14687941251390794" target="_blank" rel="noopener">technical reflexivity</a>.<br> Field differences (copy-editing): <a href="https://www.nature.com/articles/s41599-025-05351-4" target="_blank" rel="noopener">identity for non-native researchers</a>(HSS Communications 2025).<br> Reproducibility reporting: <a href="https://llm-guidelines.org" target="_blank" rel="noopener">guide to empirical LLM research</a> · Agentic science: <a href="https://arxiv.org/abs/2508.14111" target="_blank" rel="noopener">Agentic Science overview</a>.<br> Use under pressure: <a href="https://www.nature.com/articles/d41586-025-01180-2" target="_blank" rel="noopener">undisclosed AI traces</a>(Nature 2025) · <a href="https://cacm.acm.org/opinion/hidden-prompts-in-manuscripts-exploit-ai-assisted-peer-review/" target="_blank" rel="noopener">gaming AI review</a>(CACM) · evidence that automation bias grows under time pressure.<br> Funders: <a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-25-132.html" target="_blank" rel="noopener">NIH</a> · <a href="https://www.ukri.org/publications/generative-artificial-intelligence-in-application-and-assessment-policy/" target="_blank" rel="noopener">UKRI</a> · <a href="https://wellcome.org/research-funding/guidance/policies-grant-conditions/use-of-generative-ai" target="_blank" rel="noopener">Wellcome</a> · <a href="https://www.ey.gov.tw/Page/448DE008087A1971/40c1a925-121d-4b6b-8f40-7e9e1a5401f2" target="_blank" rel="noopener">Taiwan Executive Yuan guide</a> · <a href="https://www.nstc.gov.tw/folksonomy/detail/d21566a0-3465-4b63-84b7-5d7cb2e1e5ff?l=ch" target="_blank" rel="noopener">Taiwan NSTC FAQ</a>. Publisher official policies (links in each card in step 4): Nature, Elsevier, Wiley, Science, PLOS, IEEE, T&amp;F.<br> Chinese-language academia: <a href="https://sub.daais.sinica.edu.tw/download/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95.pdf" target="_blank" rel="noopener">Academia Sinica guide</a> · <a href="https://xuebao.zjhu.edu.cn/2024/1011/c2751a223187/page.htm" target="_blank" rel="noopener">AIGC publishing guide 2.0 (Sept 2024)</a>(China) · <a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">China MOST: responsible research guidelines (2023)</a>.<br>
+      The "which records to keep" gap draws on A Faceted Proposal for Transparent Attribution (2026). Most policies do not say clearly whether prompts, logs, model versions, and intermediate drafts should be kept.
+    </div>
+  </details>
+
+  <div class="disclaimer">A reference for planning and disclosing AI use, not a mandate. Always defer to your target journal's current author guidelines. Policies change fast.
+  </div>
+  <div class="footnote">Runs entirely in your browser. Nothing is uploaded. · Free to fork and adapt.</div>
+
+  </section>
+
+  <!-- ================= CREATIVE ================= -->
+  <section id="creativeView" class="hide">
+    <div class="themehead">
+      <h2>AI disclosure in creative work</h2>
+      <p class="th-sub">Disclosure works differently in creative fields. Academic rules ask you to explain how you used AI. Creative fields care more about whether AI is allowed at all, and whether a human made it, and admitting AI use can sometimes make you ineligible.</p>
+    </div>
+
+    <div class="card">
+      <h2>Is there a single standard yet?</h2>
+      <p class="hint">Not yet. Unlike academic publishing, creative fields haven't converged on one rule: literature follows each prize/platform, news each outlet, images each platform and law, copyright each country's office. The shared principles: humans are accountable, disclose or label material AI use, and use provenance (C2PA) as proof. Details differ and change fast, always check the current rules of the specific prize, platform, outlet or office.</p>
+      <div class="fpoint"><div class="fh">Copyright note</div>
+        <p>Since 2023 the US Copyright Office requires you to disclose AI-generated parts when registering a work and describe the human contribution; purely AI-generated work usually isn't protected. Here, disclosing also protects your own rights.</p></div>
+    </div>
+
+    <div class="card">
+      <h2>Literary &amp; creative writing</h2>
+      <div class="fpoint"><div class="fh">Some ban it</div>
+        <p>SFWA's Nebula Awards make work written wholly or partly by large language models ineligible. Romance Writers of America bans AI-generated narrative text without real human authorship. <a href="https://sfwa.org/advocacy-corner/" target="_blank" rel="noopener">SFWA official ↗</a></p></div>
+      <div class="fpoint"><div class="fh">Others ask you to prove a human wrote it</div>
+        <p>The Authors Guild's "Human Authored" mark (beta Jan 2025, public launch March 2026) lets writers certify a book came from a human, not AI. The opposite direction to academic disclosure. <a href="https://authorsguild.org/human/" target="_blank" rel="noopener">Authors Guild ↗</a></p></div>
+      <div class="fpoint"><div class="fh">"AI-generated" vs "AI-assisted"</div>
+        <p>Amazon KDP makes authors tell the platform if text, images or translations are "AI-generated" (even if edited), but not if AI only "assisted." The report goes to the platform, not readers.</p></div>
+      <div class="fpoint"><div class="fh">A prize-winner</div>
+        <p>In January 2024, Japanese author Rie Kudan won the Akutagawa Prize and said about 5% of her book was written word-for-word by ChatGPT. <a href="https://www.semafor.com/article/01/18/2024/ai-assisted-novels-are-winning-more-awards" target="_blank" rel="noopener">Report ↗</a></p></div>
+      <div class="fpoint"><div class="fh">How to actually disclose</div>
+        <p><b>Book copyright page or preface</b>. You can add a short statement:</p>
+        <div class="exstmt">Parts of this book were prepared with the help of [tool] for [purpose, e.g. language polishing] during writing; all content was reviewed and edited by the author, who is solely responsible for it.</div>
+        <div class="exstmt">This book was written by a human. No generative AI was used to create the text. (For when you want to state that the work is purely human-created.)</div>
+        <p>Put one line in the book's copyright page or preface (an "AI-assisted" note, or a "written by a human" note). For prizes/magazines, check the AI rules first and note in your cover letter what AI did. On Amazon KDP, answer the AI question on the Content page. The test is who made the first version; the report is private to the platform. To claim fully human work, apply for the Authors Guild "Human Authored" mark.</p></div>
+    </div>
+
+    <div class="card">
+      <h2>Image, video &amp; photography</h2>
+      <p class="hint">Here disclosure is increasingly automatic and technical. Files carry markers and platforms add labels, rather than you writing a statement.</p>
+      <div class="fpoint"><div class="fh">Platform labels (based on realism)</div>
+        <p>YouTube (since March 2024) requires labels for realistic synthetic or altered content, like AI faces or voices. TikTok also offers an AIGC label and can auto-label from file content credentials; Meta adds "AI Info" on IG/FB. The test is whether it could mislead. Clearly unreal, creative content usually needs no label. <a href="https://support.google.com/youtube/answer/14328491?hl=en" target="_blank" rel="noopener">YouTube official help ↗</a></p></div>
+      <div class="fpoint"><div class="fh">Stock platforms have their own rules</div>
+        <p>Getty Images bans AI-generated content entirely; Adobe Stock requires disclosure; Shutterstock does not accept contributor AI-generated content. On these platforms, AI markers can mean automatic rejection. <a href="https://www.artforum.com/news/getty-images-bans-ai-generated-content-over-legal-concerns-252131/" target="_blank" rel="noopener">Getty ban report ↗</a></p></div>
+      <div class="fpoint"><div class="fh">Provenance (C2PA / Content Credentials)</div>
+        <p>C2PA signs into a file what tool made it, when, and what was edited. Some major AI tools now embed it, and cameras are starting to sign real photos too. Your AI image often carries a marker whether you know it or not. <a href="https://c2pa.org/" target="_blank" rel="noopener">C2PA standard ↗</a></p></div>
+      <div class="fpoint"><div class="fh">The law</div>
+        <p>The EU AI Act (Article 50, from August 2026) requires machine-readable marking of AI-generated media, with deepfakes clearly labeled; the US FTC treats misleading AI content as deceptive under the FTC Act (no general AI-disclosure duty yet). The EU also offers a free official icon set (Basic / Fully AI-Generated / Partially AI-Modified; SVG+PNG, no attribution needed). <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener">EU AI Act Article 50 ↗</a> · <a href="https://digital-strategy.ec.europa.eu/en/policies/eu-icons-labelling-ai-generated-content" target="_blank" rel="noopener">EU official icon set ↗</a></p></div>
+      <div class="fpoint"><div class="fh">A photo-contest case</div>
+        <p>In 2023, artist Boris Eldagsen won the Sony World Photography Award with an AI image, then refused the prize to force a debate on whether AI images count as photography. Many photo contests then wrote AI rules. <a href="https://www.bbc.com/news/entertainment-arts-65296763" target="_blank" rel="noopener">BBC report ↗</a></p></div>
+      <div class="fpoint"><div class="fh">How to actually disclose</div>
+        <p>1. Keep the file's Content Credentials. Don't strip the metadata; you can check a file with the official online verify tool. 2. Add a visible caption or alt text, e.g. "AI-generated image (tool: X)". 3. Turn on the platform's AI label (YouTube's "altered or synthetic content," TikTok's AIGC label, Meta's for realistic content). The test is whether it could look real and mislead. 4. Check the rules before entering photo contests or stock sites: Getty bans AI, Adobe Stock requires labeling.</p></div>
+    </div>
+
+    <div class="card">
+      <h2>AI labeling laws by country</h2>
+      <p class="hint">Only a few jurisdictions actually mandate labelling AI-generated content as of 2026; most others (UK, Australia, Japan, Singapore, Canada, Brazil) have no such duty yet.</p>
+      <div class="fpoint"><div class="fh">China</div>
+        <p>Three layers: Deep Synthesis Provisions (10 Jan 2023), Generative AI Interim Measures (15 Aug 2023), and the AI-Generated Content Labelling Measures + mandatory standard GB 45438-2025 (1 Sept 2025), requiring both visible and metadata labels; platforms must detect and classify as confirmed/possible/suspected. <a href="https://www.chinalawtranslate.com/en/ai-labeling/" target="_blank" rel="noopener">rules (translation) ↗</a></p></div>
+      <div class="fpoint"><div class="fh">South Korea</div>
+        <p>AI Basic Act (in force 22 Jan 2026, ≥1-year grace period): Art. 31 requires advance notice of AI use, labelling of generative-AI output, and clear marking of deepfakes; MSIT guidelines require visible/audible watermarks or embedded metadata. <a href="https://www.msit.go.kr/eng/bbs/view.do?sCode=eng&mId=4&bbsSeqNo=42&nttSeqNo=1215" target="_blank" rel="noopener">MSIT notice ↗</a></p></div>
+      <div class="fpoint"><div class="fh">India</div>
+        <p>IT Amendment Rules 2026 (notified 10 Feb 2026, effective 20 Feb 2026): synthetically generated information needs prominent visible labels or prefixed audio disclosure plus permanent metadata with a unique identifier; platforms must verify user AI declarations before publication and take down suspected content within 3 hours. <a href="https://www.meity.gov.in/static/uploads/2025/10/065b6deb585441b5ccdf8be42502a49c.pdf" target="_blank" rel="noopener">MeitY FAQ ↗</a></p></div>
+      <div class="fpoint"><div class="fh">California (US state)</div>
+        <p>California AI Transparency Act (SB 942/AB 853), operative 2 Aug 2026: GenAI services with >1M monthly users must provide latent + manifest disclosures and a free public detection tool with API; $5,000/day penalties; images/video/audio only, not text. Note: the state's election-deepfake laws AB 2655 and AB 2839 were struck down/enjoined in 2025. <a href="https://www.morganlewis.com/pubs/2026/08/new-california-ai-disclosure-rules-become-operative" target="_blank" rel="noopener">legal analysis ↗</a></p></div>
+      <div class="fpoint"><div class="fh">Taiwan</div>
+        <p>Taiwan's AI Basic Act (in force 14 Jan 2026) requires appropriate information disclosure or labelling of AI-generated/modified content (ministries to set sub-regulations); the MOE K-12 generative-AI guideline (approved 5 June 2026) requires disclosing the tool name, version, and manner of use. <a href="https://moda.gov.tw/press/press-releases/18316" target="_blank" rel="noopener">Taiwan MODA notice ↗</a></p></div>
+    </div>
+
+    <div class="card">
+      <h2>Journalism &amp; media</h2>
+      <p class="hint">No single standard here either; each outlet sets its own, but the common thread is human review plus disclosing material AI use.</p>
+      <div class="fpoint"><div class="fh">Associated Press</div>
+        <p>AI may help with research, summaries, transcription, translation, headline ideas and grammar, but every output is reviewed by a journalist before publishing; AI content in coverage must be clearly identified, and material AI use is disclosed. <a href="https://www.editorandpublisher.com/stories/ap-updates-newsroom-standards-for-artificial-intelligence,262741" target="_blank" rel="noopener">AP standards ↗</a></p></div>
+      <div class="fpoint"><div class="fh">BBC</div>
+        <p>BBC is trialling a "How we used AI" label (a hexagon icon) at the top of content in BBC Sport, emphasising human oversight and accountability; its study found AI assistants misrepresented news about 45% of the time. <a href="https://www.bbc.co.uk/mediacentre/2025/bbc-ebu-ai-chatbot-study" target="_blank" rel="noopener">BBC/EBU study and label ↗</a></p></div>
+      <div class="fpoint"><div class="fh">What to do</div>
+        <p>Check your outlet's AI policy; disclose material AI use; verify every AI output by hand, especially facts and citations.</p></div>
+    </div>
+
+    <div class="card">
+      <h2>In one line</h2>
+      <p class="hint">Academic: disclose how you used AI and you're usually fine. Literary prizes: check the rules first, AI can disqualify you, or you may need to prove it's human-made. Image/video: often no written statement, but automatic file markers and platform labels. Don't pass off realistic AI content as real.</p>
+    </div>
+
+    <div class="foldpeek">Official sources and differing viewpoints.</div>
+    <details class="foldcard">
+      <summary>Sources &amp; further reading<span class="foldchev">▶</span></summary>
+      <div class="foldbody">
+        <p class="hint"><b>Literature / literary prizes</b><br>
+        · <a href="https://sfwa.org/advocacy-corner/" target="_blank" rel="noopener">SFWA: what counts as human-created (Nebula rules)</a><br>
+        · <a href="https://sfwa.org/complete-nebula-awards-rules/" target="_blank" rel="noopener">SFWA: full Nebula Award rules</a><br>
+        · <a href="https://authorsguild.org/human/" target="_blank" rel="noopener">Authors Guild: "Human Authored" mark</a><br>
+        · <a href="https://www.semafor.com/article/01/18/2024/ai-assisted-novels-are-winning-more-awards" target="_blank" rel="noopener">Semafor: Akutagawa winner Rie Kudan used ChatGPT</a></p>
+        <p class="hint"><b>Images / video / photography</b><br>
+        · <a href="https://support.google.com/youtube/answer/14328491?hl=en" target="_blank" rel="noopener">YouTube official: how to disclose AI content</a><br>
+        · <a href="https://www.artforum.com/news/getty-images-bans-ai-generated-content-over-legal-concerns-252131/" target="_blank" rel="noopener">Artforum: Getty bans all AI-generated content</a><br>
+        · <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener">EU AI Act Article 50 (transparency)</a> · <a href="https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content" target="_blank" rel="noopener">EU official: code of practice on labelling AI content</a><br>
+        · <a href="https://c2pa.org/" target="_blank" rel="noopener">C2PA: content provenance standard</a><br>
+        · <a href="https://www.bbc.com/news/entertainment-arts-65296763" target="_blank" rel="noopener">BBC: Sony photo award AI winner declines</a></p>
+        <p class="hint">These discussions take different sides. Read them to see the range of views.</p>
+      </div>
+    </details>
+
+    <div class="footnote">Cases from 2024–2026 public sources; this area changes fast, so always check the latest rules of the prize, platform or law.</div>
+  </section>
+
+  <!-- ================= GATEKEEP ================= -->
+  <section id="gatekeepView" class="hide">
+    <div class="themehead"><h2>Integrity &amp; fact-checking</h2><p class="th-sub">Using AI to spot fake news and research misconduct, and staying alert.</p></div>
+    <div class="card">
+      <p class="hint">AI makes fake news, fake images and fake papers easier to mass-produce, so stay alert. The same tech can help detect them. But tools make mistakes and only give a first screen; the final call is human.</p>
+      <div class="fpoint"><div class="fh">Spotting fake news</div>
+        <p>Reverse image search (Google Lens, TinEye) to catch recycled photos; check Content Credentials for AI origin; use lateral reading (SIFT: Stop, Investigate the source, Find other coverage, Trace to the original); treat AI as a helper not a judge. It also fabricates, so verify everything. Deepfake detectors are unreliable. Don't rely on them alone. Fluent and polished does not mean true.</p></div>
+      <div class="fpoint warn"><div class="fh">Spotting research misconduct</div>
+        <p>For teachers, editors, reviewers, and for checking your own work: AI image tools (Proofig, ImageTwin, FigCheck) flag duplicated/manipulated figures (used by Science, AACR, ASM) as a first screen, not a verdict; the Problematic Paper Screener and Papermill Alarm catch "tortured phrases" from machine paraphrasing; check every reference actually exists and look it up on Retraction Watch; see PubPeer for post-publication concerns. Detectors flag "suspicious," not "guilty". Stay skeptical and cross-check. <a href="https://www.the-scientist.com/detection-or-deception-the-double-edged-sword-of-ai-in-research-misconduct-72354" target="_blank" rel="noopener">Overview ↗</a></p></div>
+      <p class="hint faint" style="margin-top:12px">The common rule: tools flag "suspicious," they don't decide "guilty." Stay skeptical and cross-check.</p>
+    </div>
+
+    <div class="card">
+      <h2>Watermarks &amp; content marking</h2>
+      <p class="hint">Since 2026, major AI companies have started adding invisible watermarks and provenance marks to generated content, mainly to meet the EU AI Act (Article 50), which requires AI content to carry a machine-readable mark.</p>
+      <div class="fpoint"><div class="fh">What companies are doing</div>
+        <p>Anthropic (since Aug 2026) adds an invisible watermark to Claude's text (using Google's SynthID-Text) and C2PA marks to image files, worldwide, with no opt-out. Google's SynthID runs by default in Gemini and Imagen and is built into Chrome and Search. OpenAI marks images with C2PA and SynthID and offers a check tool, but does not watermark text yet. Music (Suno) is adding watermarks/fingerprints, and platforms (Substack) offer voluntary labeling and AI scans. <a href="https://www.anthropic.com/news/claude-text-watermark" target="_blank" rel="noopener">Official help ↗</a></p></div>
+      <div class="fpoint"><div class="fh">What's new in 2026</div>
+        <p><b>C2PA 2.4</b> (Apr 2026) adds a <code>c2pa.ai-disclosure</code> assertion and lets manifests embed in HTML/Markdown/YAML/source code. Google (19 May 2026) said SynthID now covers 100B+ items and opened an enterprise AI Content Detection API; from 14 Aug 2026 Google lets users turn off the visible watermark while keeping invisible SynthID. OpenAI (31 July 2026) added audio SynthID and a verification API; Microsoft Azure OpenAI auto-signs all images. Note: the SynthID Detector portal is still gated, not generally available. <a href="https://blog.google/innovation-and-ai/products/identifying-ai-generated-media-online/" target="_blank" rel="noopener">Google help ↗</a> · <a href="https://openai.com/index/advancing-content-provenance/" target="_blank" rel="noopener">OpenAI help ↗</a></p></div>
+      <div class="fpoint"><div class="fh">Timeline &amp; law</div>
+        <p>Under the EU AI Act (Article 50): models launched after 2 Aug 2026 must mark immediately; older ones by 2 Dec 2026. Fines can reach 3% of global turnover. Around 190 organisations have signed the EU's code of practice on marking AI content. <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener">Article 50 ↗</a> · <a href="https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content" target="_blank" rel="noopener">code of practice ↗</a></p></div>
+      <div class="fpoint warn"><div class="fh">Stay alert. This matters</div>
+        <p>A detected watermark only means the content probably passed through an AI; a missing one does NOT prove a human wrote it. Marks can be stripped by screenshots, re-saving, light rewriting or metadata-stripping platforms. And a machine-readable mark is not a visible label. The on-screen "AI-generated" notice is usually the publisher's job. Watermarks help, but don't fully trust either direction.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= FRONTIER ================= -->
+  <section id="frontierView" class="hide">
+    <div class="themehead">
+      <h2>Frontiers</h2>
+      <p class="th-sub">AI isn't only a risk to manage. It can make teaching, learning and research better, even open what wasn't possible before. Reference points for going further, not just staying safe.</p>
+    </div>
+
+    <div class="card">
+      <h2>Teaching. Content &amp; methods</h2>
+      <div class="fpoint"><div class="fh">Content</div>
+        <p>Teach AI literacy itself. Critical use, verification, disclosure, and how models work and fail, not just prompt tricks.</p></div>
+      <div class="fpoint"><div class="fh">Methods</div>
+        <p>Redesign assessment so "did AI do it?" stops mattering. Process-based tasks, orals, in-class work. Use AI to generate practice, feedback and differentiation; have students critique AI output. <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/" target="_blank" rel="noopener">What Sydney did ↗</a></p></div>
+    </div>
+
+    <div class="card">
+      <h2>Learning. Content &amp; methods</h2>
+      <div class="fpoint"><div class="fh">Content</div>
+        <p>Build the meta-skills of judgement, verification and collaborating with AI. When to trust, when to doubt, how to own the result.</p></div>
+      <div class="fpoint"><div class="fh">Methods</div>
+        <p>Use AI as a Socratic tutor, not an answer machine; scaffold your own thinking, then check with AI; practise distrusting outputs and verifying sources.</p></div>
+    </div>
+
+    <div class="card">
+      <h2>Research. Content &amp; methods</h2>
+      <div class="fpoint"><div class="fh">Content</div>
+        <p>New research modes. Hypothesis generation, autonomous experiments, large-scale analysis. With honest caveats: check novelty, ensure reproducibility, stay accountable.</p></div>
+      <div class="fpoint"><div class="fh">Methods</div>
+        <p>Find insight (parallel human–AI coding + disagreement analysis); protect reproducibility (version, date, settings, traces, open-weight, human validation); accelerate. While verifying every step. <a href="https://arxiv.org/abs/2508.14111" target="_blank" rel="noopener">Overview: Agentic Science ↗</a></p></div>
+    </div>
+
+
+    <div class="foldpeek">Real examples for each discipline.</div>
+    <details class="foldcard">
+      <summary>Cases by discipline<span class="foldchev">▶</span></summary>
+      <div class="foldbody">
+        <p class="hint">Each field uses AI differently and trips over different things. One or two real examples per discipline, for teachers, students and researchers.</p>
+        <div class="fpoint"><div class="fh">Law</div>
+          <p>US lawyers were fined for filing fake ChatGPT cases (Mata v. Avianca, $5,000; a California attorney $10,000 for 21 fabricated citations, admitting he never read the AI output; the Connecticut Supreme Court issued its first AI sanction in Aug 2026, ordering 6 extra CLE hours). Over a thousand such cases worldwide (public trackers listed 1,641 decisions as of 24 June 2026). Verify every citation yourself. <a href="https://calmatters.org/economy/technology/2025/09/chatgpt-lawyer-fine-ai-regulation/" target="_blank" rel="noopener">Case ↗</a> · <a href="https://www.reuters.com/legal/litigation/top-connecticut-court-warns-lawyers-ai-risks-after-fake-citations-2026-08-03/" target="_blank" rel="noopener">Connecticut case ↗</a> · <a href="https://www.damiencharlotin.com/hallucinations/" target="_blank" rel="noopener">Case-tracking database ↗</a></p></div>
+        <div class="fpoint"><div class="fh">Humanities</div>
+          <p>Digital humanities uses AI for large-scale text analysis, distant reading, OCR and translation. Seeing scale humans can't. Interpretation stays human. In class, compare your close reading with AI's distant reading.</p></div>
+        <div class="fpoint"><div class="fh">Social science</div>
+          <p>Qualitative: code independently from AI, then compare disagreements for new insight. Quantitative: log versions, parameters, reproducibility. Also useful for transcript cleanup and large-scale text analysis.</p></div>
+        <div class="fpoint"><div class="fh">Business &amp; management</div>
+          <p>A 758-consultant BCG field experiment found faster, better work with AI and the biggest lift for lower performers. But worse results on tasks outside AI's frontier, with people over-relying. Be careful on decisions outside your expertise. <a href="https://aiinstitute.hbs.edu/back-to-the-beginnings-of-ai-at-work/" target="_blank" rel="noopener">Study ↗</a></p></div>
+        <div class="fpoint"><div class="fh">Communication &amp; journalism</div>
+          <p>AI helps with drafts, research and transcription, but journalism runs on verification and AI fabricates. Also great material for media literacy. Spotting deepfakes and AI-generated content.</p></div>
+        <div class="fpoint"><div class="fh">Education</div>
+          <p>AI as a one-on-one tutor, instant feedback, differentiated materials. Reaching students at different levels. Design it to prompt thinking, not to hand over answers.</p></div>
+        <div class="fpoint"><div class="fh">CS &amp; STEM</div>
+          <p>Coding agents and AI-for-science are opening new paths (AI-designed nanobodies in Nature); but check novelty and reproducibility. Novices over-relying on AI make more critical errors. Keep hands-on practice. <a href="https://arxiv.org/abs/2508.14111" target="_blank" rel="noopener">Overview ↗</a></p></div>
+        <div class="fpoint"><div class="fh">Arts &amp; design</div>
+          <p>Generative tools speed up ideation and prototyping, but copyright and originality are central. Be clear about what you used and what's yours.</p></div>
+      </div>
+    </details>
+
+    <div class="foldpeek">Redesign beats detection; schools dropped detectors after false accusations. Open to see.</div>
+    <details class="foldcard">
+      <summary>Benchmarks: what leading universities changed<span class="foldchev">▶</span></summary>
+      <div class="foldbody">
+        <p class="hint">Rather than asking "how do we catch AI", the better approach is to redesign assessment. This also links real lessons where detection backfired.</p>
+        <div class="fpoint"><div class="fh">Assessment redesign. Sydney's two-lane model</div>
+          <p>Sydney sorts every assessment into secure (supervised, oral, in-person) or open (AI purposefully allowed); rolled out 2025; detectors never stand alone. TEQSA/Dawson: redesign, don't detect.
+            <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/" target="_blank" rel="noopener">Sydney two-lane ↗</a></p></div>
+        <div class="fpoint warn"><div class="fh">When detection backfired</div>
+          <p>Real cases: Vanderbilt and ACU dropped Turnitin's AI detector; an autistic Adelphi student's "100% AI" flag was annulled by a court (two other detectors had judged the work human-written); UC Davis and Michigan saw false accusations and lawsuits. Detectors are especially unfair to non-native and disabled writers. <a href="https://www.rollingstone.com/culture/culture-features/student-accused-ai-cheating-turnitin-1234747351/" target="_blank" rel="noopener">UC Davis case ↗</a> · <a href="https://www.vanderbilt.edu/brightspace/2023/08/16/guidance-on-ai-detection-and-why-were-disabling-turnitins-ai-detector/" target="_blank" rel="noopener">Vanderbilt dropped it ↗</a> · <a href="https://caselaw.findlaw.com/court/ny-supreme-court/118148544.html" target="_blank" rel="noopener">Adelphi ruling ↗</a> · <a href="https://www.abc.net.au/news/2025-10-09/artificial-intelligence-cheating-australian-catholic-university/105863524" target="_blank" rel="noopener">ACU dropped it ↗</a> · <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/false-flags-and-broken-trust-can-we-tell-if-ai-has-been-used/" target="_blank" rel="noopener">Sydney: detection is unreliable ↗</a></p></div>
+        <p class="hint faint"> The lesson is consistent: you can't detect your way out. Redesign assessment instead.</p>
+      </div>
+    </details>
+
+    <div class="foldpeek">Ways to narrow the compute divide: free compute and open-weight models.</div>
+    <details class="foldcard">
+      <summary>AI &amp; research inequality. How to narrow it<span class="foldchev">▶</span></summary>
+      <div class="foldbody">
+        <p class="hint">Frontier AI needs compute concentrated in a few institutions and firms, a "compute divide". Under-resourced labs rely on capped free platforms; the IMF warns AI may widen cross-country inequality. <a href="https://www.imf.org/en/Blogs/Articles/2024/01/14/ai-will-transform-the-global-economy-lets-make-sure-it-benefits-humanity" target="_blank" rel="noopener">IMF: AI and global inequality ↗</a></p>
+        <div class="fpoint"><div class="fh">Apply for free or subsidised compute</div>
+          <p>NAIRR (NSF/DOE) gives free 12-month compute, models and data to 600+ teams; also NSF ACCESS and cloud research credits. In Taiwan, NCHC/TWCC offers academic compute. <a href="https://nairrpilot.org/opportunities/allocations" target="_blank" rel="noopener">NAIRR application ↗</a></p></div>
+        <div class="fpoint"><div class="fh">Research compute by country</div>
+          <p>Beyond NAIRR and Taiwan's NCHC, other research-compute options: Japan (AIST ABCI 3.0 with 6,128 H200 GPUs and 6.22 EFLOPS, RIKEN Fugaku via HPCI, JST GENIAC/AI4S); South Korea's National AI Computing Center (15,000+ GPUs by 2028); Singapore's NSCC (open to universities/polytechnics); Canada's Digital Research Alliance "Fir"; India's IndiaAI compute portal (students subsidised) and AIRAWAT (200 AI PF); the EU's EuroHPC 19 AI Factories + 13 Antennas with free "AI for Science" access; the UK's AIRR (Isambard-AI, 5,448 GH200) via the Gateway route (~10,000 GPU-hours).</p></div>
+        <div class="fpoint"><div class="fh">Use open-source / open-weight models</div>
+          <p>Open-weight models run locally, pin versions, cost nothing per call, reproduce cleanly, and often support local languages. Valuable for Traditional Chinese corpora.</p></div>
+        <div class="fpoint"><div class="fh">Leverage national &amp; regional programmes</div>
+          <p>Nations are building sovereign AI and shared compute (Brazil, the African Union), creating bargaining power. Watch for local and international shared resources.</p></div>
+      </div>
+    </details>
+
+    <div class="foldpeek">Breakthroughs and emerging standards in creative work.</div>
+    <details class="foldcard">
+      <summary>Creative work<span class="foldchev">▶</span></summary>
+      <div class="foldbody">
+        <div class="fpoint"><div class="fh">Co-creation &amp; exploration</div>
+          <p>AI as a partner for ideas, style exploration and crossing languages can open new ways to create. The judgement and final work stay yours.</p></div>
+        <div class="fpoint"><div class="fh">More accessible creation</div>
+          <p>AI can lower barriers so more people, including those with disabilities. Can create and publish.</p></div>
+        <div class="fpoint"><div class="fh">Standards are forming</div>
+          <p>Provenance (C2PA) is spreading, platform labels are becoming standard, "Human Authored" marks are appearing, and copyright rules are catching up. Build the habit of logging and labelling early.</p></div>
+      </div>
+    </details>
+
+    <div class="footnote">Benchmarks and cases from 2025–2026 public sources.</div>
+  </section>
+
+  <!-- ================= PRESSURE ================= -->
+  <section id="pressureView" class="hide">
+    <div class="themehead">
+      <h2>Under pressure</h2>
+      <p class="th-sub">When you're rushed, mistakes slip in. Under time pressure people lean harder on AI and question it less. First three deadline situations, then other moments where over-reliance creeps in.</p>
+    </div>
+
+    <div class="card">
+      <h2>Students on a deadline</h2>
+      <div class="fpoint"><p>The classic slip: rush it with AI and paste without reading. You end up with fabricated content, get wrongly flagged, and learn nothing.</p></div>
+      <div class="fpoint"><p>Safer: let AI help with structure, direction and checking, but read it, edit it, and keep your own drafts. If you truly can't finish, tell your teacher. Being honest usually beats handing in something broken.</p></div>
+    </div>
+
+    <div class="card">
+      <h2>Teachers stretched thin</h2>
+      <div class="fpoint"><p>AI works well as a prep assistant. Practice questions, examples, outlines, differentiated materials. Freeing time for actual contact with students.</p></div>
+      <div class="fpoint"><p>One caution under pressure: don't reach for a detector to catch students. Detectors are unreliable and wrongly accuse people, especially non-native and disabled students. Redesign the task instead of policing it.</p></div>
+    </div>
+
+    <div class="card">
+      <h2>Researchers on deadlines and reviews</h2>
+      <div class="fpoint"><p>Rushing a manuscript or worn down by reviewer comments is exactly when AI output gets used unchecked.</p></div>
+      <div class="fpoint"><p>On a deadline: read every word, verify every citation. Papers have been retracted for leaving ChatGPT's text in. Pasted, never read. <a href="https://www.nature.com/articles/d41586-025-01180-2" target="_blank" rel="noopener">Case ↗</a></p></div>
+      <div class="fpoint"><p>Responding to reviewers: let AI clarify meaning and tone, but keep the arguments and citations yours and checked, AI cites fake and retracted work.</p></div>
+      <div class="fpoint"><p>Reviewing: most journals forbid uploading manuscripts to AI (confidentiality); never plant hidden prompts to game AI review. That's misconduct. <a href="https://cacm.acm.org/opinion/hidden-prompts-in-manuscripts-exploit-ai-assisted-peer-review/" target="_blank" rel="noopener">Case ↗</a></p></div>
+    </div>
+
+    <div class="card">
+      <h2>Other moments over-reliance creeps in</h2>
+      <p class="hint">Not just deadlines. These situations quietly lead anyone to accept AI output without checking.</p>
+      <div class="fpoint"><div class="fh">Outside your expertise</div>
+        <p>You trust AI most where you can least judge it. In an unfamiliar area you won't catch its errors or fabricated sources. Check a basic fact first; test it on something you can verify. <a href="https://cacm.acm.org/news/the-ai-deskilling-paradox/" target="_blank" rel="noopener">Study ↗</a></p></div>
+      <div class="fpoint"><div class="fh">Fluent, confident output</div>
+        <p>Fluent, confident text makes you stop checking. But fluency isn't accuracy. The more confident you feel about AI, the less you verify. Spot-check the key facts and every citation.</p></div>
+      <div class="fpoint"><div class="fh">It's usually right, so you stop checking</div>
+        <p>After AI is right many times you stop checking (automation bias), and skills fade: clinicians who leaned on AI detected less when it was removed; an accounting firm's staff couldn't do core work once automation was pulled. Keep a fixed check step; occasionally work without AI. <a href="https://www.aalto.fi/en/news/researchers-warn-that-skill-erosion-caused-by-ai-could-have-a-devastating-and-lasting-impact-on" target="_blank" rel="noopener">Study ↗</a></p></div>
+      <div class="fpoint"><div class="fh">Tired or drained</div>
+        <p>When you're tired your judgement drops and you accept AI more readily. Don't leave important work for when you're most drained.</p></div>
+      <div class="fpoint"><div class="fh">Letting AI run on its own</div>
+        <p>When AI runs many steps and you see only the result, you miss the errors in between, and it lets you act outside your expertise, where you can't judge quality. Review key steps; keep inspectable artifacts; get a domain expert to check.</p></div>
+      <div class="fpoint"><div class="fh">Working alone</div>
+        <p>With no one to sanity-check, AI becomes your only reference and you drift. Get a human second opinion on anything important.</p></div>
+      <p class="hint faint" style="margin-top:14px">The common fix: keep a deliberate step where you think and verify yourself, especially where you can judge least.</p>
+    </div>
+
+    <div class="card">
+      <h2>Creators: deadlines, volume &amp; mimicry</h2>
+        <div class="fpoint warn"><div class="fh">Deadlines &amp; client work</div>
+          <p>However tight the deadline, don't hand over unchecked AI content. Errors cost your reputation and clients' trust.</p></div>
+        <div class="fpoint warn"><div class="fh">The temptation to mass-produce</div>
+          <p>Platforms watch for abnormal output (Amazon KDP caps new titles at 3 per day since Sept 2023). Don't risk your account chasing volume.</p></div>
+        <div class="fpoint warn"><div class="fh">Copying a living creator's style</div>
+          <p>Using AI to imitate a living creator's style carries ethical and legal risk, especially for commercial use.</p></div>
+        <div class="fpoint warn"><div class="fh">Impersonation &amp; deepfakes</div>
+          <p>Never use AI to fake someone's voice, likeness or signature. It can be illegal and harmful.</p></div>
+      </div>
+
+    <div class="footnote">The time-pressure effect is documented; detection and retraction cases are on the Frontiers tab.</div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faqView" class="hide">
+    <div class="themehead">
+      <h2>Frequently asked questions</h2>
+      <p class="th-sub">Real questions and worries from students, teachers and researchers, answered plainly. Nothing here compels anyone. It just clears up the most common doubts.</p>
+    </div>
+
+    <div class="card">
+      <h2>Teachers &amp; students</h2>
+      <div class="faq">
+        <div class="qa"><div class="q">Could I get caught for accidentally using AI?</div>
+          <div class="a">Clear rules, followed honestly, mean you can't violate them by accident. What's allowed is decided by your instructor's course rules.</div></div>
+        <div class="qa"><div class="q">Will honesty get me penalised?</div>
+          <div class="a">Whether it affects your grade depends on the instructor's rules; many make clear that honest disclosure won't be penalised. Researchers have studied why students disclose AI use less often. <a href="https://www.sciencedirect.com/science/article/pii/S0749597825000172" target="_blank" rel="noopener">disclosure-trust study ↗</a> · <a href="https://www.tandfonline.com/doi/full/10.1080/02602938.2024.2415654" target="_blank" rel="noopener">why students under-disclose ↗</a></div></div>
+        <div class="qa"><div class="q">What actually counts as AI to disclose?</div>
+          <div class="a">Rule of thumb: language and spelling fixes usually don't need disclosure; but content, ideas, analysis or changed meaning do.</div></div>
+        <div class="qa"><div class="q">Isn't this just laundering AI cheating?</div>
+          <div class="a">No. Disclosure doesn't decide what's allowed. The rules do. It just makes what was used, and how, clear so those rules can be checked.</div></div>
+        <div class="qa"><div class="q">It can't be verified, and detectors misfire. What's the point?</div>
+          <div class="a">Disclosure is communication, not a lie-detector. Detectors misflag non-native writing about 61% of the time, so it's better to measure "whose thinking" through assessment design than detection. <a href="https://caselaw.findlaw.com/court/ny-supreme-court/118148544.html" target="_blank" rel="noopener">wrongful-flag case ↗</a> · <a href="https://www.teqsa.gov.au/guides-resources/higher-education-good-practice-hub/gen-ai-knowledge-hub/gen-ai-academic-integrity-and-assessment-reform" target="_blank" rel="noopener">assessment design, TEQSA ↗</a></div></div>
+        <div class="qa"><div class="q">Why only students, not the teacher?</div>
+          <div class="a">A fair point. Good practice is for teachers to disclose their own AI use too. Modelling it first is how symmetric trust is built.</div></div>
+        <div class="qa"><div class="q">Is pasting the whole assignment into AI plagiarism or IP misuse?</div>
+          <div class="a">Pasting the whole prompt in touches intellectual property and "who is doing the work." Disclosing it and talking the boundary through with your instructor is safest.</div></div>
+        <div class="qa"><div class="q">A teammate used AI but I didn't. Disclose together?</div>
+          <div class="a">You only disclose your own part. For group work, state honestly who did what and who used AI; how a group discloses is usually set by the instructor, so ask if unsure.</div></div>
+        <div class="qa"><div class="q">Does AI translation count?</div>
+          <div class="a">Most rules treat AI translation as something to disclose, especially when it shapes your final wording. The ICMJE explicitly lists translation among AI uses that must be disclosed. <a href="https://www.icmje.org/recommendations/browse/artificial-intelligence/" target="_blank" rel="noopener">ICMJE ↗</a></div></div>
+        <div class="qa"><div class="q">AI changed my text a lot. How to note it?</div>
+          <div class="a">The bigger the change, the more you explain. Keep your original draft and say what AI changed; if it changed the content or meaning, that goes beyond polishing and needs a more specific disclosure.</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Researchers</h2>
+      <div class="faq">
+        <div class="qa"><div class="q">Do I disclose grammar/proofreading?</div>
+          <div class="a">Most journals: pure grammar/spelling/copy-editing needs no disclosure; substantive rewriting, translation or changed meaning does. When in doubt, disclose. Over-disclosure doesn't harm a paper. <a href="https://www.elsevier.com/en-gb/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier" target="_blank" rel="noopener">Elsevier policy ↗</a></div></div>
+        <div class="qa"><div class="q">Isn't disclosing a weakness reviewers judge?</div>
+          <div class="a">Disclosing well is a professional norm that protects you. It shows you verified and took responsibility. It's not a confession and doesn't diminish your contribution.</div></div>
+        <div class="qa"><div class="q">Should I keep my ChatGPT conversations as evidence?</div>
+          <div class="a">Yes. JMIR, BMJ and some Elsevier titles ask authors to keep full prompts and outputs in case reviewers request them. A simple ai_log (tool, date, section, use) is enough.</div></div>
+        <div class="qa"><div class="q">What happens if I don't disclose?</div>
+          <div class="a">A missing required disclosure can mean desk rejection, a revision request, or a post-publication correction/retraction. That's why disclose-when-in-doubt is safest.</div></div>
+        <div class="qa"><div class="q">Policies change so fast. Why bother?</div>
+          <div class="a">What changes is the detail; the floor is stable. No AI authorship, you're accountable, disclose, verify. General records cover any policy.</div></div>
+        <div class="qa"><div class="q">Is AI polishing inherently bad or dishonest?</div>
+          <div class="a">Not necessarily. It's more sensitive in writing-centric fields, but the test is whether the content is correct and the thinking is yours, not which tool.</div></div>
+        <div class="qa"><div class="q">I'm anxious my paper will be flagged as AI-written.</div>
+          <div class="a">A real and understandable fear, especially unfair to non-native writers. Your best protection: keep records and draft history, disclose specifically, keep the content correct, and share the original draft if asked.</div></div>
+        <div class="qa"><div class="q">Is using AI for ideas or critique cheating?</div>
+          <div class="a">No. Used as an adversarial second reader it makes work more rigorous; the prompts, verification and framing remain your judgement.</div></div>
+        <div class="qa"><div class="q">This is a lot of record-keeping.</div>
+          <div class="a">The point is to log as you go, so at submission you just transcribe, and only the items your approach actually needs.</div></div>
+        <div class="qa"><div class="q">A co-author used AI without telling me?</div>
+          <div class="a">Align disclosure with all co-authors before submission. The ICMJE holds every author responsible for the whole manuscript, including AI-assisted parts, so settle this before you submit. <a href="https://www.icmje.org/recommendations/browse/artificial-intelligence/" target="_blank" rel="noopener">ICMJE ↗</a></div></div>
+        <div class="qa"><div class="q">Do preprints need disclosure?</div>
+          <div class="a">Yes. A preprint is public too, so the same principles apply. No AI authorship, disclose use, authors stay accountable; fill in journal-specific details later at submission.</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>For creators</h2>
+      <div class="faq">
+        <div class="qa"><div class="q">If AI polished it, is it still mine?</div>
+          <div class="a">It depends on how much, and on the field's rules. Grammar and spelling fixes are usually still yours; large AI-generated passages may need disclosure or make you ineligible for some prizes.</div></div>
+        <div class="qa"><div class="q">What if I don't mention AI?</div>
+          <div class="a">You could be disqualified, have work withdrawn, or lose trust. If unsure, ask the organiser or editor first.</div></div>
+        <div class="qa"><div class="q">Is AI-generated work copyrighted?</div>
+          <div class="a">Purely AI-generated work usually isn't protected; meaningful human authorship is needed to register, and in the US you must disclose the AI parts. <a href="https://www.copyright.gov/ai/" target="_blank" rel="noopener">US Copyright Office AI page ↗</a></div></div>
+        <div class="qa"><div class="q">Can platforms or editors detect it?</div>
+          <div class="a">There are C2PA credentials and detectors, but they're unreliable and misfire. "Not getting caught" isn't the point. Honesty is safer.</div></div>
+        <div class="qa"><div class="q">How do I prove I made it?</div>
+          <div class="a">Keep drafts, version history and your process notes; for images, keep the Content Credentials. Don't strip the metadata.</div></div>
+        <div class="qa"><div class="q">AI only helped me brainstorm. Label it?</div>
+          <div class="a">Pure brainstorming usually isn't generated content and often needs no disclosure like AI-written text; but some prizes or platforms ask you to note any AI involvement, so check or ask.</div></div>
+        <div class="qa"><div class="q">Can a client require no AI at all?</div>
+          <div class="a">Yes. Commissioned work is a contract; a client can set the scope of AI use, or none at all. If you agree, you're bound by it. So state your approach up front.</div></div>
+      </div>
+    </div>
+
+    <div class="footnote">Questions drawn from 2025–2026 surveys and public discussions.</div>
+  </section>
+
+  <details class="sources" id="aboutSources">
+    <summary><span>why you can trust this, and how to adapt it</span><span class="chev">▶</span></summary>
+    <div class="inner">
+      <p class="lead">This tool was put together by NCCU Library as a <b>reference</b> (not a mandate), to be used alongside the <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener"><b>NCCU Library AI use guide</b></a>. The table below lists only the <b>key sources that actually shaped the design and are kept current (2025–2026)</b>; AI moves fast, so links point to the latest concepts and practice. The rules that apply to you are those of your institution, department, and course instructor.</p>
+      <div class="mapgrid">
+        <div class="maprow"><div class="mapwhat">Five-level permission scale (neutral, not a traffic light)</div><div class="mapsrc"><a href="https://arxiv.org/abs/2412.09029" target="_blank" rel="noopener">AI Assessment Scale</a>. Perkins, Roe &amp; Furze</div></div>
+        <div class="maprow"><div class="mapwhat">43 task-disclosure items</div><div class="mapsrc"><a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT taxonomy</a> (Suchikova et al.), as used by the CUNY AI Lab tool</div></div>
+        <div class="maprow"><div class="mapwhat">Disclosure output format, teacher self-disclosure, templates</div><div class="mapsrc"><a href="https://www.monash.edu/student-academic-success/build-digital-capabilities/create-online/acknowledging-the-use-of-generative-artificial-intelligence" target="_blank" rel="noopener">Monash disclosure template</a> · <a href="https://tlconestoga.ca/describe-and-document-ai-use/" target="_blank" rel="noopener">Conestoga: logging AI use</a>(2025)</div></div>
+        <div class="maprow"><div class="mapwhat">Three-step verification ladder, non-punitive pledge</div><div class="mapsrc"><a href="https://www.sciencedirect.com/science/article/pii/S0749597825000172" target="_blank" rel="noopener">the disclosure-trust paradox</a>(Schilke &amp; Reimann)· <a href="https://www.tandfonline.com/doi/full/10.1080/02602938.2024.2415654" target="_blank" rel="noopener">why students under-disclose (study)</a></div></div>
+        <div class="maprow"><div class="mapwhat">The "challenge / improve AI" field</div><div class="mapsrc"><a href="https://arxiv.org/pdf/2605.05472" target="_blank" rel="noopener">teaching with AI mistakes</a> (Hosseini) and related critical AI-literacy research</div></div>
+        <div class="maprow"><div class="mapwhat">AI-agent disclosure (actions, level of oversight, run log, accountability)</div><div class="mapsrc"><a href="https://ascode.osu.edu/news/agentic-ai-higher-education" target="_blank" rel="noopener">Agentic AI in Higher Education</a>(2025) · responsibility-gap and provenance research</div></div>
+        <div class="maprow"><div class="mapwhat">Courses and assessment are set by teachers and departments; detection is unreliable, so the focus is on protecting learning</div><div class="mapsrc"><a href="https://www.teqsa.gov.au/guides-resources/higher-education-good-practice-hub/gen-ai-knowledge-hub/gen-ai-academic-integrity-and-assessment-reform" target="_blank" rel="noopener">TEQSA assessment reform</a>(2025–26)· <a href="https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use" target="_blank" rel="noopener">Princeton disclosure guide</a></div></div>
+        <div class="maprow"><div class="mapwhat">Citation format</div><div class="mapsrc"><a href="https://style.mla.org/citing-generative-ai-updated-revised/" target="_blank" rel="noopener">MLA</a> · <a href="https://apastyle.apa.org/blog/cite-generative-ai-references" target="_blank" rel="noopener">APA</a> · Chicago 18 §14.112</div></div>
+        <div class="maprow"><div class="mapwhat">Profile = method shape (not department)</div><div class="mapsrc">Adapted from Biglan (1973) and Becher &amp; Trowler's hard↔soft continuum</div></div>
+      </div>
+      <p class="lead" style="margin-top:14px">2026 updates: ICMJE revised its recommendations in Jan 2026; Elsevier updated its journal generative-AI policies in Aug 2026; Wikipedia banned AI-generated content in 2026.</p>
+      <div class="selfdisc">Conceived and directed by NCCU Library, this site was built with help from Claude Opus 4.8 (drafting content, writing code, finding sources). All sources, policies and cases were human-checked; design choices and the final version are the library's own. We disclose this so the tool itself is a working example of honest AI-use disclosure.</div>
+    </div>
+  </details>
+
+  <div class="disclaimer" id="sharedDisclaimer">Offered by the NCCU Library as a reference, not a mandate. Your college, department, and course policies govern; your instructor's course rule always takes precedence. Adapt before use.
+  </div>
+  <div class="footnote" id="sharedFootnote">Runs entirely in your browser. Nothing is uploaded or stored. · Free to fork and adapt.
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function switchLang(){
+  var views={teacher:'teacherView',student:'studentView',researcher:'researcherView',creative:'creativeView',frontier:'frontierView',pressure:'pressureView',gatekeep:'gatekeepView',faq:'faqView'};
+  var cur='teacher';
+  for(var k in views){var el=document.getElementById(views[k]); if(el && !el.classList.contains('hide')){cur=k;break;}}
+  location.href='index.html?tab='+cur;
+}
+
+"use strict";
+
+/* ---------- data ---------- */
+const TIERS = [
+  {id:1, zh:"", en:"No AI",
+   desc:"",
+   descEn:"The skills assessed here must be your own, unaided.", discloses:false},
+  {id:2, zh:"AI ", en:"AI Planning",
+   desc:" AI ",
+   descEn:"AI may help you brainstorm and organise, but the writing and analysis are yours.", discloses:false},
+  {id:3, zh:"AI ", en:"AI Collaboration",
+   desc:" AI ",
+   descEn:"You may collaborate with AI across the process, and disclose where.", discloses:true,
+   focus:" AI ",
+   focusEn:"Focus: which parts AI touched, and what you did yourself."},
+  {id:4, zh:"AI ", en:"Full AI",
+   desc:" AI ",
+   descEn:"AI may produce much of the output; you're assessed on how you prompt, judge, integrate and verify.", discloses:true,
+   focus:"AI ",
+   focusEn:"Focus: since AI did a lot, write more on what you did and what you verified — that's what's assessed."}
+];
+
+/* Work/method profiles (multi-select). Replaces the older discipline presets. */
+const PROFILES = [
+  {id:"interpret",     zh:"·", en:"Interpretive / argumentative", note:"text/source interpretation, argument, writing"},
+  {id:"qualitative",   zh:"", en:"Qualitative empirical",       note:" · fieldwork, interviews, coding, thematic analysis"},
+  {id:"quantitative",  zh:"·", en:"Quantitative empirical",     note:" · data, statistics, modelling"},
+  {id:"computational", zh:"·", en:"Computational / technical",  note:" · code, systems, data engineering"},
+  {id:"creative",      zh:"·", en:"Creative / design",          note:" · media generation, design, studio work"}
+];
+const ALL  = ["interpret","qualitative","quantitative","computational","creative"];
+const EMP4 = ["interpret","qualitative","quantitative","computational"]; // all but creative
+const QC   = ["quantitative","computational"];
+
+/* Task groups with GAIDeT-derived fine items, tagged to work profiles */
+const GROUPS = [
+  {id:"ideas", zh:"", en:"Ideas & direction", items:[
+    {id:"idea_gen",  zh:"",        en:"Idea generation",              presets:ALL},
+    {id:"objective", zh:"", en:"Defining the objective",        presets:ALL},
+    {id:"questions", zh:"",     en:"Research questions & hypotheses", presets:EMP4},
+    {id:"scope",     zh:"",       en:"Feasibility & scoping",         presets:ALL}
+  ]},
+  {id:"sources", zh:"", en:"Finding & reading sources", items:[
+    {id:"lit_search",   zh:"",   en:"Literature search",          presets:ALL},
+    {id:"explain",      zh:"",   en:"Explaining difficult material", presets:ALL},
+    {id:"summarize_src",zh:"",   en:"Summarizing sources",        presets:ALL},
+    {id:"lit_review",   zh:"",     en:"Writing the literature review", presets:EMP4},
+    {id:"gaps",         zh:"", en:"Identifying gaps / novelty", presets:EMP4}
+  ]},
+  {id:"interp", zh:"", en:"Interpretation & analysis", items:[
+    {id:"analysis",   zh:"",   en:"Analysis / argumentation",   presets:["interpret","qualitative","creative"]},
+    {id:"compare",    zh:"", en:"Comparing perspectives",    presets:["interpret","qualitative","creative"]},
+    {id:"source_crit",zh:"",   en:"Source & text interpretation", presets:["interpret","qualitative"]},
+    {id:"design",     zh:"",         en:"Research design",            presets:["qualitative","quantitative","computational"]},
+    {id:"methods",    zh:"",     en:"Selecting research methods", presets:["qualitative","quantitative","computational"]},
+    {id:"protocol",   zh:"", en:"Developing protocols",      presets:QC}
+  ]},
+  {id:"qual", zh:"", en:"Qualitative data", items:[
+    {id:"transcript",  zh:"", en:"Transcription cleanup", presets:["qualitative"]},
+    {id:"code_suggest",zh:"",   en:"Suggesting codes",      presets:["qualitative"]},
+    {id:"code_apply",  zh:"", en:"Applying a codebook",   presets:["qualitative"]},
+    {id:"themes",      zh:"",   en:"Theme identification",  presets:["qualitative"]}
+  ]},
+  {id:"data", zh:"", en:"Data & statistics", items:[
+    {id:"data_collect",zh:"",       en:"Data collection",        presets:QC},
+    {id:"data_clean",  zh:"",       en:"Data cleaning",          presets:QC},
+    {id:"data_org",    zh:"", en:"Curation & organization", presets:QC},
+    {id:"data_analyze",zh:"",       en:"Data analysis",          presets:QC},
+    {id:"viz",         zh:"",   en:"Visualization",          presets:["quantitative","computational","creative"]},
+    {id:"validate",    zh:"", en:"Validation",             presets:QC},
+    {id:"repro",       zh:"",     en:"Reproducibility testing", presets:QC}
+  ]},
+  {id:"code", zh:"", en:"Code & automation", items:[
+    {id:"code_gen",  zh:"",   en:"Code generation",         presets:["computational","quantitative"]},
+    {id:"code_debug",zh:"", en:"Debugging / optimization", presets:["computational","quantitative"]},
+    {id:"automate",  zh:"",   en:"Process automation",      presets:["computational","quantitative"]}
+  ]},
+  {id:"writing", zh:"", en:"Writing & editing", items:[
+    {id:"draft",        zh:"",     en:"Drafting text",          presets:ALL},
+    {id:"rewrite",      zh:"",   en:"Rewriting",              presets:ALL},
+    {id:"proofread",    zh:"",   en:"Proofreading & editing", presets:ALL},
+    {id:"summarize_txt",zh:"", en:"Summarizing text",     presets:ALL},
+    {id:"conclude",     zh:"",     en:"Formulating conclusions", presets:EMP4},
+    {id:"tone",         zh:"",     en:"Adjusting tone",         presets:["interpret","creative"]},
+    {id:"translate",    zh:"",         en:"Translation",            presets:ALL},
+    {id:"reformat",     zh:"", en:"Reformatting",         presets:ALL}
+  ]},
+  {id:"media", zh:"", en:"Image & media", items:[
+    {id:"image", zh:"", en:"Image generation",       presets:["creative","interpret"]},
+    {id:"av",    zh:"", en:"Audio / video generation", presets:["creative"]}
+  ]},
+  {id:"review", zh:"", en:"Review & reflection", items:[
+    {id:"bias",    zh:"", en:"Bias check",             presets:ALL},
+    {id:"quality", zh:"",       en:"Quality assessment",     presets:ALL},
+    {id:"limits",  zh:"",       en:"Identifying limitations", presets:EMP4}
+  ]},
+  {id:"misc", zh:"", en:"Other", items:[
+    {id:"other", zh:"", en:"Other (describe below)", presets:ALL}
+  ]}
+];
+const ITEMS = {};
+GROUPS.forEach(g=>g.items.forEach(it=>{ ITEMS[it.id]={...it, group:g.id}; }));
+function groupsForPreset(pr){
+  const sel = (Array.isArray(pr) && pr.length) ? pr : ["interpret"];
+  return GROUPS.map(g=>({...g, items:g.items.filter(i=>i.presets.some(x=>sel.includes(x)))})).filter(g=>g.items.length);
+}
+
+/* fixed, always no-disclosure — kept separate from task clusters (no overlap, no confusion) */
+const BASELINE = [
+  {zh:"", en:"Spell-check & basic grammar"},
+  {zh:" / ", en:"IME / autocomplete"},
+  {zh:"", en:"Ordinary search & databases"},
+  {zh:" Zotero", en:"Mechanical citation formatting"}
+];
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),1900);}
+function esc(s){return (s||'').trim();}
+
+/* ---------- teacher form build ---------- */
+function buildTeacherForm(){
+  const ladder = $('#tierLadder');
+  ladder.innerHTML = TIERS.map(t=>`
+    <label class="tier" data-t="${t.id}">
+      <input type="radio" name="tier" value="${t.id}" ${t.id===3?'checked':''}>
+      <span class="dot"></span>
+      <span class="body">
+        <span class="name">Level ${t.id} · ${t.en}</span>
+        <span class="desc">${t.descEn}</span>
+        <span class="flag">${t.discloses?'→ disclosure required':'→ no disclosure form'}</span>
+      </span>
+    </label>`).join('');
+  function paint(){ladder.querySelectorAll('.tier').forEach(el=>{
+    el.classList.toggle('sel', el.querySelector('input').checked);});
+    const sel=document.querySelector('input[name=tier]:checked');
+    const box=$('#tierSummary'); if(!sel||!box) return;
+    const t=TIERS.find(x=>x.id==sel.value); if(!t) return;
+    const num=['One','Two','Three','Four'][t.id-1];
+    const disc = t.discloses
+      ? `<b>Disclosure required.</b> ${t.focusEn||'Explain which parts AI helped with, what you did, and how you checked it.'}`
+      : '<b>No disclosure form needed.</b>';
+    box.innerHTML =
+      `<div class="ts-h">Level ${num} · ${t.en}</div>`
+      + `<div class="ts-row"><span class="ts-k">Allowed &amp; assessed</span><span class="ts-v">${t.descEn}</span></div>`
+      + `<div class="ts-row"><span class="ts-k">Student discloses</span><span class="ts-v">${disc}</span></div>`;
+  }
+  ladder.addEventListener('change',paint); paint();
+
+  $('#tProfiles').innerHTML = PROFILES.map((pf,i)=>`
+    <label class="chk"><input type="checkbox" value="${pf.id}" ${i===0?'checked':''}>
+    <span class="ct">${pf.en}${pf.note}</span></label>`).join('');
+  $('#tProfiles').addEventListener('change', renderNoDisc);
+
+  $('#baselineList').innerHTML =
+    '<div class="sublab" style="font-weight:500;margin-bottom:2px">· Never needs disclosure:</div>'
+    + '<ul class="baseul">' + BASELINE.map(b=>`<li>${b.en}</li>`).join('') + '</ul>';
+  renderNoDisc();
+}
+function selectedProfiles(){
+  const s = [...document.querySelectorAll('#tProfiles input:checked')].map(x=>x.value);
+  return s.length ? s : ["interpret"];
+}
+function renderNoDisc(){
+  $('#noDiscList').innerHTML = groupsForPreset(selectedProfiles()).map(g=>{
+    const items = g.items.filter(i=>i.id!=='other');
+    if(!items.length) return '';
+    return `<div class="cgroup"><div class="cglabel">${g.en}</div>`
+      + items.map(i=>`<label class="chk"><input type="checkbox" value="${i.id}">
+        <span class="ct">${i.en}</span></label>`).join('') + `</div>`;
+  }).join('');
+}
+
+function readPolicy(){
+  return {
+    c: esc($('#tCourse').value) || "",
+    t: esc($('#tTeacher').value),
+    lv: +document.querySelector('input[name=tier]:checked').value,
+    pr: selectedProfiles(),
+    nd: [...document.querySelectorAll('#noDiscList input:checked')].map(x=>x.value),
+    pm: esc($('#tPromise').value),
+    tu: esc($('#tTeacherUse').value)
+  };
+}
+function syllabus(p){
+  const tier = TIERS.find(t=>t.id===p.lv);
+  const base = BASELINE.map(b=>b.zh).join('');
+  const baseEn = BASELINE.map(b=>b.en).join(', ');
+  const nd = (p.nd||[]).map(id=>ITEMS[id]).filter(Boolean);
+  const ndTxt = nd.length ? base + '' + nd.map(it=>it.zh).join('') : base;
+  const ndTxtEn = nd.length ? baseEn + ', and ' + nd.map(it=>it.en).join(', ') : baseEn;
+  const lv = ['','','','',''][p.lv-1];
+  const zh = `${p.c} AI ${lv}·${tier.zh}:${tier.desc}\n`
+    + (tier.discloses ? ` AI AI ` : ` AI `)
+    + `\n${ndTxt}`;
+  const en = `This course (${p.c}) sets its generative-AI policy at Level ${p.lv} — ${tier.en}: ${tier.descEn}\n`
+    + (tier.discloses ? `When you use AI, attach an AI-use disclosure with your work (you can make one with this tool).` : `No AI-use disclosure is required at this level.`)
+    + `\nThese need no disclosure: ${ndTxtEn}.`;
+  return en;
+}
+
+/* ---------- teacher actions ---------- */
+function wireTeacher(){
+  $('#genPolicy').addEventListener('click',()=>{
+    const p = readPolicy();
+    $('#syllabusText').textContent = syllabus(p);
+    $('#teacherOut').classList.remove('hide');
+    $('#teacherOut').scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+  $('#copySyllabus').addEventListener('click',()=>{navigator.clipboard.writeText($('#syllabusText').textContent).then(()=>toast(''));});
+}
+
+/* ---------- student render ---------- */
+const TYPEMAP={writing:['interpret'],qual:['qualitative','interpret'],quant:['quantitative'],comp:['computational'],creative:['creative'],all:['interpret','qualitative','quantitative','computational','creative']};
+function renderClusters(type){
+  const gs=groupsForPreset(TYPEMAP[type]||['interpret']);
+  const box=$('#sClusterGroups'); if(!box) return;
+  box.innerHTML=gs.map(g=>`<div class="cgroup"><div class="cglabel">${g.en}</div>`+g.items.map(i=>`<label class="chk"><input type="checkbox" value="${i.id}"><span class="ct">${i.en}</span></label>`).join('')+`</div>`).join('');
+}
+function renderStudent(){
+  const area = $('#policyArea');
+  const context = `<div class="card"><h2> Your context</h2><p class="hint">Fill this in based on your teacher's rules. This tool just helps you write your AI statement.</p><div class="row2"><label class="field"><span class="sublab">Course (optional)</span><input type="text" id="sCourse" placeholder=""></label><label class="field"><span class="sublab">The AI level your course allows</span><select id="sLevel"><option value="">Unspecified</option><option value="Level 1 (no AI)">Level 1 (no AI)</option><option value="Level 2 (AI for ideas)">Level 2 (AI for ideas)</option><option value="Level 3 (collaboration)">Level 3 (collaboration)</option><option value="Level 4 (full use)">Level 4 (full use)</option><option value="instructor has other rules">Instructor has other rules</option></select></label></div><p class="hint faint" style="margin-top:4px">Just use what your teacher said. If you are not sure, ask. You can also choose "unspecified".</p><label class="field" style="margin-top:10px"><span class="sublab">👉 What kind of work is this? This sets which options appear below</span><select id="sType"><option value="writing">Writing / report</option><option value="qual">Qualitative</option><option value="quant">Quantitative / data</option><option value="comp">Coding</option><option value="creative">Creative</option><option value="all">Mixed / unsure</option></select></label></div>`;
+  const form = `
+    <div class="reassure">💬 Being honest about AI use will usually not lower your grade. It helps your teacher understand how you learn. It is not used to find mistakes. If you are not sure, write one more line, or ask your teacher.</div>
+    <div class="aidnote">This is not a test, and you do not have to fill in everything. It helps you tell your teacher how you used AI. Being honest is more important than filling every box.</div>
+    <div class="minbox">⏱ In a hurry? You only need three things: ① tick one thing AI helped with ② write one line about what you did ③ tick what you checked. The rest is optional.</div>
+    <div class="principles3">✍ <br>Three principles for a good disclosure: be specific (what and where, not just "I used AI"); keep your drafts and process; and own the content — check every fact and citation AI gave you.</div>
+    <div class="card">
+      <h2><span class="step-n">1</span> Which tool(s), optional</h2>
+      <label class="field"><span class="sublab">· Name and version if known; list all you used.</span>
+        <input type="text" id="sTools" placeholder="ChatGPT GPT-4oClaudeGoogle Grammarly"></label>
+    </div>
+    <div class="card">
+      <h2><span class="step-n">2</span> Where AI helped<span class="rec">recommended</span></h2>
+      <p class="hint">Tick the parts where you really used AI. This is the most important part. If you used it only a little, tick the first box and explain below. The options change with the work type you chose above.</p>
+      <div class="checks grouped" id="sClusters">
+        <label class="chk light"><input type="checkbox" value="__light__"><span class="ct">/Only light, general help — explained below</span></label>
+        <div id="sClusterGroups"></div>
+      </div>
+    </div>
+    <details class="card optional" id="agentDetails">
+      <summary> AI agent  · Did you use an AI agent that works in many steps by itself? Most people can skip this.<span class="advchev">▶</span></summary>
+      <div class="optbody">
+      <div id="agentBlock" class="agentbox">
+        <div class="opthead" style="font-size:15px">AI agent Agentic AI use</div>
+        <p class="hint">agent Agents run many steps you may not see — so describe what it did and where you checked, not just what it produced.</p>
+        <label class="field"><span class="sublab">1. · What it did / accessed</span>
+          <input type="text" id="agAct" placeholder=" 20 "></label>
+        <label class="field"><span class="sublab">2. · Where you actually checked</span>
+          <select id="agOversight">
+            <option value="">—  select —</option>
+            <option value="">reviewed each step</option>
+            <option value="">reviewed at key checkpoints</option>
+            <option value="">only saw the final result</option>
+          </select></label>
+        <label class="field"><span class="sublab">3.  / log agent · Run log link (strongly recommended)</span>
+          <input type="text" id="agLog" placeholder="https://…/"></label>
+        <label class="chk" style="margin-top:6px"><input type="checkbox" id="agAccount"><span class="ct"> agent I remain accountable for the agent's outputs and actions, even where I didn't supervise each step.</span></label>
+        <div class="mapnote">agent AI <a href="https://ascode.osu.edu/news/agentic-ai-higher-education" target="_blank" rel="noopener">Agentic AI in Higher Ed(2025)</a></div>
+      </div>
+      </div>
+    </details>
+    <div class="card">
+      <h2><span class="step-n">3</span>  What you did &amp; verified<span class="rec">recommended</span></h2>
+      <p class="hint">In your own words: what did you judge, change, or <b>reject</b>?</p>
+      <label class="field"><textarea id="sMine" placeholder="AI "></textarea></label>
+
+      <div class="verify">
+        <div class="lab">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#245f59" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>What you verified
+        </div>
+        <div class="why"><span style="color:var(--ink-faint)">AI both fabricates and distorts sources. Tick how far you checked — this is what shows the judgement is still yours.</span></div>
+        <div class="vladder">
+          <label class="vstep"><input type="checkbox" id="v1"><span><b>Level 1 · Exists</b>: the sources AI cited are real, not fabricated</span></label>
+          <label class="vstep"><input type="checkbox" id="v2"><span><b>Level 2 · Consistent</b>: the source actually says what AI claimed</span></label>
+          <label class="vstep"><input type="checkbox" id="v3"><span><b>Level 3 · Supports</b>: the source really backs the point I use it for</span></label>
+          <label class="vstep none"><input type="checkbox" id="v0"><span>/No external sources needing verification this time</span></label>
+        </div>
+        <label class="field"><span class="sublab" style="margin-top:10px">· One example (optional, but persuasive)</span>
+          <input type="text" id="sVerifyEg" placeholder="AI 3 1 1 "></label>
+        <details class="vmore">
+          <summary>· Other checks +</summary>
+          <div class="vinner checks" id="vOther">
+            <label class="chk"><input type="checkbox" value=""><span class="ct">Data: recomputed or spot-checked numbers</span></label>
+            <label class="chk"><input type="checkbox" value=""><span class="ct">Translation: checked it's faithful</span></label>
+            <label class="chk"><input type="checkbox" value=""><span class="ct">Quotes: verbatim and in context</span></label>
+            <label class="chk"><input type="checkbox" value=""><span class="ct">Code: actually ran or tested it</span></label>
+            <label class="chk"><input type="checkbox" value=" AI "><span class="ct">Perspective: checked for angles/counter-evidence AI missed</span></label>
+          </div>
+        </details>
+        <div class="mapnote">→→ AI <br>The three-level ladder is original to this tool, matching AI citation's three failure modes: fabrication, distortion, misuse.</div>
+      </div>
+    </div>
+
+    <details class="card optional">
+      <summary> AI?· Bonus: how you pushed back (optional)<span class="advchev">▶</span></summary>
+      <div class="optbody">
+        <div class="optsec">
+          <p class="hint">Catching AI's errors and pushing it to do better is the strongest sign you're in charge.</p>
+          <div class="checks" id="sChallenge">
+            <label class="chk"><input type="checkbox" value=" AI "><span class="ct">I found and corrected an AI error</span></label>
+            <label class="chk"><input type="checkbox" value=" AI "><span class="ct">I pushed back until AI corrected itself</span></label>
+            <label class="chk"><input type="checkbox" value=" AI "><span class="ct">I gave it sources/context for a closer result</span></label>
+            <label class="chk"><input type="checkbox" value=" AI "><span class="ct">I rejected AI's suggestion, used my own judgement</span></label>
+            <label class="chk"><input type="checkbox" value=""><span class="ct">I compared tools/versions and decided myself</span></label>
+          </div>
+          <label class="field"><span class="sublab" style="margin-top:10px">One concrete example (optional, the most valuable)</span>
+            <textarea id="sChallengeEg" placeholder="AI "></textarea></label>
+          <div class="mapnote">Grounded in the "pedagogy of AI mistakes" &amp; critical AI-literacy research. <a href="https://arxiv.org/pdf/2605.05472" target="_blank" rel="noopener">Hosseini 2026</a></div>
+          <label class="field" style="margin-top:16px"><span class="sublab">· Optional process record</span>
+            <input type="text" id="sProof" placeholder="https://…"></label>
+          <div class="mapnote">With many tools and turns, a shareable conversation link conveys the process far more honestly than one prompt.</div>
+        </div>
+      </div>
+    </details>
+    <div class="card">
+      <h2> Generate disclosure</h2>
+      <p class="hint faint" style="margin-top:10px">The format follows Monash University's AI-use template: tool, date, use, and your own checking.</p>
+      <p class="citenote"><a href="https://style.mla.org/citing-generative-ai-updated-revised/" target="_blank" rel="noopener">MLA</a> ·
+        <a href="https://apastyle.apa.org/blog/cite-generative-ai-references" target="_blank" rel="noopener">APA</a> ·
+        Chicago 18  §14.112<br>If you quote AI-made text or images directly, you may also need to cite it. None of these three styles list AI as an author, and all warn that AI can make up sources, so always check the original.<br>
+         AI  <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener"><b> AI </b></a></p>
+      <div class="btn-row">
+        <button class="btn primary" id="sGen">Generate</button>
+        <button class="btn ghost" id="sClear">Clear</button>
+      </div>
+      <div id="sOutWrap" class="hide">
+        <div class="divider"></div>
+        <div class="output" id="sOut"></div>
+        <div class="btn-row">
+          <button class="btn ghost" id="sCopy">Copy</button>
+          <button class="btn ghost" id="sDownload">Download .txt</button>
+        </div>
+        <div class="submitnote">📎 How to hand it in: paste this at the end of your work, or give it to your teacher the way they ask.</div>
+      </div>
+    </div>`;
+  area.innerHTML = context + form;
+  area.classList.remove('hide');
+  renderClusters('writing');
+  $('#sType') && $('#sType').addEventListener('change',e=>renderClusters(e.target.value));
+  wireStudentForm();
+}
+
+function wireStudentForm(){
+  const gen = ()=>{
+    const tools = esc($('#sTools').value) || "(not given)";
+    const checked = [...document.querySelectorAll('#sClusters input:checked')];
+    const usedZh = checked.map(x=> x.value==='__light__' ? '/' : (ITEMS[x.value]? ITEMS[x.value].zh : x.value));
+    const usedEn = checked.map(x=> x.value==='__light__' ? 'only light, general help' : (ITEMS[x.value]? ITEMS[x.value].en : x.value));
+    const mine = esc($('#sMine').value);
+    const v1=$('#v1').checked, v2=$('#v2').checked, v3=$('#v3').checked, v0=$('#v0').checked;
+    const vEg = esc($('#sVerifyEg').value);
+    const vOtherEls = [...document.querySelectorAll('#vOther input:checked')];
+    const vOtherZh = vOtherEls.map(x=>x.value);
+    const vOtherEn = vOtherEls.map(x=>{const en=x.closest('label').querySelector('.en'); return en?en.textContent:x.value;});
+    const chalEls = [...document.querySelectorAll('#sChallenge input:checked')];
+    const chalZh = chalEls.map(x=>x.value);
+    const chalEn = chalEls.map(x=>{const en=x.closest('label').querySelector('.en'); return en?en.textContent:x.value;});
+    const chalEg = esc($('#sChallengeEg').value);
+    const proof = esc($('#sProof').value);
+    const agent = $('#agentDetails') && $('#agentDetails').open;
+    const agAct = agent?esc($('#agAct').value):'', agOv = agent?$('#agOversight').value:'', agLog = agent?esc($('#agLog').value):'', agAcc = agent?$('#agAccount').checked:false;
+    const missing = [];
+    if(!checked.length) missing.push('AI ');
+    if(!mine) missing.push('');
+    if(!(v1||v2||v3||v0)) missing.push('');
+    if(missing.length) toast(''+missing.join('')+'');
+    const course = esc($('#sCourse').value) || "";
+    const lvVal = $('#sLevel').value;
+    const levelZh = lvVal ? lvVal.split(' / ')[0] : "";
+    const levelEn = lvVal ? (lvVal.split(' / ')[1] || levelZh) : "(unspecified)";
+    const today = new Date().toLocaleDateString('zh-TW',{year:'numeric',month:'long',day:'numeric'});
+    const todayEn = new Date().toLocaleDateString('en-CA');
+    // verification lines (zh / en)
+    let vZh, vEn;
+    if(v0){ vZh='· /'; vEn='· No external sources needing verification'; }
+    else {
+      const az=[], ae=[];
+      if(v1){ az.push('·  1 ·'); ae.push('· L1 Exists: the source is real'); }
+      if(v2){ az.push('·  2 · AI '); ae.push('· L2 Matches: content matches AI\'s summary'); }
+      if(v3){ az.push('·  3 ·'); ae.push('· L3 Supports: it backs my point'); }
+      vZh = az.length?az.join('\n'):'· '; vEn = ae.length?ae.join('\n'):'· (not filled in)';
+    }
+    if(vOtherZh.length){ vZh+='\n'+vOtherZh.map(x=>'· '+x).join('\n'); vEn+='\n'+vOtherEn.map(x=>'· '+x).join('\n'); }
+    if(vEg){ vZh+='\n  '+vEg; vEn+='\n e.g.: '+vEg; }
+    // challenge blocks
+    let chalZhB='', chalEnB='';
+    if(chalZh.length || chalEg){
+      chalZhB = '\n\n AI:\n'+(chalZh.length?chalZh.map(x=>'· '+x).join('\n'):'')+(chalEg?(chalZh.length?'\n':'')+'  '+chalEg:'');
+      chalEnB = '\n\nHow I pushed back / improved AI:\n'+(chalEn.length?chalEn.map(x=>'· '+x).join('\n'):'')+(chalEg?(chalEn.length?'\n':'')+'  e.g.: '+chalEg:'');
+    }
+    // agent blocks
+    let agZh='', agEn='';
+    if(agent){
+      agZh = '\n\nAI agent \n· /'+(agAct||'')+'\n· '+(agOv||'')+(agLog?'\n· '+agLog:'')+(agAcc?'\n·  agent ':'');
+      agEn = '\n\nAgentic AI use:\n· Actions & access: '+(agAct||'(not filled in)')+'\n· Oversight: '+(agOv||'(not filled in)')+(agLog?'\n· Run log: '+agLog:'')+(agAcc?'\n· I remain accountable for its outputs and actions.':'');
+    }
+    const zhOut =
+`—— AI  ——
+${course}
+AI ${levelZh}
+${tools}
+${today}
+
+AI 
+${usedZh.length? usedZh.map(u=>'· '+u).join('\n') : '· '}
+
+:
+${mine || ''}
+
+
+${vZh}${chalZhB}${agZh}${proof? '\n\n'+proof : ''}
+
+——  AI  ——`;
+    const enOut =
+`—— AI Use Disclosure ——
+Course: ${course}
+AI level: ${levelEn}
+Tool(s): ${tools}
+Date: ${todayEn}
+
+What AI helped with:
+${usedEn.length? usedEn.map(u=>'· '+u).join('\n') : '· (no specific parts selected)'}
+
+What I did (judgement, edits, rejections):
+${mine || '(not filled in)'}
+
+What I verified:
+${vEn}${chalEnB}${agEn}${proof? '\n\nProcess record: '+proof : ''}
+
+— Self-disclosed under the course AI policy —`;
+    const out = enOut;
+    $('#sOut').textContent = out;
+    $('#sOutWrap').classList.remove('hide');
+    $('#sOutWrap').scrollIntoView({behavior:'smooth',block:'nearest'});
+  };
+  $('#sGen').addEventListener('click',gen);
+  $('#sClear').addEventListener('click',()=>{
+    ['sTools','sMine','sVerifyEg','sChallengeEg','sProof','agAct','agLog'].forEach(id=>{const el=$('#'+id); if(el) el.value='';});
+    ['v1','v2','v3','v0','agAccount'].forEach(id=>{const el=$('#'+id); if(el) el.checked=false;});
+    if($('#agOversight')) $('#agOversight').value='';
+    if($('#agentDetails')) $('#agentDetails').open=false;
+    document.querySelectorAll('#sClusters input:checked, #vOther input:checked, #sChallenge input:checked').forEach(x=>x.checked=false);
+    $('#sOutWrap').classList.add('hide');
+  });
+  $('#sCopy').addEventListener('click',()=>navigator.clipboard.writeText($('#sOut').textContent).then(()=>toast('')));
+  $('#sDownload').addEventListener('click',()=>{
+    const blob=new Blob([$('#sOut').textContent],{type:'text/plain;charset=utf-8'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='AI.txt';a.click();URL.revokeObjectURL(a.href);toast(' .txt');
+  });
+}
+
+/* ---------- mode switching ---------- */
+function setMode(m){
+  const isS=m==='student', isT=m==='teacher', isR=m==='researcher', isF=m==='faq', isX=m==='frontier', isP=m==='pressure', isC=m==='creative', isG=m==='gatekeep';
+  $('#studentView').classList.toggle('hide',!isS);
+  $('#teacherView').classList.toggle('hide',!isT);
+  $('#researcherView').classList.toggle('hide',!isR);
+  $('#creativeView').classList.toggle('hide',!isC);
+  $('#frontierView').classList.toggle('hide',!isX);
+  $('#pressureView').classList.toggle('hide',!isP);
+  $('#gatekeepView').classList.toggle('hide',!isG);
+  $('#faqView').classList.toggle('hide',!isF);
+  document.querySelectorAll('.navrow').forEach(r=>r.classList.toggle('active', r.dataset.mode===m));
+  const hideShared = isR || isF || isX || isP || isC || isG;
+  ['#aboutSources','#sharedDisclaimer','#sharedFootnote'].forEach(id=>{const e=$(id); if(e) e.classList.toggle('hide',hideShared);});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ===== RESEARCHER TAB (merged) ===== */
+
+/* STM 9 activities (adapted, bilingual) with boundary (≠) and disclosure hint */
+const ACTIVITIES=[
+ {id:1,zh:"",en:"Language editing for clarity",bound:"≠ /",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:2,zh:"",en:"Writing / drafting manuscript text",bound:"AI ",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:5,zh:"",en:"Translating the manuscript",bound:"≠ ",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:8,zh:"",en:"Gathering references",bound:"≠ ",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:3,zh:"",en:"Formatting reported data",bound:"≠ ",fields:["social","science","engineering","medical","inter"]},
+ {id:6,zh:"/",en:"Visualising research data",bound:"≠ RSAS…",fields:["science","engineering","medical","social","inter"]},
+ {id:7,zh:"",en:"Formatting reported code",bound:"≠ ",fields:["engineering","science","inter"]},
+ {id:4,zh:"/",en:"Illustrative images / figures",bound:"≠ <b>NatureElsevier AI </b>",fields:["humanities","social","science","engineering","medical","inter"],ban:true},
+ {id:9,zh:"",en:"Passing AI output off as real data",bound:"",fields:["humanities","social","science","engineering","medical","inter"],ban:true}
+];
+
+/* records to keep — the core ledger */
+const BASE_RECORDS=[
+ {t:" +  Tool + exact version",why:"e.g. ChatGPT (GPT-4o), Claude Opus 4.x, DeepL. Providers change models behind the same name, so be as specific as possible."},
+ {t:" Date(s) of use",why:"Required by APA, AMA and most journals; since models change, the date is an important anchor."},
+ {t:" Map each use to an activity",why:"Tie each use to the STM activities in step 2 so disclosure separates editing from drafting."},
+ {t:" What you verified",why:"<em>Do the citations exist? Was the data recomputed?</em> The core act of taking responsibility."}
+];
+/* method-specific records (approach) */
+const APPROACH_RECORDS={
+ qual:[
+  {t:" Prompt versions, codebook revisions, adjudication notes",why:"A qualitative audit trail: log prompt versions, how the codebook changed, and how disputes were resolved."},
+  {t:"Reflexivity memos",why:"Note where AI's summaries/coding shaped your interpretation and how you responded — the heart of technological reflexivity."},
+  {t:"Link AI output to source data",why:"Mark AI summaries/coding so they trace back to the original text (as MAXQDA does), for step-by-step review."},
+  {t:" Participant data & consent",why:"Before putting interviews or personal data into AI, confirm de-identification and consent scope — this is part of disclosure."}
+ ],
+ quant:[
+  {t:" +  +  Exact version + date + system fingerprint",why:" 84%  51%=<br>Hosted models drift (one task's accuracy fell 84%→51% in three months); version + date are the reproducibility floor. A system fingerprint is the model's returned identifier — log it if available. <a href='https://arxiv.org/abs/2307.09009' target='_blank' rel='noopener'> ↗</a>"},
+  {t:"temperatureseedtop_p Parameters",why:"Settings change outputs a lot. Plainly: temperature = randomness, seed = a number that makes runs repeatable, top_p = sampling range. Set temperature=0 and record the seed where you can, but note seeds don't guarantee reproducibility on hosted APIs."},
+  {t:"/session Prompt design & run traces",why:"Prompt formatting alone can shift accuracy by tens of points; a trace is your full interaction/run log — keep it complete for auditability."},
+  {t:" Prefer open-weight, pinned models",why:"Open-weight = public parameters you can pin and release with your analysis for others to reproduce — something proprietary models can't. Prefer them when reproducibility matters."},
+  {t:" AI Validate against human judgement",why:"Check AI's classifications/labels by hand and report agreement — don't treat AI output as final."}
+ ],
+ mixed:[
+  {t:" Qualitative side",why:"For qualitative parts, follow the audit-trail practices above."},
+  {t:" Quantitative side",why:"For computational parts, follow the reproducibility items above."},
+  {t:" How you integrated the two",why:"Mixed-methods credibility rests on the integration logic — note what AI did on each side and how you joined them."}
+ ],
+ theory:[
+  {t:" Prompts & full conversation logs",why:"In interpretive work the reasoning process is the contribution; the log shows what's yours and where AI influenced it."},
+  {t:" AI Yours vs. AI-prompted",why:"Mark where AI offered a counterexample or alternate reading and how you accepted or rejected it — this protects authorship."},
+  {t:" Verify every citation",why:"AI fabricates plausible sources; check each one back to the original to confirm it exists and matches."}
+ ]
+};
+function recordsFor(ap){return BASE_RECORDS.concat(APPROACH_RECORDS[ap]||[]);}
+
+/* agent-specific records (appended when agent toggle is on) */
+const AGENT_RECORDS=[
+ {t:" Actions & access log",why:"What the agent did and what tools/data/sources it accessed — for agents the unit of disclosure is the action path, not just the output."},
+ {t:" +  Inspectable artifacts + verification hooks",why:"Plainly: a patch/diff is a line-by-line record of code changes; a verification hook is an automated test or consistency check. Keeping these is key to reproducible iteration."},
+ {t:"Oversight level",why:"Mark which steps you genuinely checked and which ran automatically; this closes the responsibility gap."},
+ {t:"novelty /  Novelty / originality check",why:"There are cases of plagiarism in AI-generated research; confirm the agent's ideas and text are original and traceable (provenance = traceable to a source)."}
+];
+
+/* field-aware note on AI text-polishing acceptance */
+const POLISH_NOTES={
+ writing:" AI AI Your field is <b>writing-centric</b>: prose often carries the scholarly contribution itself (voice, interpretation, argument), so AI polishing is more sensitive here than in STEM and needs careful disclosure. The test is always whether the content is correct and clear and the thinking is yours — not which tool polished the language.",
+ stem:"In STEM/applied fields prose mostly conveys results, so AI polishing is more readily accepted as a service — but still disclose. Note that AI detectors often misflag non-native writing as 'AI-generated', so review should focus on whether the content is correct and clear, not on which tool was used."
+};
+
+const PUBS={
+ nature:{name:"Nature / Springer Nature",where:"In Methods; elsewhere if no Methods",copyedit:"language copy-edit exempt",images:"No AI-generated images/video",prompts:"verbatim prompts not required",note:"stresses accountability & reproducibility",url:"https://www.nature.com/nature-portfolio/editorial-policies/ai"},
+ elsevier:{name:"Elsevier Cell Press",where:"a separate section before references (+ cover letter)",copyedit:"copy-edit exempt",images:"No AI images; Cell Press stricter",prompts:"verbatim prompts not required",note:"oversight, verify, disclose; appears in published work",url:"https://www.elsevier.com/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier"},
+ wiley:{name:"Wiley",where:"in Methods",copyedit:"—",images:"some limits",prompts:"detailed: software, provider, sometimes prompts",note:"authors retain full responsibility",url:"https://authors.wiley.com/ethics-guidelines/index.html"},
+ science:{name:"Science / AAAS",where:"acknowledgments & Methods",copyedit:"only grammar/spelling exempt",images:"restricted",prompts:"full prompt disclosure required",note:"Disclose in acknowledgments and Methods; the Methods must give the full prompt, tool and version; AI can't be an author; authors are accountable. Among the more demanding on detail (since Nov 2023 it allows AI-assisted use with full disclosure rather than banning it).",url:"https://www.science.org/content/page/science-journals-editorial-policies"},
+ plos:{name:"PLOS",where:"in Methods, with evaluation detail",copyedit:"—",images:"transparency encouraged; no explicit image ban",prompts:"—",note:"ensure accuracy & correct attribution",url:"https://journals.plos.org/plosone/s/ethical-publishing-practice"},
+ ieee:{name:"IEEE / ACM",where:"in Acknowledgments",copyedit:"—",images:"—",prompts:"—",note:"identify the AI system, affected sections, and level of use",url:"https://open.ieee.org/author-guidelines-for-artificial-intelligence-ai-generated-text/"},
+ tf:{name:"Taylor & Francis",where:"Methods or acknowledgments",copyedit:"copy-edit usually exempt",images:"—",prompts:"—",note:"allowed with disclosure; some journals limit to language",url:"https://taylorandfrancis.com/our-policies/ai-policy/"},
+ medical:{name:"ICMJE / JAMA / BMJ",where:"acknowledgments/Methods + the AI questions in the submission system",copyedit:"—",images:"—",prompts:"journal-dependent",note:"mandatory AI questions in the submission system; JAMA/BMJ require model name, version, manufacturer, and nature of content",url:"https://www.icmje.org/recommendations/browse/artificial-intelligence/"},
+ sage:{name:"SAGE",where:"Methods or acknowledgments",copyedit:"assistive AI needs no disclosure",images:"—",prompts:"—",note:"distinguishes assistive vs generative; flexible, less format guidance",url:"https://www.sagepub.com/journals/publication-ethics-policies/artificial-intelligence-policy"},
+ mdpi:{name:"MDPI",where:"Methods or acknowledgments",copyedit:"copy-edit usually exempt",images:"more permissive on AI visuals",prompts:"—",note:"Allowed with disclosure: AI-generated content must be described in Methods (how it was used) and noted at submission; basic language editing (grammar, punctuation, formatting) needs no disclosure; AI can't be an author and authors are accountable for all content",url:"https://www.mdpi.com/ethics"},
+ frontiers:{name:"Frontiers",where:"Methods or acknowledgments",copyedit:"copy-edit usually exempt",images:"covers text-to-image; disclose per policy",prompts:"—",note:"Allowed with disclosure; explicitly covers LLMs and text-to-image tools (DALL·E, Midjourney); AI-generated main text must be disclosed in the acknowledgments, and authors must verify all facts and citations",url:"https://www.frontiersin.org/guidelines/policies-and-publication-ethics"},
+ oup:{name:"Oxford Academic(OUP)",where:"cover letter AND Methods/Acknowledgments",copyedit:"—",images:"—",prompts:"—",note:"Books require an AI Use Declaration Form; AI can't be an author or perform primary authorial tasks; for journals, follow each journal's author guidelines",url:"https://academic.oup.com/pages/for-authors/books/author-use-of-artificial-intelligence"},
+ cup:{name:"Cambridge University Press",where:"disclose in the writing process",copyedit:"—",images:"—",prompts:"—",note:"AI can't be an author (accountability); rules mainly cover the writing process",url:"https://www.cambridge.org/core/services/authors/publishing-ethics/research-publishing-ethics-guidelines-for-journals/authorship-and-contributorship"},
+ emerald:{name:"Emerald",where:"flag any AI use in the paper",copyedit:"—",images:"prohibits AI-generated images",prompts:"—",note:"Stricter: any AI use must be flagged in the paper; using AI to generate an abstract or literature review is not permitted (it breaches authorship criteria); AI can't be an author",url:"https://www.emeraldgrouppublishing.com/publish-with-us/ethics-integrity/research-publishing-ethics"},
+ acs:{name:"ACS",where:"Acknowledgments (Methods for substantial use)",copyedit:"—",images:"disclose AI-generated images",prompts:"—",note:"AI can't be an author; disclose text/image AI use in the Acknowledgments (when and how), with substantial use in Methods; authors are accountable for all content; follows COPE",url:"https://researcher-resources.acs.org/publish/authorship_guidance_policies"},
+ apa:{name:"APA",where:"in Methods, and cite it",copyedit:"—",images:"—",prompts:"—",note:"disclose in Methods and cite; AI can\'t be author",url:"https://www.apa.org/pubs/journals/resources/publishing-tips/policy-generative-ai"},
+ other:{name:" / ",where:"usually Methods or acknowledgments",copyedit:"copy-edit often exempt",images:"many ban AI images",prompts:"journal-dependent",note:"once chosen, follow that publisher's author guidelines",url:""}
+};
+
+/* render activities filtered/ordered by field */
+function renderActivities(){
+  const list=ACTIVITIES;
+  $('#activities').innerHTML=list.map(a=>`
+    <label class="chk ${a.ban?'ban':''}"><input type="checkbox" value="${a.en}" data-id="${a.id}">
+      <span class="ct">${a.en}<span class="bound">${a.bound}</span></span></label>`).join('');
+}
+/* field-aware polishing note */
+function renderPolish(){
+  $('#polishNote').innerHTML='✍ Pure language editing usually needs no disclosure. Substantive rewriting, translation or changed meaning does, and it is more sensitive in writing-centric humanities and social science fields.';
+}
+/* method-aware ledger */
+const APPROACH_LABEL={qual:"qualitative",quant:"quantitative / computational",mixed:"mixed methods",theory:"theoretical / interpretive"};
+function renderLedger(){
+  const ap=$('#approach').value;
+  $('#ledgerBadge').textContent=APPROACH_LABEL[ap]||'keep as you go';
+  let rows=recordsFor(ap);
+  if($('#agent') && $('#agent').checked) rows=rows.concat(AGENT_RECORDS);
+  $('#ledgerRows').innerHTML=rows.map((r,i)=>`
+    <div class="lrow"><span class="num">${i+1}</span><span class="lt"><b>${r.t}</b><span class="why">${r.why}</span></span></div>`).join('');
+}
+
+/* render publisher rules */
+function renderPub(){
+  const p=PUBS[$('#pub').value]||PUBS.other;
+  const link=p.url?`<a href="${p.url}" target="_blank" rel="noopener">Official policy ↗</a>`:`<span style="color:#c8cde6;font-size:12.5px"></span>`;
+  $('#pubRules').innerHTML=`
+    <div class="pubcard ${p.strict?'strict':''}">
+      <div class="ph"><span>${p.name}</span>${link}</div>
+      ${p.strict?`<div class="strictwarn">⚠  AI </div>`:''}
+      <div class="pb">
+        <div class="prow"><span class="pk">Where</span><span>${p.where}</span></div>
+        <div class="prow"><span class="pk">Copy-edit</span><span>${p.copyedit}</span></div>
+        <div class="prow"><span class="pk">AI images</span><span>${p.images}</span></div>
+        <div class="prow"><span class="pk">Prompts</span><span>${p.prompts}</span></div>
+        <div class="prow"><span class="pk">Notes</span><span>${p.note}</span></div>
+      </div>
+    </div>`;
+}
+
+
+$('#approach').addEventListener('change',renderLedger);
+$('#agent').addEventListener('change',e=>{renderLedger();$('#agentCaution').classList.toggle('hide',!e.target.checked);});
+$('#pub').addEventListener('change',renderPub);
+
+renderActivities(); renderPolish(); renderLedger(); renderPub();
+
+
+/* ---------- init ---------- */
+buildTeacherForm();
+wireTeacher();
+
+renderStudent();  // standalone student form (no teacher link needed)
+
+(function bootFromUrl(){
+  const params=new URLSearchParams(location.search);
+  if(params.get('tab')==='student'){ setMode('student'); return; }
+  if(params.get('tab')==='researcher'){ setMode('researcher'); return; }
+  if(params.get('tab')==='creative'){ setMode('creative'); return; }
+  if(params.get('tab')==='frontier'){ setMode('frontier'); return; }
+  if(params.get('tab')==='pressure'){ setMode('pressure'); return; }
+  if(params.get('tab')==='gatekeep'){ setMode('gatekeep'); return; }
+  if(params.get('tab')==='faq'){ setMode('faq'); return; }
+  setMode('teacher');
+})();
+</script>
+</body>
+</html>
