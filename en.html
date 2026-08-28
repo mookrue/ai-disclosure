@@ -391,6 +391,17 @@
 .langswitch{position:absolute;top:2px;right:0;display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--ink-soft);cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s,color .15s;z-index:5}
 .langswitch:hover{background:var(--accent-wash);border-color:var(--accent);color:var(--accent-deep)}
 @media(max-width:520px){.langswitch{position:static;float:right;margin-bottom:8px}}
+.basisfold{margin:8px 0 2px;font-size:12.5px}
+.basisfold>summary{cursor:pointer;color:var(--ink-faint);list-style:none;display:inline-flex;align-items:center;gap:4px;user-select:none;font-weight:600}
+.basisfold>summary::-webkit-details-marker{display:none}
+.basisfold>summary::before{content:"▸";font-size:10px;transition:transform .15s}
+.basisfold[open]>summary::before{transform:rotate(90deg)}
+.basisfold>summary:hover{color:var(--accent-deep)}
+.basisfold[open]>summary{color:var(--ink-soft)}
+.bf-body{color:var(--ink-soft);line-height:1.65;padding:4px 0 2px 14px;border-left:2px solid var(--line)}
+.bf-body a{color:var(--accent-deep)}
+.reporterr{max-width:var(--maxw);margin:14px auto 4px;padding:0 20px;text-align:center;color:var(--ink-soft);font-size:14px}
+.reporterr a{color:var(--accent-deep);font-weight:600}
 </style>
 </head>
 <body>
@@ -437,6 +448,7 @@
       <p class="hint">Each level assesses something different. Levels 3–4 both require disclosure but differ in emphasis: 3 = collaboration, 4 = AI does most (judgement & verification matter).</p>
       <div class="ladder" id="tierLadder" role="radiogroup" aria-label="AI use level"></div>
       <div class="tiersum" id="tierSummary"></div>
+      <details class="basisfold"><summary>Basis</summary><div class="bf-body">Five-level permission scale: <a href="https://arxiv.org/abs/2412.09029" target="_blank" rel="noopener">AI Assessment Scale</a> (Perkins, Roe &amp; Furze)</div></details>
       <p class="hint faint" style="margin-top:8px">What students disclose (tool, use, what you did, verification) is the same at every level. The level sets how much AI is allowed and what's assessed, not the disclosure list.</p>
       <div class="explore-note">A further direction: <b>AI Exploration</b>. When the assignment itself is to explore or evaluate AI. It's not "more AI use" but a different kind of task, beyond the permission scale above. To develop toward it, pick Level 4 and steer students to say more in the "how you pushed back" part of their disclosure.</div>
     </div>
@@ -477,6 +489,7 @@
       <div class="btn-row">
         <button class="btn primary" id="genPolicy">Generate</button>
       </div>
+      <details class="basisfold"><summary>Basis</summary><div class="bf-body">Disclosure format and templates: <a href="https://www.monash.edu/student-academic-success/build-digital-capabilities/create-online/acknowledging-the-use-of-generative-artificial-intelligence" target="_blank" rel="noopener">Monash disclosure template</a> · <a href="https://tlconestoga.ca/describe-and-document-ai-use/" target="_blank" rel="noopener">Conestoga: logging AI use</a></div></details>
       <div id="teacherOut" class="hide">
         <div class="divider"></div>
         <div class="lab" style="font-weight:600;font-size:14.5px;margin-bottom:6px">Course rules (English)</div>
@@ -490,16 +503,17 @@
 
     <div class="card">
       <h2>How to read what students submit</h2>
-        <p class="lead">The tool helps students disclose, but how you read and respond matters just as much. Self-report can't be verified and detectors are unreliable. Honesty rests on safety, not policing. A few principles:</p>
+        <p class="lead">The tool helps students disclose, but how you read and respond matters just as much. Self-report can't be verified and detectors are unreliable. Honesty rests on safety, not policing. A few things that may help:</p>
         <ul class="guidelist">
-          <li>Read it as a window into process, not a confession.</li>
+          <li>You can read it as a window into how a student worked, rather than a confession.</li>
           <li>Verification and push-back are positive signals. Reward them.</li>
           <li>Match your assessment to the level: the more AI is allowed, the more you assess judgement and verification. Use oral checks or draft history rather than guessing which sentence is AI.</li>
           <li>Blank ≠ cheating; ask before assuming.</li>
-          <li>Avoid detectors: unreliable, unfair to non-native writers, and worse for trust.</li>
-          <li>When unsure, respond by conversation, not accusation.</li>
+          <li>Leaning on AI detectors isn't ideal: they're unreliable, unfair to non-native writers, and being flagged tends to harm trust more than disclosing would.</li>
+          <li>When you're unsure but can't prove it, a conversation works better than an accusation. You could ask the student to walk you through their process.</li>
           <li>Decouple disclosure from grades where you can.</li>
         </ul>
+      <details class="basisfold"><summary>Basis</summary><div class="bf-body">Assessment over detection, designed by departments and teachers: <a href="https://www.teqsa.gov.au/guides-resources/higher-education-good-practice-hub/gen-ai-knowledge-hub/gen-ai-academic-integrity-and-assessment-reform" target="_blank" rel="noopener">assessment design, TEQSA ↗</a> · <a href="https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use" target="_blank" rel="noopener">Princeton disclosure guide</a></div></details>
     </div>
   </section>
 
@@ -554,6 +568,7 @@
     <p class="hint">Categories and boundaries follow the STM publishers' 9 activities (2025). Tick what you might use. The ≠ line flags what doesn't count or is banned.</p>
     <div id="polishNote" class="principle" style="margin-top:12px"></div>
     <div class="checks" id="activities"></div>
+      <details class="basisfold"><summary>Basis</summary><div class="bf-body">Activity taxonomy: <a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT</a> (Suchikova et al.)</div></details>
   </div>
 
   <div class="card" style="border-color:var(--accent)">
@@ -671,14 +686,13 @@
   <details class="sources">
     <summary><span>2025–2026</span><span>▶</span></summary>
     <div class="inner">
-      Classification backbone: <a href="https://s3.eu-west-2.amazonaws.com/stm.offloadmedia/wp-content/uploads/2025/04/23020709/STM_AI_Classification_Recs_19_Sept2025-1.pdf" target="_blank" rel="noopener">STM's nine activity categories</a>(2025) · Whole-process delegation: <a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT</a>.<br> Publisher policies: <a href="https://www.nature.com/nature-portfolio/editorial-policies/ai" target="_blank" rel="noopener">Nature/Springer</a> · <a href="https://www.elsevier.com/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier" target="_blank" rel="noopener">Elsevier</a>(for the rest, see each publisher's author guide).<br> Qualitative disclosure and audit trail: <a href="https://journals.sagepub.com/doi/10.1177/16094069251404329" target="_blank" rel="noopener">Jones 2025: a 20-question disclosure heuristic</a> · <a href="https://journals.sagepub.com/doi/10.1177/14687941251390794" target="_blank" rel="noopener">technical reflexivity</a>.<br> Field differences (copy-editing): <a href="https://www.nature.com/articles/s41599-025-05351-4" target="_blank" rel="noopener">identity for non-native researchers</a>(HSS Communications 2025).<br> Reproducibility reporting: <a href="https://llm-guidelines.org" target="_blank" rel="noopener">guide to empirical LLM research</a> · Agentic science: <a href="https://arxiv.org/abs/2508.14111" target="_blank" rel="noopener">Agentic Science overview</a>.<br> Use under pressure: <a href="https://www.nature.com/articles/d41586-025-01180-2" target="_blank" rel="noopener">undisclosed AI traces</a>(Nature 2025) · <a href="https://cacm.acm.org/opinion/hidden-prompts-in-manuscripts-exploit-ai-assisted-peer-review/" target="_blank" rel="noopener">gaming AI review</a>(CACM) · evidence that automation bias grows under time pressure.<br> Funders: <a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-25-132.html" target="_blank" rel="noopener">NIH</a> · <a href="https://www.ukri.org/publications/generative-artificial-intelligence-in-application-and-assessment-policy/" target="_blank" rel="noopener">UKRI</a> · <a href="https://wellcome.org/research-funding/guidance/policies-grant-conditions/use-of-generative-ai" target="_blank" rel="noopener">Wellcome</a> · <a href="https://www.ey.gov.tw/Page/448DE008087A1971/40c1a925-121d-4b6b-8f40-7e9e1a5401f2" target="_blank" rel="noopener">Taiwan Executive Yuan guide</a> · <a href="https://www.nstc.gov.tw/folksonomy/detail/d21566a0-3465-4b63-84b7-5d7cb2e1e5ff?l=ch" target="_blank" rel="noopener">Taiwan NSTC FAQ</a>. Publisher official policies (links in each card in step 4): Nature, Elsevier, Wiley, Science, PLOS, IEEE, T&amp;F.<br> Chinese-language academia: <a href="https://sub.daais.sinica.edu.tw/download/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95.pdf" target="_blank" rel="noopener">Academia Sinica guide</a> · <a href="https://xuebao.zjhu.edu.cn/2024/1011/c2751a223187/page.htm" target="_blank" rel="noopener">AIGC publishing guide 2.0 (Sept 2024)</a>(China) · <a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">China MOST: responsible research guidelines (2023)</a>.<br>
+      Classification backbone: <a href="https://s3.eu-west-2.amazonaws.com/stm.offloadmedia/wp-content/uploads/2025/04/23020709/STM_AI_Classification_Recs_19_Sept2025-1.pdf" target="_blank" rel="noopener">STM's nine activity categories</a>(2025) · Whole-process delegation: <a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT</a>.<br> Publisher policies: <a href="https://www.nature.com/nature-portfolio/editorial-policies/ai" target="_blank" rel="noopener">Nature/Springer</a> · <a href="https://www.elsevier.com/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier" target="_blank" rel="noopener">Elsevier</a>(for the rest, see each publisher's author guide).<br> Qualitative disclosure and audit trail: <a href="https://journals.sagepub.com/doi/10.1177/16094069251404329" target="_blank" rel="noopener">Jones 2025: a 20-question disclosure heuristic</a> · <a href="https://journals.sagepub.com/doi/10.1177/14687941251390794" target="_blank" rel="noopener">technical reflexivity</a>.<br> Field differences (copy-editing): <a href="https://www.nature.com/articles/s41599-025-05351-4" target="_blank" rel="noopener">identity for non-native researchers</a>(HSS Communications 2025).<br> Reproducibility reporting: <a href="https://llm-guidelines.org" target="_blank" rel="noopener">guide to empirical LLM research</a> · Agentic science: <a href="https://arxiv.org/abs/2508.14111" target="_blank" rel="noopener">Agentic Science overview</a>.<br> Use under pressure: <a href="https://www.nature.com/articles/d41586-025-01180-2" target="_blank" rel="noopener">undisclosed AI traces</a>(Nature 2025) · <a href="https://cacm.acm.org/opinion/hidden-prompts-in-manuscripts-exploit-ai-assisted-peer-review/" target="_blank" rel="noopener">gaming AI review</a>(CACM) · evidence that automation bias grows under time pressure.<br> Funders: <a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-25-132.html" target="_blank" rel="noopener">NIH</a> · <a href="https://www.ukri.org/publications/generative-artificial-intelligence-in-application-and-assessment-policy/" target="_blank" rel="noopener">UKRI</a> · <a href="https://wellcome.org/research-funding/guidance/policies-grant-conditions/use-of-generative-ai" target="_blank" rel="noopener">Wellcome</a> · <a href="https://www.ey.gov.tw/Page/448DE008087A1971/40c1a925-121d-4b6b-8f40-7e9e1a5401f2" target="_blank" rel="noopener">Taiwan Executive Yuan guide</a> · <a href="https://www.nstc.gov.tw/folksonomy/detail/d21566a0-3465-4b63-84b7-5d7cb2e1e5ff?l=ch" target="_blank" rel="noopener">Taiwan NSTC FAQ</a>. Publisher official policies (links in each card in step 4): Nature, Elsevier, Wiley, Science, PLOS, IEEE, T&amp;F.<br> Chinese-language academia: <a href="https://sub.daais.sinica.edu.tw/download/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95.pdf" target="_blank" rel="noopener">Academia Sinica guide</a> · <a href="https://www.istic.ac.cn/html/1/284/338/2149891904917733076.html" target="_blank" rel="noopener">AIGC publishing guide 2.0 (Sept 2024)</a>(China) · <a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">China MOST: responsible research guidelines (2023)</a>.<br>
       The "which records to keep" gap draws on A Faceted Proposal for Transparent Attribution (2026). Most policies do not say clearly whether prompts, logs, model versions, and intermediate drafts should be kept.
     </div>
   </details>
 
   <div class="disclaimer">A reference for planning and disclosing AI use, not a mandate. Always defer to your target journal's current author guidelines. Policies change fast.
   </div>
-  <div class="footnote">Runs entirely in your browser. Nothing is uploaded. · Free to fork and adapt.</div>
 
   </section>
 
@@ -791,7 +805,7 @@
       <div class="fpoint"><div class="fh">Spotting fake news</div>
         <p>Reverse image search (Google Lens, TinEye) to catch recycled photos; check Content Credentials for AI origin; use lateral reading (SIFT: Stop, Investigate the source, Find other coverage, Trace to the original); treat AI as a helper not a judge. It also fabricates, so verify everything. Deepfake detectors are unreliable. Don't rely on them alone. Fluent and polished does not mean true.</p></div>
       <div class="fpoint warn"><div class="fh">Spotting research misconduct</div>
-        <p>For teachers, editors, reviewers, and for checking your own work: AI image tools (Proofig, ImageTwin, FigCheck) flag duplicated/manipulated figures (used by Science, AACR, ASM) as a first screen, not a verdict; the Problematic Paper Screener and Papermill Alarm catch "tortured phrases" from machine paraphrasing; check every reference actually exists and look it up on Retraction Watch; see PubPeer for post-publication concerns. Detectors flag "suspicious," not "guilty". Stay skeptical and cross-check. <a href="https://www.the-scientist.com/detection-or-deception-the-double-edged-sword-of-ai-in-research-misconduct-72354" target="_blank" rel="noopener">Overview ↗</a></p></div>
+        <p>For teachers, editors, reviewers, and for checking your own work: AI image tools (Proofig, ImageTwin, FigCheck) flag duplicated/manipulated figures (used by Science, AACR, ASM) as a first screen, not a verdict; the Problematic Paper Screener and Papermill Alarm catch "tortured phrases" from machine paraphrasing; check every reference actually exists and look it up on <a href="https://retractionwatch.com/" target="_blank" rel="noopener">Retraction Watch</a> — its retraction database (open via Crossref, updated daily) now has "Computer-Aided/Generated Content" and "Hoax Paper" categories, so you can check a single paper and track AI-driven retractions; see PubPeer for post-publication concerns. Detectors flag "suspicious," not "guilty". Stay skeptical and cross-check. <a href="https://www.the-scientist.com/detection-or-deception-the-double-edged-sword-of-ai-in-research-misconduct-72354" target="_blank" rel="noopener">Overview ↗</a></p></div>
       <p class="hint faint" style="margin-top:12px">The common rule: tools flag "suspicious," they don't decide "guilty." Stay skeptical and cross-check.</p>
     </div>
 
@@ -1058,30 +1072,30 @@
   <details class="sources" id="aboutSources">
     <summary><span>why you can trust this, and how to adapt it</span><span class="chev">▶</span></summary>
     <div class="inner">
-      <p class="lead">This tool was put together by NCCU Library as a <b>reference</b> (not a mandate), to be used alongside the <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener"><b>NCCU Library AI use guide</b></a>. The table below lists only the <b>key sources that actually shaped the design and are kept current (2025–2026)</b>; AI moves fast, so links point to the latest concepts and practice. The rules that apply to you are those of your institution, department, and course instructor.</p>
+      <p class="lead">This tool was put together by NCCU Library as a <b>reference</b> (not a mandate), to be used alongside the <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener"><b>NCCU Library AI use guide</b></a>. The basis for each design element is now shown in a "Basis" fold next to the relevant field; this section only adds the remaining reference sources. AI moves fast, so links point to the latest concepts and practice. The rules that apply to you are those set by your institution, department and course teacher.</p>
       <div class="mapgrid">
-        <div class="maprow"><div class="mapwhat">Five-level permission scale (neutral, not a traffic light)</div><div class="mapsrc"><a href="https://arxiv.org/abs/2412.09029" target="_blank" rel="noopener">AI Assessment Scale</a>. Perkins, Roe &amp; Furze</div></div>
-        <div class="maprow"><div class="mapwhat">43 task-disclosure items</div><div class="mapsrc"><a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT taxonomy</a> (Suchikova et al.), as used by the CUNY AI Lab tool</div></div>
-        <div class="maprow"><div class="mapwhat">Disclosure output format, teacher self-disclosure, templates</div><div class="mapsrc"><a href="https://www.monash.edu/student-academic-success/build-digital-capabilities/create-online/acknowledging-the-use-of-generative-artificial-intelligence" target="_blank" rel="noopener">Monash disclosure template</a> · <a href="https://tlconestoga.ca/describe-and-document-ai-use/" target="_blank" rel="noopener">Conestoga: logging AI use</a>(2025)</div></div>
-        <div class="maprow"><div class="mapwhat">Three-step verification ladder, non-punitive pledge</div><div class="mapsrc"><a href="https://www.sciencedirect.com/science/article/pii/S0749597825000172" target="_blank" rel="noopener">the disclosure-trust paradox</a>(Schilke &amp; Reimann)· <a href="https://www.tandfonline.com/doi/full/10.1080/02602938.2024.2415654" target="_blank" rel="noopener">why students under-disclose (study)</a></div></div>
-        <div class="maprow"><div class="mapwhat">The "challenge / improve AI" field</div><div class="mapsrc"><a href="https://arxiv.org/pdf/2605.05472" target="_blank" rel="noopener">teaching with AI mistakes</a> (Hosseini) and related critical AI-literacy research</div></div>
-        <div class="maprow"><div class="mapwhat">AI-agent disclosure (actions, level of oversight, run log, accountability)</div><div class="mapsrc"><a href="https://ascode.osu.edu/news/agentic-ai-higher-education" target="_blank" rel="noopener">Agentic AI in Higher Education</a>(2025) · responsibility-gap and provenance research</div></div>
-        <div class="maprow"><div class="mapwhat">Courses and assessment are set by teachers and departments; detection is unreliable, so the focus is on protecting learning</div><div class="mapsrc"><a href="https://www.teqsa.gov.au/guides-resources/higher-education-good-practice-hub/gen-ai-knowledge-hub/gen-ai-academic-integrity-and-assessment-reform" target="_blank" rel="noopener">TEQSA assessment reform</a>(2025–26)· <a href="https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use" target="_blank" rel="noopener">Princeton disclosure guide</a></div></div>
+        
+        
+        
+        
+        
+        
+        
         <div class="maprow"><div class="mapwhat">Citation format</div><div class="mapsrc"><a href="https://style.mla.org/citing-generative-ai-updated-revised/" target="_blank" rel="noopener">MLA</a> · <a href="https://apastyle.apa.org/blog/cite-generative-ai-references" target="_blank" rel="noopener">APA</a> · Chicago 18 §14.112</div></div>
         <div class="maprow"><div class="mapwhat">Profile = method shape (not department)</div><div class="mapsrc">Adapted from Biglan (1973) and Becher &amp; Trowler's hard↔soft continuum</div></div>
       </div>
       <p class="lead" style="margin-top:14px">2026 updates: ICMJE revised its recommendations in Jan 2026; Elsevier updated its journal generative-AI policies in Aug 2026; Wikipedia banned AI-generated content in 2026.</p>
-      <div class="selfdisc">Conceived and directed by NCCU Library, this site was built with help from Claude Opus 4.8 (drafting content, writing code, finding sources). All sources, policies and cases were human-checked; design choices and the final version are the library's own. We disclose this so the tool itself is a working example of honest AI-use disclosure.</div>
     </div>
   </details>
 
   <div class="disclaimer" id="sharedDisclaimer">Offered by the NCCU Library as a reference, not a mandate. Your college, department, and course policies govern; your instructor's course rule always takes precedence. Adapt before use.
   </div>
-  <div class="footnote" id="sharedFootnote">Runs entirely in your browser. Nothing is uploaded or stored. · Free to fork and adapt.
-  </div>
 </div>
 
-<div class="toast" id="toast"></div>
+
+  <div class="reporterr">📮 Spotted an error on this site? We'd be glad to hear from you: <a href="mailto:libnews@nccu.edu.tw">libnews@nccu.edu.tw</a></div>
+  <div class="selfdisc">Conceived and directed by NCCU Library, this site was built with help from Claude Opus 4.8 (drafting content, writing code, finding sources). All sources, policies and cases were human-checked; design choices and the final version are the library's own. We disclose this so the tool itself is a working example of honest AI-use disclosure.</div>
+  <div class="toast" id="toast"></div>
 
 <script>
 function switchLang(){
@@ -1329,10 +1343,12 @@ function renderStudent(){
       <div class="checks grouped" id="sClusters">
         <label class="chk light"><input type="checkbox" value="__light__"><span class="ct">/Only light, general help — explained below</span></label>
         <div id="sClusterGroups"></div>
+      <details class="basisfold"><summary>Basis</summary><div class="bf-body">Disclosure-item taxonomy: <a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT</a> (Suchikova et al.)</div></details>
       </div>
     </div>
     <details class="card optional" id="agentDetails">
       <summary> AI agent  · Did you use an AI agent that works in many steps by itself? Most people can skip this.<span class="advchev">▶</span></summary>
+      <details class="basisfold"><summary>Basis</summary><div class="bf-body">Agentic-AI disclosure: <a href="https://ascode.osu.edu/news/agentic-ai-higher-education" target="_blank" rel="noopener">Agentic AI in Higher Education</a> (OSU)</div></details>
       <div class="optbody">
       <div id="agentBlock" class="agentbox">
         <div class="opthead" style="font-size:15px">AI agent Agentic AI use</div>
@@ -1369,6 +1385,7 @@ function renderStudent(){
           <label class="vstep"><input type="checkbox" id="v3"><span><b>Level 3 · Supports</b>: the source really backs the point I use it for</span></label>
           <label class="vstep none"><input type="checkbox" id="v0"><span>/No external sources needing verification this time</span></label>
         </div>
+      <details class="basisfold"><summary>Basis</summary><div class="bf-body">Verification ladder and non-punitive pledge: <a href="https://www.sciencedirect.com/science/article/pii/S0749597825000172" target="_blank" rel="noopener">disclosure-trust study ↗</a> (Schilke &amp; Reimann) · <a href="https://www.tandfonline.com/doi/full/10.1080/02602938.2024.2415654" target="_blank" rel="noopener">why students under-disclose ↗</a></div></details>
         <label class="field"><span class="sublab" style="margin-top:10px">· One example (optional, but persuasive)</span>
           <input type="text" id="sVerifyEg" placeholder="AI 3 1 1 "></label>
         <details class="vmore">
@@ -1397,6 +1414,7 @@ function renderStudent(){
             <label class="chk"><input type="checkbox" value=" AI "><span class="ct">I rejected AI's suggestion, used my own judgement</span></label>
             <label class="chk"><input type="checkbox" value=""><span class="ct">I compared tools/versions and decided myself</span></label>
           </div>
+          <details class="basisfold"><summary>Basis</summary><div class="bf-body">Critical AI literacy: <a href="https://arxiv.org/pdf/2605.05472" target="_blank" rel="noopener">teaching with AI mistakes</a> (Hosseini)</div></details>
           <label class="field"><span class="sublab" style="margin-top:10px">One concrete example (optional, the most valuable)</span>
             <textarea id="sChallengeEg" placeholder="AI "></textarea></label>
           <div class="mapnote">Grounded in the "pedagogy of AI mistakes" &amp; critical AI-literacy research. <a href="https://arxiv.org/pdf/2605.05472" target="_blank" rel="noopener">Hosseini 2026</a></div>
@@ -1557,7 +1575,7 @@ function setMode(m){
   $('#faqView').classList.toggle('hide',!isF);
   document.querySelectorAll('.navrow').forEach(r=>r.classList.toggle('active', r.dataset.mode===m));
   const hideShared = isR || isF || isX || isP || isC || isG;
-  ['#aboutSources','#sharedDisclaimer','#sharedFootnote'].forEach(id=>{const e=$(id); if(e) e.classList.toggle('hide',hideShared);});
+  ['#aboutSources','#sharedDisclaimer'].forEach(id=>{const e=$(id); if(e) e.classList.toggle('hide',hideShared);});
   window.scrollTo({top:0,behavior:'smooth'});
 }
 

@@ -391,6 +391,17 @@
 .langswitch{position:absolute;top:2px;right:0;display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--ink-soft);cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s,color .15s;z-index:5}
 .langswitch:hover{background:var(--accent-wash);border-color:var(--accent);color:var(--accent-deep)}
 @media(max-width:520px){.langswitch{position:static;float:right;margin-bottom:8px}}
+.basisfold{margin:8px 0 2px;font-size:12.5px}
+.basisfold>summary{cursor:pointer;color:var(--ink-faint);list-style:none;display:inline-flex;align-items:center;gap:4px;user-select:none;font-weight:600}
+.basisfold>summary::-webkit-details-marker{display:none}
+.basisfold>summary::before{content:"▸";font-size:10px;transition:transform .15s}
+.basisfold[open]>summary::before{transform:rotate(90deg)}
+.basisfold>summary:hover{color:var(--accent-deep)}
+.basisfold[open]>summary{color:var(--ink-soft)}
+.bf-body{color:var(--ink-soft);line-height:1.65;padding:4px 0 2px 14px;border-left:2px solid var(--line)}
+.bf-body a{color:var(--accent-deep)}
+.reporterr{max-width:var(--maxw);margin:14px auto 4px;padding:0 20px;text-align:center;color:var(--ink-soft);font-size:14px}
+.reporterr a{color:var(--accent-deep);font-weight:600}
 </style>
 </head>
 <body>
@@ -437,22 +448,22 @@
       <p class="hint">每一層評的能力不同，沒有哪一層比較「進步」或「保守」。選一層作為本課預設。層級三、四都要學生揭露，差別在<b>重點</b>：三=協作、四=AI 做大部分（重判斷與查證）。</p>
       <div class="ladder" id="tierLadder" role="radiogroup" aria-label="AI 使用層級"></div>
       <div class="tiersum" id="tierSummary"></div>
+      <details class="basisfold"><summary>依據</summary><div class="bf-body">五層級權限量表：<a href="https://arxiv.org/abs/2412.09029" target="_blank" rel="noopener">AI Assessment Scale</a>(Perkins, Roe &amp; Furze)</div></details>
       <p class="hint faint" style="margin-top:8px">學生要揭露的項目（工具、用途、你做了什麼、查證）<b>各層都一樣</b>；層級決定的是「<b>AI 允許到哪</b>」和「<b>評什麼能力</b>」，不是揭露清單。</p>
       <div class="explore-note">✦ <b>還有一個更進階的方向：AI 探索（Exploration）。</b>當作業本身就是要<b>探索或評估 AI</b>（例如比較不同模型、批判 AI 的侷限、以 AI 為對象的實驗或反思），那是超出上面權限刻度的特殊設計。它不是「用更多 AI」，而是換一種作業。若你想往這裡發展，選層級四、並在給學生的說明裡引導他們在揭露的「挑戰/改進 AI」多著墨。</div>
     </div>
 
     <div class="card">
       <h2><span class="step-n">3</span> 這份作業的取向</h2>
-      <p class="hint">決定學生看到哪些「任務」選項。請<b>依這份作業的性質、而非科系</b>選擇。<b>可複選</b>。教統計/理工記得改這裡，否則學生會看到人文的清單。</p>
+      <p class="hint">決定學生看到哪些「任務」選項。請<b>依這份作業的性質、而非科系</b>選擇。<b>可複選</b>。教統計/理工可以改這裡，學生就會看到對應領域的清單。</p>
       <div class="checks" id="tProfiles"></div>
-      <p class="hint faint" style="margin-top:8px">這裡用「研究方法的輪廓」來分，不是用科系分，這樣跨領域的研究也放得進來。<br>These group by research method rather than department, so interdisciplinary work fits too.</p>
+      <p class="hint faint" style="margin-top:8px">這裡用「研究方法的輪廓」來分，不是用科系分，這樣跨領域的研究也放得進來。</p>
     </div>
 
     <div class="card">
       <h2><span class="step-n">4</span> 給學生的承諾</h2>
       <p class="hint">這是整個工具最重要的一欄，也會顯示在學生頁面最上方。研究顯示，學生隱瞞 AI 使用多半是理性的自保，除非誠實是安全的。這句話讓誠實變安全。</p>
-      <label class="field"><textarea id="tPromise">誠實揭露 AI 使用不會讓你被扣分。我把它當作理解你學習歷程的方式，而不是抓錯。有疑問時，寧可多寫一句，我們再一起討論。
-Honestly disclosing your AI use won't cost you marks. I read it as a way to understand your learning, not to catch you out. When in doubt, write one extra line and we'll talk it through.</textarea></label>
+      <label class="field"><textarea id="tPromise">誠實揭露 AI 使用不會讓你被扣分。我把它當作理解你學習歷程的方式，而不是抓錯。有疑問時，寧可多寫一句，我們再一起討論。</textarea></label>
     </div>
 
     <details class="advanced">
@@ -478,6 +489,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
       <div class="btn-row">
         <button class="btn primary" id="genPolicy">產生</button>
       </div>
+      <details class="basisfold"><summary>依據</summary><div class="bf-body">揭露格式與範本：<a href="https://www.monash.edu/student-academic-success/build-digital-capabilities/create-online/acknowledging-the-use-of-generative-artificial-intelligence" target="_blank" rel="noopener">Monash 揭露範本</a> · <a href="https://tlconestoga.ca/describe-and-document-ai-use/" target="_blank" rel="noopener">Conestoga 記錄 AI 使用</a></div></details>
       <div id="teacherOut" class="hide">
         <div class="divider"></div>
         <div class="lab" style="font-weight:600;font-size:14.5px;margin-bottom:6px">課程規則說明</div>
@@ -491,16 +503,17 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
 
     <div class="card">
       <h2>怎麼看學生交來的揭露</h2>
-        <p class="lead">工具幫學生產出揭露，但怎麼讀、怎麼回應同樣重要。研究一致指出：自陳制無法查證、偵測工具不可靠，誠實仰賴的是安全感而非稽查。幾個原則：</p>
+        <p class="lead">工具幫學生產出揭露，但怎麼讀、怎麼回應同樣重要。研究一致指出：自陳制無法查證、偵測工具不可靠，誠實多半來自安全感，而不是稽查。以下提供幾個參考的方向：</p>
         <ul class="guidelist">
-          <li><b>用理解歷程的眼光，不是抓錯。</b>揭露是了解學生怎麼工作的窗口，不是自白書。</li>
+          <li><b>可以把它當成理解學生歷程的窗口。</b>揭露是了解學生怎麼工作的一扇窗，不是自白書。</li>
           <li><b>把查證階梯與「挑戰/改進 AI」欄當作正面訊號。</b>勾到第 3 層、或寫得出自己否決了 AI 什麼，是判斷力的證據，值得肯定。</li>
           <li><b>依你選的層級，用合適的方式看作業。</b>層級越高（AI 做越多），越把評分放在「你自己做了什麼、怎麼判斷與查證」；必要時用口頭確認、看草稿版本史，而不是猜哪句是 AI 寫的。</li>
           <li><b>空白不等於作弊。</b>可能是輕度使用或不確定；必要時問一句，而不是預設有問題。</li>
-          <li><b>不要用 AI 偵測器。</b>它不可靠、對非母語者不公，而且研究顯示「被偵測抓到」比主動揭露更傷師生信任。</li>
-          <li><b>懷疑但無法證明時，用對話回應。</b>請學生說明歷程，不要直接指控，這樣也保護了那些誠實的人。</li>
+          <li><b>AI 偵測器不太建議依賴。</b>它不夠可靠、對非母語者也不太公平，而且研究顯示「被偵測抓到」往往比主動揭露更傷師生信任。</li>
+          <li><b>懷疑但無法證明時，不妨用對話代替指控。</b>可以請學生聊聊他的歷程，而不是直接指控，這樣也保護了那些誠實的人。</li>
           <li><b>揭露不必然影響成績。</b>除非你的層級明訂；把揭露與評分脫鉤，最能鼓勵誠實。</li>
         </ul>
+      <details class="basisfold"><summary>依據</summary><div class="bf-body">評量重於偵測、由院系與教師設計：<a href="https://www.teqsa.gov.au/guides-resources/higher-education-good-practice-hub/gen-ai-knowledge-hub/gen-ai-academic-integrity-and-assessment-reform" target="_blank" rel="noopener">評量設計 TEQSA ↗</a>· <a href="https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use" target="_blank" rel="noopener">Princeton 揭露指引</a></div></details>
     </div>
   </section>
 
@@ -549,7 +562,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
       <div class="principle" style="margin-top:10px">
       <b>中文學術圈的規範 / Chinese-language academia.</b> 上表以英文出版社為主；中文學術界多透過<b>機構與學會指引</b>規範，原則與國際一致：不掛名、須揭露實質使用、人負全責、不得捏造引用、審稿勿上傳 AI。<br>
       <b>台灣：</b><a href="https://sub.daais.sinica.edu.tw/download/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95.pdf" target="_blank" rel="noopener">中央研究院《使用生成式 AI 之參考指引》</a>、臺灣學術倫理教育學會《人工智慧技術對學術倫理的影響及因應建議》、國科會參考指引、成大/陽明交大校級指引。<br>
-      <b>中國大陸：</b><a href="https://xuebao.zjhu.edu.cn/2024/1011/c2751a223187/page.htm" target="_blank" rel="noopener">中國科學技術信息研究所《學術出版中 AIGC 使用邊界指南 2.0》（2024 年 9 月）</a>（出版界共識，類似 STM）、<a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">科技部《負責任研究行為規範指引（2023）》（2023-12-21 發布）</a>、中國科學院誠信提醒、中華醫學會規定；並普遍使用 <b>AIGC 偵測</b>（知網/萬方/維普，部分期刊疑似比逾 20% 退稿）。這跟西方「重評量、不靠偵測」的方向不太一樣。
+      <b>中國大陸：</b><a href="https://www.istic.ac.cn/html/1/284/338/2149891904917733076.html" target="_blank" rel="noopener">中國科學技術信息研究所《學術出版中 AIGC 使用邊界指南 2.0》（2024 年 9 月）</a>（出版界共識，類似 STM）、<a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">科技部《負責任研究行為規範指引（2023）》（2023-12-21 發布）</a>、中國科學院誠信提醒、中華醫學會規定；並普遍使用 <b>AIGC 偵測</b>（知網/萬方/維普，部分期刊疑似比逾 20% 退稿）。這跟西方「重評量、不靠偵測」的方向不太一樣。
       </div></details>
   </div>
 
@@ -558,6 +571,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
     <p class="hint">分類與邊界取自 STM 出版商協會的九類活動（2025）。勾選你（可能）會用到的。邊界那行（≠）幫你判斷哪些其實不算、或被禁止。</p>
     <div id="polishNote" class="principle" style="margin-top:12px"></div>
     <div class="checks" id="activities"></div>
+      <details class="basisfold"><summary>依據</summary><div class="bf-body">活動分類：<a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT</a>(Suchikova et al.)</div></details>
   </div>
 
   <div class="card" style="border-color:var(--accent)">
@@ -573,7 +587,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
     </details>
     <label class="chk agenttoggle" style="margin-top:14px"><input type="checkbox" id="agent"><span class="ct">我（可能）會用到<b>會自主多步驟執行或採取行動的 AI agent</b>（如 deep research、coding agent、自動化實驗/分析）</span></label>
     <div id="agentCaution" class="hide agentcaution">
-      <b>代理式 AI 改變了該留存的東西：</b>單位從「輸出」變成「行動路徑」。它自己跑很多步驟、你未必看得到中間。上方紀錄本已為你加入 agent 專屬項目。兩個提醒：<b>（1) 可複製性</b>：代理式研究常因中間資訊缺漏而無法重現，務必留下可檢視的產物與軌跡；<b>（2) 你仍為 agent 的產出與行動負全責</b>，且已有「AI 生成研究抄襲」的案例，原創性要自行查核。
+      <b>代理式 AI 改變了該留存的東西：</b>單位從「輸出」變成「行動路徑」。它自己跑很多步驟、你未必看得到中間。上方紀錄本已為你加入 agent 專屬項目。兩個提醒：<b>（1）可複製性</b>：代理式研究常因中間資訊缺漏而無法重現，務必留下可檢視的產物與軌跡；<b>（2）你仍為 agent 的產出與行動負全責</b>，且已有「AI 生成研究抄襲」的案例，原創性要自行查核。
     </div>
     <div class="teamnote">👥 <b>共同作者/團隊：</b>投稿前和所有共同作者對齊揭露內容（每個人用了什麼、由誰查證）。若你是 PI，可用這套紀錄慣例讓實驗室與學生從一開始就一致地留紀錄。</div>
   </div>
@@ -676,7 +690,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
   </div>
 
   <details class="sources">
-    <summary><span>依據與連結 · Sources</span><span>▶</span></summary>
+    <summary><span>依據與連結</span><span>▶</span></summary>
     <div class="inner">
       分類骨幹：<a href="https://s3.eu-west-2.amazonaws.com/stm.offloadmedia/wp-content/uploads/2025/04/23020709/STM_AI_Classification_Recs_19_Sept2025-1.pdf" target="_blank" rel="noopener">STM 九類活動分類</a>（2025）· 研究全流程委派：<a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT</a>。<br>
       出版社政策：<a href="https://www.nature.com/nature-portfolio/editorial-policies/ai" target="_blank" rel="noopener">Nature/Springer</a> · <a href="https://www.elsevier.com/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier" target="_blank" rel="noopener">Elsevier</a>（其餘請查各社作者指南）。<br>
@@ -685,7 +699,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
       可複製性報告：<a href="https://llm-guidelines.org" target="_blank" rel="noopener">LLM 實證研究指引</a> · 代理式科研：<a href="https://arxiv.org/abs/2508.14111" target="_blank" rel="noopener">Agentic Science 綜述</a>。<br>
       壓力下的使用：<a href="https://www.nature.com/articles/d41586-025-01180-2" target="_blank" rel="noopener">未揭露 AI 痕跡</a>（Nature 2025）· <a href="https://cacm.acm.org/opinion/hidden-prompts-in-manuscripts-exploit-ai-assisted-peer-review/" target="_blank" rel="noopener">操縱 AI 審查</a>（CACM）· automation bias 在時間壓力下被放大的實證。<br>
       補助機構：<a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-25-132.html" target="_blank" rel="noopener">NIH</a> · <a href="https://www.ukri.org/publications/generative-artificial-intelligence-in-application-and-assessment-policy/" target="_blank" rel="noopener">UKRI</a> · <a href="https://wellcome.org/research-funding/guidance/policies-grant-conditions/use-of-generative-ai" target="_blank" rel="noopener">Wellcome</a> · <a href="https://www.ey.gov.tw/Page/448DE008087A1971/40c1a925-121d-4b6b-8f40-7e9e1a5401f2" target="_blank" rel="noopener">行政院參考指引</a> · <a href="https://www.nstc.gov.tw/folksonomy/detail/d21566a0-3465-4b63-84b7-5d7cb2e1e5ff?l=ch" target="_blank" rel="noopener">國科會 FAQ</a>。出版社官方政策（第 4 步各卡內連結）：Nature、Elsevier、Wiley、Science、PLOS、IEEE、T&amp;F。<br>
-      中文學術圈：<a href="https://sub.daais.sinica.edu.tw/download/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95.pdf" target="_blank" rel="noopener">中央研究院指引</a> · <a href="https://xuebao.zjhu.edu.cn/2024/1011/c2751a223187/page.htm" target="_blank" rel="noopener">學術出版 AIGC 使用邊界指南 2.0（2024 年 9 月）</a>（中國）· <a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">中國科技部《負責任研究行為規範指引（2023）》</a>。<br>
+      中文學術圈：<a href="https://sub.daais.sinica.edu.tw/download/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95.pdf" target="_blank" rel="noopener">中央研究院指引</a> · <a href="https://www.istic.ac.cn/html/1/284/338/2149891904917733076.html" target="_blank" rel="noopener">學術出版 AIGC 使用邊界指南 2.0（2024 年 9 月）</a>（中國）· <a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">中國科技部《負責任研究行為規範指引（2023）》</a>。<br>
       「該保留哪些紀錄」的缺口參酌 A Faceted Proposal for Transparent Attribution（2026）。政策多半沒講清楚提示、log、模型版本、中間草稿是否留存。
     </div>
   </details>
@@ -693,7 +707,6 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
   <div class="disclaimer">
     <b>關於這個工具 / About.</b> 由政治大學圖書館整理，作為研究者規劃與揭露 AI 使用的<b>參考</b>，非強制。<b>投稿前務必以目標期刊/出版社的現行作者指南為準；政策變動快，本整理僅供起步規劃。</b> 更多 AI 使用方式說明請參考 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener">政大圖書館 AI 使用指引</a>。
   </div>
-  <div class="footnote">完全在你的瀏覽器裡執行，不會上傳或儲存任何內容。 · 可自由 fork 修改。</div>
 
   </section>
 
@@ -794,7 +807,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
         · <a href="https://support.google.com/youtube/answer/14328491?hl=en" target="_blank" rel="noopener">YouTube 官方：如何揭露 AI 內容</a><br>
         · <a href="https://www.artforum.com/news/getty-images-bans-ai-generated-content-over-legal-concerns-252131/" target="_blank" rel="noopener">Artforum:Getty 全面禁止 AI 生成內容</a><br>
         · <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener">歐盟 AI 法案第 50 條（透明義務）</a> · <a href="https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content" target="_blank" rel="noopener">歐盟官方：AI 內容標示行為準則</a><br>
-        · <a href="https://c2pa.org/" target="_blank" rel="noopener">C2PA:內容來源憑證標準</a><br>
+        · <a href="https://c2pa.org/" target="_blank" rel="noopener">C2PA：內容來源憑證標準</a><br>
         · <a href="https://www.bbc.com/news/entertainment-arts-65296763" target="_blank" rel="noopener">BBC：索尼攝影獎 AI 得獎後拒領</a></p>
         <p class="hint"><b>相關討論（不同立場）</b><br>
         · <a href="https://selfpublishingadvice.org/nebula-awards-ai-policy/" target="_blank" rel="noopener">Alliance of Independent Authors:Nebula AI 政策的爭議</a><br>
@@ -820,7 +833,7 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
         <p>給老師、編輯、審查者，也給學生自我檢查：<br>
         ・<b>影像造假 / 重複</b>：Proofig、ImageTwin、FigCheck 用 AI 比對圖片重複與竄改（Science 系列、AACR、ASM 等期刊已採用）；當「初篩」，不是判決。<br>
         ・<b>論文工廠 / 扭曲用詞</b>：機器改寫會留下「tortured phrases」（例如用 fake neural organization 代替 artificial neural network）。可查 <a href="https://www.irit.fr/~Guillaume.Cabanac/problematic-paper-screener" target="_blank" rel="noopener">Problematic Paper Screener</a>、STM Integrity Hub、Clear Skies 的 Papermill Alarm。<br>
-        ・<b>捏造引用 / 假文獻</b>：逐條回查參考文獻是否真的存在（AI 常編造）；到 Retraction Watch 看是否已被撤稿。<br>
+        ・<b>捏造引用 / 假文獻</b>：逐條回查參考文獻是否真的存在（AI 常編造）；到 <a href="https://retractionwatch.com/" target="_blank" rel="noopener">Retraction Watch</a> 看是否被撤稿——其撤稿資料庫（已由 Crossref 開放、每工作日更新）新增了「Computer-Aided/Generated Content」「Hoax Paper」等分類，可查單篇是否被撤，也能追蹤 AI 假文章的撤稿趨勢。<br>
         ・<b>事後同儕檢視</b>：上 <a href="https://pubpeer.com" target="_blank" rel="noopener">PubPeer</a> 看某篇論文有沒有被公開指出問題。<br>
         <b>警戒：</b>AI 讓假數據、假圖、假引用更容易做出來；偵測工具能揪出「可疑」，但也會誤判。重點是保持懷疑、交叉查證，不要盲信任何一個分數或標籤。 <a href="https://www.the-scientist.com/detection-or-deception-the-double-edged-sword-of-ai-in-research-misconduct-72354" target="_blank" rel="noopener">綜述 ↗</a></p></div>
       <p class="hint faint" style="margin-top:12px">共通原則：工具只負責「標出可疑」，不負責「判定有罪」。無論偵測或創作，保持懷疑、交叉查證，別盲信任何一個分數。</p>
@@ -1090,22 +1103,21 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
   </section>
 
   <details class="sources" id="aboutSources">
-    <summary><span>依據與彈性調整 · About &amp; sources</span><span class="chev">▶</span></summary>
+    <summary><span>依據與彈性調整</span><span class="chev">▶</span></summary>
     <div class="inner">
-      <p class="lead">本工具由政治大學圖書館整理，作為<b>參考</b>（非強制），搭配 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener"><b>政大圖書館 AI 使用指引</b></a> 一併使用。下表只列<b>真正支撐設計、且維持在最新（2025–2026）</b>的關鍵來源；AI 變化快，連結會指向最新的概念與實務。實際規範以校方、院系所與授課教師政策為準。</p>
+      <p class="lead">本工具由政治大學圖書館整理，作為<b>參考</b>（非強制），搭配 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener"><b>政大圖書館 AI 使用指引</b></a> 一併使用。各設計元素的依據已標在對應欄位旁的「依據」摺疊，展開即可看到；此處僅補充其餘參考來源。AI 變化快，連結會指向最新的概念與實務。實際規範以校方、院系所與授課教師政策為準。</p>
       <div class="mapgrid">
-        <div class="maprow"><div class="mapwhat">五層級權限量表（中性、非紅綠燈）</div><div class="mapsrc"><a href="https://arxiv.org/abs/2412.09029" target="_blank" rel="noopener">AI Assessment Scale</a> — Perkins, Roe &amp; Furze</div></div>
-        <div class="maprow"><div class="mapwhat">任務揭露的 43 項細目</div><div class="mapsrc"><a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT 分類法</a>（Suchikova et al.），即 CUNY AI Lab 工具所用</div></div>
-        <div class="maprow"><div class="mapwhat">揭露輸出格式、老師自我揭露、實作範本</div><div class="mapsrc"><a href="https://www.monash.edu/student-academic-success/build-digital-capabilities/create-online/acknowledging-the-use-of-generative-artificial-intelligence" target="_blank" rel="noopener">Monash 揭露範本</a> · <a href="https://tlconestoga.ca/describe-and-document-ai-use/" target="_blank" rel="noopener">Conestoga 記錄 AI 使用</a>（2025)</div></div>
-        <div class="maprow"><div class="mapwhat">三層查證階梯、非懲罰承諾</div><div class="mapsrc"><a href="https://www.sciencedirect.com/science/article/pii/S0749597825000172" target="_blank" rel="noopener">揭露信任悖論</a>（Schilke &amp; Reimann）· <a href="https://www.tandfonline.com/doi/full/10.1080/02602938.2024.2415654" target="_blank" rel="noopener">學生非揭露成因研究</a></div></div>
-        <div class="maprow"><div class="mapwhat">「挑戰/改進 AI」欄位</div><div class="mapsrc"><a href="https://arxiv.org/pdf/2605.05472" target="_blank" rel="noopener">AI 錯誤的教學法</a>（Hosseini）等批判性 AI 素養研究</div></div>
-        <div class="maprow"><div class="mapwhat">AI agent 揭露（動作、把關程度、稽核紀錄、問責）</div><div class="mapsrc"><a href="https://ascode.osu.edu/news/agentic-ai-higher-education" target="_blank" rel="noopener">Agentic AI in Higher Education</a>(2025）· 責任落差與 provenance 研究</div></div>
-        <div class="maprow"><div class="mapwhat">課程/評量由教師與院系設計；偵測不可行、重在確保學習</div><div class="mapsrc"><a href="https://www.teqsa.gov.au/guides-resources/higher-education-good-practice-hub/gen-ai-knowledge-hub/gen-ai-academic-integrity-and-assessment-reform" target="_blank" rel="noopener">TEQSA 評量改革</a>（2025–26）· <a href="https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use" target="_blank" rel="noopener">Princeton 揭露指引</a></div></div>
+        
+        
+        
+        
+        
+        
+        
         <div class="maprow"><div class="mapwhat">引用格式</div><div class="mapsrc"><a href="https://style.mla.org/citing-generative-ai-updated-revised/" target="_blank" rel="noopener">MLA</a> · <a href="https://apastyle.apa.org/blog/cite-generative-ai-references" target="_blank" rel="noopener">APA</a> · Chicago 18 §14.112</div></div>
         <div class="maprow"><div class="mapwhat">取向=方法輪廓（非科系）</div><div class="mapsrc">改寫自 Biglan(1973)/ Becher &amp; Trowler 的 hard↔soft 連續體</div></div>
       </div>
       <p class="lead" style="margin-top:14px"><b>投稿前參考：</b>各大學術出版社（Nature、Elsevier、IEEE、Science、COPE、ICMJE）一致要求：<b>AI 不能列為作者、AI 使用須揭露、作者須自行查證並為內容負責</b>。<br>2026 動態：ICMJE 已於 2026/1 更新建議（明訂「人類必須對全部內容負責」）、Elsevier 於 2026/8 更新期刊生成式 AI 政策；另維基百科已於 2026 年禁止以 AI 生成內容。</p>
-      <div class="selfdisc">🔎 <b>本站自己的 AI 使用揭露 · This tool's own AI disclosure.</b> 這個網頁在政大圖書館的構想與規劃下，由 <b>Claude Opus 4.8</b> 協助整理內容、撰寫程式與查找資料。所有資料來源、政策與案例都經人工核對，設計判斷與最終定稿由館方負責。我們把這段揭露放在這裡，讓這個工具本身也成為一個誠實揭露 AI 使用的實例。</div>
     </div>
   </details>
 
@@ -1113,12 +1125,12 @@ Honestly disclosing your AI use won't cost you marks. I read it as a way to unde
     <b>關於這個工具 / About.</b> 本工具由政治大學圖書館整理，作為校內師生溝通與揭露 AI 使用的<b>參考</b>，並非強制規範。層級架構改編自 AI Assessment Scale(Perkins, Roe &amp; Furze），設計取向參酌 Russell Group 五項原則、Monash、Stanford、Oxford、HKU 等校公開政策、MLA/APA 引用規範，以及多項同儕審查實證研究（見上方「依據與彈性調整」）。<br>
     <b>實際規範以校方、院系所及授課教師的政策為準；教師在課程中的規定優先於本工具的任何預設。使用前請依所屬單位政策彈性調整。</b> 更多 AI 使用方式說明請參考 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener">政大圖書館 AI 使用指引</a>。
   </div>
-  <div class="footnote" id="sharedFootnote">
-    完全在你的瀏覽器裡執行，不會上傳或儲存任何內容。 · 可自由 fork 修改。
-  </div>
 </div>
 
-<div class="toast" id="toast"></div>
+
+  <div class="reporterr">📮 若發現本站有錯誤的部份，歡迎來信提報：<a href="mailto:libnews@nccu.edu.tw">libnews@nccu.edu.tw</a></div>
+  <div class="selfdisc">🔎 <b>本站自己的 AI 使用揭露</b> 這個網頁在政大圖書館的構想與規劃下，由 <b>Claude Opus 4.8</b> 協助整理內容、撰寫程式與查找資料。所有資料來源、政策與案例都經人工核對，設計判斷與最終定稿由館方負責。我們把這段揭露放在這裡，讓這個工具本身也成為一個誠實揭露 AI 使用的實例。</div>
+  <div class="toast" id="toast"></div>
 
 <script>
 function switchLang(){
@@ -1152,11 +1164,11 @@ const TIERS = [
 
 /* Work/method profiles (multi-select). Replaces the older discipline presets. */
 const PROFILES = [
-  {id:"interpret",     zh:"詮釋・論證", en:"Interpretive / argumentative", note:"文本・史料判讀、論證、書寫 · text/source interpretation, argument, writing"},
-  {id:"qualitative",   zh:"質性經驗", en:"Qualitative empirical",       note:"田野、訪談、編碼、主題分析 · fieldwork, interviews, coding, thematic analysis"},
-  {id:"quantitative",  zh:"量化・實證", en:"Quantitative empirical",     note:"資料、統計、建模 · data, statistics, modelling"},
-  {id:"computational", zh:"計算・技術", en:"Computational / technical",  note:"程式、系統、資料工程 · code, systems, data engineering"},
-  {id:"creative",      zh:"創作・設計", en:"Creative / design",          note:"媒體生成、設計、工作室創作 · media generation, design, studio work"}
+  {id:"interpret",     zh:"詮釋・論證", en:"Interpretive / argumentative", note:"文本・史料判讀、論證、書寫"},
+  {id:"qualitative",   zh:"質性經驗", en:"Qualitative empirical",       note:"田野、訪談、編碼、主題分析"},
+  {id:"quantitative",  zh:"量化・實證", en:"Quantitative empirical",     note:"資料、統計、建模"},
+  {id:"computational", zh:"計算・技術", en:"Computational / technical",  note:"程式、系統、資料工程"},
+  {id:"creative",      zh:"創作・設計", en:"Creative / design",          note:"媒體生成、設計、工作室創作"}
 ];
 const ALL  = ["interpret","qualitative","quantitative","computational","creative"];
 const EMP4 = ["interpret","qualitative","quantitative","computational"]; // all but creative
@@ -1258,7 +1270,7 @@ function buildTeacherForm(){
       <span class="body">
         <span class="name">層級${['一','二','三','四','五'][t.id-1]}・${t.zh}</span>
         <span class="desc">${t.desc}</span>
-        <span class="flag">${t.discloses?'→ 需要學生填寫揭露 / disclosure required':'→ 不需填寫揭露表 / no disclosure form'}</span>
+        <span class="flag">${t.discloses?'→ 需要學生填寫揭露':'→ 不需填寫揭露表'}</span>
       </span>
     </label>`).join('');
   function paint(){ladder.querySelectorAll('.tier').forEach(el=>{
@@ -1283,7 +1295,7 @@ function buildTeacherForm(){
   $('#tProfiles').addEventListener('change', renderNoDisc);
 
   $('#baselineList').innerHTML =
-    '<div class="sublab" style="font-weight:500;margin-bottom:2px">一般都不需揭露（固定）· Never needs disclosure:</div>'
+    '<div class="sublab" style="font-weight:500;margin-bottom:2px">一般都不需揭露（固定）：</div>'
     + '<ul class="baseul">' + BASELINE.map(b=>`<li>${b.zh} </li>`).join('') + '</ul>';
   renderNoDisc();
 }
@@ -1349,7 +1361,7 @@ function renderClusters(type){
 }
 function renderStudent(){
   const area = $('#policyArea');
-  const context = `<div class="card"><h2>你的作業情境</h2><p class="hint">先照老師訂的規則填一下。老師怎麼規定，以課程說明為準；這裡只幫你把揭露寫清楚。</p><div class="row2"><label class="field"><span class="sublab">課程名稱（選填）· Course (optional)</span><input type="text" id="sCourse" placeholder="例：質性研究方法"></label><label class="field"><span class="sublab">老師允許的 AI 程度 · AI level your course allows</span><select id="sLevel"><option value="">未指定 / 不確定</option><option value="層級一・不使用 AI ">層級一・不使用 AI</option><option value="層級二・AI 協助構思 ">層級二・AI 協助構思</option><option value="層級三・AI 協作 ">層級三・AI 協作</option><option value="層級四・AI 全面使用 ">層級四・AI 全面使用</option><option value="老師另有規定 ">老師另有規定</option></select></label></div><p class="hint faint" style="margin-top:4px">照老師說的填就好，不確定就問老師；老師沒特別分級也沒關係，留「未指定」即可。</p><label class="field" style="margin-top:10px"><span class="sublab">這份作業比較像哪種？👉 這會決定下面「AI 幫了哪些環節」顯示哪些選項 · What kind of work is this? This sets which options appear below</span><select id="sType"><option value="writing">一般寫作 / 報告 · Writing / report</option><option value="qual">質性研究 · Qualitative</option><option value="quant">量化 / 數據 · Quantitative / data</option><option value="comp">程式 / 計算 · Coding</option><option value="creative">創作 / 設計 · Creative</option><option value="all">都有 / 不確定 · Mixed / unsure</option></select></label></div>`;
+  const context = `<div class="card"><h2>你的作業情境</h2><p class="hint">先照老師訂的規則填一下。老師怎麼規定，以課程說明為準；這裡只幫你把揭露寫清楚。</p><div class="row2"><label class="field"><span class="sublab">課程名稱（選填）</span><input type="text" id="sCourse" placeholder="例：質性研究方法"></label><label class="field"><span class="sublab">老師允許的 AI 程度</span><select id="sLevel"><option value="">未指定 / 不確定</option><option value="層級一・不使用 AI ">層級一・不使用 AI</option><option value="層級二・AI 協助構思 ">層級二・AI 協助構思</option><option value="層級三・AI 協作 ">層級三・AI 協作</option><option value="層級四・AI 全面使用 ">層級四・AI 全面使用</option><option value="老師另有規定 ">老師另有規定</option></select></label></div><p class="hint faint" style="margin-top:4px">照老師說的填就好，不確定就問老師；老師沒特別分級也沒關係，留「未指定」即可。</p><label class="field" style="margin-top:10px"><span class="sublab">這份作業比較像哪種？👉 這會決定下面「AI 幫了哪些環節」顯示哪些選項</span><select id="sType"><option value="writing">一般寫作 / 報告</option><option value="qual">質性研究</option><option value="quant">量化 / 數據</option><option value="comp">程式 / 計算</option><option value="creative">創作 / 設計</option><option value="all">都有 / 不確定</option></select></label></div>`;
   const form = `
     <div class="reassure">💬 <b>放心：</b>誠實揭露通常不會讓你被扣分。這是讓老師了解你怎麼學的，不是抓錯。不確定就多寫一句，或直接問老師。</div>
     <div class="aidnote">這不是考試，也不是非填不可的表格。它就是幫你把「你怎麼跟 AI 一起做的」講給老師聽。誠實說明，比填得完整更重要。</div>
@@ -1357,7 +1369,7 @@ function renderStudent(){
     <div class="principles3">✍ <b>揭露得好的三個原則：</b>① <b>具體，不要含糊</b>（寫「用 AI 改了第二段的邏輯」，別只寫「有用 AI」）② <b>留著你的草稿和過程</b>（真的被問時能自證）③ <b>內容你自己負責</b>（AI 給的每個事實、引用都要自己查過）。</div>
     <div class="card">
       <h2><span class="step-n">1</span> 你用了哪個 AI 工具？（選填）</h2>
-      <label class="field"><span class="sublab">寫出名稱與版本（若知道）。用了很多個就都列出來。· Name and version if known; list all you used.</span>
+      <label class="field"><span class="sublab">寫出名稱與版本（若知道）。用了很多個就都列出來。</span>
         <input type="text" id="sTools" placeholder="例：ChatGPT （GPT-4o）、Claude、Google 翻譯、Grammarly"></label>
     </div>
     <div class="card">
@@ -1366,24 +1378,26 @@ function renderStudent(){
       <div class="checks grouped" id="sClusters">
         <label class="chk light"><input type="checkbox" value="__light__"><span class="ct">整體只有很輕微/一般性的協助（在下面「你自己做了什麼」說明）</span></label>
         <div id="sClusterGroups"></div>
+      <details class="basisfold"><summary>依據</summary><div class="bf-body">揭露細目分類：<a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT</a>(Suchikova et al.)</div></details>
       </div>
     </div>
     <details class="card optional" id="agentDetails">
-      <summary>用的是會自己多步驟執行的 AI agent 嗎？大多數人可以跳過 · Did you use an AI agent that works in many steps by itself? Most people can skip this.<span class="advchev">▶</span></summary>
+      <summary>用的是會自己多步驟執行的 AI agent 嗎？大多數人可以跳過<span class="advchev">▶</span></summary>
+      <details class="basisfold"><summary>依據</summary><div class="bf-body">代理式 AI 揭露：<a href="https://ascode.osu.edu/news/agentic-ai-higher-education" target="_blank" rel="noopener">Agentic AI in Higher Education</a>(OSU)</div></details>
       <div class="optbody">
       <div id="agentBlock" class="agentbox">
         <div class="opthead" style="font-size:15px">AI agent 使用</div>
         <p class="hint">agent 會自己跑很多步驟、中間你未必看得到，所以重點是說清楚它<b>做了什麼、你在哪裡把關</b>，而不只是它產出什麼。</p>
-        <label class="field"><span class="sublab">1. 它執行了哪些動作、用了哪些工具或資料？· What it did / accessed</span>
+        <label class="field"><span class="sublab">1. 它執行了哪些動作、用了哪些工具或資料？</span>
           <input type="text" id="agAct" placeholder="例：自動檢索並整理 20 篇文獻、跑了統計、改了我的試算表"></label>
-        <label class="field"><span class="sublab">2. 你在哪裡實際把關？· Where you actually checked</span>
+        <label class="field"><span class="sublab">2. 你在哪裡實際把關？</span>
           <select id="agOversight">
             <option value="">— 請選擇 select —</option>
-            <option value="逐步審查每個步驟">逐步審查每個步驟 · reviewed each step</option>
-            <option value="在關鍵節點審查">在關鍵節點審查 · reviewed at key checkpoints</option>
-            <option value="只看了最終結果">只看了最終結果 · only saw the final result</option>
+            <option value="逐步審查每個步驟">逐步審查每個步驟</option>
+            <option value="在關鍵節點審查">在關鍵節點審查</option>
+            <option value="只看了最終結果">只看了最終結果</option>
           </select></label>
-        <label class="field"><span class="sublab">3. 執行紀錄 / log 連結（agent 情境強烈建議，因中間步驟你沒看到）· Run log link (strongly recommended)</span>
+        <label class="field"><span class="sublab">3. 執行紀錄 / log 連結（agent 情境強烈建議，因中間步驟你沒看到）</span>
           <input type="text" id="agLog" placeholder="https://…（執行/對話紀錄的分享連結）"></label>
         <label class="chk" style="margin-top:6px"><input type="checkbox" id="agAccount"><span class="ct">我了解：即使沒有逐步監督，我仍為這個 agent 的產出與行動負責。</span></label>
         <div class="mapnote">agent 改變了揭露的單位：從「AI 寫了什麼」變成「它做了什麼、你在哪裡把關」。<a href="https://ascode.osu.edu/news/agentic-ai-higher-education" target="_blank" rel="noopener">Agentic AI in Higher Ed(2025)</a></div>
@@ -1400,17 +1414,18 @@ function renderStudent(){
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#245f59" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           你查證了 AI 的哪些輸出？
         </div>
-        <div class="why">AI 會捏造、也會扭曲來源。逐層勾選你做到哪一步，這樣讀者才相信判斷還是你在做。<br><span style="color:var(--ink-faint)">AI both fabricates and distorts sources. Tick how far you checked — this is what shows the judgement is still yours.</span></div>
+        <div class="why">AI 會捏造、也會扭曲來源。逐層勾選你做到哪一步，這樣讀者才相信判斷還是你在做。</div>
         <div class="vladder">
           <label class="vstep"><input type="checkbox" id="v1"><span><b>第 1 層・存在</b> 我確認 AI 引用的資料/來源<b>真實存在</b>（不是捏造）</span></label>
           <label class="vstep"><input type="checkbox" id="v2"><span><b>第 2 層・一致</b> 我確認資料的實際內容與 AI 的摘要/轉述<b>一致</b>（沒有被扭曲）</span></label>
           <label class="vstep"><input type="checkbox" id="v3"><span><b>第 3 層・佐證</b> 我確認資料<b>確實能支持</b>我用它佐證的論點（不是被誤用）</span></label>
           <label class="vstep none"><input type="checkbox" id="v0"><span>這次沒有用到需要查證的外部資料/來源</span></label>
         </div>
-        <label class="field"><span class="sublab" style="margin-top:10px">舉一個你查證的例子（選填，但很有說服力）· One example (optional, but persuasive)</span>
+      <details class="basisfold"><summary>依據</summary><div class="bf-body">查證階梯與非懲罰承諾：<a href="https://www.sciencedirect.com/science/article/pii/S0749597825000172" target="_blank" rel="noopener">揭露信任研究 ↗</a>(Schilke &amp; Reimann)· <a href="https://www.tandfonline.com/doi/full/10.1080/02602938.2024.2415654" target="_blank" rel="noopener">學生非揭露成因 ↗</a></div></details>
+        <label class="field"><span class="sublab" style="margin-top:10px">舉一個你查證的例子（選填，但很有說服力）</span>
           <input type="text" id="sVerifyEg" placeholder="例：AI 給的 3 筆文獻，我逐一核對，1 筆查無此文已刪；另 1 筆內容與摘要不符，已更正。"></label>
         <details class="vmore">
-          <summary>其他類型的查證（選填）· Other checks +</summary>
+          <summary>其他類型的查證（選填）</summary>
           <div class="vinner checks" id="vOther">
             <label class="chk"><input type="checkbox" value="數據：重算或抽查過數字"><span class="ct">數據：重算或抽查過數字</span></label>
             <label class="chk"><input type="checkbox" value="翻譯：核對過是否忠實、無誤譯"><span class="ct">翻譯：核對過是否忠實、無誤譯</span></label>
@@ -1419,12 +1434,12 @@ function renderStudent(){
             <label class="chk"><input type="checkbox" value="觀點：檢視過 AI 遺漏的角度或反證"><span class="ct">觀點：檢視過 AI 遺漏的角度或反證</span></label>
           </div>
         </details>
-        <div class="mapnote">三層階梯（存在→一致→佐證）為本工具原創，對應 AI 引用的三種失效：捏造、曲解、誤用。<br>The three-level ladder is original to this tool, matching AI citation's three failure modes: fabrication, distortion, misuse.</div>
+        <div class="mapnote">三層階梯（存在→一致→佐證）為本工具原創，對應 AI 引用的三種失效：捏造、曲解、誤用。</div>
       </div>
     </div>
 
     <details class="card optional">
-      <summary>加分：你怎麼挑戰或改進 AI?（選填）· Bonus: how you pushed back (optional)<span class="advchev">▶</span></summary>
+      <summary>加分：你怎麼挑戰或改進 AI？（選填）<span class="advchev">▶</span></summary>
       <div class="optbody">
         <div class="optsec">
           <p class="hint">能發現並修正 AI 的錯誤、追問讓它變好，是最能證明主導權在你手上的訊號。</p>
@@ -1435,12 +1450,13 @@ function renderStudent(){
             <label class="chk"><input type="checkbox" value="拒絕了 AI 的建議，改用自己的判斷"><span class="ct">我拒絕了 AI 的建議，改用自己的判斷</span></label>
             <label class="chk"><input type="checkbox" value="比對多個工具或多個版本後，自己取捨"><span class="ct">我比對多個工具或多個版本後，自己取捨</span></label>
           </div>
-          <label class="field"><span class="sublab" style="margin-top:10px">舉一個你挑戰或改進 AI 的具體例子（選填，最有價值的一欄）· One concrete example (optional, the most valuable)</span>
+          <details class="basisfold"><summary>依據</summary><div class="bf-body">批判性 AI 素養：<a href="https://arxiv.org/pdf/2605.05472" target="_blank" rel="noopener">AI 錯誤的教學法</a>(Hosseini)</div></details>
+          <label class="field"><span class="sublab" style="margin-top:10px">舉一個你挑戰或改進 AI 的具體例子（選填，最有價值的一欄）</span>
             <textarea id="sChallengeEg" placeholder="例：AI 一開始把某學者的立場說反了，我用原文反駁後它才更正；我再追問要它區分兩個概念，第三版才夠準確。"></textarea></label>
-          <div class="mapnote">依據「AI 錯誤的教學法」與批判性 AI 素養研究。Grounded in the "pedagogy of AI mistakes" &amp; critical AI-literacy research. <a href="https://arxiv.org/pdf/2605.05472" target="_blank" rel="noopener">Hosseini 2026</a></div>
-          <label class="field" style="margin-top:16px"><span class="sublab">歷程佐證連結（選填、自願）· Optional process record</span>
+          <div class="mapnote">依據「AI 錯誤的教學法」與批判性 AI 素養研究。<a href="https://arxiv.org/pdf/2605.05472" target="_blank" rel="noopener">Hosseini 2026</a></div>
+          <label class="field" style="margin-top:16px"><span class="sublab">歷程佐證連結（選填、自願）</span>
             <input type="text" id="sProof" placeholder="https://…（對話分享連結、草稿版本史）"></label>
-          <div class="mapnote">用了多個工具、來回追問很多輪時，<b>一條可分享的對話連結或草稿版本史，遠比抄一句提示更能誠實呈現那段歷程</b>。<br>With many tools and turns, a shareable conversation link conveys the process far more honestly than one prompt.</div>
+          <div class="mapnote">用了多個工具、來回追問很多輪時，<b>一條可分享的對話連結或草稿版本史，遠比抄一句提示更能誠實呈現那段歷程</b>。</div>
         </div>
       </div>
     </details>
@@ -1453,15 +1469,15 @@ function renderStudent(){
         Chicago（18 版 §14.112）。<br>
         更多 AI 使用方式說明請參考 <a href="https://sites.google.com/view/ncculibgenai/basics/aiethics" target="_blank" rel="noopener"><b>政大圖書館 AI 使用指引</b></a>。</p>
       <div class="btn-row">
-        <button class="btn primary" id="sGen">產生 · Generate</button>
-        <button class="btn ghost" id="sClear">清除 · Clear</button>
+        <button class="btn primary" id="sGen">產生</button>
+        <button class="btn ghost" id="sClear">清除</button>
       </div>
       <div id="sOutWrap" class="hide">
         <div class="divider"></div>
         <div class="output" id="sOut"></div>
         <div class="btn-row">
-          <button class="btn ghost" id="sCopy">複製 · Copy</button>
-          <button class="btn ghost" id="sDownload">下載 .txt · Download</button>
+          <button class="btn ghost" id="sCopy">複製</button>
+          <button class="btn ghost" id="sDownload">下載 .txt</button>
         </div>
         <div class="submitnote">📎 <b>怎麼交：</b>把這段貼在作業最後，或依老師指定的方式繳交（有些老師會另外收）。</div>
       </div>
@@ -1518,7 +1534,7 @@ function wireStudentForm(){
     // challenge blocks
     let chalZhB='', chalEnB='';
     if(chalZh.length || chalEg){
-      chalZhB = '\n\n我如何挑戰或改進 AI:\n'+(chalZh.length?chalZh.map(x=>'· '+x).join('\n'):'')+(chalEg?(chalZh.length?'\n':'')+'  例：'+chalEg:'');
+      chalZhB = '\n\n我如何挑戰或改進 AI：\n'+(chalZh.length?chalZh.map(x=>'· '+x).join('\n'):'')+(chalEg?(chalZh.length?'\n':'')+'  例：'+chalEg:'');
       chalEnB = '\n\nHow I pushed back / improved AI:\n'+(chalEn.length?chalEn.map(x=>'· '+x).join('\n'):'')+(chalEg?(chalEn.length?'\n':'')+'  e.g.: '+chalEg:'');
     }
     // agent blocks
@@ -1596,7 +1612,7 @@ function setMode(m){
   $('#faqView').classList.toggle('hide',!isF);
   document.querySelectorAll('.navrow').forEach(r=>r.classList.toggle('active', r.dataset.mode===m));
   const hideShared = isR || isF || isX || isP || isC || isG;
-  ['#aboutSources','#sharedDisclaimer','#sharedFootnote'].forEach(id=>{const e=$(id); if(e) e.classList.toggle('hide',hideShared);});
+  ['#aboutSources','#sharedDisclaimer'].forEach(id=>{const e=$(id); if(e) e.classList.toggle('hide',hideShared);});
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
