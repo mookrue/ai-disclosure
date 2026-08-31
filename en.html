@@ -402,6 +402,12 @@
 .bf-body a{color:var(--accent-deep)}
 .reporterr{max-width:var(--maxw);margin:14px auto 4px;padding:0 20px;text-align:center;color:var(--ink-soft);font-size:14px}
 .reporterr a{color:var(--accent-deep);font-weight:600}
+.xref{display:block;margin-top:8px;font-size:12.5px;color:var(--ink-faint);line-height:1.6}
+.xreflink{color:var(--accent-deep);cursor:pointer;font-weight:600;border-bottom:1px dotted}
+details.optional.bonus > summary{background:#faf3dc;border-color:#e6d59f;color:#7a5c14}
+details.optional.bonus[open] > summary{border-color:#e6d59f}
+details.optional.bonus .optbody{background:#fdf9ec;border-color:#e6d59f}
+details.optional.bonus .hint{color:#6f5a2a}
 </style>
 </head>
 <body>
@@ -537,7 +543,22 @@
       <div class="fpoint"><div class="fh">Creative (media generation, design, studio)</div>
       <p>For creative and design work, the emphasis can rest on the portfolio together with the making process: ask for stage-by-stage design records (a design log), hold in-person critique in the studio, and set the student's self-assessment against the tutor's marking; where AI was used to generate something, it should be clearly labelled, with an account of which parts and how. College Board's Advanced Placement (AP) Art and Design has already written AI use and source attribution into its portfolio rules, and process-oriented studio research shows how to use stage-based logs and self-versus-tutor comparison for assessment.<br><a href="https://apstudents.collegeboard.org/art-design-program/ap-art-design-portfolio-policies" target="_blank" rel="noopener">AP portfolio policy ↗</a> · <a href="https://www.tandfonline.com/doi/full/10.1080/13467581.2026.2621521" target="_blank" rel="noopener">Process-oriented studio ↗</a></p></div>
       <div class="footnote">The mapping to research profiles is only to help you choose; interdisciplinary courses can mix them. Cases and methods are from 2024–2026 public reporting and journals; before adopting one, it is worth checking feasibility and fairness with your department and teaching centre.</div>
+    </div><div class="card">
+      <h2>What MIT recommends (2026): make every subject "AI-aware"</h2>
+      <p class="hint">In August 2026, an MIT ad hoc committee published its report on AI use in teaching, learning, and research training. Its conclusions line up closely with the direction of this tool; here are the points most relevant to instructors.</p>
+      <div class="fpoint"><div class="fh">Decide what students should learn first, then design assessment</div>
+      <p>Instead of starting with "should AI be banned in this course", first define what students should know and be able to do (this is "backward design"), then design the assessment and AI rules to match. MIT suggests assessment that is harder to hand to AI and more valuable for learning: oral exams, semester portfolios, and out-of-class work paired with in-class conversation, alongside more hands-on, project-based, and in-person social learning.</p></div>
+      <div class="fpoint"><div class="fh">Don't rely on AI detectors; look at the process instead</div>
+      <p>The report advises against relying on AI detectors: they lead to an arms race between detection and "humanizing", they often misflag non-native and neurodivergent students' writing as AI, and they breed distrust between students and teachers. <b>Detector output on its own is not enough to bring an academic-integrity case.</b> Lockdown exam browsers feel like surveillance, and in-person proctored exams are usually a better choice. A more reliable alternative is to look at the process: have students work on a platform that saves version history and submit that history with their work.</p></div>
+      <div class="fpoint"><div class="fh">Policies should carry a rationale, and instructors should disclose their own AI use</div>
+      <p>Every subject should state clearly in the syllabus whether AI may be used and why, ideally in a consistent format students can read at a glance. Likewise, if an instructor uses AI for slides, grading, or feedback, they should be transparent with students about it. The report notes that students readily notice a double standard where AI is fine for the teacher but not for them.</p></div>
+      <div class="fpoint"><div class="fh">Research and theses</div>
+      <p>Every thesis should include a statement of how AI was used; <b>AI must never be listed as a co-author</b>; authors are responsible for verifying accuracy and checking every claim; and researchers should check each journal's and conference's rules before submitting. These points match the approach on this tool's "Researcher" tab.</p></div>
+      <div class="fpoint"><div class="fh">No one size fits all; the goal is to augment, not automate</div>
+      <p>A poetry seminar, a mathematical proof course, and an architecture studio each stand in a different relationship to AI, and a first-year student differs from a doctoral candidate in a field they know well, so a single rule does not fit all. The report's core spirit is to let AI augment learning rather than replace the productive struggle of thinking, and to watch out for students who surrender their thinking to AI at the first difficulty (what the report calls "cognitive surrender").</p></div>
+      <div class="footnote">Drawn and paraphrased from the report of MIT's Ad Hoc Committee on AI Use in Teaching, Learning, and Research Training (13 August 2026; co-chaired by Klopfer and Madden). <a href="https://aiandeducation.mit.edu/report/" target="_blank" rel="noopener">Full report ↗</a> · <a href="https://sites.mit.edu/ai-use/files/2026/08/AI-Committee-Final-Report-Aug-13.pdf" target="_blank" rel="noopener">PDF ↗</a></div>
     </div>
+
 
   </section>
 
@@ -589,10 +610,10 @@
 
   <div class="card">
     <h2><span class="step-n">2</span>Which AI activities</h2>
-    <p class="hint">Categories and boundaries follow the STM publishers' 9 activities (2025). Tick what you might use. The ≠ line flags what doesn't count or is banned.</p>
+    <p class="hint">Categories and boundaries follow the STM publishers' 9 activities (2025). Tick what you might use. The boundary line flags what doesn't count or is banned.</p>
     <div id="polishNote" class="principle" style="margin-top:12px"></div>
     <div class="checks" id="activities"></div>
-      <details class="basisfold"><summary>Basis</summary><div class="bf-body">Activity taxonomy: <a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT</a> (Suchikova et al.)</div></details>
+      <details class="basisfold"><summary>Basis</summary><div class="bf-body">Activity categories are from the <a href="https://s3.eu-west-2.amazonaws.com/stm.offloadmedia/wp-content/uploads/2025/04/23020709/STM_AI_Classification_Recs_19_Sept2025-1.pdf" target="_blank" rel="noopener">STM nine activities</a> (2025); the delegation-disclosure framing draws on <a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT</a> (Suchikova et al.).</div></details>
   </div>
 
   <div class="card" style="border-color:var(--accent)">
@@ -910,9 +931,9 @@
         <p class="hint">Rather than asking "how do we catch AI", the better approach is to redesign assessment. This also links real lessons where detection backfired.</p>
         <div class="fpoint"><div class="fh">Assessment redesign. Sydney's two-lane model</div>
           <p>Sydney sorts every assessment into secure (supervised, oral, in-person) or open (AI purposefully allowed); rolled out 2025; detectors never stand alone. TEQSA/Dawson: redesign, don't detect.
-            <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/" target="_blank" rel="noopener">Sydney two-lane ↗</a></p></div>
+            <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/" target="_blank" rel="noopener">Sydney two-lane ↗</a><br><span class="xref">→ Want to try this in your own course? The teacher tab's "<a class="xreflink" onclick="setMode('teacher');window.scrollTo(0,0);return false;">Thinking of changing how you assess?</a>" sets out methods by discipline.</span></p></div>
         <div class="fpoint warn"><div class="fh">When detection backfired</div>
-          <p>Real cases: Vanderbilt and ACU dropped Turnitin's AI detector; an autistic Adelphi student's "100% AI" flag was annulled by a court (two other detectors had judged the work human-written); UC Davis and Michigan saw false accusations and lawsuits. Detectors are especially unfair to non-native and disabled writers. <a href="https://www.rollingstone.com/culture/culture-features/student-accused-ai-cheating-turnitin-1234747351/" target="_blank" rel="noopener">UC Davis case ↗</a> · <a href="https://www.vanderbilt.edu/brightspace/2023/08/16/guidance-on-ai-detection-and-why-were-disabling-turnitins-ai-detector/" target="_blank" rel="noopener">Vanderbilt dropped it ↗</a> · <a href="https://caselaw.findlaw.com/court/ny-supreme-court/118148544.html" target="_blank" rel="noopener">Adelphi ruling ↗</a> · <a href="https://www.abc.net.au/news/2025-10-09/artificial-intelligence-cheating-australian-catholic-university/105863524" target="_blank" rel="noopener">ACU dropped it ↗</a> · <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/false-flags-and-broken-trust-can-we-tell-if-ai-has-been-used/" target="_blank" rel="noopener">Sydney: detection is unreliable ↗</a></p></div>
+          <p>Real cases: Vanderbilt and ACU dropped Turnitin's AI detector; an autistic Adelphi student's "100% AI" flag was annulled by a court (two other detectors had judged the work human-written); UC Davis and Michigan saw false accusations and lawsuits. Detectors are especially unfair to non-native and disabled writers. <a href="https://www.rollingstone.com/culture/culture-features/student-accused-ai-cheating-turnitin-1234747351/" target="_blank" rel="noopener">UC Davis case ↗</a> · <a href="https://www.vanderbilt.edu/brightspace/2023/08/16/guidance-on-ai-detection-and-why-were-disabling-turnitins-ai-detector/" target="_blank" rel="noopener">Vanderbilt dropped it ↗</a> · <a href="https://caselaw.findlaw.com/court/ny-supreme-court/118148544.html" target="_blank" rel="noopener">Adelphi ruling ↗</a> · <a href="https://www.abc.net.au/news/2025-10-09/artificial-intelligence-cheating-australian-catholic-university/105863524" target="_blank" rel="noopener">ACU dropped it ↗</a> · <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/false-flags-and-broken-trust-can-we-tell-if-ai-has-been-used/" target="_blank" rel="noopener">Sydney: detection is unreliable ↗</a><br><span class="xref">→ The teacher tab's "<a class="xreflink" onclick="setMode('teacher');window.scrollTo(0,0);return false;">How to read what students submit</a>" explains why leaning on detectors isn't advisable, and what to do instead.</span></p></div>
         <p class="hint faint"> The lesson is consistent: you can't detect your way out. Redesign assessment instead.</p>
       </div>
     </details>
@@ -1118,7 +1139,7 @@
 
 
   <div class="reporterr">📮 Spotted an error on this site? We'd be glad to hear from you: <a href="mailto:libnews@nccu.edu.tw">libnews@nccu.edu.tw</a></div>
-  <div class="selfdisc">Conceived and directed by NCCU Library, this site was built with help from Claude Opus 4.8 (drafting content, writing code, finding sources). All sources, policies and cases were human-checked; design choices and the final version are the library's own. We disclose this so the tool itself is a working example of honest AI-use disclosure.</div>
+  <div class="selfdisc">🔎 <b>This site's own AI-use disclosure</b> This site was planned by NCCU Library and built with help from <b>Claude Opus 4.8</b>. The site's structure and its sources were shaped through repeated human prompting, then checked and finalised by hand.</div>
   <div class="toast" id="toast"></div>
 
 <script>
@@ -1426,8 +1447,8 @@ function renderStudent(){
       </div>
     </div>
 
-    <details class="card optional">
-      <summary> AI?· Bonus: how you pushed back (optional)<span class="advchev">▶</span></summary>
+    <details class="card optional bonus">
+      <summary>Bonus: how you pushed back (optional)<span class="advchev">▶</span></summary>
       <div class="optbody">
         <div class="optsec">
           <p class="hint">Catching AI's errors and pushing it to do better is the strongest sign you're in charge.</p>
@@ -1605,17 +1626,17 @@ function setMode(m){
 
 /* ===== RESEARCHER TAB (merged) ===== */
 
-/* STM 9 activities (adapted, bilingual) with boundary (≠) and disclosure hint */
+/* STM 9 activities (adapted, bilingual) with boundary note and disclosure hint */
 const ACTIVITIES=[
- {id:1,zh:"",en:"Language editing for clarity",bound:"≠ /",fields:["humanities","social","science","engineering","medical","inter"]},
- {id:2,zh:"",en:"Writing / drafting manuscript text",bound:"AI ",fields:["humanities","social","science","engineering","medical","inter"]},
- {id:5,zh:"",en:"Translating the manuscript",bound:"≠ ",fields:["humanities","social","science","engineering","medical","inter"]},
- {id:8,zh:"",en:"Gathering references",bound:"≠ ",fields:["humanities","social","science","engineering","medical","inter"]},
- {id:3,zh:"",en:"Formatting reported data",bound:"≠ ",fields:["social","science","engineering","medical","inter"]},
- {id:6,zh:"/",en:"Visualising research data",bound:"≠ RSAS…",fields:["science","engineering","medical","social","inter"]},
- {id:7,zh:"",en:"Formatting reported code",bound:"≠ ",fields:["engineering","science","inter"]},
- {id:4,zh:"/",en:"Illustrative images / figures",bound:"≠ <b>NatureElsevier AI </b>",fields:["humanities","social","science","engineering","medical","inter"],ban:true},
- {id:9,zh:"",en:"Passing AI output off as real data",bound:"",fields:["humanities","social","science","engineering","medical","inter"],ban:true}
+ {id:1,zh:"",en:"Language editing for clarity",bound:"Not the same as generating the main text; plain spell and grammar checks usually need no disclosure",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:2,zh:"",en:"Writing / drafting manuscript text",bound:"AI generating some or all of the text almost always needs disclosure",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:5,zh:"",en:"Translating the manuscript",bound:"Distinct from translating source material during the research itself",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:8,zh:"",en:"Gathering references",bound:"Not generating fake, non-existent citations (prohibited); check each one you find",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:3,zh:"",en:"Formatting reported data",bound:"Not tampering with, altering, or analysing the data itself",fields:["social","science","engineering","medical","inter"]},
+ {id:6,zh:"/",en:"Visualising research data",bound:"As opposed to producing charts with traditional stats software (R, SAS...)",fields:["science","engineering","medical","social","inter"]},
+ {id:7,zh:"",en:"Formatting reported code",bound:"Not generating new research code or changing what it does",fields:["engineering","science","inter"]},
+ {id:4,zh:"/",en:"Illustrative images / figures",bound:"Not presenting real data; <b>Nature, Elsevier and others ban AI-generated images</b>",fields:["humanities","social","science","engineering","medical","inter"],ban:true},
+ {id:9,zh:"",en:"Passing AI output off as real data",bound:"Uniformly prohibited across publishers; counts as research misconduct",fields:["humanities","social","science","engineering","medical","inter"],ban:true}
 ];
 
 /* records to keep. The core ledger */
@@ -1670,20 +1691,20 @@ const POLISH_NOTES={
 const PUBS={
  nature:{name:"Nature / Springer Nature",where:"In Methods; elsewhere if no Methods",copyedit:"language copy-edit exempt",images:"No AI-generated images/video",prompts:"verbatim prompts not required",note:"stresses accountability & reproducibility",url:"https://www.nature.com/nature-portfolio/editorial-policies/ai"},
  elsevier:{name:"Elsevier Cell Press",where:"a separate section before references (+ cover letter)",copyedit:"copy-edit exempt",images:"No AI images; Cell Press stricter",prompts:"verbatim prompts not required",note:"oversight, verify, disclose; appears in published work",url:"https://www.elsevier.com/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier"},
- wiley:{name:"Wiley",where:"in Methods",copyedit:"—",images:"some limits",prompts:"detailed: software, provider, sometimes prompts",note:"authors retain full responsibility",url:"https://authors.wiley.com/ethics-guidelines/index.html"},
+ wiley:{name:"Wiley",where:"in Methods",copyedit:"No requirement",images:"some limits",prompts:"detailed: software, provider, sometimes prompts",note:"authors retain full responsibility",url:"https://authors.wiley.com/ethics-guidelines/index.html"},
  science:{name:"Science / AAAS",where:"acknowledgments & Methods",copyedit:"only grammar/spelling exempt",images:"restricted",prompts:"full prompt disclosure required",note:"Disclose in acknowledgments and Methods; the Methods must give the full prompt, tool and version; AI can't be an author; authors are accountable. Among the more demanding on detail (since Nov 2023 it allows AI-assisted use with full disclosure rather than banning it).",url:"https://www.science.org/content/page/science-journals-editorial-policies"},
- plos:{name:"PLOS",where:"in Methods, with evaluation detail",copyedit:"—",images:"transparency encouraged; no explicit image ban",prompts:"—",note:"ensure accuracy & correct attribution",url:"https://journals.plos.org/plosone/s/ethical-publishing-practice"},
- ieee:{name:"IEEE / ACM",where:"in Acknowledgments",copyedit:"—",images:"—",prompts:"—",note:"identify the AI system, affected sections, and level of use",url:"https://open.ieee.org/author-guidelines-for-artificial-intelligence-ai-generated-text/"},
- tf:{name:"Taylor & Francis",where:"Methods or acknowledgments",copyedit:"copy-edit usually exempt",images:"—",prompts:"—",note:"allowed with disclosure; some journals limit to language",url:"https://taylorandfrancis.com/our-policies/ai-policy/"},
- medical:{name:"ICMJE / JAMA / BMJ",where:"acknowledgments/Methods + the AI questions in the submission system",copyedit:"—",images:"—",prompts:"journal-dependent",note:"mandatory AI questions in the submission system; JAMA/BMJ require model name, version, manufacturer, and nature of content",url:"https://www.icmje.org/recommendations/browse/artificial-intelligence/"},
- sage:{name:"SAGE",where:"Methods or acknowledgments",copyedit:"assistive AI needs no disclosure",images:"—",prompts:"—",note:"distinguishes assistive vs generative; flexible, less format guidance",url:"https://www.sagepub.com/journals/publication-ethics-policies/artificial-intelligence-policy"},
- mdpi:{name:"MDPI",where:"Methods or acknowledgments",copyedit:"copy-edit usually exempt",images:"more permissive on AI visuals",prompts:"—",note:"Allowed with disclosure: AI-generated content must be described in Methods (how it was used) and noted at submission; basic language editing (grammar, punctuation, formatting) needs no disclosure; AI can't be an author and authors are accountable for all content",url:"https://www.mdpi.com/ethics"},
- frontiers:{name:"Frontiers",where:"Methods or acknowledgments",copyedit:"copy-edit usually exempt",images:"covers text-to-image; disclose per policy",prompts:"—",note:"Allowed with disclosure; explicitly covers LLMs and text-to-image tools (DALL·E, Midjourney); AI-generated main text must be disclosed in the acknowledgments, and authors must verify all facts and citations",url:"https://www.frontiersin.org/guidelines/policies-and-publication-ethics"},
- oup:{name:"Oxford Academic(OUP)",where:"cover letter AND Methods/Acknowledgments",copyedit:"—",images:"—",prompts:"—",note:"Books require an AI Use Declaration Form; AI can't be an author or perform primary authorial tasks; for journals, follow each journal's author guidelines",url:"https://academic.oup.com/pages/for-authors/books/author-use-of-artificial-intelligence"},
- cup:{name:"Cambridge University Press",where:"disclose in the writing process",copyedit:"—",images:"—",prompts:"—",note:"AI can't be an author (accountability); rules mainly cover the writing process",url:"https://www.cambridge.org/core/services/authors/publishing-ethics/research-publishing-ethics-guidelines-for-journals/authorship-and-contributorship"},
- emerald:{name:"Emerald",where:"flag any AI use in the paper",copyedit:"—",images:"prohibits AI-generated images",prompts:"—",note:"Stricter: any AI use must be flagged in the paper; using AI to generate an abstract or literature review is not permitted (it breaches authorship criteria); AI can't be an author",url:"https://www.emeraldgrouppublishing.com/publish-with-us/ethics-integrity/research-publishing-ethics"},
- acs:{name:"ACS",where:"Acknowledgments (Methods for substantial use)",copyedit:"—",images:"disclose AI-generated images",prompts:"—",note:"AI can't be an author; disclose text/image AI use in the Acknowledgments (when and how), with substantial use in Methods; authors are accountable for all content; follows COPE",url:"https://researcher-resources.acs.org/publish/authorship_guidance_policies"},
- apa:{name:"APA",where:"in Methods, and cite it",copyedit:"—",images:"—",prompts:"—",note:"disclose in Methods and cite; AI can\'t be author",url:"https://www.apa.org/pubs/journals/resources/publishing-tips/policy-generative-ai"},
+ plos:{name:"PLOS",where:"in Methods, with evaluation detail",copyedit:"No requirement",images:"transparency encouraged; no explicit image ban",prompts:"No requirement",note:"ensure accuracy & correct attribution",url:"https://journals.plos.org/plosone/s/ethical-publishing-practice"},
+ ieee:{name:"IEEE / ACM",where:"in Acknowledgments",copyedit:"No requirement",images:"No requirement",prompts:"No requirement",note:"identify the AI system, affected sections, and level of use",url:"https://open.ieee.org/author-guidelines-for-artificial-intelligence-ai-generated-text/"},
+ tf:{name:"Taylor & Francis",where:"Methods or acknowledgments",copyedit:"copy-edit usually exempt",images:"No requirement",prompts:"No requirement",note:"allowed with disclosure; some journals limit to language",url:"https://taylorandfrancis.com/our-policies/ai-policy/"},
+ medical:{name:"ICMJE / JAMA / BMJ",where:"acknowledgments/Methods + the AI questions in the submission system",copyedit:"No requirement",images:"No requirement",prompts:"journal-dependent",note:"mandatory AI questions in the submission system; JAMA/BMJ require model name, version, manufacturer, and nature of content",url:"https://www.icmje.org/recommendations/browse/artificial-intelligence/"},
+ sage:{name:"SAGE",where:"Methods or acknowledgments",copyedit:"assistive AI needs no disclosure",images:"No requirement",prompts:"No requirement",note:"distinguishes assistive vs generative; flexible, less format guidance",url:"https://www.sagepub.com/journals/publication-ethics-policies/artificial-intelligence-policy"},
+ mdpi:{name:"MDPI",where:"Methods or acknowledgments",copyedit:"copy-edit usually exempt",images:"more permissive on AI visuals",prompts:"No requirement",note:"Allowed with disclosure: AI-generated content must be described in Methods (how it was used) and noted at submission; basic language editing (grammar, punctuation, formatting) needs no disclosure; AI can't be an author and authors are accountable for all content",url:"https://www.mdpi.com/ethics"},
+ frontiers:{name:"Frontiers",where:"Methods or acknowledgments",copyedit:"copy-edit usually exempt",images:"covers text-to-image; disclose per policy",prompts:"No requirement",note:"Allowed with disclosure; explicitly covers LLMs and text-to-image tools (DALL·E, Midjourney); AI-generated main text must be disclosed in the acknowledgments, and authors must verify all facts and citations",url:"https://www.frontiersin.org/guidelines/policies-and-publication-ethics"},
+ oup:{name:"Oxford Academic(OUP)",where:"cover letter AND Methods/Acknowledgments",copyedit:"No requirement",images:"No requirement",prompts:"No requirement",note:"Books require an AI Use Declaration Form; AI can't be an author or perform primary authorial tasks; for journals, follow each journal's author guidelines",url:"https://academic.oup.com/pages/for-authors/books/author-use-of-artificial-intelligence"},
+ cup:{name:"Cambridge University Press",where:"disclose in the writing process",copyedit:"No requirement",images:"No requirement",prompts:"No requirement",note:"AI can't be an author (accountability); rules mainly cover the writing process",url:"https://www.cambridge.org/core/services/authors/publishing-ethics/research-publishing-ethics-guidelines-for-journals/authorship-and-contributorship"},
+ emerald:{name:"Emerald",where:"flag any AI use in the paper",copyedit:"No requirement",images:"prohibits AI-generated images",prompts:"No requirement",note:"Stricter: any AI use must be flagged in the paper; using AI to generate an abstract or literature review is not permitted (it breaches authorship criteria); AI can't be an author",url:"https://www.emeraldgrouppublishing.com/publish-with-us/ethics-integrity/research-publishing-ethics"},
+ acs:{name:"ACS",where:"Acknowledgments (Methods for substantial use)",copyedit:"No requirement",images:"disclose AI-generated images",prompts:"No requirement",note:"AI can't be an author; disclose text/image AI use in the Acknowledgments (when and how), with substantial use in Methods; authors are accountable for all content; follows COPE",url:"https://researcher-resources.acs.org/publish/authorship_guidance_policies"},
+ apa:{name:"APA",where:"in Methods, and cite it",copyedit:"No requirement",images:"No requirement",prompts:"No requirement",note:"disclose in Methods and cite; AI can\'t be author",url:"https://www.apa.org/pubs/journals/resources/publishing-tips/policy-generative-ai"},
  other:{name:" / ",where:"usually Methods or acknowledgments",copyedit:"copy-edit often exempt",images:"many ban AI images",prompts:"journal-dependent",note:"once chosen, follow that publisher's author guidelines",url:""}
 };
 

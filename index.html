@@ -402,6 +402,15 @@
 .bf-body a{color:var(--accent-deep)}
 .reporterr{max-width:var(--maxw);margin:14px auto 4px;padding:0 20px;text-align:center;color:var(--ink-soft);font-size:14px}
 .reporterr a{color:var(--accent-deep);font-weight:600}
+.xref{display:block;margin-top:8px;font-size:12.5px;color:var(--ink-faint);line-height:1.6}
+.xreflink{color:var(--accent-deep);cursor:pointer;font-weight:600;border-bottom:1px dotted}
+details.optional.bonus > summary{background:#faf3dc;border-color:#e6d59f;color:#7a5c14}
+details.optional.bonus[open] > summary{border-color:#e6d59f}
+details.optional.bonus .optbody{background:#fdf9ec;border-color:#e6d59f}
+details.optional.bonus .hint{color:#6f5a2a}
+.chk .ct .an{font-size:14.5px;font-weight:600;color:var(--ink)}
+.chk .ct .eg{display:block;font-size:12.5px;color:var(--ink-soft);font-weight:400;margin-top:5px;line-height:1.6}
+.chk .ct .bound{display:block;font-size:12.5px;color:var(--ink-faint);font-weight:400;margin-top:3px;line-height:1.6}
 </style>
 </head>
 <body>
@@ -537,7 +546,22 @@
       <div class="fpoint"><div class="fh">創作（媒體生成、設計、工作室）</div>
       <p>創作與設計類，可以把評量重心放在「作品集加上創作歷程」：請學生交出分階段的設計紀錄（設計日誌）、在工作室裡當面講評、並用學生自評對照老師的評分；如果作品用到 AI 生成，就要清楚標示是哪些部分、怎麼用的。美國大學先修課程（AP）的藝術與設計，已經把「AI 使用與出處標示」寫進作品集規範裡；建築工作室的「過程導向」教學研究，也示範了怎麼用階段日誌和「自評／師評對照」來評量。<br><a href="https://apstudents.collegeboard.org/art-design-program/ap-art-design-portfolio-policies" target="_blank" rel="noopener">AP 作品集政策 ↗</a> · <a href="https://www.tandfonline.com/doi/full/10.1080/13467581.2026.2621521" target="_blank" rel="noopener">工作室過程導向 ↗</a></p></div>
       <div class="footnote">分類對照本工具的研究取向，僅為方便挑選；跨領域課程可混用。案例與做法來自 2024–2026 公開報導與期刊，採用前建議先跟院系與教學單位確認可行性與公平性。</div>
+    </div><div class="card">
+      <h2>MIT 的建議（2026）：把每一門課重新檢視成「AI-aware」</h2>
+      <p class="hint">MIT 在 2026 年 8 月成立特設委員會，發布《AI 使用於教學、學習與研究訓練》報告。它的結論和這份工具的方向高度一致，以下擷取幾點跟老師最相關的建議。</p>
+      <div class="fpoint"><div class="fh">先想清楚要學什麼，再設計評量</div>
+      <p>與其一開始就問「這門課該不該禁 AI」，不如先定義學生該學會什麼、能做到什麼（這叫「逆向設計」），再據此設計評量與 AI 規則。MIT 建議多採用不容易被 AI 代勞、對學習也更有價值的評量方式：口試、學期作品集，以及課外作業搭配課堂上的討論；並增加實作、專題與課堂內的社群學習。</p></div>
+      <div class="fpoint"><div class="fh">不要依賴 AI 偵測器，改看「過程」</div>
+      <p>報告明確不建議依賴 AI 偵測器：它會演變成「偵測」與「去識別化」互相追逐的軍備競賽，容易把非母語與神經多樣學生的文字誤判為 AI，也會在師生之間製造不信任；<b>偵測器的輸出本身不足以構成學術不當的證據</b>。鎖定型考試瀏覽器則像在監控，現場監考通常是比較好的選擇。更可靠的替代做法是看「過程」：要求學生在會保存修改紀錄的平台上作業，並連同版本歷程一起交。</p></div>
+      <div class="fpoint"><div class="fh">政策要附理由，老師也要揭露自己怎麼用 AI</div>
+      <p>每一門課都應該在課綱裡清楚寫明 AI 可不可以用、為什麼，並盡量用一致的格式讓學生一看就懂。同樣地，老師如果在投影片、評分或給回饋時用了 AI，也應該對學生透明——報告特別提到，學生很容易察覺「只准老師用、不准學生用」的雙重標準。</p></div>
+      <div class="fpoint"><div class="fh">研究與論文</div>
+      <p>所有論文都應該附一段聲明，說明 AI 用在哪裡；<b>AI 不能列為共同作者</b>；作者要為內容的正確性自行負責、逐一查證；投稿前先確認各期刊與會議的規定。這幾點和本工具「研究者」頁的做法一致。</p></div>
+      <div class="fpoint"><div class="fh">沒有一體適用；目標是「增強」而不是「取代」</div>
+      <p>詩歌研討、數學證明、建築設計對 AI 的關係本來就不同，大一新生和熟悉領域的博士生也不同，不必也不該套同一套規則。報告的核心精神是讓 AI「增強」學習，而不是「取代」思考的辛苦；要特別小心學生一遇到困難就把整個思考交給 AI（報告稱為「認知投降」）。</p></div>
+      <div class="footnote">以上擷取並改寫自 MIT《AI 使用於教學、學習與研究訓練》特設委員會報告（2026 年 8 月 13 日，Klopfer 與 Madden 共同主持）。<a href="https://aiandeducation.mit.edu/report/" target="_blank" rel="noopener">報告全文 ↗</a> · <a href="https://sites.mit.edu/ai-use/files/2026/08/AI-Committee-Final-Report-Aug-13.pdf" target="_blank" rel="noopener">PDF ↗</a></div>
     </div>
+
 
   </section>
 
@@ -554,9 +578,9 @@
     <label class="field" style="margin-top:14px"><span class="lab">研究取徑</span>
       <select id="approach">
           <option value="qual">質性</option>
-          <option value="quant">量化 / 計算 / computational</option>
+          <option value="quant">量化 / 計算</option>
           <option value="mixed">混合</option>
-          <option value="theory">理論 / 詮釋 / interpretive</option>
+          <option value="theory">理論 / 詮釋</option>
         </select></label>
     <p class="hint faint" style="margin-top:4px">👉 你選的<b>取徑</b>會決定第 3 步「該留哪些紀錄」顯示哪些項目（質性要留的稽核軌跡、量化要留的版本參數不一樣）。</p>
     <label class="field" style="margin-top:14px"><span class="lab">目標期刊 / 出版社</span>
@@ -592,10 +616,10 @@
 
   <div class="card">
     <h2><span class="step-n">2</span> 你會用到哪些 AI 活動？</h2>
-    <p class="hint">分類與邊界取自 STM 出版商協會的九類活動（2025）。勾選你（可能）會用到的。邊界那行（≠）幫你判斷哪些其實不算、或被禁止。</p>
+    <p class="hint">分類與邊界取自 STM 出版商協會的九類活動（2025）。勾選你（可能）會用到的。下面每一項的「界線」那句話，幫你判斷哪些其實不算、或已被禁止。</p>
     <div id="polishNote" class="principle" style="margin-top:12px"></div>
     <div class="checks" id="activities"></div>
-      <details class="basisfold"><summary>依據</summary><div class="bf-body">活動分類：<a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT</a>(Suchikova et al.)</div></details>
+      <details class="basisfold"><summary>依據</summary><div class="bf-body">活動分類取自 <a href="https://s3.eu-west-2.amazonaws.com/stm.offloadmedia/wp-content/uploads/2025/04/23020709/STM_AI_Classification_Recs_19_Sept2025-1.pdf" target="_blank" rel="noopener">STM 九類活動</a>（2025）；委派揭露架構參考 <a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT</a>（Suchikova et al.）。</div></details>
   </div>
 
   <div class="card" style="border-color:var(--accent)">
@@ -943,9 +967,9 @@
         <p class="hint">與其問「怎麼抓 AI」，領先的作法是重新設計評量。也附上偵測法反而出事的真實教訓。</p>
         <div class="fpoint"><div class="fh">評量重設計：雪梨大學「兩軌制」</div>
           <p><b>安全軌（Lane 1）</b>：監督式、口試、現場完成，驗證學生本人能力；<b>開放軌（Lane 2）</b>：可有意義地納入 AI。2025 年全面推行、每個學位的評量計畫年底到位；偵測器只作輔助、<b>絕不當唯一證據</b>。背後是 TEQSA 與 Dawson 團隊「重設計而非偵測」的共識，重點是把「AI 有沒有做」變得不重要。
-            <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/" target="_blank" rel="noopener">Sydney 兩軌制 ↗</a></p></div>
+            <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/" target="_blank" rel="noopener">Sydney 兩軌制 ↗</a><br><span class="xref">→ 想在自己課上這樣做？老師頁的「<a class="xreflink" onclick="setMode('teacher');window.scrollTo(0,0);return false;">想調整評量方式</a>」按各學科整理了可用的評量做法與案例。</span></p></div>
         <div class="fpoint warn"><div class="fh">偵測法反而出事的教訓</div>
-          <p>這些是真實案例，值得警惕：<b>Vanderbilt</b>（2023）停用 Turnitin AI 偵測器。就算只有 1% 誤判，乘上每年約 7.5 萬篇也會誤標約 750 名學生；<b>澳洲天主教大學（ACU）</b>2025 年停用，約四分之一轉介被駁回、凡以偵測器為唯一證據者立即撤案；<b>Adelphi 大學</b>一名自閉症新生被 Turnitin「100% AI」誤控，2026 年 1 月法院判決撤銷並清除紀錄（他只接受過語法輔導；法院審查發現另兩套獨立偵測器都判定該文為人類撰寫）；<b>UC Davis、密西根大學</b>等亦有多起誤控與訴訟。偵測器對<b>非母語者與身心障礙者尤其不公</b>。 <a href="https://www.rollingstone.com/culture/culture-features/student-accused-ai-cheating-turnitin-1234747351/" target="_blank" rel="noopener">UC Davis 案 ↗</a> · <a href="https://www.vanderbilt.edu/brightspace/2023/08/16/guidance-on-ai-detection-and-why-were-disabling-turnitins-ai-detector/" target="_blank" rel="noopener">Vanderbilt 停用 ↗</a> · <a href="https://caselaw.findlaw.com/court/ny-supreme-court/118148544.html" target="_blank" rel="noopener">Adelphi 判決 ↗</a> · <a href="https://www.abc.net.au/news/2025-10-09/artificial-intelligence-cheating-australian-catholic-university/105863524" target="_blank" rel="noopener">ACU 停用 ↗</a> · <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/false-flags-and-broken-trust-can-we-tell-if-ai-has-been-used/" target="_blank" rel="noopener">Sydney：偵測不可靠 ↗</a></p></div>
+          <p>這些是真實案例，值得警惕：<b>Vanderbilt</b>（2023）停用 Turnitin AI 偵測器。就算只有 1% 誤判，乘上每年約 7.5 萬篇也會誤標約 750 名學生；<b>澳洲天主教大學（ACU）</b>2025 年停用，約四分之一轉介被駁回、凡以偵測器為唯一證據者立即撤案；<b>Adelphi 大學</b>一名自閉症新生被 Turnitin「100% AI」誤控，2026 年 1 月法院判決撤銷並清除紀錄（他只接受過語法輔導；法院審查發現另兩套獨立偵測器都判定該文為人類撰寫）；<b>UC Davis、密西根大學</b>等亦有多起誤控與訴訟。偵測器對<b>非母語者與身心障礙者尤其不公</b>。 <a href="https://www.rollingstone.com/culture/culture-features/student-accused-ai-cheating-turnitin-1234747351/" target="_blank" rel="noopener">UC Davis 案 ↗</a> · <a href="https://www.vanderbilt.edu/brightspace/2023/08/16/guidance-on-ai-detection-and-why-were-disabling-turnitins-ai-detector/" target="_blank" rel="noopener">Vanderbilt 停用 ↗</a> · <a href="https://caselaw.findlaw.com/court/ny-supreme-court/118148544.html" target="_blank" rel="noopener">Adelphi 判決 ↗</a> · <a href="https://www.abc.net.au/news/2025-10-09/artificial-intelligence-cheating-australian-catholic-university/105863524" target="_blank" rel="noopener">ACU 停用 ↗</a> · <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/false-flags-and-broken-trust-can-we-tell-if-ai-has-been-used/" target="_blank" rel="noopener">Sydney：偵測不可靠 ↗</a><br><span class="xref">→ 老師頁的「<a class="xreflink" onclick="setMode('teacher');window.scrollTo(0,0);return false;">怎麼看學生交來的揭露</a>」談了為什麼不建議依賴 AI 偵測器，以及可以怎麼回應。</span></p></div>
         <p class="hint faint">教訓很一致：<b>偵測不是解方，會傷人、招訴訟、損信任；公平又可行的路是重新設計評量。</b></p>
       </div>
     </details>
@@ -1153,7 +1177,7 @@
 
 
   <div class="reporterr">📮 若發現本站有錯誤的部份，歡迎來信提報：<a href="mailto:libnews@nccu.edu.tw">libnews@nccu.edu.tw</a></div>
-  <div class="selfdisc">🔎 <b>本站自己的 AI 使用揭露</b> 這個網頁在政大圖書館的構想與規劃下，由 <b>Claude Opus 4.8</b> 協助整理內容、撰寫程式與查找資料。所有資料來源、政策與案例都經人工核對，設計判斷與最終定稿由館方負責。我們把這段揭露放在這裡，讓這個工具本身也成為一個誠實揭露 AI 使用的實例。</div>
+  <div class="selfdisc">🔎 <b>本站自己的 AI 使用揭露</b> 這個網頁由政治大學圖書館規劃，使用 <b>Claude Opus 4.8</b> 協助製作。網頁架構與資料來源經人工反覆以指令調整，並進行核對與最終定稿。</div>
   <div class="toast" id="toast"></div>
 
 <script>
@@ -1462,7 +1486,7 @@ function renderStudent(){
       </div>
     </div>
 
-    <details class="card optional">
+    <details class="card optional bonus">
       <summary>加分：你怎麼挑戰或改進 AI？（選填）<span class="advchev">▶</span></summary>
       <div class="optbody">
         <div class="optsec">
@@ -1642,49 +1666,49 @@ function setMode(m){
 
 /* ===== RESEARCHER TAB (merged) ===== */
 
-/* STM 9 activities (adapted, bilingual) with boundary (≠) and disclosure hint */
+/* STM 9 activities (adapted, bilingual) with boundary note and disclosure hint */
 const ACTIVITIES=[
- {id:1,zh:"語言潤飾（改善清晰度）",en:"Language editing for clarity",bound:"≠ 生成正文；純拼字/文法檢查通常<b>免揭露</b>",fields:["humanities","social","science","engineering","medical","inter"]},
- {id:2,zh:"撰寫或草擬正文",en:"Writing / drafting manuscript text",bound:"AI 生成部分或全部文字，<b>幾乎都要揭露</b>",fields:["humanities","social","science","engineering","medical","inter"]},
- {id:5,zh:"翻譯稿件（譯為另一語言）",en:"Translating the manuscript",bound:"≠ 研究過程中翻譯來源材料",fields:["humanities","social","science","engineering","medical","inter"]},
- {id:8,zh:"協助蒐集參考文獻",en:"Gathering references",bound:"≠ <b>生成不存在的假引用（禁止）</b>；找到後務必逐一核對",fields:["humanities","social","science","engineering","medical","inter"]},
- {id:3,zh:"既有資料的呈現與排版",en:"Formatting reported data",bound:"≠ 竄改、修改或分析資料本身",fields:["social","science","engineering","medical","inter"]},
- {id:6,zh:"研究數據/結果的視覺化",en:"Visualising research data",bound:"≠ 傳統統計軟體（R、SAS…）產圖",fields:["science","engineering","medical","social","inter"]},
- {id:7,zh:"程式碼的呈現與排版（不改功能）",en:"Formatting reported code",bound:"≠ 生成研究用的新程式或改變功能",fields:["engineering","science","inter"]},
- {id:4,zh:"插圖性質的圖像/圖表",en:"Illustrative images / figures",bound:"≠ 呈現真實數據；<b>Nature、Elsevier 等禁止 AI 生成影像</b>",fields:["humanities","social","science","engineering","medical","inter"],ban:true},
- {id:9,zh:"把 AI 生成內容當成原始研究數據呈現",en:"Passing AI output off as real data",bound:"<b>各社一致禁止</b>，算學術不當行為",fields:["humanities","social","science","engineering","medical","inter"],ban:true}
+ {id:1,zh:"語言潤飾（改善用語清晰度）",en:"Language editing for clarity",eg:"例如：用拼字、文法檢查工具（如 Word 內建編輯）潤飾主要由人撰寫的文字。",bound:"不包括：從提示生成文字、或生成／摘要文本（那屬撰寫正文或研究過程）。純拼字、文法檢查通常<b>免揭露</b>。",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:2,zh:"撰寫或草擬正文",en:"Writing / drafting manuscript text",eg:"例如：用 AI 從提示生成文字、大幅擴寫或改寫，或生成整段摘要（例如摘述另一篇論文的論點）。",bound:"只要 AI 生成了部分或全部文字，<b>幾乎都要揭露</b>。",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:5,zh:"翻譯稿件（譯成另一語言以發表）",en:"Translating the manuscript",eg:"例如：用 Google 翻譯或 ChatGPT，把自己的稿件草稿譯成另一種語言。",bound:"不包括：翻譯研究過程中的來源材料（那與稿件準備無關，不在這個分類裡）。",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:8,zh:"協助蒐集參考文獻",en:"Gathering references",eg:"例如：用 AI 找出可能和你的研究相關的文章。",bound:"不包括：用 BibTeX 等工具把人工找到的文獻排成引用格式；也不包括<b>生成看似合理、實際卻不存在的假引用（這是禁止的）</b>。AI 找到的每一篇都要回原文逐一核對。",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:3,zh:"整理或排版稿件中要呈現的資料",en:"Formatting reported data",eg:"例如：用 AI 改善稿件裡研究資料的清晰度、可讀性或排版（含補充材料）。",bound:"不包括：把資料視覺化（那是下一項）；也不包括對資料本身做任何生成、更正或分析（那屬研究過程）。",fields:["social","science","engineering","medical","inter"]},
+ {id:6,zh:"研究資料或結果的視覺化",en:"Visualising research data",eg:"例如：用 AI 生成研究資料集的圖表或表格。",bound:"不包括：用傳統統計軟體（如 STATA、SAS、R）產圖；也不包括生成與真實資料無關的圖。",fields:["science","engineering","medical","social","inter"]},
+ {id:7,zh:"程式碼的呈現與排版（不改功能）",en:"Formatting reported code",eg:"例如：用 AI 改善稿件裡程式碼的可讀性，但不更動它實際的功能。",bound:"不包括：生成研究要用的新程式，或改變研究程式的功能。",fields:["engineering","science","inter"]},
+ {id:4,zh:"純插圖性質的圖像或圖表",en:"Illustrative images / figures",eg:"例如：用 AI 生成「古代農耕場景」這類、原本會請插畫家繪製的示意圖。",bound:"不包括：把真實資料視覺化、或把生成的圖當成研究結果來呈現。<b>Nature、Elsevier 等出版社禁止在稿件中使用 AI 生成影像</b>，投稿前務必確認。",fields:["humanities","social","science","engineering","medical","inter"],ban:true},
+ {id:9,zh:"把 AI 生成的內容當成原始研究數據呈現",en:"Passing AI output off as real data",eg:"例如：把 AI 整包生成、與真實資料無關的資料、文字或圖表，當成原始研究結果呈現。",bound:"<b>各大出版社一致禁止</b>，屬學術不當行為。（但若你研究的對象本身就是「生成式 AI 的輸出」，那些輸出可視為研究資料，屬正當研究。）",fields:["humanities","social","science","engineering","medical","inter"],ban:true}
 ];
 
 /* records to keep — the core ledger */
 const BASE_RECORDS=[
  {t:"工具名稱 + 確切版本",why:"例：ChatGPT （GPT-4o）、Claude Opus 4.x、DeepL。供應商常在名稱不變下更動模型，版本越具體越好。"},
  {t:"使用日期",why:"APA、AMA 與多數期刊都要求；供應商會改模型，日期是重要定錨。"},
- {t:"每次用途對應哪一類活動",why:"對上第 2 步的 STM 分類，揭露時才分得清「潤稿」與「生成正文」。"},
+ {t:"每一次使用分別對應哪一類活動",why:"對上第 2 步的 STM 分類，揭露時才分得清「潤稿」與「生成正文」。"},
  {t:"你查證了哪些輸出",why:"<em>引用是否真實存在、數據是否重算</em>。這是你為內容負責最重要的一步。"}
 ];
 /* method-specific records (approach) */
 const APPROACH_RECORDS={
  qual:[
-  {t:"提示版本、編碼簿修訂與裁決註記",why:"質性研究的稽核軌跡：系統性記錄提示版本、編碼簿怎麼改、爭議如何裁決。"},
+  {t:"提示的版本、編碼簿的修改，以及爭議如何裁決",why:"質性研究的稽核軌跡：系統性記錄提示版本、編碼簿怎麼改、爭議如何裁決。"},
   {t:"反身性備忘錄（AI 影響了什麼）",why:"記下 AI 的摘要/編碼在哪裡形塑了你的詮釋，以及你怎麼回應。這就是技術反身性。"},
   {t:"AI 產出連回原始資料",why:"把 AI 的摘要/編碼標記清楚、可連回原文（如 MAXQDA 的做法），以便逐步比對與檢視。"},
   {t:"參與者資料的處理與同意",why:"把訪談等個資丟進 AI 前，確認去識別化與同意範圍；這也是揭露的一部分。"}
  ],
  quant:[
-  {t:"模型確切版本 + 存取日期 + 系統指紋",why:"託管模型會隨時間漂移（有任務準確率三個月從 84% 掉到 51%），版本與日期是可複製性底線。系統指紋=模型回傳的識別碼，若有就一併記下。 <a href='https://arxiv.org/abs/2307.09009' target='_blank' rel='noopener'>來源：模型漂移研究 ↗</a>"},
+  {t:"模型的確切版本、使用日期，以及系統回傳的識別碼",why:"託管模型會隨時間漂移（有任務準確率三個月從 84% 掉到 51%），版本與日期是可複製性底線。系統指紋=模型回傳的識別碼，若有就一併記下。 <a href='https://arxiv.org/abs/2307.09009' target='_blank' rel='noopener'>來源：模型漂移研究 ↗</a>"},
   {t:"參數：temperature、seed、top_p 等",why:"設定會大幅改變輸出。白話：temperature=隨機/發散程度、seed=亂數種子（讓結果可重跑）、top_p=取樣範圍。能設就設 temperature=0、記下 seed，但註明 seed 在託管 API 上不保證重現。"},
-  {t:"系統與提示設計、執行/session 軌跡",why:"提示格式本身就能讓準確率變動數十個百分點；軌跡=你與 AI 的完整互動/執行紀錄，完整留存才可稽核。"},
-  {t:"優先開放權重、本地鎖版本",why:"開放權重=模型參數公開、可下載鎖住版本；能連同分析一起釋出供他人複製，是專有模型做不到的。需要可複製時優先採用。"},
+  {t:"系統設定與提示設計，以及完整的操作紀錄",why:"提示格式本身就能讓準確率變動數十個百分點；軌跡=你與 AI 的完整互動/執行紀錄，完整留存才可稽核。"},
+  {t:"盡量選用開放權重、可鎖定版本的模型",why:"開放權重=模型參數公開、可下載鎖住版本；能連同分析一起釋出供他人複製，是專有模型做不到的。需要可複製時優先採用。"},
   {t:"以人類判斷驗證 AI 輸出",why:"把 AI 的分類/標註拿人工核對，並報告一致性。別把 AI 輸出當定論。"}
  ],
  mixed:[
-  {t:"質性面：提示版本、編碼簿、反身性備忘錄",why:"質性分析段落沿用上面的稽核軌跡做法。"},
-  {t:"量化面：模型版本、參數、軌跡、人工驗證",why:"計算分析段落沿用上面的可複製性報告項。"},
-  {t:"兩面如何整合的判斷",why:"混合方法的可信度在於整合邏輯，記下 AI 在各面各做了什麼、你如何併起來。"}
+  {t:"質性分析：留下提示版本、編碼簿與反身性備忘錄",why:"質性分析段落沿用上面的稽核軌跡做法。"},
+  {t:"量化分析：留下模型版本、參數、操作紀錄與人工驗證",why:"計算分析段落沿用上面的可複製性報告項。"},
+  {t:"質性與量化這兩面，你是怎麼整合的",why:"混合方法的可信度在於整合邏輯，記下 AI 在各面各做了什麼、你如何併起來。"}
  ],
  theory:[
   {t:"提示與完整對話紀錄",why:"詮釋/論證型研究，思路歷程就是貢獻；留下對話才說得清哪裡是你、哪裡受 AI 影響。"},
-  {t:"論證中哪些是你的、哪些是 AI 促發的",why:"標明 AI 在哪裡提出反例或另一種讀法、你怎麼採納或否決。這樣才守得住作者身分。"},
+  {t:"論證裡哪些想法是你的、哪些是 AI 觸發的",why:"標明 AI 在哪裡提出反例或另一種讀法、你怎麼採納或否決。這樣才守得住作者身分。"},
   {t:"引用與文獻的逐一查證",why:"AI 會捏造貌似合理的來源；每一條都要點回原始出處確認存在且相符。"}
  ]
 };
@@ -1693,9 +1717,9 @@ function recordsFor(ap){return BASE_RECORDS.concat(APPROACH_RECORDS[ap]||[]);}
 /* agent-specific records (appended when agent toggle is on) */
 const AGENT_RECORDS=[
  {t:"行動與存取紀錄",why:"agent 執行了哪些動作、存取了哪些工具、資料、來源。代理式要揭露的是「行動路徑」，不只是輸出。"},
- {t:"可檢視的產物 + 驗證鉤",why:"白話：patch/diff=程式碼的逐項修改紀錄、驗證鉤=自動跑的測試或一致性檢查。把這些可稽核產物留著，是可複製迭代的關鍵。"},
+ {t:"可以檢視的中間產物，以及自動化的驗證",why:"白話：patch/diff=程式碼的逐項修改紀錄、驗證鉤=自動跑的測試或一致性檢查。把這些可稽核產物留著，是可複製迭代的關鍵。"},
  {t:"監督層級（哪些你實際檢視）",why:"標明哪些步驟你真的把關、哪些是自動執行；責任落差要靠這個補上。"},
- {t:"novelty / 原創性查核",why:"已有 AI 生成研究抄襲的案例；agent 產出的想法與文字要自行確認原創、可溯源（provenance=來源可追溯）。"}
+ {t:"原創性查核",why:"已有 AI 生成研究抄襲的案例；agent 產出的想法與文字要自行確認原創、可溯源（provenance=來源可追溯）。"}
 ];
 
 /* field-aware note on AI text-polishing acceptance */
@@ -1707,20 +1731,20 @@ const POLISH_NOTES={
 const PUBS={
  nature:{name:"Nature / Springer Nature",where:"方法（Methods）；無方法時放合適段落",copyedit:"純語言潤稿<b>免揭露</b>",images:"<b>禁止</b> AI 生成圖像/影片",prompts:"未特別要求逐字提示",note:"強調可問責與可重現",url:"https://www.nature.com/nature-portfolio/editorial-policies/ai"},
  elsevier:{name:"Elsevier（含 Cell Press）",where:"參考文獻前的<b>獨立段落</b>（並於 cover letter 說明）",copyedit:"純潤稿免揭露",images:"<b>禁止</b> AI 生成圖像；Cell Press 對圖較嚴",prompts:"未特別要求逐字提示",note:"要求作者監督、查證、揭露；會出現在刊出版本",url:"https://www.elsevier.com/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier"},
- wiley:{name:"Wiley",where:"方法（Methods）",copyedit:"—",images:"部分限制",prompts:"<b>要求詳述</b>：軟體、供應商，有時含提示",note:"作者保有全部責任",url:"https://authors.wiley.com/ethics-guidelines/index.html"},
+ wiley:{name:"Wiley",where:"方法（Methods）",copyedit:"沒有要求",images:"部分限制",prompts:"<b>要求詳述</b>：軟體、供應商，有時含提示",note:"作者保有全部責任",url:"https://authors.wiley.com/ethics-guidelines/index.html"},
  science:{name:"Science / AAAS",where:"誌謝與方法",copyedit:"僅文法/拼字可免",images:"限制",prompts:"<b>要求完整揭露提示</b>",note:"要求在誌謝與方法揭露；方法須寫出<b>完整提示、工具與版本</b>；AI 不能掛名，作者負全責。屬揭露要求較細的一類（2023 年 11 月起改為可用但須完整揭露，非一律禁止）。",url:"https://www.science.org/content/page/science-journals-editorial-policies"},
- plos:{name:"PLOS",where:"方法（含詳細評估說明）",copyedit:"—",images:"鼓勵透明，無明文禁圖",prompts:"—",note:"須確保正確性與正確歸屬",url:"https://journals.plos.org/plosone/s/ethical-publishing-practice"},
- ieee:{name:"IEEE / ACM",where:"誌謝（Acknowledgments）",copyedit:"—",images:"—",prompts:"—",note:"IEEE 須標明：<b>AI 系統、受影響段落、使用程度</b>",url:"https://open.ieee.org/author-guidelines-for-artificial-intelligence-ai-generated-text/"},
- tf:{name:"Taylor & Francis",where:"方法或誌謝",copyedit:"純潤稿多可免",images:"—",prompts:"—",note:"允許但須揭露、作者負責；部分期刊限語言改善",url:"https://taylorandfrancis.com/our-policies/ai-policy/"},
- medical:{name:"醫學期刊（ICMJE / JAMA / BMJ）",where:"誌謝 / 方法 + <b>投稿系統的 AI 提問</b>",copyedit:"—",images:"—",prompts:"視期刊",note:"投稿系統常有必答的 AI 使用題，須與內文一致；<b>JAMA、BMJ 要求寫明模型名稱、版本、製造商與產生內容的性質</b>",url:"https://www.icmje.org/recommendations/browse/artificial-intelligence/"},
- sage:{name:"SAGE",where:"方法或致謝",copyedit:"<b>輔助性 AI（潤飾你自己的文字）不用聲明</b>",images:"—",prompts:"—",note:"區分輔助 vs 生成：生成新內容須引用並標註；規範較彈性、格式指引較少",url:"https://www.sagepub.com/journals/publication-ethics-policies/artificial-intelligence-policy"},
- mdpi:{name:"MDPI",where:"方法或致謝",copyedit:"純潤稿多可免",images:"對 AI 輔助視覺較寬鬆",prompts:"—",note:"允許但須揭露：GenAI 生成內容要在方法說明「如何使用」、並於投稿時說明；<b>純語言編修（文法、標點、格式）不用揭露</b>；AI 不能掛名，作者為全部內容負責",url:"https://www.mdpi.com/ethics"},
- frontiers:{name:"Frontiers",where:"方法或致謝",copyedit:"純潤稿多可免",images:"涵蓋文生圖工具，須依規揭露",prompts:"—",note:"允許但須揭露；規範明確涵蓋 LLM 與文生圖工具（DALL·E、Midjourney）；用 AI 生成正文須在致謝揭露，作者須查證所有事實與引用",url:"https://www.frontiersin.org/guidelines/policies-and-publication-ethics"},
- oup:{name:"Oxford Academic(OUP)",where:"<b>cover letter 與方法/致謝都要</b>",copyedit:"—",images:"—",prompts:"—",note:"書籍出版須填「AI 使用聲明表（AI Use Declaration Form）」；AI 不能掛名、也不得執行主要的作者職責；期刊則依各刊作者指南",url:"https://academic.oup.com/pages/for-authors/books/author-use-of-artificial-intelligence"},
- cup:{name:"Cambridge University Press",where:"寫作流程須揭露",copyedit:"—",images:"—",prompts:"—",note:"AI 不能掛名（需能問責）；規範主要涵蓋寫作流程",url:"https://www.cambridge.org/core/services/authors/publishing-ethics/research-publishing-ethics-guidelines-for-journals/authorship-and-contributorship"},
- emerald:{name:"Emerald",where:"須在論文中標明任何 AI 使用",copyedit:"—",images:"禁止 AI 生成圖像",prompts:"—",note:"相對嚴格：任何 AI 使用都要在論文中標明；<b>用 AI 生成摘要或文獻回顧不被允許</b>（違反作者身分準則）；AI 不能掛名",url:"https://www.emeraldgrouppublishing.com/publish-with-us/ethics-integrity/research-publishing-ethics"},
- acs:{name:"ACS（美國化學學會）",where:"致謝（實質使用寫入方法）",copyedit:"—",images:"AI 生成圖像須揭露",prompts:"—",note:"AI 不能掛名；文字或圖像的 AI 使用要在致謝說明「何時、如何用」，實質使用寫入方法；作者為全部內容負責；依循 COPE",url:"https://researcher-resources.acs.org/publish/authorship_guidance_policies"},
- apa:{name:"APA（美國心理學會）",where:"方法（Methods）並須<b>正式引用</b>",copyedit:"—",images:"—",prompts:"—",note:"在方法揭露並正式引用 AI;AI 不能掛名",url:"https://www.apa.org/pubs/journals/resources/publishing-tips/policy-generative-ai"},
+ plos:{name:"PLOS",where:"方法（含詳細評估說明）",copyedit:"沒有要求",images:"鼓勵透明，無明文禁圖",prompts:"沒有要求",note:"須確保正確性與正確歸屬",url:"https://journals.plos.org/plosone/s/ethical-publishing-practice"},
+ ieee:{name:"IEEE / ACM",where:"誌謝（Acknowledgments）",copyedit:"沒有要求",images:"沒有要求",prompts:"沒有要求",note:"IEEE 須標明：<b>AI 系統、受影響段落、使用程度</b>",url:"https://open.ieee.org/author-guidelines-for-artificial-intelligence-ai-generated-text/"},
+ tf:{name:"Taylor & Francis",where:"方法或誌謝",copyedit:"純潤稿多可免",images:"沒有要求",prompts:"沒有要求",note:"允許但須揭露、作者負責；部分期刊限語言改善",url:"https://taylorandfrancis.com/our-policies/ai-policy/"},
+ medical:{name:"醫學期刊（ICMJE / JAMA / BMJ）",where:"誌謝 / 方法 + <b>投稿系統的 AI 提問</b>",copyedit:"沒有要求",images:"沒有要求",prompts:"視期刊",note:"投稿系統常有必答的 AI 使用題，須與內文一致；<b>JAMA、BMJ 要求寫明模型名稱、版本、製造商與產生內容的性質</b>",url:"https://www.icmje.org/recommendations/browse/artificial-intelligence/"},
+ sage:{name:"SAGE",where:"方法或致謝",copyedit:"<b>輔助性 AI（潤飾你自己的文字）不用聲明</b>",images:"沒有要求",prompts:"沒有要求",note:"區分輔助 vs 生成：生成新內容須引用並標註；規範較彈性、格式指引較少",url:"https://www.sagepub.com/journals/publication-ethics-policies/artificial-intelligence-policy"},
+ mdpi:{name:"MDPI",where:"方法或致謝",copyedit:"純潤稿多可免",images:"對 AI 輔助視覺較寬鬆",prompts:"沒有要求",note:"允許但須揭露：GenAI 生成內容要在方法說明「如何使用」、並於投稿時說明；<b>純語言編修（文法、標點、格式）不用揭露</b>；AI 不能掛名，作者為全部內容負責",url:"https://www.mdpi.com/ethics"},
+ frontiers:{name:"Frontiers",where:"方法或致謝",copyedit:"純潤稿多可免",images:"涵蓋文生圖工具，須依規揭露",prompts:"沒有要求",note:"允許但須揭露；規範明確涵蓋 LLM 與文生圖工具（DALL·E、Midjourney）；用 AI 生成正文須在致謝揭露，作者須查證所有事實與引用",url:"https://www.frontiersin.org/guidelines/policies-and-publication-ethics"},
+ oup:{name:"Oxford Academic(OUP)",where:"<b>cover letter 與方法/致謝都要</b>",copyedit:"沒有要求",images:"沒有要求",prompts:"沒有要求",note:"書籍出版須填「AI 使用聲明表（AI Use Declaration Form）」；AI 不能掛名、也不得執行主要的作者職責；期刊則依各刊作者指南",url:"https://academic.oup.com/pages/for-authors/books/author-use-of-artificial-intelligence"},
+ cup:{name:"Cambridge University Press",where:"寫作流程須揭露",copyedit:"沒有要求",images:"沒有要求",prompts:"沒有要求",note:"AI 不能掛名（需能問責）；規範主要涵蓋寫作流程",url:"https://www.cambridge.org/core/services/authors/publishing-ethics/research-publishing-ethics-guidelines-for-journals/authorship-and-contributorship"},
+ emerald:{name:"Emerald",where:"須在論文中標明任何 AI 使用",copyedit:"沒有要求",images:"禁止 AI 生成圖像",prompts:"沒有要求",note:"相對嚴格：任何 AI 使用都要在論文中標明；<b>用 AI 生成摘要或文獻回顧不被允許</b>（違反作者身分準則）；AI 不能掛名",url:"https://www.emeraldgrouppublishing.com/publish-with-us/ethics-integrity/research-publishing-ethics"},
+ acs:{name:"ACS（美國化學學會）",where:"致謝（實質使用寫入方法）",copyedit:"沒有要求",images:"AI 生成圖像須揭露",prompts:"沒有要求",note:"AI 不能掛名；文字或圖像的 AI 使用要在致謝說明「何時、如何用」，實質使用寫入方法；作者為全部內容負責；依循 COPE",url:"https://researcher-resources.acs.org/publish/authorship_guidance_policies"},
+ apa:{name:"APA（美國心理學會）",where:"方法（Methods）並須<b>正式引用</b>",copyedit:"沒有要求",images:"沒有要求",prompts:"沒有要求",note:"在方法揭露並正式引用 AI;AI 不能掛名",url:"https://www.apa.org/pubs/journals/resources/publishing-tips/policy-generative-ai"},
  other:{name:"尚未決定 / 其他",where:"多數為方法或誌謝",copyedit:"純潤稿常可免",images:"多家禁止 AI 生成圖像",prompts:"視期刊",note:"選定後請以該社作者指南為準",url:""}
 };
 
@@ -1729,7 +1753,7 @@ function renderActivities(){
   const list=ACTIVITIES;
   $('#activities').innerHTML=list.map(a=>`
     <label class="chk ${a.ban?'ban':''}"><input type="checkbox" value="${a.zh}" data-id="${a.id}">
-      <span class="ct">${a.zh}<span class="bound">${a.bound}</span></span></label>`).join('');
+      <span class="ct"><span class="an">${a.zh}</span><span class="eg">${a.eg}</span><span class="bound">${a.bound}</span></span></label>`).join('');
 }
 /* field-aware polishing note */
 function renderPolish(){
