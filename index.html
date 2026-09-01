@@ -411,6 +411,11 @@ details.optional.bonus .hint{color:#6f5a2a}
 .chk .ct .an{font-size:14.5px;font-weight:600;color:var(--ink)}
 .chk .ct .eg{display:block;font-size:12.5px;color:var(--ink-soft);font-weight:400;margin-top:5px;line-height:1.6}
 .chk .ct .bound{display:block;font-size:12.5px;color:var(--ink-faint);font-weight:400;margin-top:3px;line-height:1.6}
+.agentnote{font-size:12.5px;line-height:1.7;color:var(--ink-soft);margin-top:8px}
+.agentnote b{color:var(--ink)}
+.agentsrc{display:block;margin-top:8px;font-size:12px;color:var(--ink-faint)}
+.agentsrc a{color:var(--accent-deep)}
+.foldcard.fcopen>.fctitle{padding:17px 24px;font-family:"Noto Serif TC",Georgia,serif;font-weight:600;font-size:16.5px;color:var(--accent-deep);display:flex;align-items:center;gap:9px}
 </style>
 </head>
 <body>
@@ -476,7 +481,7 @@ details.optional.bonus .hint{color:#6f5a2a}
     </div>
 
     <details class="advanced">
-      <summary>進階設定（選填）<span class="advsub"> — 不用揭露清單、老師自我揭露</span><span class="advchev">▶</span></summary>
+      <summary>進階設定（選填）<span class="advsub">：勾選「本課哪些任務算日常工具、不用揭露」，並可讓老師自己也示範一次 AI 使用揭露</span><span class="advchev">▶</span></summary>
     <div class="card">
       <h2><span class="step-n">5</span> 哪些「不用揭露」？</h2>
       <p class="hint">明確畫掉瑣碎的焦慮，學生才有餘裕誠實面對實質的使用。</p>
@@ -610,7 +615,7 @@ details.optional.bonus .hint{color:#6f5a2a}
       <div class="principle" style="margin-top:10px">
       <b>中文學術圈的規範 / Chinese-language academia.</b> 上表以英文出版社為主；中文學術界多透過<b>機構與學會指引</b>規範，原則與國際一致：不掛名、須揭露實質使用、人負全責、不得捏造引用、審稿勿上傳 AI。<br>
       <b>台灣：</b><a href="https://sub.daais.sinica.edu.tw/download/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95.pdf" target="_blank" rel="noopener">中央研究院《使用生成式 AI 之參考指引》</a>、臺灣學術倫理教育學會《人工智慧技術對學術倫理的影響及因應建議》、國科會參考指引、成大/陽明交大校級指引。<br>
-      <b>中國大陸：</b><a href="https://www.istic.ac.cn/html/1/284/338/2149891904917733076.html" target="_blank" rel="noopener">中國科學技術信息研究所《學術出版中 AIGC 使用邊界指南 2.0》（2024 年 9 月）</a>（出版界共識，類似 STM）、<a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">科技部《負責任研究行為規範指引（2023）》（2023-12-21 發布）</a>、中國科學院誠信提醒、中華醫學會規定；並普遍使用 <b>AIGC 偵測</b>（知網/萬方/維普，部分期刊疑似比逾 20% 退稿）。這跟西方「重評量、不靠偵測」的方向不太一樣。
+      <b>中國大陸：</b><a href="http://www.ircip.cn/bbx/1044770-1044770.html?id=26645&newsid=5064831" target="_blank" rel="noopener">中國科學技術信息研究所《學術出版中 AIGC 使用邊界指南 2.0》（2024 年 9 月）</a>（出版界共識，類似 STM）、<a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">科技部《負責任研究行為規範指引（2023）》（2023-12-21 發布）</a>、中國科學院誠信提醒、中華醫學會規定；並普遍使用 <b>AIGC 偵測</b>（知網/萬方/維普，部分期刊疑似比逾 20% 退稿）。這跟西方「重評量、不靠偵測」的方向不太一樣。
       </div></details>
   </div>
 
@@ -635,7 +640,7 @@ details.optional.bonus .hint{color:#6f5a2a}
     </details>
     <label class="chk agenttoggle" style="margin-top:14px"><input type="checkbox" id="agent"><span class="ct">我（可能）會用到<b>會自主多步驟執行或採取行動的 AI agent</b>（如 deep research、coding agent、自動化實驗/分析）</span></label>
     <div id="agentCaution" class="hide agentcaution">
-      <b>代理式 AI 改變了該留存的東西：</b>單位從「輸出」變成「行動路徑」。它自己跑很多步驟、你未必看得到中間。上方紀錄本已為你加入 agent 專屬項目。兩個提醒：<b>（1）可複製性</b>：代理式研究常因中間資訊缺漏而無法重現，務必留下可檢視的產物與軌跡；<b>（2）你仍為 agent 的產出與行動負全責</b>，且已有「AI 生成研究抄襲」的案例，原創性要自行查核。
+      <b>代理式 AI 改變了該留存與該把關的東西：</b>單位從「輸出」變成「整條行動路徑」。它自己跑很多步驟、還可能實際採取行動，你未必看得到中間。上方紀錄本已為你加入 agent 專屬項目。除了揭露，還有幾點值得留意：<b>（1）可複製性</b>——代理式研究常因中間資訊缺漏而無法重現，務必留下可檢視的產物與完整軌跡；<b>（2）你仍為 agent 的產出與行動負全責</b>——已有「AI 生成研究抄襲」的案例，原創性要自行查核；<b>（3）人為把關高風險動作</b>——不可逆或高後果的行動（刪改資料、對外寄送、呼叫外部服務、花錢）別讓它自動完成，設一個人為確認點；<b>（4）最小權限</b>——只給它完成任務真正需要的工具與資料存取，別把帳號、金鑰、敏感資料整包交出去；<b>（5）提示注入</b>——agent 讀到的網頁、檔案或工具回傳裡可能藏有挾持它的指令，別對它帶回來的東西照單全收；<b>（6）資料與隱私</b>——留意 agent 會不會把你的、或受試者的資料送到外部服務。<br><span class="agentsrc">參考：<a href="https://www.federalregister.gov/documents/2026/01/08/2026-00206/request-for-information-regarding-security-considerations-for-artificial-intelligence-agents" target="_blank" rel="noopener">NIST《AI 代理安全考量》徵詢（2026）</a>，以及 OWASP 對 LLM／代理式應用列出的風險（最小權限、提示注入、過度代理）。</span>
     </div>
     <div class="teamnote">👥 <b>共同作者/團隊：</b>投稿前和所有共同作者對齊揭露內容（每個人用了什麼、由誰查證）。若你是 PI，可用這套紀錄慣例讓實驗室與學生從一開始就一致地留紀錄。</div>
   </div>
@@ -747,7 +752,7 @@ details.optional.bonus .hint{color:#6f5a2a}
       可複製性報告：<a href="https://llm-guidelines.org" target="_blank" rel="noopener">LLM 實證研究指引</a> · 代理式科研：<a href="https://arxiv.org/abs/2508.14111" target="_blank" rel="noopener">Agentic Science 綜述</a>。<br>
       壓力下的使用：<a href="https://www.nature.com/articles/d41586-025-01180-2" target="_blank" rel="noopener">未揭露 AI 痕跡</a>（Nature 2025）· <a href="https://cacm.acm.org/opinion/hidden-prompts-in-manuscripts-exploit-ai-assisted-peer-review/" target="_blank" rel="noopener">操縱 AI 審查</a>（CACM）· automation bias 在時間壓力下被放大的實證。<br>
       補助機構：<a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-25-132.html" target="_blank" rel="noopener">NIH</a> · <a href="https://www.ukri.org/publications/generative-artificial-intelligence-in-application-and-assessment-policy/" target="_blank" rel="noopener">UKRI</a> · <a href="https://wellcome.org/research-funding/guidance/policies-grant-conditions/use-of-generative-ai" target="_blank" rel="noopener">Wellcome</a> · <a href="https://www.ey.gov.tw/Page/448DE008087A1971/40c1a925-121d-4b6b-8f40-7e9e1a5401f2" target="_blank" rel="noopener">行政院參考指引</a> · <a href="https://www.nstc.gov.tw/folksonomy/detail/d21566a0-3465-4b63-84b7-5d7cb2e1e5ff?l=ch" target="_blank" rel="noopener">國科會 FAQ</a>。出版社官方政策（第 4 步各卡內連結）：Nature、Elsevier、Wiley、Science、PLOS、IEEE、T&amp;F。<br>
-      中文學術圈：<a href="https://sub.daais.sinica.edu.tw/download/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95.pdf" target="_blank" rel="noopener">中央研究院指引</a> · <a href="https://www.istic.ac.cn/html/1/284/338/2149891904917733076.html" target="_blank" rel="noopener">學術出版 AIGC 使用邊界指南 2.0（2024 年 9 月）</a>（中國）· <a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">中國科技部《負責任研究行為規範指引（2023）》</a>。<br>
+      中文學術圈：<a href="https://sub.daais.sinica.edu.tw/download/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95.pdf" target="_blank" rel="noopener">中央研究院指引</a> · <a href="http://www.ircip.cn/bbx/1044770-1044770.html?id=26645&newsid=5064831" target="_blank" rel="noopener">學術出版 AIGC 使用邊界指南 2.0（2024 年 9 月）</a>（中國）· <a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">中國科技部《負責任研究行為規範指引（2023）》</a>。<br>
       「該保留哪些紀錄」的缺口參酌 A Faceted Proposal for Transparent Attribution（2026）。政策多半沒講清楚提示、log、模型版本、中間草稿是否留存。
     </div>
   </details>
@@ -936,9 +941,23 @@ details.optional.bonus .hint{color:#6f5a2a}
     </div>
 
 
-    <div class="foldpeek">💡 各學科（法律、人文、社科、商管、傳播、教育、理工、藝術）怎麼用 AI、踩什麼雷，各有<b>真實例子</b>。 </div>
-    <details class="foldcard">
-      <summary>🎓 依學科看案例<span class="foldchev">▶</span></summary>
+    
+
+    <div class="foldcard fcopen">
+      <div class="fctitle">🏛 名校標竿：政策、教學與評量的改變</div>
+      <div class="foldbody">
+        <p class="hint">與其問「怎麼抓 AI」，領先的作法是重新設計評量。也附上偵測法反而出事的真實教訓。</p>
+        <div class="fpoint"><div class="fh">評量重設計：雪梨大學「兩軌制」</div>
+          <p><b>安全軌（Lane 1）</b>：監督式、口試、現場完成，驗證學生本人能力；<b>開放軌（Lane 2）</b>：可有意義地納入 AI。2025 年全面推行、每個學位的評量計畫年底到位；偵測器只作輔助、<b>絕不當唯一證據</b>。背後是 TEQSA 與 Dawson 團隊「重設計而非偵測」的共識，重點是把「AI 有沒有做」變得不重要。
+            <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/" target="_blank" rel="noopener">Sydney 兩軌制 ↗</a><br><span class="xref">→ 想在自己課上這樣做？老師頁的「<a class="xreflink" onclick="setMode('teacher');window.scrollTo(0,0);return false;">想調整評量方式</a>」按各學科整理了可用的評量做法與案例。</span></p></div>
+        <div class="fpoint warn"><div class="fh">偵測法反而出事的教訓</div>
+          <p>這些是真實案例，值得警惕：<b>Vanderbilt</b>（2023）停用 Turnitin AI 偵測器。就算只有 1% 誤判，乘上每年約 7.5 萬篇也會誤標約 750 名學生；<b>澳洲天主教大學（ACU）</b>2025 年停用，約四分之一轉介被駁回、凡以偵測器為唯一證據者立即撤案；<b>Adelphi 大學</b>一名自閉症新生被 Turnitin「100% AI」誤控，2026 年 1 月法院判決撤銷並清除紀錄（他只接受過語法輔導；法院審查發現另兩套獨立偵測器都判定該文為人類撰寫）；<b>UC Davis、密西根大學</b>等亦有多起誤控與訴訟。偵測器對<b>非母語者與身心障礙者尤其不公</b>。 <a href="https://www.rollingstone.com/culture/culture-features/student-accused-ai-cheating-turnitin-1234747351/" target="_blank" rel="noopener">UC Davis 案 ↗</a> · <a href="https://www.vanderbilt.edu/brightspace/2023/08/16/guidance-on-ai-detection-and-why-were-disabling-turnitins-ai-detector/" target="_blank" rel="noopener">Vanderbilt 停用 ↗</a> · <a href="https://caselaw.findlaw.com/court/ny-supreme-court/118148544.html" target="_blank" rel="noopener">Adelphi 判決 ↗</a> · <a href="https://www.abc.net.au/news/2025-10-09/artificial-intelligence-cheating-australian-catholic-university/105863524" target="_blank" rel="noopener">ACU 停用 ↗</a> · <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/false-flags-and-broken-trust-can-we-tell-if-ai-has-been-used/" target="_blank" rel="noopener">Sydney：偵測不可靠 ↗</a><br><span class="xref">→ 老師頁的「<a class="xreflink" onclick="setMode('teacher');window.scrollTo(0,0);return false;">怎麼看學生交來的揭露</a>」談了為什麼不建議依賴 AI 偵測器，以及可以怎麼回應。</span></p></div>
+        <p class="hint faint">教訓很一致：<b>偵測不是解方，會傷人、招訴訟、損信任；公平又可行的路是重新設計評量。</b></p>
+      </div>
+    </div>
+
+    <div class="foldcard fcopen">
+      <div class="fctitle">🎓 依學科看案例</div>
       <div class="foldbody">
         <p class="hint">不同領域用 AI 的方式和踩的雷都不一樣。這裡各科挑一兩個真實例子，老師、學生、研究者都可以參考。</p>
         <div class="fpoint"><div class="fh">法律</div>
@@ -958,25 +977,22 @@ details.optional.bonus .hint{color:#6f5a2a}
         <div class="fpoint"><div class="fh">藝術 / 設計</div>
           <p>生成式工具能快速發想、做原型。但著作權和原創性是核心議題，說清楚你用了什麼、哪些是你自己的，特別重要。</p></div>
       </div>
-    </details>
+    </div>
 
-    <div class="foldpeek">💡 <b>重點：</b>雪梨大學用「兩軌制」重設計評量；多所大學因偵測器誤判、招訴訟而<b>停用偵測器</b>（Vanderbilt、ACU、Adelphi）。<b>展開</b>看標竿與教訓。 </div>
-    <details class="foldcard">
-      <summary>🏛 名校標竿：政策、教學與評量的改變<span class="foldchev">▶</span></summary>
+    <div class="foldcard fcopen">
+      <div class="fctitle">🎨 創作領域的突破與前瞻</div>
       <div class="foldbody">
-        <p class="hint">與其問「怎麼抓 AI」，領先的作法是重新設計評量。也附上偵測法反而出事的真實教訓。</p>
-        <div class="fpoint"><div class="fh">評量重設計：雪梨大學「兩軌制」</div>
-          <p><b>安全軌（Lane 1）</b>：監督式、口試、現場完成，驗證學生本人能力；<b>開放軌（Lane 2）</b>：可有意義地納入 AI。2025 年全面推行、每個學位的評量計畫年底到位；偵測器只作輔助、<b>絕不當唯一證據</b>。背後是 TEQSA 與 Dawson 團隊「重設計而非偵測」的共識，重點是把「AI 有沒有做」變得不重要。
-            <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/" target="_blank" rel="noopener">Sydney 兩軌制 ↗</a><br><span class="xref">→ 想在自己課上這樣做？老師頁的「<a class="xreflink" onclick="setMode('teacher');window.scrollTo(0,0);return false;">想調整評量方式</a>」按各學科整理了可用的評量做法與案例。</span></p></div>
-        <div class="fpoint warn"><div class="fh">偵測法反而出事的教訓</div>
-          <p>這些是真實案例，值得警惕：<b>Vanderbilt</b>（2023）停用 Turnitin AI 偵測器。就算只有 1% 誤判，乘上每年約 7.5 萬篇也會誤標約 750 名學生；<b>澳洲天主教大學（ACU）</b>2025 年停用，約四分之一轉介被駁回、凡以偵測器為唯一證據者立即撤案；<b>Adelphi 大學</b>一名自閉症新生被 Turnitin「100% AI」誤控，2026 年 1 月法院判決撤銷並清除紀錄（他只接受過語法輔導；法院審查發現另兩套獨立偵測器都判定該文為人類撰寫）；<b>UC Davis、密西根大學</b>等亦有多起誤控與訴訟。偵測器對<b>非母語者與身心障礙者尤其不公</b>。 <a href="https://www.rollingstone.com/culture/culture-features/student-accused-ai-cheating-turnitin-1234747351/" target="_blank" rel="noopener">UC Davis 案 ↗</a> · <a href="https://www.vanderbilt.edu/brightspace/2023/08/16/guidance-on-ai-detection-and-why-were-disabling-turnitins-ai-detector/" target="_blank" rel="noopener">Vanderbilt 停用 ↗</a> · <a href="https://caselaw.findlaw.com/court/ny-supreme-court/118148544.html" target="_blank" rel="noopener">Adelphi 判決 ↗</a> · <a href="https://www.abc.net.au/news/2025-10-09/artificial-intelligence-cheating-australian-catholic-university/105863524" target="_blank" rel="noopener">ACU 停用 ↗</a> · <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/false-flags-and-broken-trust-can-we-tell-if-ai-has-been-used/" target="_blank" rel="noopener">Sydney：偵測不可靠 ↗</a><br><span class="xref">→ 老師頁的「<a class="xreflink" onclick="setMode('teacher');window.scrollTo(0,0);return false;">怎麼看學生交來的揭露</a>」談了為什麼不建議依賴 AI 偵測器，以及可以怎麼回應。</span></p></div>
-        <p class="hint faint">教訓很一致：<b>偵測不是解方，會傷人、招訴訟、損信任；公平又可行的路是重新設計評量。</b></p>
+        <div class="fpoint"><div class="fh">共創與探索</div>
+          <p>把 AI 當發想、風格探索、跨語言的夥伴，可以打開新的創作方式；判斷、選擇與最後的作品仍是你的。</p></div>
+        <div class="fpoint"><div class="fh">無障礙創作</div>
+          <p>對行動或表達受限的人，AI 能降低門檻，讓更多人也能創作、出版。</p></div>
+        <div class="fpoint"><div class="fh">標準逐步成形</div>
+          <p>來源憑證（C2PA）正在普及、平台標示逐漸標準化、「Human Authored」這類人類創作標章出現、各國著作權規則陸續到位。提醒：標準還在成形，早點養成「留紀錄、該標就標」的習慣，將來最省事。</p></div>
       </div>
-    </details>
+    </div>
 
-    <div class="foldpeek">💡 <b>重點：</b>算力集中造成研究不平等；可爭取<b>免費算力</b>（NAIRR、國網中心）、改用<b>開放權重模型</b>來縮小差距。 </div>
-    <details class="foldcard">
-      <summary>⚖ AI 與研究不平等：怎麼縮小<span class="foldchev">▶</span></summary>
+    <div class="foldcard fcopen">
+      <div class="fctitle">⚖ AI 與研究不平等：怎麼縮小</div>
       <div class="foldbody">
         <p class="hint"><b>問題：</b>前沿 AI 需要龐大算力，集中在少數機構與大公司，形成「算力鴻溝」；連資源較少的大學都得靠有時限的免費平台（如 Colab），限制實驗規模與可複製性。全球看，IMF 警告 AI 可能擴大國家間不平等。 <a href="https://www.imf.org/en/Blogs/Articles/2024/01/14/ai-will-transform-the-global-economy-lets-make-sure-it-benefits-humanity" target="_blank" rel="noopener">IMF:AI 與全球不平等 ↗</a></p>
         <div class="fpoint"><div class="fh">爭取免費 / 補助算力</div>
@@ -988,20 +1004,8 @@ details.optional.bonus .hint{color:#6f5a2a}
         <div class="fpoint"><div class="fh">善用國家 / 區域計畫</div>
           <p>各國正建主權 AI 與共享算力（如巴西的國家 AI 計畫、非洲聯盟框架），為研究者建立<b>參與與議價的能力</b>。留意本地與國際的共享資源、開放資料與合作網絡。</p></div>
       </div>
-    </details>
-
-    <div class="foldpeek">💡 AI 在創作的突破（共創、風格探索、無障礙創作）與正在成形的標準。 </div>
-    <details class="foldcard">
-      <summary>🎨 創作領域的突破與前瞻<span class="foldchev">▶</span></summary>
-      <div class="foldbody">
-        <div class="fpoint"><div class="fh">共創與探索</div>
-          <p>把 AI 當發想、風格探索、跨語言的夥伴，可以打開新的創作方式；判斷、選擇與最後的作品仍是你的。</p></div>
-        <div class="fpoint"><div class="fh">無障礙創作</div>
-          <p>對行動或表達受限的人，AI 能降低門檻，讓更多人也能創作、出版。</p></div>
-        <div class="fpoint"><div class="fh">標準逐步成形</div>
-          <p>來源憑證（C2PA）正在普及、平台標示逐漸標準化、「Human Authored」這類人類創作標章出現、各國著作權規則陸續到位。提醒：標準還在成形，早點養成「留紀錄、該標就標」的習慣，將來最省事。</p></div>
-      </div>
-    </details>
+    </div>
+  
 
     <div class="footnote">標竿與案例整理自 2025–2026 的公開資料（雪梨大學、TEQSA、Vanderbilt、ACU、Adelphi 等），以及 NAIRR、CSIS、IMF 等對算力鴻溝與減緩做法的討論。</div>
   </section>
@@ -1032,6 +1036,17 @@ details.optional.bonus .hint{color:#6f5a2a}
       <div class="fpoint"><p><b>回應審查：</b>讓 AI 幫你理解意思、整理語氣可以，但論點和引用要自己來、自己查。AI 會引到假的或已撤稿的文獻。</p></div>
       <div class="fpoint"><p><b>你當審查者：</b>多數期刊不准把稿件上傳 AI（要保密）；更不要在自己稿子裡藏指令去操縱 AI 審查，那算學術不當行為。 <a href="https://cacm.acm.org/opinion/hidden-prompts-in-manuscripts-exploit-ai-assisted-peer-review/" target="_blank" rel="noopener">案例 ↗</a></p></div>
     </div>
+    <div class="card">
+      <h2>創作者：接案、量產與模仿</h2>
+        <div class="fpoint warn"><div class="fh">接案 / 趕稿</div>
+          <p>再急也別交出沒查過的 AI 生成內容，出錯會砸招牌、失去客戶信任。</p></div>
+        <div class="fpoint warn"><div class="fh">量產的誘惑</div>
+          <p>平台會盯異常高的產出（Amazon KDP 自 2023 年 9 月起限制每天上架新書 3 本），別為了衝量賭上帳號。</p></div>
+        <div class="fpoint warn"><div class="fh">風格模仿</div>
+          <p>用 AI 模仿在世創作者的風格，有倫理與法律風險，尤其是拿去商用時。</p></div>
+        <div class="fpoint warn"><div class="fh">冒名與深偽</div>
+          <p>別用 AI 假造他人的聲音、肖像或簽名，這可能觸法，也傷害他人。</p></div>
+      </div>
 
     <div class="card">
       <h2>其他容易太依賴 AI 的時刻</h2>
@@ -1051,17 +1066,6 @@ details.optional.bonus .hint{color:#6f5a2a}
       <p class="hint faint" style="margin-top:14px">共通的解法很簡單：在你要用 AI 的地方，刻意留一個自己動腦、自己查證的步驟。越是你判斷不了的地方，越要留。</p>
     </div>
 
-    <div class="card">
-      <h2>創作者：接案、量產與模仿</h2>
-        <div class="fpoint warn"><div class="fh">接案 / 趕稿</div>
-          <p>再急也別交出沒查過的 AI 生成內容，出錯會砸招牌、失去客戶信任。</p></div>
-        <div class="fpoint warn"><div class="fh">量產的誘惑</div>
-          <p>平台會盯異常高的產出（Amazon KDP 自 2023 年 9 月起限制每天上架新書 3 本），別為了衝量賭上帳號。</p></div>
-        <div class="fpoint warn"><div class="fh">風格模仿</div>
-          <p>用 AI 模仿在世創作者的風格，有倫理與法律風險，尤其是拿去商用時。</p></div>
-        <div class="fpoint warn"><div class="fh">冒名與深偽</div>
-          <p>別用 AI 假造他人的聲音、肖像或簽名，這可能觸法，也傷害他人。</p></div>
-      </div>
 
     <div class="footnote">「時間壓力下更依賴 AI」有行為研究支持；偵測誤判與撤稿案例見「突破與前瞻」分頁。</div>
   </section>
@@ -1432,6 +1436,15 @@ function renderStudent(){
     <details class="card optional" id="agentDetails">
       <summary>用的是會自己多步驟執行的 AI agent 嗎？大多數人可以跳過<span class="advchev">▶</span></summary>
       <details class="basisfold"><summary>依據</summary><div class="bf-body">代理式 AI 揭露：<a href="https://ascode.osu.edu/news/agentic-ai-higher-education" target="_blank" rel="noopener">Agentic AI in Higher Education</a>(OSU)</div></details>
+      <div class="optbody">
+        <p class="hint">agent 會自己跑很多步驟、還可能實際採取行動（開網頁、跑程式、寄信、改檔案）。除了「揭露你用了它」，還有幾件事值得注意：</p>
+        <div class="agentnote"><b>· 讓人來把關：</b>收不回來的動作（刪東西、寄信、付款、動你的帳號）先自己確認過，別讓它自動做完。<br>
+        <b>· 只給必要的權限：</b>能不給它存取你的信箱、檔案、帳號，就不要給。<br>
+        <b>· 它讀到的東西可能有陷阱：</b>agent 去讀網頁或檔案時，裡面可能藏著騙它的指令（prompt injection，提示注入），別它說什麼就照做。<br>
+        <b>· 小心資料外流：</b>它可能把你的、或別人的資料送到外部服務，敏感資料不要餵給它。<br>
+        <b>· 看的是「過程」不只「答案」：</b>它做了哪些動作、去了哪、改了什麼都要看，不只看最後結果。<br>
+        <span class="agentsrc">參考：<a href="https://www.federalregister.gov/documents/2026/01/08/2026-00206/request-for-information-regarding-security-considerations-for-artificial-intelligence-agents" target="_blank" rel="noopener">NIST《AI 代理安全考量》徵詢（2026）</a>。</span></div>
+      </div>
       <div class="optbody">
       <div id="agentBlock" class="agentbox">
         <div class="opthead" style="font-size:15px">AI agent 使用</div>
