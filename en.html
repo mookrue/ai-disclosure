@@ -408,6 +408,9 @@ details.optional.bonus > summary{background:#faf3dc;border-color:#e6d59f;color:#
 details.optional.bonus[open] > summary{border-color:#e6d59f}
 details.optional.bonus .optbody{background:#fdf9ec;border-color:#e6d59f}
 details.optional.bonus .hint{color:#6f5a2a}
+.chk .ct .an{font-size:14.5px;font-weight:600;color:var(--ink)}
+.chk .ct .eg{display:block;font-size:12.5px;color:var(--ink-soft);font-weight:400;margin-top:5px;line-height:1.6}
+.chk .ct .bound{display:block;font-size:12.5px;color:var(--ink-faint);font-weight:400;margin-top:3px;line-height:1.6}
 </style>
 </head>
 <body>
@@ -782,7 +785,7 @@ details.optional.bonus .hint{color:#6f5a2a}
       <div class="fpoint"><div class="fh">Provenance (C2PA / Content Credentials)</div>
         <p>C2PA signs into a file what tool made it, when, and what was edited. Some major AI tools now embed it, and cameras are starting to sign real photos too. Your AI image often carries a marker whether you know it or not. <a href="https://c2pa.org/" target="_blank" rel="noopener">C2PA standard ↗</a></p></div>
       <div class="fpoint"><div class="fh">The law</div>
-        <p>The EU AI Act (Article 50, from August 2026) requires machine-readable marking of AI-generated media, with deepfakes clearly labeled; the US FTC treats misleading AI content as deceptive under the FTC Act (no general AI-disclosure duty yet). The EU also offers a free official icon set (Basic / Fully AI-Generated / Partially AI-Modified; SVG+PNG, no attribution needed). <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener">EU AI Act Article 50 ↗</a> · <a href="https://digital-strategy.ec.europa.eu/en/policies/eu-icons-labelling-ai-generated-content" target="_blank" rel="noopener">EU official icon set ↗</a></p></div>
+        <p>The EU AI Act (Article 50, from August 2026) requires machine-readable marking of AI-generated media, with deepfakes clearly labeled; the US FTC treats misleading AI content as deceptive under the FTC Act (no general AI-disclosure duty yet). The EU also offers a set of optional (voluntary) official icons and suggested wording (such as "AI-generated" and "Partially modified with AI"). <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener">EU AI Act Article 50 ↗</a> · <a href="https://digital-strategy.ec.europa.eu/en/policies/eu-icons-labelling-ai-generated-content" target="_blank" rel="noopener">EU official icon set ↗</a></p></div>
       <div class="fpoint"><div class="fh">A photo-contest case</div>
         <p>In 2023, artist Boris Eldagsen won the Sony World Photography Award with an AI image, then refused the prize to force a debate on whether AI images count as photography. Many photo contests then wrote AI rules. <a href="https://www.bbc.com/news/entertainment-arts-65296763" target="_blank" rel="noopener">BBC report ↗</a></p></div>
       <div class="fpoint"><div class="fh">How to actually disclose</div>
@@ -793,15 +796,15 @@ details.optional.bonus .hint{color:#6f5a2a}
       <h2>AI labeling laws by country</h2>
       <p class="hint">Only a few jurisdictions actually mandate labelling AI-generated content as of 2026; most others (UK, Australia, Japan, Singapore, Canada, Brazil) have no such duty yet.</p>
       <div class="fpoint"><div class="fh">China</div>
-        <p>Three layers: Deep Synthesis Provisions (10 Jan 2023), Generative AI Interim Measures (15 Aug 2023), and the AI-Generated Content Labelling Measures + mandatory standard GB 45438-2025 (1 Sept 2025), requiring both visible and metadata labels; platforms must detect and classify as confirmed/possible/suspected. <a href="https://www.chinalawtranslate.com/en/ai-labeling/" target="_blank" rel="noopener">rules (translation) ↗</a></p></div>
+        <p>Three layers: Deep Synthesis Provisions (10 Jan 2023), Generative AI Interim Measures (15 Aug 2023), and the AI-Generated Content Labelling Measures + mandatory standard GB 45438-2025 (1 Sept 2025), requiring both visible and metadata labels; platforms must verify the labels and add a risk notice to unlabelled or suspected AI-generated content. <a href="https://www.chinalawtranslate.com/en/ai-labeling/" target="_blank" rel="noopener">rules (translation) ↗</a></p></div>
       <div class="fpoint"><div class="fh">South Korea</div>
         <p>AI Basic Act (in force 22 Jan 2026, ≥1-year grace period): Art. 31 requires advance notice of AI use, labelling of generative-AI output, and clear marking of deepfakes; MSIT guidelines require visible/audible watermarks or embedded metadata. <a href="https://www.msit.go.kr/eng/bbs/view.do?sCode=eng&mId=4&bbsSeqNo=42&nttSeqNo=1215" target="_blank" rel="noopener">MSIT notice ↗</a></p></div>
       <div class="fpoint"><div class="fh">India</div>
-        <p>IT Amendment Rules 2026 (notified 10 Feb 2026, effective 20 Feb 2026): synthetically generated information needs prominent visible labels or prefixed audio disclosure plus permanent metadata with a unique identifier; platforms must verify user AI declarations before publication and take down suspected content within 3 hours. <a href="https://www.meity.gov.in/static/uploads/2025/10/065b6deb585441b5ccdf8be42502a49c.pdf" target="_blank" rel="noopener">MeitY FAQ ↗</a></p></div>
+        <p>IT Amendment Rules 2026 (notified 10 Feb 2026, effective 20 Feb 2026): synthetically generated information needs prominent visible labels or prefixed audio disclosure plus permanent metadata with a unique identifier; platforms must verify user AI declarations before publication; unlawful synthetic content flagged by the authorities (such as non-consensual intimate imagery) must be removed within 3 hours. <a href="https://www.meity.gov.in/static/uploads/2025/10/065b6deb585441b5ccdf8be42502a49c.pdf" target="_blank" rel="noopener">MeitY FAQ ↗</a></p></div>
       <div class="fpoint"><div class="fh">California (US state)</div>
         <p>California AI Transparency Act (SB 942/AB 853), operative 2 Aug 2026: GenAI services with >1M monthly users must provide latent + manifest disclosures and a free public detection tool with API; $5,000/day penalties; images/video/audio only, not text. Note: the state's election-deepfake laws AB 2655 and AB 2839 were struck down/enjoined in 2025. <a href="https://www.morganlewis.com/pubs/2026/08/new-california-ai-disclosure-rules-become-operative" target="_blank" rel="noopener">legal analysis ↗</a></p></div>
       <div class="fpoint"><div class="fh">Taiwan</div>
-        <p>Taiwan's AI Basic Act (in force 14 Jan 2026) requires appropriate information disclosure or labelling of AI-generated/modified content (ministries to set sub-regulations); the MOE K-12 generative-AI guideline (approved 5 June 2026) requires disclosing the tool name, version, and manner of use. <a href="https://moda.gov.tw/press/press-releases/18316" target="_blank" rel="noopener">Taiwan MODA notice ↗</a></p></div>
+        <p>Taiwan's AI Basic Act (in force 2026) is a framework law setting principles, including that the government should ensure appropriate disclosure or labelling of AI outputs (concrete rules left to ministries' sub-regulations); the MOE K-12 generative-AI guideline (approved 5 June 2026) requires disclosing the tool name, version, and manner of use. <a href="https://moda.gov.tw/press/press-releases/18316" target="_blank" rel="noopener">Taiwan MODA notice ↗</a></p></div>
     </div>
 
     <div class="card">
@@ -1628,15 +1631,15 @@ function setMode(m){
 
 /* STM 9 activities (adapted, bilingual) with boundary note and disclosure hint */
 const ACTIVITIES=[
- {id:1,zh:"",en:"Language editing for clarity",bound:"Not the same as generating the main text; plain spell and grammar checks usually need no disclosure",fields:["humanities","social","science","engineering","medical","inter"]},
- {id:2,zh:"",en:"Writing / drafting manuscript text",bound:"AI generating some or all of the text almost always needs disclosure",fields:["humanities","social","science","engineering","medical","inter"]},
- {id:5,zh:"",en:"Translating the manuscript",bound:"Distinct from translating source material during the research itself",fields:["humanities","social","science","engineering","medical","inter"]},
- {id:8,zh:"",en:"Gathering references",bound:"Not generating fake, non-existent citations (prohibited); check each one you find",fields:["humanities","social","science","engineering","medical","inter"]},
- {id:3,zh:"",en:"Formatting reported data",bound:"Not tampering with, altering, or analysing the data itself",fields:["social","science","engineering","medical","inter"]},
- {id:6,zh:"/",en:"Visualising research data",bound:"As opposed to producing charts with traditional stats software (R, SAS...)",fields:["science","engineering","medical","social","inter"]},
- {id:7,zh:"",en:"Formatting reported code",bound:"Not generating new research code or changing what it does",fields:["engineering","science","inter"]},
- {id:4,zh:"/",en:"Illustrative images / figures",bound:"Not presenting real data; <b>Nature, Elsevier and others ban AI-generated images</b>",fields:["humanities","social","science","engineering","medical","inter"],ban:true},
- {id:9,zh:"",en:"Passing AI output off as real data",bound:"Uniformly prohibited across publishers; counts as research misconduct",fields:["humanities","social","science","engineering","medical","inter"],ban:true}
+ {id:1,zh:"",en:"Language editing for clarity",eg:"For example: using spell and grammar checkers (such as Word's built-in editing) to polish text that was mainly written by a person.",bound:"Does not include: generating text from a prompt, or generating/summarising text (that falls under drafting the manuscript or the research process). Plain spell and grammar checks usually need <b>no disclosure</b>.",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:2,zh:"",en:"Writing / drafting manuscript text",eg:"For example: using AI to generate text from a prompt, to substantially expand or rewrite text, or to produce a summary (such as summarising the argument of another paper).",bound:"Whenever AI generated some or all of the text, this <b>almost always needs disclosure</b>.",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:5,zh:"",en:"Translating the manuscript (into another language)",eg:"For example: using Google Translate or ChatGPT to translate your own manuscript draft into another language.",bound:"Does not include: translating source material during the research itself (that is unrelated to manuscript preparation and is outside this classification).",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:8,zh:"",en:"Gathering references",eg:"For example: using AI to find articles that may be related to your research.",bound:"Does not include: using tools like BibTeX to format citations for references a human found; and <b>generating plausible-looking references that do not actually exist (prohibited)</b>. Check every reference AI finds against the original.",fields:["humanities","social","science","engineering","medical","inter"]},
+ {id:3,zh:"",en:"Formatting reported data",eg:"For example: using AI to improve the clarity, readability, or formatting of research data reported in the manuscript (including supplementary materials).",bound:"Does not include: visualising the data (that is the next item); or any generation, correction, or analysis of the data itself (that belongs to the research process).",fields:["social","science","engineering","medical","inter"]},
+ {id:6,zh:"",en:"Visualising research data or results",eg:"For example: using AI to generate graphs or tables from a research dataset.",bound:"Does not include: using traditional statistical software (such as STATA, SAS, R) to make charts; or generating images with no basis in real data.",fields:["science","engineering","medical","social","inter"]},
+ {id:7,zh:"",en:"Formatting reported code (without changing function)",eg:"For example: using AI to improve the readability of code in the manuscript without changing what it actually does.",bound:"Does not include: generating new code for the research, or changing the function of research code.",fields:["engineering","science","inter"]},
+ {id:4,zh:"",en:"Purely illustrative images / figures",eg:"For example: using AI to generate a scene like 'people farming in an ancient society' — the kind of illustration an artist would otherwise draw.",bound:"Does not include: visualising real data, or presenting a generated image as a research result. <b>Nature, Elsevier and others ban AI-generated images in manuscripts</b>, so check before you submit.",fields:["humanities","social","science","engineering","medical","inter"],ban:true},
+ {id:9,zh:"",en:"Passing AI-generated content off as real research data",eg:"For example: presenting data, text, or figures generated wholesale by AI, with no basis in real data, as though they were original research results.",bound:"<b>Uniformly prohibited across publishers</b> and counts as research misconduct. (But if what you are studying is the output of generative AI itself, that output can count as research data — legitimate research.)",fields:["humanities","social","science","engineering","medical","inter"],ban:true}
 ];
 
 /* records to keep. The core ledger */
@@ -1713,7 +1716,7 @@ function renderActivities(){
   const list=ACTIVITIES;
   $('#activities').innerHTML=list.map(a=>`
     <label class="chk ${a.ban?'ban':''}"><input type="checkbox" value="${a.en}" data-id="${a.id}">
-      <span class="ct">${a.en}<span class="bound">${a.bound}</span></span></label>`).join('');
+      <span class="ct"><span class="an">${a.en}</span><span class="eg">${a.eg}</span><span class="bound">${a.bound}</span></span></label>`).join('');
 }
 /* field-aware polishing note */
 function renderPolish(){
