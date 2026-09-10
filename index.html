@@ -416,6 +416,8 @@ details.optional.bonus .hint{color:#6f5a2a}
 .agentsrc{display:block;margin-top:8px;font-size:12px;color:var(--ink-faint)}
 .agentsrc a{color:var(--accent-deep)}
 .foldcard.fcopen>.fctitle{padding:17px 24px;font-family:"Noto Serif TC",Georgia,serif;font-weight:600;font-size:16.5px;color:var(--accent-deep);display:flex;align-items:center;gap:9px}
+.newsflash{background:#fdf7e3;border:1px solid #e6d6a2;border-left:4px solid #c99a2e;border-radius:var(--radius-sm);padding:13px 16px;margin:0 0 16px;font-size:13.5px;line-height:1.8;color:var(--ink)}
+.newsflash a{color:var(--accent-deep)}
 </style>
 </head>
 <body>
@@ -606,6 +608,11 @@ details.optional.bonus .hint{color:#6f5a2a}
   <!-- ================= RESEARCHER ================= -->
   <section id="researcherView" class="hide">
   <div class="themehead"><h2>研究者</h2><p class="th-sub">投稿與送計畫的AI揭露規劃，邊做邊留紀錄。</p></div>
+    <div class="newsflash">📢 <b>學術圈最新動態（2026）：規定越來越具體、也越來越嚴</b><br>
+      ・<b>JAMA Network</b>（2026年8月，一次涵蓋13本期刊）明文禁止四件事，而且都附了理由：①審稿人不得把稿件上傳到外部AI工具（保護未發表內容的機密）；②不得用AI生成臨床或病理圖像；③不得用AI生成、格式化或整理參考文獻（假引用風險太高）；④不得用AI撰寫評論、社論或讀者投書。揭露也不再接受「用了ChatGPT」這種籠統寫法，要寫明工具名稱、版本、製造商與生成內容的性質；這些規定已寫進《AMA Manual of Style》。<br>
+      ・<b>ICMJE</b>（2026年1月更新）：投稿時就要揭露，並在投稿信與稿件中一併說明用了哪些AI；AI不得列為作者；審稿人不得把稿件上傳到無法保證機密的AI工具；人類須為全部內容負責。<br>
+      ・<b>Elsevier</b>（2026年8月）：把Check Integrity自動稽核擴大到近2000本期刊、投稿前先篩可疑之處；揭露要放在參考文獻前、專屬的「Declaration of Generative AI」段落，寫明工具與用途並確認作者負全責；同時明文禁止用AI進行同儕審查。<br>
+      共同方向一致：AI不能當作者、AI使用要揭露、作者為全部內容負責（純語言潤稿多半免揭露）。可以看出2026年的趨勢，是從「要不要揭露」轉向「具體怎麼揭露、哪些用途直接禁止」。政策更新很快，投稿前務必以你目標期刊或機構的<b>現行指南</b>為準。 <a href="https://www.niso.org/niso-io/2026/08/jama-network-releases-updated-ai-guidance-authors" target="_blank" rel="noopener">JAMA 2026新規 ↗</a></div>
 
   <div class="usenote">🧭 <b>怎麼用：</b>現在就做 <b>1–3</b>（規劃AI使用 + 開始留紀錄），投稿時再回來做 <b>4–5</b>（對規定、產生聲明）。<b>還沒選定期刊？沒關係</b>，先選領域與取徑，期刊之後再說。</div>
     <div class="faqpoint">有疑慮或常見問題？<span class="faqlink" onclick="setMode('faq')">看「常見問題」分頁 →</span> </div>
@@ -657,6 +664,7 @@ details.optional.bonus .hint{color:#6f5a2a}
     <p class="hint">分類與邊界取自STM出版商協會的九類活動（2025）。勾選你（可能）會用到的。下面每一項的「界線」那句話，幫你判斷哪些其實不算、或已被禁止。</p>
     <div id="polishNote" class="principle" style="margin-top:12px"></div>
     <div class="checks" id="activities"></div>
+      <div id="actSummary" class="hint faint" style="margin-top:12px"></div>
       <details class="basisfold"><summary>依據</summary><div class="bf-body">活動分類取自 <a href="https://s3.eu-west-2.amazonaws.com/stm.offloadmedia/wp-content/uploads/2025/04/23020709/STM_AI_Classification_Recs_19_Sept2025-1.pdf" target="_blank" rel="noopener">STM九類活動</a>（2025）；委派揭露架構參考 <a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank" rel="noopener">GAIDeT委派分類</a>（Suchikova et al.，預印本提案；原針對研究流程委派）。</div></details>
   </div>
 
@@ -741,7 +749,7 @@ details.optional.bonus .hint{color:#6f5a2a}
 
   <div class="card">
     <h2>揭露聲明怎麼寫：實際範例</h2>
-    <p class="hint">揭露聲明<b>沒有統一格式，要照你投稿期刊的規定寫</b>（見上面第4步）。這裡放幾個真實範例，從寬鬆到嚴格，你可以照著改。</p>
+    <p class="hint">揭露聲明<b>沒有統一格式，要照你投稿期刊的規定寫</b>（見第1步選期刊後顯示的規定）。這裡放幾個真實範例，從寬鬆到嚴格，你可以照著改。</p>
     <div class="reassure">💬 <b>放心揭露。</b>好好揭露AI使用是當前的專業常態，是在保護你自己（顯示你有查證、負責），不是認錯、也不減損你的貢獻。</div>
 
     <div class="exblock">
@@ -784,7 +792,7 @@ details.optional.bonus .hint{color:#6f5a2a}
       領域差異（潤稿）：<a href="https://www.nature.com/articles/s41599-025-05351-4" target="_blank" rel="noopener">非母語研究者的身分協商</a>（HSS Communications 2025）。<br>
       可複製性報告：<a href="https://llm-guidelines.org" target="_blank" rel="noopener">LLM實證研究指引</a> · 代理式科研：<a href="https://arxiv.org/abs/2508.14111" target="_blank" rel="noopener">Agentic Science綜述</a>。<br>
       壓力下的使用：<a href="https://www.nature.com/articles/d41586-025-01180-2" target="_blank" rel="noopener">未揭露AI痕跡</a>（Nature 2025）· <a href="https://cacm.acm.org/opinion/hidden-prompts-in-manuscripts-exploit-ai-assisted-peer-review/" target="_blank" rel="noopener">操縱AI審查</a>（CACM）· automation bias在時間壓力下被放大的實證。<br>
-      補助機構：<a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-25-132.html" target="_blank" rel="noopener">NIH</a> · <a href="https://www.ukri.org/publications/generative-artificial-intelligence-in-application-and-assessment-policy/" target="_blank" rel="noopener">UKRI</a> · <a href="https://wellcome.org/research-funding/guidance/policies-grant-conditions/use-of-generative-ai" target="_blank" rel="noopener">Wellcome</a> · <a href="https://www.ey.gov.tw/Page/448DE008087A1971/40c1a925-121d-4b6b-8f40-7e9e1a5401f2" target="_blank" rel="noopener">行政院參考指引</a> · <a href="https://www.nstc.gov.tw/folksonomy/detail/d21566a0-3465-4b63-84b7-5d7cb2e1e5ff?l=ch" target="_blank" rel="noopener">國科會FAQ</a>。出版社官方政策（第4步各卡內連結）：Nature、Elsevier、Wiley、Science、PLOS、IEEE、T&amp;F。<br>
+      補助機構：<a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-25-132.html" target="_blank" rel="noopener">NIH</a> · <a href="https://www.ukri.org/publications/generative-artificial-intelligence-in-application-and-assessment-policy/" target="_blank" rel="noopener">UKRI</a> · <a href="https://wellcome.org/research-funding/guidance/policies-grant-conditions/use-of-generative-ai" target="_blank" rel="noopener">Wellcome</a> · <a href="https://www.ey.gov.tw/Page/448DE008087A1971/40c1a925-121d-4b6b-8f40-7e9e1a5401f2" target="_blank" rel="noopener">行政院參考指引</a> · <a href="https://www.nstc.gov.tw/folksonomy/detail/d21566a0-3465-4b63-84b7-5d7cb2e1e5ff?l=ch" target="_blank" rel="noopener">國科會FAQ</a>。出版社官方政策（第1步選期刊後各卡內連結）：Nature、Elsevier、Wiley、Science、PLOS、IEEE、T&amp;F。<br>
       中文學術圈：<a href="https://sub.daais.sinica.edu.tw/download/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95.pdf" target="_blank" rel="noopener">中央研究院指引</a> · <a href="http://www.ircip.cn/bbx/1044770-1044770.html?id=26645&newsid=5064831" target="_blank" rel="noopener">學術出版AIGC使用邊界指南2.0（2024年9月）</a>（中國）· <a href="https://www.most.gov.cn/kjbgz/202312/t20231221_189240.html" target="_blank" rel="noopener">中國科技部《負責任研究行為規範指引（2023）》</a>。<br>
       「該保留哪些紀錄」的缺口參酌A Faceted Proposal for Transparent Attribution（Xexéo，2026 預印本）。政策多半沒講清楚提示、log、模型版本、中間草稿是否留存。
     </div>
@@ -966,16 +974,17 @@ details.optional.bonus .hint{color:#6f5a2a}
       <h2>查學術 AI：哪些訊號算證據，配哪些工具</h2>
       <p class="hint">AI讓假論文、假圖、假引用更容易大量做出來（論文工廠、造假圖、捏造數據與引用）。判斷之前，先看「證據有多強」，再用對應的工具。一個大原則：工具只負責標出可疑、不負責定罪，最後判斷還是人。</p>
       <div class="fpoint"><div class="fh">強證據：具體、可驗證</div>
-      <p>・<b>介面殘留</b>：全文搜尋「Regenerate response」「As an AI language model」這類貼上時一起帶進來的字。<br>
-      ・<b>不存在的文獻或DOI</b>：逐條回查參考文獻是否真的存在（AI常編造），可用Crossref、OpenAlex、PubMed核查，也到 <a href="https://retractionwatch.com/" target="_blank" rel="noopener">Retraction Watch</a> 看是否被撤稿。<br>
-      ・<b>藏在文件裡的AI審稿指令</b>：檢查PDF的文字層與白字。<br>
+      <p>・<b>介面殘留</b>：全文搜尋「Regenerate response」「As an AI language model」這類貼上時一起帶進來的字（這個你自己就能做）。<br>
+      ・<b>不存在的文獻或DOI</b>：逐條回查參考文獻，可用Crossref、OpenAlex、PubMed。要注意反過來不成立：<b>查不到不一定是假的</b>（書、報告、非英文或非生醫文獻本來就未必被收錄），得再確認。也可到 <a href="https://retractionwatch.com/" target="_blank" rel="noopener">Retraction Watch</a> 查它有沒有被撤稿（這只涵蓋「已撤稿」的論文，沒撤稿不代表沒問題）。<br>
+      ・<b>藏在文件裡的AI審稿指令</b>：檢查PDF的文字層與白字（這個你自己也能做）。<br>
       這幾種只要找到，幾乎就能確定內容曾交給AI。</p></div>
       <div class="fpoint"><div class="fh">中等證據：工具先初篩，人再判斷</div>
-      <p>・<b>引用存在、但其實不支持主張</b>：讀原文、做一張claim–citation對照表。<br>
+      <p class="hint faint" style="margin:0 0 4px">這一層多半是期刊、機構在用的工具，也都會誤判，不保證抓得到——當「初篩」用，別當結論。</p>
+      <p>・<b>引用存在、但其實不支持主張</b>：讀原文、做一張claim–citation對照表（這項最實在，你自己就能做）。<br>
       ・<b>同一篇裡樣本數或日期自相矛盾</b>：做內部一致性核查。<br>
-      ・<b>圖片重複、裁切或旋轉</b>：用Proofig、ImageTwin、FigCheck比對（Science系列、AACR、ASM等期刊已採用）。<br>
-      ・<b>tortured phrases（機器改寫留下的怪異用詞）</b>：例如用fake neural organization代替artificial neural network，可查 <a href="https://www.irit.fr/~Guillaume.Cabanac/problematic-paper-screener" target="_blank" rel="noopener">Problematic Paper Screener</a>、STM Integrity Hub、Papermill Alarm。<br>
-      ・<b>事後同儕檢視</b>：上 <a href="https://pubpeer.com" target="_blank" rel="noopener">PubPeer</a> 看某篇有沒有被公開指出問題。<br>
+      ・<b>圖片重複、裁切或旋轉</b>：Science系列、AACR、MDPI等期刊會用 Proofig、ImageTwin、FigCheck 這類工具比對。但它們主要抓「重複／拼接」，<b>不太能抓AI生成的假圖</b>，也會誤判（Proofig約5.8%），結果一定要人再看；而且多是付費或機構版，個人不一定用得到。<br>
+      ・<b>tortured phrases（機器改寫留下的怪異用詞，如用fake neural organization代替artificial neural network）</b>：<a href="https://www.irit.fr/~Guillaume.Cabanac/problematic-paper-screener" target="_blank" rel="noopener">Problematic Paper Screener</a> 收錄「已被標記」的可疑論文，你可以查某篇在不在名單上；但那是「等人再判斷」的清單、不是判決，也可能誤標非母語寫作（另有 STM Integrity Hub、Papermill Alarm，多為出版社在用）。<br>
+      ・<b>事後同儕檢視</b>：上 <a href="https://pubpeer.com" target="_blank" rel="noopener">PubPeer</a> 查某篇有沒有被公開質疑（免費、可查）。<br>
       這些是很強的疑點，但通常要搭配其他證據。</p></div>
       <div class="fpoint"><div class="fh">弱證據：別單獨拿來當憑據</div>
       <p>・<b>突然冒出「delve」這類詞</b>：對單獨一篇幾乎沒有意義。<br>
@@ -1250,7 +1259,7 @@ details.optional.bonus .hint{color:#6f5a2a}
         <div class="maprow"><div class="mapwhat">引用格式</div><div class="mapsrc"><a href="https://style.mla.org/citing-generative-ai-updated-revised/" target="_blank" rel="noopener">MLA</a> · <a href="https://apastyle.apa.org/blog/cite-generative-ai-references" target="_blank" rel="noopener">APA</a> · Chicago 18 §14.112</div></div>
         <div class="maprow"><div class="mapwhat">取向=方法輪廓（非科系）</div><div class="mapsrc">改寫自Biglan(1973)/ Becher &amp; Trowler的hard↔soft連續體</div></div>
       </div>
-      <p class="lead" style="margin-top:14px"><b>投稿前參考：</b>各大學術出版社（Nature、Elsevier、IEEE、Science、COPE、ICMJE）一致要求：<b>AI不能列為作者、AI使用須揭露、作者須自行查證並為內容負責</b>（<a href="https://publicationethics.org/guidance/cope-position/authorship-and-ai-tools" target="_blank" rel="noopener">COPE官方立場</a>）。<br>2026動態：ICMJE已於2026/1更新建議（明訂「人類必須對全部內容負責」）、Elsevier於2026/8更新期刊生成式AI政策；另維基百科已於2026年禁止以AI生成內容。</p>
+      <p class="lead" style="margin-top:14px"><b>投稿前參考：</b>各大學術出版社（Nature、Elsevier、IEEE、Science、COPE、ICMJE）一致要求：<b>AI不能列為作者、AI使用須揭露、作者須自行查證並為內容負責</b>（<a href="https://publicationethics.org/guidance/cope-position/authorship-and-ai-tools" target="_blank" rel="noopener">COPE官方立場</a>）。<br>2026動態：JAMA Network於2026/8明文禁止用AI生成引用、臨床圖像與評論文章、以及審稿上傳；ICMJE已於2026/1更新建議（明訂「人類必須對全部內容負責」）、Elsevier於2026/8更新政策；另維基百科已於2026年禁止以AI生成內容。</p>
     </div>
   </details>
 
@@ -1824,19 +1833,19 @@ const POLISH_NOTES={
 
 const PUBS={
  nature:{name:"Nature / Springer Nature",where:"方法（Methods）；無方法時放合適段落",copyedit:"純語言潤稿<b>免揭露</b>",images:"<b>禁止</b> AI生成圖像/影片",prompts:"未特別要求逐字提示",note:"強調可問責與可重現",url:"https://www.nature.com/nature-portfolio/editorial-policies/ai"},
- elsevier:{name:"Elsevier（含Cell Press）",where:"參考文獻前的<b>獨立段落</b>（並於cover letter說明）",copyedit:"純潤稿免揭露",images:"<b>禁止</b> AI生成圖像；Cell Press對圖較嚴",prompts:"未特別要求逐字提示",note:"要求作者監督、查證、揭露；會出現在刊出版本",url:"https://www.elsevier.com/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier"},
- wiley:{name:"Wiley",where:"方法（Methods）",copyedit:"沒有要求",images:"部分限制",prompts:"<b>要求詳述</b>：軟體、供應商，有時含提示",note:"作者保有全部責任",url:"https://authors.wiley.com/ethics-guidelines/index.html"},
+ elsevier:{name:"Elsevier（含Cell Press）",where:"參考文獻前的<b>獨立段落</b>（並於cover letter說明）",copyedit:"純潤稿免揭露",images:"<b>禁止</b> AI生成圖像；Cell Press對圖較嚴",prompts:"未特別要求逐字提示",note:"要求作者監督、查證、揭露；聲明會出現在刊出版本；並禁止用AI進行同儕審查",url:"https://www.elsevier.com/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier"},
+ wiley:{name:"Wiley",where:"方法（Methods）",copyedit:"沒有要求",images:"部分限制",prompts:"<b>要求詳述</b>：軟體、供應商，有時含提示",note:"區分「AI當工具（可，須揭露）」與「用AI生成實質智識內容（不可）」；作者保有全部責任",url:"https://authors.wiley.com/ethics-guidelines/index.html"},
  science:{name:"Science / AAAS",where:"誌謝與方法",copyedit:"僅文法/拼字可免",images:"限制",prompts:"<b>要求完整揭露提示</b>",note:"要求在誌謝與方法揭露；方法須寫出<b>完整提示、工具與版本</b>；AI不能掛名，作者負全責。屬揭露要求較細的一類（2023年11月起改為可用但須完整揭露，非一律禁止）。",url:"https://www.science.org/content/page/science-journals-editorial-policies"},
  plos:{name:"PLOS",where:"方法（含詳細評估說明）",copyedit:"沒有要求",images:"鼓勵透明，無明文禁圖",prompts:"沒有要求",note:"須確保正確性與正確歸屬",url:"https://journals.plos.org/plosone/s/ethical-publishing-practice"},
  ieee:{name:"IEEE / ACM",where:"誌謝（Acknowledgments）",copyedit:"沒有要求",images:"沒有要求",prompts:"沒有要求",note:"IEEE須標明：<b>AI系統、受影響段落、使用程度</b>",url:"https://open.ieee.org/author-guidelines-for-artificial-intelligence-ai-generated-text/"},
- tf:{name:"Taylor & Francis",where:"方法或誌謝",copyedit:"純潤稿多可免",images:"沒有要求",prompts:"沒有要求",note:"允許但須揭露、作者負責；部分期刊限語言改善",url:"https://taylorandfrancis.com/our-policies/ai-policy/"},
- medical:{name:"醫學期刊（ICMJE / JAMA / BMJ）",where:"誌謝 / 方法 + <b>投稿系統的AI提問</b>",copyedit:"沒有要求",images:"沒有要求",prompts:"視期刊",note:"投稿系統常有必答的AI使用題，須與內文一致；<b>JAMA、BMJ要求寫明模型名稱、版本、製造商與產生內容的性質</b>",url:"https://www.icmje.org/recommendations/browse/artificial-intelligence/"},
+ tf:{name:"Taylor & Francis",where:"方法或誌謝",copyedit:"以生成式AI做語言潤飾仍要揭露",images:"沒有要求",prompts:"沒有要求",note:"允許，但<b>任何生成式AI使用都要揭露</b>：須寫明工具全名與版本、如何用、為何用；書籍作者須在最早階段向編輯報准；作者負全責",url:"https://taylorandfrancis.com/our-policies/ai-policy/"},
+ medical:{name:"醫學期刊（ICMJE / JAMA / BMJ）",where:"誌謝 / 方法 + <b>投稿系統的AI提問</b>",copyedit:"沒有要求",images:"<b>JAMA禁止AI生成臨床圖像</b>",prompts:"視期刊",note:"投稿系統常有必答的AI使用題，須與內文一致；JAMA、BMJ要求寫明模型名稱、版本、製造商與產生內容的性質。<b>JAMA Network 2026/8 新版更明文禁止四件事</b>：審稿人把稿件上傳外部AI、用AI生成臨床圖像、用AI生成或整理參考文獻、用AI撰寫評論／社論／投書。",url:"https://www.icmje.org/recommendations/browse/artificial-intelligence/"},
  sage:{name:"SAGE",where:"方法或致謝",copyedit:"<b>輔助性AI（潤飾你自己的文字）不用聲明</b>",images:"沒有要求",prompts:"沒有要求",note:"區分輔助vs生成：生成新內容須引用並標註；規範較彈性、格式指引較少",url:"https://www.sagepub.com/journals/publication-ethics-policies/artificial-intelligence-policy"},
  mdpi:{name:"MDPI",where:"方法或致謝",copyedit:"純潤稿多可免",images:"對AI輔助視覺較寬鬆",prompts:"沒有要求",note:"允許但須揭露：GenAI生成內容要在方法說明「如何使用」、並於投稿時說明；<b>純語言編修（文法、標點、格式）不用揭露</b>；AI不能掛名，作者為全部內容負責",url:"https://www.mdpi.com/ethics"},
  frontiers:{name:"Frontiers",where:"方法或致謝",copyedit:"純潤稿多可免",images:"涵蓋文生圖工具，須依規揭露",prompts:"沒有要求",note:"允許但須揭露；規範明確涵蓋LLM與文生圖工具（DALL·E、Midjourney）；用AI生成正文須在致謝揭露，作者須查證所有事實與引用",url:"https://www.frontiersin.org/guidelines/policies-and-publication-ethics"},
- oup:{name:"Oxford Academic(OUP)",where:"<b>cover letter與方法/致謝都要</b>",copyedit:"沒有要求",images:"沒有要求",prompts:"沒有要求",note:"書籍出版須填「AI使用聲明表（AI Use Declaration Form）」；AI不能掛名、也不得執行主要的作者職責；期刊則依各刊作者指南",url:"https://academic.oup.com/pages/for-authors/books/author-use-of-artificial-intelligence"},
+ oup:{name:"Oxford Academic(OUP)",where:"<b>cover letter與方法/致謝都要</b>",copyedit:"沒有要求",images:"沒有要求",prompts:"沒有要求",note:"書籍出版須填「AI使用聲明表（AI Use Declaration Form）」；<b>提交AI生成的內容或圖表前須先取得OUP書面許可</b>並附查證步驟；AI不能掛名、也不得執行主要的作者職責；期刊則依各刊作者指南",url:"https://academic.oup.com/pages/for-authors/books/author-use-of-artificial-intelligence"},
  cup:{name:"Cambridge University Press",where:"寫作流程須揭露",copyedit:"沒有要求",images:"沒有要求",prompts:"沒有要求",note:"AI不能掛名（需能問責）；規範主要涵蓋寫作流程",url:"https://www.cambridge.org/core/services/authors/publishing-ethics/research-publishing-ethics-guidelines-for-journals/authorship-and-contributorship"},
- emerald:{name:"Emerald",where:"須在論文中標明任何AI使用",copyedit:"沒有要求",images:"禁止AI生成圖像",prompts:"沒有要求",note:"相對嚴格：任何AI使用都要在論文中標明；<b>用AI生成摘要或文獻回顧不被允許</b>（違反作者身分準則）；AI不能掛名",url:"https://www.emeraldgrouppublishing.com/publish-with-us/ethics-integrity/research-publishing-ethics"},
+ emerald:{name:"Emerald",where:"須在論文中標明任何AI使用",copyedit:"沒有要求",images:"禁止AI生成圖像",prompts:"沒有要求",note:"相對嚴格：任何AI使用都要在論文、章節或個案中標明；AI不能掛名，作者為全部內容負責",url:"https://www.emeraldgrouppublishing.com/publish-with-us/ethics-integrity/research-publishing-ethics"},
  acs:{name:"ACS（美國化學學會）",where:"致謝（實質使用寫入方法）",copyedit:"沒有要求",images:"AI生成圖像須揭露",prompts:"沒有要求",note:"AI不能掛名；文字或圖像的AI使用要在致謝說明「何時、如何用」，實質使用寫入方法；作者為全部內容負責；依循COPE",url:"https://researcher-resources.acs.org/publish/authorship_guidance_policies"},
  apa:{name:"APA（美國心理學會）",where:"方法（Methods）並須<b>正式引用</b>",copyedit:"沒有要求",images:"沒有要求",prompts:"沒有要求",note:"在方法揭露並正式引用AI;AI不能掛名",url:"https://www.apa.org/pubs/journals/resources/publishing-tips/policy-generative-ai"},
  other:{name:"尚未決定 / 其他",where:"多數為方法或誌謝",copyedit:"純潤稿常可免",images:"多家禁止AI生成圖像",prompts:"視期刊",note:"選定後請以該社作者指南為準",url:""}
@@ -1852,6 +1861,18 @@ function renderActivities(){
 /* field-aware polishing note */
 function renderPolish(){
   $('#polishNote').innerHTML='✍ <b>純語言潤稿多數期刊不用揭露</b>；但若AI改到內容、論點或翻譯，就要揭露。書寫核心的人文社科領域更敏感，揭露要到位。';
+}
+/* activity selection summary */
+function renderActSummary(){
+  const el=$('#actSummary'); if(!el) return;
+  const boxes=[...document.querySelectorAll('#activities input:checked')];
+  if(!boxes.length){ el.innerHTML='勾選上面你（可能）會用到的活動，這裡會即時幫你整理成一份清單。'; return; }
+  const chosen=boxes.map(b=>ACTIVITIES.find(a=>a.id===+b.getAttribute('data-id'))).filter(Boolean);
+  const banned=chosen.filter(a=>a.ban);
+  let html='<b>你勾選了 '+chosen.length+' 項：</b>'+chosen.map(a=>a.zh).join('、')+'。';
+  if(banned.length) html+='<br>⚠ 其中「'+banned.map(a=>a.zh).join('、')+'」被標為禁止或高風險（詳見該項的界線說明），做之前務必先確認規定。';
+  html+='<br>接下來：在<b>第1步</b>選好目標期刊，會顯示它對這些使用的揭露規定；在<b>第3步</b>的紀錄本，記得為這些活動邊做邊留下紀錄。';
+  el.innerHTML=html;
 }
 /* method-aware ledger */
 const APPROACH_LABEL={qual:"質性",quant:"量化/計算",mixed:"混合",theory:"理論/詮釋"};
@@ -1884,10 +1905,11 @@ function renderPub(){
 
 
 $('#approach').addEventListener('change',renderLedger);
+$('#activities').addEventListener('change',renderActSummary);
 $('#agent').addEventListener('change',e=>{renderLedger();$('#agentCaution').classList.toggle('hide',!e.target.checked);});
 $('#pub').addEventListener('change',renderPub);
 
-renderActivities(); renderPolish(); renderLedger(); renderPub();
+renderActivities(); renderActSummary(); renderPolish(); renderLedger(); renderPub();
 
 
 /* ---------- init ---------- */
